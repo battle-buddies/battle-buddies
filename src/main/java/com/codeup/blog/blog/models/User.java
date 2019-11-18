@@ -15,24 +15,27 @@ public class User {
     private String email;
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String password;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Post> posts;
 
-    public User(){};
+//    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+//    private boolean isVerified;
 
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean isAdmin;
 
-    public User(String username, String email, String password, List<Post> posts) {
+    public User(){}
+
+    public User(String username, String email, String password, boolean isAdmin) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.posts = posts;
+        this.isAdmin = isAdmin;
     }
 
-    public User(User copy) {
-        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
-        email = copy.email;
-        username = copy.username;
-        password = copy.password;
+    public User(long id, String username, String email, String password, boolean isAdmin) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public long getId() {
@@ -67,11 +70,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
