@@ -22,6 +22,11 @@ public class User {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Relationship> relationships;
+
+
     public User(User user){
 
     }
@@ -79,4 +84,14 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+    public void setRelationships(List<Relationship> relationships) {
+        this.relationships = relationships;
+    }
+
+    public List<Relationship> getRelationships (){
+        return relationships;
+    }
+
+
 }
