@@ -22,11 +22,16 @@ public class User {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetups")
     private List<MeetUp> meetUps;
 
 
     public User(){}
+
+    public User(User user){
+
+    }
 
     public User(String username, String email, String password, boolean isAdmin) {
         this.username = username;
