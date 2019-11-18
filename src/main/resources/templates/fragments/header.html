@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="profile-header">
+    <th:block th:replace="fragments/links :: profile-links"/>
+    <th:block th:replace="fragments/metadata :: profile-meta"/>
+</th:block>
