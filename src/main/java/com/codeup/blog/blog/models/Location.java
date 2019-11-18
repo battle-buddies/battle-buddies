@@ -21,7 +21,7 @@ public class Location {
     @Column(nullable = false, columnDefinition = "VARCHAR(80)")
     private String country;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetups")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
     private List<MeetUp> meetUps;
 
     @ManyToMany(mappedBy = "locations")
