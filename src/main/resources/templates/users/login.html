@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Log In</title>
+    <head th:replace="/../fragments/styling :: styling" />
+</head>
+
+<nav th:replace="/../fragments/nav-bars :: nav" />
+<header th:replace="/../fragments/header-footer :: login-header" />
+
+<body>
+
+<div class="container">
+    <div class="card w-100 mt-2 mb-4">
+        <div class="widthy">
+            <div class="red-font mt-2" th:if="${param.error}">
+                Invalid Username and Password.
+            </div>
+            <div class="mt-2" th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <form th:action="@{/login}" th:method="post">
+                <label class="dark-font mt-3" for="username">Username</label>
+                <input class=" form-control"  id="username" th:autocomplete="off" name="username" type="text" /> <br>
+
+                <label class="dark-font mt-3" for="password">Password</label>
+                <input class=" form-control" id="password" th:autocomplete="off" name="password" type="password" /> <br>
+
+                <button class="btn btn-edit form-control mt-3 mb-2">Submit</button>
+                <div class="text-center mb-2">
+                    <a href="/sign-up" class="dark-font">Click here to register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+<footer th:replace="/../fragments/header-footer :: footer" />
+</html>

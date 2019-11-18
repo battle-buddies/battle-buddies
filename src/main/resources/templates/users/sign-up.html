@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sign up</title>
+    <head th:replace="/../fragments/styling :: styling" />
+</head>
+
+<nav th:replace="/../fragments/nav-bars :: nav" />
+<header th:replace="/../fragments/header-footer :: register-header" />
+
+
+<!--SIGN UP FORM-->
+<body>
+    <div class="container">
+        <div class="card w-100 mt-2 mb-4">
+            <div class="widthy">
+                <form th:action="@{/users/sign-up}" th:method="POST" th:object="${user}">
+                    <label class="dark-font mt-3"  for="username">Username</label>
+                    <input class=" form-control" th:autocomplete="off" id="username" th:field="*{username}" /><br>
+
+                    <label class="dark-font mt-3" for="email">Email</label>
+                    <input class=" form-control" th:autocomplete="off" id="email" th:field="*{email}" /><br>
+
+                    <label class="dark-font mt-3" for="password">Password</label>
+                    <input class="form-control" th:autocomplete="off"  id="password" type="password" th:field="*{password}" /><br>
+
+                    <p class="red-font" th:text="${takenUsername}"></p>
+                    <p class="red-font" th:text="${takenEmail}"></p>
+                    <p class="red-font" th:text="${missing}" ></p>
+                    <button class="btn btn-edit form-control mt-3 mb-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<footer th:replace="/../fragments/header-footer :: footer" />
+</html>
