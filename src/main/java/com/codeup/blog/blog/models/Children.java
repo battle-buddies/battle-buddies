@@ -16,8 +16,10 @@ public class Children {
 
     @Column(nullable = false)
     private LocalDate birthDate;
-    
-    
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
     public Children(int gender, LocalDate birthDate) {
         this.gender = gender;
@@ -28,7 +30,7 @@ public class Children {
         this.gender = gender;
         this.birthDate = birthDate;
     }
-    
+
     public Children(){}
 
     public long getId() {
@@ -53,5 +55,13 @@ public class Children {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(User user) {
+        this.profile = profile;
     }
 }
