@@ -22,7 +22,9 @@ public class User {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
-    public User(){}
+    public User(User user){
+
+    }
 
     public User(String username, String email, String password, boolean isAdmin) {
         this.username = username;
