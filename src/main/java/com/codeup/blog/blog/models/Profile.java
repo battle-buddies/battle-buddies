@@ -51,9 +51,16 @@ public class Profile {
     )
     private List<Location> location;
 
+    @JoinTable(
+            name = "profile_traits",
+            joinColumns = {@JoinColumn(name="profile_id")},
+            inverseJoinColumns = {@JoinColumn(name="trait_id")}
+    )
+    private List<Trait> traits;
+
     public Profile (){}
 
-    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user) {
+    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -63,9 +70,12 @@ public class Profile {
         this.branch = branch;
         this.rank = rank;
         this.user = user;
+        this.location = location;
+        this.traits = traits;
     }
 
-    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user) {
+    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -75,6 +85,8 @@ public class Profile {
         this.branch = branch;
         this.rank = rank;
         this.user = user;
+        this.location = location;
+        this.traits = traits;
     }
 
     public long getId() {
