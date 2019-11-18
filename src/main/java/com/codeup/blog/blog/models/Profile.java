@@ -56,6 +56,12 @@ public class Profile {
             joinColumns = {@JoinColumn(name="profile_id")},
             inverseJoinColumns = {@JoinColumn(name="trait_id")}
     )
+
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    private List<Children> children;
+
+
     private List<Trait> traits;
 
     public Profile (){}
@@ -167,5 +173,13 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Children> getChildren (){
+        return children;
+    }
+
+    public void setChildren() {
+        this.children = children;
     }
 }

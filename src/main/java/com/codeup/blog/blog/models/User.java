@@ -24,13 +24,14 @@ public class User {
 
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Relationship> relationships;
+//    @OneToMany(mappedBy = "userone", cascade = CascadeType.ALL)
+//    private List<Relationship> relationships;
 
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetups")
     private List<MeetUp> meetUps;
+
 
 
     public User(){}
@@ -94,13 +95,13 @@ public class User {
         isAdmin = admin;
     }
 
-    public void setRelationships(List<Relationship> relationships) {
-        this.relationships = relationships;
-    }
-
-    public List<Relationship> getRelationships (){
-        return relationships;
-    }
+//    public void setRelationships(List<Relationship> relationships) {
+//        this.relationships = relationships;
+//    }
+//
+//    public List<Relationship> getRelationships (){
+//        return relationships;
+//    }
 
 
 }
