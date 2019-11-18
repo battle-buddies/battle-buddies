@@ -21,7 +21,7 @@ public class Profile {
     @Column(nullable = false, columnDefinition = "VARCHAR(80)")
     private String lastName;
 
-    @Column(nullable = false, columnDefinition = "date())")
+    @Column(nullable = false)
     private LocalDate birthDate;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
