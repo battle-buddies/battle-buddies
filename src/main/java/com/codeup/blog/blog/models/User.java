@@ -23,8 +23,17 @@ public class User {
     private boolean isAdmin;
 
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Relationship> relationships;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetups")
+    private List<MeetUp> meetUps;
+
+
+    public User(){}
 
 
     public User(User user){

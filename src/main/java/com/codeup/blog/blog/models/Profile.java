@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "profile")
@@ -41,6 +42,14 @@ public class Profile {
 
     @OneToOne
     private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "location_profile",
+            joinColumns = {@JoinColumn(name="profile_id")},
+            inverseJoinColumns = {@JoinColumn(name="location_id")}
+    )
+    private List<Location> location;
 
     public Profile (){}
 
