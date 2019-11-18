@@ -1,6 +1,7 @@
 package com.codeup.blog.blog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
