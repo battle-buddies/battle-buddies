@@ -20,4 +20,9 @@ public class ProfileController {
     public String showUserProfile(){
         return "users/profile";
     }
+
+    @GetMapping("/users/userdetails")
+    public String showUserDetails(){
+        return "users/userdetails";
+    }
 }
