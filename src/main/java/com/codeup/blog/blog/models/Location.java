@@ -24,7 +24,73 @@ public class Location {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
     private List<MeetUp> meetUps;
 
-    @ManyToMany(mappedBy = "locations")
+    @ManyToMany(mappedBy = "location")
     private List<Profile> profiles;
+
+    public Location(String city, String state, String country, List<MeetUp> meetUps, List<Profile> profiles) {
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.meetUps = meetUps;
+        this.profiles = profiles;
+    }
+    public Location(long id, String city, String state, String country, List<MeetUp> meetUps, List<Profile> profiles) {
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.meetUps = meetUps;
+        this.profiles = profiles;
+    }
+
+    public Location (){}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public List<MeetUp> getMeetUps() {
+        return meetUps;
+    }
+
+    public void setMeetUps(List<MeetUp> meetUps) {
+        this.meetUps = meetUps;
+    }
+
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
+    }
+
 
 }
