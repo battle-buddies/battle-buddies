@@ -69,6 +69,11 @@ public class Profile {
     private List<Child> children;
 
 
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    private List<Photo> photos;
+
+
+
 
     public Profile (){}
 
@@ -215,11 +220,21 @@ public class Profile {
     }
 
 
+
     public List<Hobby> getHobbies() {
         return hobbies;
     }
 
     public void setHobbies(List<Hobby> hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+
     }
 }

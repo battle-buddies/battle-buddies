@@ -27,6 +27,8 @@ public class Child {
     }
 
     public Child(long id, int gender, LocalDate birthDate) {
+
+        this.id = id;
         this.gender = gender;
         this.birthDate = birthDate;
     }
