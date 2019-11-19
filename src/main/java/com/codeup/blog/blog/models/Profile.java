@@ -53,11 +53,19 @@ public class Profile {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "profile_traits",
+            name = "profile_trait",
             joinColumns = {@JoinColumn(name="profile_id")},
             inverseJoinColumns = {@JoinColumn(name="trait_id")}
     )
     private List<Trait> traits;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "hobby_profile",
+            joinColumns = {@JoinColumn(name="profile_id")},
+            inverseJoinColumns = {@JoinColumn(name="hobby_id")}
+    )
+    private List<Hobby> hobbies;
 
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
@@ -67,7 +75,7 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits) {
+    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Children> children) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -79,9 +87,12 @@ public class Profile {
         this.user = user;
         this.location = location;
         this.traits = traits;
+        this.hobbies = hobbies;
+        this.children = children;
     }
 
-    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits) {
+
+    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Children> children) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -94,6 +105,8 @@ public class Profile {
         this.user = user;
         this.location = location;
         this.traits = traits;
+        this.hobbies = hobbies;
+        this.children = children;
     }
 
     public long getId() {
@@ -202,5 +215,14 @@ public class Profile {
 
     public void setChildren(List<Children> children) {
         this.children = children;
+    }
+
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
     }
 }

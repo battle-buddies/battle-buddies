@@ -11,7 +11,7 @@ public class Children {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, columnDefinition = "TINYINT()")
+    @Column(nullable = false, columnDefinition = "BOOLEAN")
     private int gender;
 
     @Column(nullable = false)
