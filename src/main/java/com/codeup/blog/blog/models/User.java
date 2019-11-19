@@ -1,5 +1,7 @@
 package com.codeup.blog.blog.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,21 +26,35 @@ public class User {
 
 
 
-//    @OneToMany(mappedBy = "userone", cascade = CascadeType.ALL)
-//    private List<Relationship> relationships;
-
-
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<MeetUp> meetUps;
 
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    private List<Relationship> relationships;
 
 
-    public User(){}
 
+    public User(){
 
-    public User(User user){
+    }
 
+    public User(String username, String email, String password, boolean isAdmin, List<MeetUp> meetUps, List<Relationship> relationships) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.isAdmin = isAdmin;
+        this.meetUps = meetUps;
+        this.relationships = relationships;
+    }
+
+    // Copy constructor an alternative for clone
+    public User(User user) {
+        this.id = user.id;
+        this.username = user.username;
+        this.password = user.password;
+        this.email = user.email;
+        this.isAdmin = user.isAdmin;
     }
 
     public User(String username, String email, String password, boolean isAdmin) {
@@ -96,14 +112,6 @@ public class User {
         isAdmin = admin;
     }
 
-//    public void setRelationships(List<Relationship> relationships) {
-//        this.relationships = relationships;
-//    }
-//
-//    public List<Relationship> getRelationships (){
-//        return relationships;
-//    }
-
 
     public List<MeetUp> getMeetUps() {
         return meetUps;
@@ -112,4 +120,12 @@ public class User {
     public void setMeetUps(List<MeetUp> meetUps) {
         this.meetUps = meetUps;
     }
+    public List<Relationship> getRelationships() {
+        return relationships;
+    }
+
+    public void setRelationships(List<Relationship> relationships) {
+        this.relationships = relationships;
+    }
+
 }
