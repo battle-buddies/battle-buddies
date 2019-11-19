@@ -15,7 +15,7 @@ public class Photo {
 
 
     @ManyToOne
-    @JoinColumn (name = "photo_id")
+    @JoinColumn (name = "profile_id")
     private Profile profile;
 
     public Photo(String url) {
