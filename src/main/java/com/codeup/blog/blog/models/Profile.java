@@ -63,6 +63,9 @@ public class Profile {
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
     private List<Children> children;
 
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    private List<Photo> photos;
+
 
 
     public Profile (){}
@@ -202,5 +205,13 @@ public class Profile {
 
     public void setChildren(List<Children> children) {
         this.children = children;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 }
