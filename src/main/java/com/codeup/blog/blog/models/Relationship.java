@@ -1,74 +1,70 @@
-//package com.codeup.blog.blog.models;
-//
-//import javax.persistence.*;
-//
-//@Entity
-//@Table(name = "Relationship")
-//public class Relationship {
-//
-//    @Column(nullable = false, unique = true)
-//    private long userOneId;
-//
-//    @Column(nullable = false, unique = true)
-//    private long userTwoId;
-//
-//    @Column(nullable = false)
-//    private int status;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "id")
-//    private User userone;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "id")
-//    private User usertwo;
-//
-//
-//    public Relationship(long userOneId, long userTwoId, int status) {
-//        this.userOneId = userOneId;
-//        this.userTwoId = userTwoId;
-//        this.status = status;
-//    }
-//
-//    public Relationship() {}
-//
-//    public long getUserOneId() {
-//        return userOneId;
-//    }
-//
-//    public void setUserOneId(long userOneId) {
-//        this.userOneId = userOneId;
-//    }
-//
-//    public long getUserTwoId() {
-//        return userTwoId;
-//    }
-//
-//    public void setUserTwoId(long userTwoId) {
-//        this.userTwoId = userTwoId;
-//    }
-//
-//    public int getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(int status) {
-//        this.status = status;
-//    }
-//
-//    public User getUserOne() {
-//        return userone;
-//    }
-//
-//    public void setUserOne(User userone) {
-//        this.userone = userone;
-//    }
-//
-//    public User getUserTwo() {
-//        return usertwo;
-//    }
-//
-//    public void setUserTwo(User usertwo) {
-//        this.usertwo = usertwo;
-//    }
-//}
+package com.codeup.blog.blog.models;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user_friends")
+public class Relationship {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonManagedReference
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "friend_id")
+    @JsonManagedReference
+    private User friend;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private FriendStatus status;
+
+    public Relationship () {}
+
+    public Relationship(User user, User friend, FriendStatus status) {
+        this.user = user;
+        this.friend = friend;
+        this.status = status;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getFriend() {
+        return friend;
+    }
+
+    public void setFriend(User friend) {
+        this.friend = friend;
+    }
+
+    public FriendStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(FriendStatus status) {
+        this.status = status;
+    }
+
+}
