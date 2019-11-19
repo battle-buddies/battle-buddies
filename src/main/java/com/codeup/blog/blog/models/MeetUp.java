@@ -38,6 +38,15 @@ public class MeetUp {
         this.user = user;
         this.location = location;
     }
+    public MeetUp(long id, String title, String description, String address, User user, Location location) {
+        this.title = title;
+        this.description = description;
+        this.address = address;
+        this.user = user;
+        this.location = location;
+    }
+
+
 
     public long getId() {
         return id;
@@ -79,11 +88,13 @@ public class MeetUp {
         this.user = user;
     }
 
-//    public Location getLocation() {
-//        return location;
-//    }
-//
-//    public void setLocation(Location location) {
-//        this.location = location;
-//    }
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+
 }

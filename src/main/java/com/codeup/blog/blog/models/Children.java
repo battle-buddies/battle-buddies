@@ -61,7 +61,7 @@ public class Children {
         return profile;
     }
 
-    public void setProfile(User user) {
+    public void setProfile(Profile profile) {
         this.profile = profile;
     }
 }

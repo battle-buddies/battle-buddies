@@ -14,7 +14,8 @@ public class Trait {
     @Column(nullable = false, columnDefinition = "VARCHAR(80)")
     private String trait;
 
-    @ManyToMany(mappedBy = "tags")
+
+    @ManyToMany(mappedBy = "traits")
     private List<Profile> profiles;
 
     public Trait(){}
@@ -47,4 +48,6 @@ public class Trait {
     public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
     }
+
+
 }

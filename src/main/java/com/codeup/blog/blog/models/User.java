@@ -29,7 +29,7 @@ public class User {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetups")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<MeetUp> meetUps;
 
 
@@ -104,4 +104,11 @@ public class User {
 //    }
 
 
+    public List<MeetUp> getMeetUps() {
+        return meetUps;
+    }
+
+    public void setMeetUps(List<MeetUp> meetUps) {
+        this.meetUps = meetUps;
+    }
 }

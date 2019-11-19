@@ -51,18 +51,19 @@ public class Profile {
     )
     private List<Location> location;
 
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "profile_traits",
             joinColumns = {@JoinColumn(name="profile_id")},
             inverseJoinColumns = {@JoinColumn(name="trait_id")}
     )
+    private List<Trait> traits;
 
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
     private List<Children> children;
 
 
-    private List<Trait> traits;
 
     public Profile (){}
 
@@ -180,6 +181,26 @@ public class Profile {
     }
 
     public void setChildren() {
+        this.children = children;
+    }
+
+    public List<Location> getLocation() {
+        return location;
+    }
+
+    public void setLocation(List<Location> location) {
+        this.location = location;
+    }
+
+    public List<Trait> getTraits() {
+        return traits;
+    }
+
+    public void setTraits(List<Trait> traits) {
+        this.traits = traits;
+    }
+
+    public void setChildren(List<Children> children) {
         this.children = children;
     }
 }
