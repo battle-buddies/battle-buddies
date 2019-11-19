@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "children")
-public class Children {
+public class Child {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,18 +21,18 @@ public class Children {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    public Children(int gender, LocalDate birthDate) {
+    public Child(int gender, LocalDate birthDate) {
         this.gender = gender;
         this.birthDate = birthDate;
     }
 
-    public Children(long id, int gender, LocalDate birthDate) {
+    public Child(long id, int gender, LocalDate birthDate) {
         this.id = id;
         this.gender = gender;
         this.birthDate = birthDate;
     }
 
-    public Children(){}
+    public Child(){}
 
     public long getId() {
         return id;

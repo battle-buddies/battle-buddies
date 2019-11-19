@@ -1,11 +1,8 @@
 package com.codeup.blog.blog.models;
 
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -61,7 +58,7 @@ public class Profile {
 
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
-    private List<Children> children;
+    private List<Child> children;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
     private List<Photo> photos;
@@ -179,7 +176,7 @@ public class Profile {
         this.user = user;
     }
 
-    public List<Children> getChildren (){
+    public List<Child> getChildren (){
         return children;
     }
 
@@ -203,7 +200,7 @@ public class Profile {
         this.traits = traits;
     }
 
-    public void setChildren(List<Children> children) {
+    public void setChildren(List<Child> children) {
         this.children = children;
     }
 
