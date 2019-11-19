@@ -28,6 +28,50 @@
             </button>
         </div>
     </header>
+
+<!--    TEMP SECTION FOR ADDING FRIENDS-->
+    <div>
+        <h1 th:text="${user.username}"></h1>
+        <input type="hidden" th:value="${user.id}">
+        <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
+        <h4>friends <span th:text="${user.username}"></span> as requested</h4>
+        <div th:each="friend : ${user.getRelationships()}">
+            <p th:text="${friend.getFriend().username}"></p>
+            <p th:text="${friend.getStatus()}"></p>
+        </div>
+
+
+        <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
+        <div th:each="friend : ${pendingFriends}">
+            <p th:text="${friend.username}"></p>
+            <a th:href="@{/users/{id}/accept-request(id=${friend.id}) }">accept</a>
+        </div>
+
+
+        <h4> Accepted Friends List</h4>
+        <th:block th:each="friend : ${user.getRelationships()}">
+           <p th:if="${friend.getStatus().ACCEPTED}" th:text="${friend.getFriend().username}"></p>
+
+        </th:block>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="overview">
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">

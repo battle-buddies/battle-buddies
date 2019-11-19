@@ -21,7 +21,7 @@ public class User {
 //    @Column(nullable = false, columnDefinition = "TINYINT(1)")
 //    private boolean isVerified;
 
-    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    @Column( columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
 
@@ -43,7 +43,6 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.isAdmin = isAdmin;
         this.meetUps = meetUps;
         this.relationships = relationships;
     }
@@ -54,7 +53,7 @@ public class User {
         this.username = user.username;
         this.password = user.password;
         this.email = user.email;
-        this.isAdmin = user.isAdmin;
+
     }
 
     public User(String username, String email, String password, boolean isAdmin) {

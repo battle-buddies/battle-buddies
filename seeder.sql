@@ -1,3 +1,4 @@
+
 drop database if exists battlebuddies_db;
 
 use battlebuddies_db;
@@ -591,3 +592,5 @@ insert into location_profile (profile_id, location_id) values (77, 5);
 insert into location_profile (profile_id, location_id) values (5, 5);
 insert into location_profile (profile_id, location_id) values (45, 1);
 insert into location_profile (profile_id, location_id) values (98, 3);
+
+
