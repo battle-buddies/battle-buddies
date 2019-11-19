@@ -1,11 +1,8 @@
 package com.codeup.blog.blog.models;
 
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -69,13 +66,13 @@ public class Profile {
 
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
-    private List<Children> children;
+    private List<Child> children;
 
 
 
     public Profile (){}
 
-    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Children> children) {
+    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -92,7 +89,7 @@ public class Profile {
     }
 
 
-    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Children> children) {
+    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -189,7 +186,7 @@ public class Profile {
         this.user = user;
     }
 
-    public List<Children> getChildren (){
+    public List<Child> getChildren (){
         return children;
     }
 
@@ -213,7 +210,7 @@ public class Profile {
         this.traits = traits;
     }
 
-    public void setChildren(List<Children> children) {
+    public void setChildren(List<Child> children) {
         this.children = children;
     }
 
