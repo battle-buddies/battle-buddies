@@ -34,7 +34,7 @@
         <h1 th:text="${user.username}"></h1>
         <input type="hidden" th:value="${user.id}">
         <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
-        <h4>friends <span th:text="${user.username}"></span> as requested</h4>
+        <h4>friends <span th:text="${user.username}"></span> has requested</h4>
         <div th:each="friend : ${user.getRelationships()}">
             <p th:text="${friend.getFriend().username}"></p>
             <p th:text="${friend.getStatus()}"></p>
