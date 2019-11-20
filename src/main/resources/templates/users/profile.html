@@ -35,7 +35,7 @@
         <input type="hidden" th:value="${user.id}">
         <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
         <h4>friends <span th:text="${user.username}"></span> has requested</h4>
-        <div th:each="friend : ${user.getRelationships()}">
+        <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
             <p th:text="${friend.getFriend().username}"></p>
             <p th:text="${friend.getStatus()}"></p>
         </div>
@@ -43,15 +43,17 @@
 
         <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
         <div th:each="friend : ${pendingFriends}">
-            <p th:text="${friend.username}"></p>
-            <a th:href="@{/users/{id}/accept-request(id=${friend.id}) }">accept</a>
+            <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
+                <p th:text="${friend.username}"></p>
+                <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
+            </th:block>
         </div>
 
 
         <h4> Accepted Friends List</h4>
-        <th:block th:each="friend : ${user.getRelationships()}">
-           <p th:if="${friend.getStatus().ACCEPTED}" th:text="${friend.getFriend().username}"></p>
-
+        <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+            <p  th:text="${friend.getFriend().username}"></p>
+            <p th:text="${friend.getStatus()}"></p>
         </th:block>
 
 
