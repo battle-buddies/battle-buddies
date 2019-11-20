@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.w3.org/1999/xhtml">
+
 
 <th:block th:fragment="main-nav">
     <nav>
@@ -9,6 +9,13 @@
             <ul class="left hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
             </ul>
+
+            <th:block sec:authorize="isAuthenticated()">
+                <ul class="left hide-on-med-and-down">
+                    <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
+                </ul>
+            </th:block>
+
 
             <a href="/" class="brand-logo center">Battle Buddies</a>
             <ul class="right hide-on-med-and-down">
