@@ -33,18 +33,22 @@ public class User {
     @JsonBackReference
     private List<Relationship> relationships;
 
+    @OneToOne
+    private Profile profile;
+
 
 
     public User(){
 
     }
 
-    public User(String username, String email, String password, boolean isAdmin, List<MeetUp> meetUps, List<Relationship> relationships) {
+    public User(String username, String email, String password, boolean isAdmin, List<MeetUp> meetUps, List<Relationship> relationships, Profile profile) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.meetUps = meetUps;
         this.relationships = relationships;
+        this.profile = profile;
     }
 
     // Copy constructor an alternative for clone
@@ -53,7 +57,7 @@ public class User {
         this.username = user.username;
         this.password = user.password;
         this.email = user.email;
-
+        this.profile = user.profile;
     }
 
     public User(String username, String email, String password, boolean isAdmin) {
@@ -127,4 +131,11 @@ public class User {
         this.relationships = relationships;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 }
