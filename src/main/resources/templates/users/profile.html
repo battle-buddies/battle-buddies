@@ -44,7 +44,13 @@
         <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
         <div th:each="friend : ${pendingFriends}">
             <p th:text="${friend.username}"></p>
-            <a th:href="@{/users/{id}/accept-request(id=${friend.id}) }">accept</a>
+            <th:block th:each="relationship: ${friend.getRelationships()}">
+                <th:block >
+
+                </th:block>
+                <a th:href="@{/users/{id}/accept-request(id=${friend.id}) }">accept</a>
+            </th:block>
+
         </div>
 
 
