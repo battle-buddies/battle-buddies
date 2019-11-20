@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
+<!--     Compiled and minified JavaScript-->
 
-<!--    <th:block th:replace="fragments/header :: profile-header"/>-->
-<!--    <link rel="stylesheet" href="/css/owl.carousel.css">-->
-<!--    <link rel="stylesheet" href="/css/owl.theme.default.css">-->
-<!--<script src="jquery.min.js"></script>-->
-<!--<script src="/js/owl.carousel.js"></script>-->
-<!--</head>-->
-<!--    <script>-->
+<th:block th:replace="fragments/header :: profile-header"/>
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.default.css">
+<script src="jquery.min.js"></script>
+<script src="/js/owl.carousel.js"></script>
+</head>
+<script>
 
-<!--        $(document).ready(function(){-->
-<!--            $('.sidenav').sidenav();-->
-<!--        });-->
-<!--    </script>-->
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
+</script>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 
@@ -47,33 +47,36 @@
 <!--    TEMP SECTION FOR ADDING FRIENDS-->
     <div>
         <h1 th:text="${user.username}"></h1>
-        <input type="hidden" th:value="${user.id}">
-        <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
-        <h4>friends <span th:text="${user.username}"></span> has requested</h4>
-        <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
-            <p th:text="${friend.getFriend().username}"></p>
-            <p th:text="${friend.getStatus()}"></p>
-        </div>
 
 
-        <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
-        <div th:each="friend : ${pendingFriends}">
+<!--        ADD FRIEND BUTTON-->
+        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
 
-            <p th:text="${friend.username}"></p>
-            <th:block th:each="relationship: ${friend.getRelationships()}">
-                <th:block >
 
+        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+            <input type="hidden" th:value="${user.id}">
+            <h4>friends <span th:text="${user.username}"></span> has requested</h4>
+            <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                <p th:text="${friend.getFriend().username}"></p>
+                <p th:text="${friend.getStatus()}"></p>
+            </div>
+        </th:block>
+
+
+        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+
+            <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
+
+            <div th:each="friend : ${pendingFriends}">
+
+                <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
+                    <p th:text="${friend.username}"></p>
+                    <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
                 </th:block>
-                <a th:href="@{/users/{id}/accept-request(id=${friend.id}) }">accept</a>
-            </th:block>
 
+            </div>
 
-            <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
-                <p th:text="${friend.username}"></p>
-                <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
-            </th:block>
-
-        </div>
+        </th:block>
 
 
         <h4> Accepted Friends List</h4>
