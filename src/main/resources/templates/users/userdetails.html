@@ -10,9 +10,47 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script>
+        // select form initializer
         $(document).ready(function() {
             $('select').material_select();
         });
+
+        // children form
+
+        // $(document).ready(function() {
+        //     var max_fields      = 10; //maximum input boxes allowed
+        //     var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
+        //     var add_button      = $(".add_field_button"); //Add button ID
+        //
+        //     var x = 1; //initlal text box count
+        //     $(add_button).click(function(e){ //on add input button click
+        //         e.preventDefault();
+        //         if(x < max_fields){ //max input box allowed
+        //             x++; //text box increment
+        //             $(wrapper).append('<div><input type="date" name="dob"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+        //         }
+        //     });
+        //
+        //     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        //         e.preventDefault(); $(this).parent('div').remove(); x--;
+        //     })
+        // });
+
+        $(document).ready(function(){
+
+                var x = 1; //initlal text box count
+            $(".add_field_button").click(function(){
+                var gender = $("#gender")
+                var dob = "";
+
+                $("body").append(dob, gender);
+            });
+            $("body").on("click",".remove_field", function(e){ //user click on remove text
+                        e.preventDefault(); $(this).parent('div').remove(); x--;
+                    })
+        });
+
+
 
     </script>
     <title>Tell us about yourself!</title>
@@ -24,10 +62,9 @@
         <ul id="tabs-swipe-demo" class="tabs">
             <li class="tab col s3"><a href="#test-swipe-1">Basic Info</a></li>
             <li class="tab col s3"><a class="active" href="#test-swipe-2">Service Detail</a></li>
-            <li class="tab col s3"><a href="#test-swipe-3">Additional Info</a></li>
         </ul>
         <div id="test-swipe-1" class="col s12">
-            <div class="row">
+<!--            <div class="row">-->
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s6">
@@ -38,7 +75,8 @@
                             <input id="last_name" type="text" class="validate">
                             <label for="last_name">Last Name</label>
                         </div>
-                        <div class="input-field col s3">
+<!--                        gender pick start-->
+                        <div class="input-field col s6">
                             <select>
                                 <option value="" disabled selected>gender</option>
                                 <option value="1">Male</option>
@@ -46,16 +84,101 @@
                             </select>
                             <label>Select gender</label>
                         </div>
+<!--                        gender pick end-->
+
+<!--                        DOB start-->
+
                         <div class = "input-field col s6">
                             <input type = "date" class = "datepicker"/>
-                        </div>
 
+                        </div>
+<!--                        DOB end-->
+
+<!--                        pick hobbies and traits-->
+                        <div class="input-field col s6">
+                            <select multiple>
+                                <option value="" disabled selected>Choose your traits</option>
+                                <option value="1">Giving</option>
+                                <option value="2">Clever</option>
+                                <option value="3">Honest</option>
+                                <option value="4">Ambitious</option>
+                                <option value="5">Easygoing</option>
+                                <option value="6">Quiet</option>
+                                <option value="7">Insightful</option>
+                                <option value="8">Devoted</option>
+                                <option value="9">Confident</option>
+                                <option value="10">Adventurous</option>
+                                <option value="11">Wise</option>
+                                <option value="12">Focused</option>
+                                <option value="13">Friendly</option>
+                                <option value="14">Open minded</option>
+                                <option value="15">Dependable</option>
+                                <option value="16">Generous</option>
+                                <option value="17">Strong</option>
+                                <option value="18">Loyal</option>
+                                <option value="19">Hard Working</option>
+                                <option value="20">Creative</option>
+                            </select>
+                            <label>Pick 5 traits that best describe you</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select multiple>
+                                <option value="" disabled selected>Choose your hobbies</option>
+                                <option value="1">Gardening</option>
+                                <option value="2">Cooking</option>
+                                <option value="3">Learning</option>
+                                <option value="4">Writing</option>
+                                <option value="5">Dance</option>
+                                <option value="6">Photography</option>
+                                <option value="7">Hiking</option>
+                                <option value="8">Drawing/Painting</option>
+                                <option value="9">Hunting</option>
+                                <option value="10">Sewing</option>
+                                <option value="11">Sports/Extreme Sports</option>
+                                <option value="12">Programming</option>
+                                <option value="13">Biking</option>
+                                <option value="14">Camping</option>
+                                <option value="15">Wood Working</option>
+                                <option value="16">Pottery</option>
+                                <option value="17">Exercising</option>
+                                <option value="18">Traveling</option>
+                                <option value="19">Playing Instruments</option>
+                                <option value="20">Volunteer Work</option>
+                            </select>
+                            <label>Pick 5 hobbies that interest you</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea" data-length="2000"></textarea>
+                            <label for="textarea1">Tell us more about yourself! Write a bio or share some interesting facts!</label>
+                        </div>
+<!--                        end hobbies and traits-->
+
+<!--                        Form for adding children -->
+
+                        <div class="input-field col s6">
+                            <button class="btn add_field_button">Add another child</button>
+                            <div id="dob"><input type="date" name="dob">
+                        <div class="input-field col s6">
+                                <select id="gender" class ="input-field">
+                                    <option value="" disabled selected>gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                            </div>
+                            </div>
+
+                        </div>
                     </div>
                 </form>
+
+                            <!--                            end form for adding children-->
+
+                    </div>
+                    </div>
             </div>
         </div>
+<!--        start of second tab-->
         <div id="test-swipe-2" class="col s12">test 2</div>
-        <div id="test-swipe-3" class="col s12">Test 3</div>
     </div>
 
 
