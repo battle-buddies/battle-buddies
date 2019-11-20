@@ -11,8 +11,8 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN")
-    private int gender;
+    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
+    private String gender;
 
     @Column(nullable = false)
     private LocalDate birthDate;
@@ -21,12 +21,12 @@ public class Child {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    public Child(int gender, LocalDate birthDate) {
+    public Child(String gender, LocalDate birthDate) {
         this.gender = gender;
         this.birthDate = birthDate;
     }
 
-    public Child(long id, int gender, LocalDate birthDate) {
+    public Child(long id, String gender, LocalDate birthDate) {
 
         this.id = id;
         this.gender = gender;
@@ -43,11 +43,11 @@ public class Child {
         this.id = id;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

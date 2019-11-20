@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "profile")
+@Table(name = "profiles")
 public class Profile {
 
     @Id
@@ -22,6 +22,9 @@ public class Profile {
     @Column(nullable = false)
     private LocalDate birthDate;
 
+    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
+    private String gender;
+
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean married;
 
@@ -35,7 +38,7 @@ public class Profile {
     private String branch;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
-    private String rank;
+    private String milRank;
 
     @OneToOne
     private User user;
@@ -77,38 +80,45 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.married = married;
-        this.milSpouse = milSpouse;
-        this.bio = bio;
-        this.branch = branch;
-        this.rank = rank;
-        this.user = user;
-        this.location = location;
-        this.traits = traits;
-        this.hobbies = hobbies;
-        this.children = children;
-    }
-
-
-    public Profile(long id, String firstName, String lastName, LocalDate birthDate, boolean married, boolean milSpouse, String bio, String branch, String rank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children) {
+    public Profile(long id, String firstName, String lastName, LocalDate birthDate, String gender, boolean married, boolean milSpouse, String bio, String branch, String milRank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+        this.gender = gender;
         this.married = married;
         this.milSpouse = milSpouse;
         this.bio = bio;
         this.branch = branch;
-        this.rank = rank;
+        this.milRank = milRank;
         this.user = user;
         this.location = location;
         this.traits = traits;
         this.hobbies = hobbies;
         this.children = children;
+        this.photos = photos;
+    }
+
+    public Profile(String firstName, String lastName, LocalDate birthDate, String gender, boolean married, boolean milSpouse, String bio, String branch, String milRank, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.married = married;
+        this.milSpouse = milSpouse;
+        this.bio = bio;
+        this.branch = branch;
+        this.milRank = milRank;
+        this.user = user;
+        this.location = location;
+        this.traits = traits;
+        this.hobbies = hobbies;
+        this.children = children;
+        this.photos = photos;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     public long getId() {
@@ -175,12 +185,16 @@ public class Profile {
         this.branch = branch;
     }
 
-    public String getRank() {
-        return rank;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public String getMilRank() {
+        return milRank;
+    }
+
+    public void setMilRank(String milRank) {
+        this.milRank = milRank;
     }
 
     public User getUser() {
