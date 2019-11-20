@@ -60,8 +60,14 @@ public class ProfileController {
         return "users/profile";
     }
 
+
+    @GetMapping("/users/userdetails")
+    public String showUserDetails(){
+        return "users/userdetails";
+    }
+
     @GetMapping("/users/{id}/friend-request")
-    public String sendFriendRequest(@PathVariable long id ) {
+    public String sendFriendRequest(@PathVariable long id, Model vModel) {
         User userOne = usersService.loggedInUser();
         User requestedFriend = userDao.getOne(id);
         FriendStatus status = FriendStatus.PENDING;
@@ -75,10 +81,15 @@ public class ProfileController {
     @GetMapping("/users/{id}/accept-request")
     public String acceptFriendRequest(@PathVariable long id ) {
         User userOne = usersService.loggedInUser();
-        User requestedFriend = userDao.getOne(id);
+        Relationship acceptFriend = relationshipDao.getOne(id);
         FriendStatus status = FriendStatus.ACCEPTED;
+        User requestedFriend = acceptFriend.getUser();
+        acceptFriend.setStatus(status);
+
+
         Relationship relationshipOne = new Relationship(userOne, requestedFriend, status);
         relationshipDao.save(relationshipOne);
+        relationshipDao.save(acceptFriend);
 
 
 
