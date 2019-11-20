@@ -60,12 +60,12 @@ public class ProfileController {
         return "users/profile";
     }
 
-<<<<<<< HEAD
+
     @GetMapping("/users/userdetails")
     public String showUserDetails(){
         return "users/userdetails";
     }
-=======
+
     @GetMapping("/users/{id}/friend-request")
     public String sendFriendRequest(@PathVariable long id ) {
         User userOne = usersService.loggedInUser();
@@ -92,5 +92,5 @@ public class ProfileController {
     }
 
 
->>>>>>> 84f212543e77c02442b969f21bb12d9191443752
+
 }
