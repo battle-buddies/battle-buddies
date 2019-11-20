@@ -1,57 +1,88 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <th:block th:replace="fragments/header :: profile-header"/>
+<!--     Compiled and minified JavaScript-->
 
+<th:block th:replace="fragments/header :: profile-header"/>
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.default.css">
+<script src="jquery.min.js"></script>
+<script src="/js/owl.carousel.js"></script>
+</head>
+<script>
+
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
+</script>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            <h3>Name &amp; Title</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-            <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
-            <a href="#features" class="mdl-layout__tab">Features</a>
-            <a href="#features" class="mdl-layout__tab">Details</a>
-            <a href="#features" class="mdl-layout__tab">Technology</a>
-            <a href="#features" class="mdl-layout__tab">FAQ</a>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
-                    id="add">
-                <i class="material-icons" role="presentation">add</i>
-                <span class="visuallyhidden">Add</span>
-            </button>
-        </div>
-    </header>
+    <th:block th:replace="fragments/nav-bar :: main-nav"/>
+<!--    <header class="mdl-layout__header mdl-layout__header&#45;&#45;scroll mdl-color&#45;&#45;primary">-->
+<!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
+<!--        </div>-->
+<!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
+<!--            <h3>Name &amp; Title</h3>-->
+<!--        </div>-->
+<!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
+<!--        </div>-->
+<!--        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color&#45;&#45;primary-dark">-->
+
+<!--            <a href="#overview" class="mdl-layout__tab is-active">Overview</a>-->
+<!--            <a href="#features" class="mdl-layout__tab">Features</a>-->
+<!--            <a href="#features" class="mdl-layout__tab">Details</a>-->
+<!--            <a href="#features" class="mdl-layout__tab">Technology</a>-->
+<!--            <a href="#features" class="mdl-layout__tab">FAQ</a>-->
+<!--            <button class="mdl-button mdl-js-button mdl-button&#45;&#45;fab mdl-js-ripple-effect mdl-button&#45;&#45;colored mdl-shadow&#45;&#45;4dp mdl-color&#45;&#45;accent"-->
+<!--                    id="add">-->
+<!--                <i class="material-icons" role="presentation">add</i>-->
+<!--                <span class="visuallyhidden">Add</span>-->
+<!--            </button>-->
+<!--        </div>-->
 
 <!--    TEMP SECTION FOR ADDING FRIENDS-->
     <div>
         <h1 th:text="${user.username}"></h1>
-        <input type="hidden" th:value="${user.id}">
-        <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
-        <h4>friends <span th:text="${user.username}"></span> as requested</h4>
-        <div th:each="friend : ${user.getRelationships()}">
-            <p th:text="${friend.getFriend().username}"></p>
-            <p th:text="${friend.getStatus()}"></p>
-        </div>
 
 
-        <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
-        <div th:each="friend : ${pendingFriends}">
-            <p th:text="${friend.username}"></p>
-            <a th:href="@{/users/{id}/accept-request(id=${friend.id}) }">accept</a>
-        </div>
+<!--        ADD FRIEND BUTTON-->
+        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
+
+
+        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+            <input type="hidden" th:value="${user.id}">
+            <h4>friends <span th:text="${user.username}"></span> has requested</h4>
+            <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                <p th:text="${friend.getFriend().username}"></p>
+                <p th:text="${friend.getStatus()}"></p>
+            </div>
+        </th:block>
+
+
+        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+
+            <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
+
+            <div th:each="friend : ${pendingFriends}">
+
+                <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
+                    <p th:text="${friend.username}"></p>
+                    <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
+                </th:block>
+
+            </div>
+
+        </th:block>
 
 
         <h4> Accepted Friends List</h4>
-        <th:block th:each="friend : ${user.getRelationships()}">
-           <p th:if="${friend.getStatus().ACCEPTED}" th:text="${friend.getFriend().username}"></p>
-
+        <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+            <p  th:text="${friend.getFriend().username}"></p>
+            <p th:text="${friend.getStatus()}"></p>
         </th:block>
 
 
@@ -97,54 +128,35 @@
                     <li class="mdl-menu__item">Dolor</li>
                 </ul>
             </section>
-            <section class="table-wrapper section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 
-                <table>
-                    <tr>
-                        <td>
-                            <div class="card small">
-                                <img src="/img/form-v6.jpg">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="card small">
-                                <img src="/img/form-v6.jpg">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="card small">
-                                <img src="/img/form-v6.jpg">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="card small">
-                                <img src="/img/form-v6.jpg">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="card small">
-                                <img src="/img/form-v6.jpg">
-                            </div>
-                        </td>
-                    </tr>
-                    <!--                    <tr>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                    </tr>-->
-                    <!--                    <tr>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                        <td>Table Cell</td>-->
-                    <!--                    </tr>-->
-                </table>
+<!--<section class ="section&#45;&#45;center mdl-grid mdl-grid&#45;&#45;no-spacing mdl-shadow&#45;&#45;2dp">-->
+                <section id="owl-2">
+                    <div class="owl-carousel owl-theme">
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                        <div>
+                            <img src="/img/form-v6.jpg">
+                        </div>
+                    </div>
+<!--                </section>-->
 
             </section>
-
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                 <div class="mdl-card mdl-cell mdl-cell--12-col">
                     <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
@@ -386,10 +398,11 @@
         </footer>
     </main>
 </div>
-<a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/text-only/" target="_blank"
-   id="view-source"
-   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View
-    Source</a>
-<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/scripts.js}"></script>
 </body>
 </html>
