@@ -20,7 +20,7 @@ public class Profile {
     private String lastName;
 
     @Column(nullable = false)
-    private LocalDate birthDate;
+    private int age;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(10)")
     private String gender;
@@ -84,11 +84,11 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, LocalDate birthDate, String gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(long id,String firstName, String lastName, int age, String gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.age = age;
         this.gender = gender;
         this.married = married;
         this.milSpouse = milSpouse;
@@ -103,10 +103,10 @@ public class Profile {
         this.rank = rank;
     }
 
-    public Profile(String firstName, String lastName, LocalDate birthDate, String gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(String firstName, String lastName, int age, String gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.age = age;
         this.gender = gender;
         this.married = married;
         this.milSpouse = milSpouse;
@@ -149,12 +149,12 @@ public class Profile {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public int getage() {
+        return age;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setage(int age) {
+        this.age = age;
     }
 
     public boolean isMarried() {

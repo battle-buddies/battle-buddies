@@ -15,22 +15,22 @@ public class Child {
     private String gender;
 
     @Column(nullable = false)
-    private LocalDate birthDate;
+    private int age;
 
     @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    public Child(String gender, LocalDate birthDate) {
+    public Child(String gender, int age) {
         this.gender = gender;
-        this.birthDate = birthDate;
+        this.age = age;
     }
 
-    public Child(long id, String gender, LocalDate birthDate) {
+    public Child(long id, String gender, int age) {
 
         this.id = id;
         this.gender = gender;
-        this.birthDate = birthDate;
+        this.age = age;
     }
 
     public Child(){}
@@ -51,12 +51,12 @@ public class Child {
         this.gender = gender;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public int getAge() {
+        return age;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Profile getProfile() {
