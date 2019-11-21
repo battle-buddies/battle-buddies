@@ -65,16 +65,7 @@
     <!--        </div>-->
 
     <!--    TEMP SECTION FOR ADDING FRIENDS-->
-    <div>
-        <h1 th:text="${user.username}"></h1>
-        <input type="hidden" th:value="${user.id}">
-        <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
-        <h4>friends <span th:text="${user.username}"></span> has requested</h4>
-        <div th:each="friend : ${user.getRelationships()}"
-             th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
-            <p th:text="${friend.getFriend().username}"></p>
-            <p th:text="${friend.getStatus()}"></p>
-        </div>
+
 
 <!--    <header class="mdl-layout__header mdl-layout__header&#45;&#45;scroll mdl-color&#45;&#45;primary">-->
 <!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
@@ -442,7 +433,7 @@
         </footer>
     </main>
 </div>
-</div>
+
 
 
 <script
