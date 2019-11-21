@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <!-- Mobile Specific Metas -->
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Sign up</title>
+    <th:block th:replace="fragments/header :: signup-header"/>
 </head>
-<body>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
-
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
-
-    <input value="Sign me up!" type="submit" />
-</form>
+<body class="form-v6">
+<div th:replace="fragments/nav-bar :: main-nav"></div>
+<div class="page-content">
+    <div class="form-v6-content">
+        <div class="form-left">
+            <img src="/img/form-v6.jpg" alt="form">
+        </div>
+        <form class="form-detail" th:action="@{/sign-up}" method="POST" th:object="${user}">
+            <h2>Register Form</h2>
+            <div class="form-row">
+                <input type="text" id="username" class="input-text" th:field="*{username}" placeholder="UserName"
+                       required>
+            </div>
+            <div class="form-row">
+                <input type="text" id="email" th:field="*{email}" class="input-text" placeholder="Email Address"
+                       required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+            </div>
+            <div class="form-row">
+                <input type="password" name="password" id="password" th:field="*{password}" class="input-text"
+                       placeholder="Password" required>
+            </div>
+            <div class="form-row">
+                <input type="password" name="comfirm-password" id="comfirm-password" class="input-text"
+                       placeholder="Comfirm Password" required>
+            </div>
+            <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

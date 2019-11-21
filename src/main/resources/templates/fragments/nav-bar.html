@@ -3,7 +3,7 @@
 
 <th:block th:fragment="main-nav">
     <nav class="navul">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper red">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <!--            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
             <ul class="left hide-on-med-and-down">
@@ -25,8 +25,10 @@
                         </form>
                 </ul>
                 <ul class="navbar-nav ml-auto" sec:authorize="!isAuthenticated()">
-
                 <li class="active"><a href="/login">Login</a></li>
+                </ul>
+
+                <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
                 <li><a href="/sign-up">Register</a></li>
                 </ul>
             </ul>
