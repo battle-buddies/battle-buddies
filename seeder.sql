@@ -259,14 +259,56 @@ insert into children  (birth_date, gender, profile_id) values ( '2019-04-17', 'F
 insert into children  (birth_date, gender, profile_id) values ( '2011-11-07', 'Male', 8);
 
 
-insert into hobbies (hobby) values ( 'sports');
-insert into hobbies (hobby) values ( 'crafting');
-insert into hobbies (hobby) values ( 'watching movies');
+insert into hobbies (hobby) values ( 'Gardening');
+insert into hobbies (hobby) values ( 'Cooking');
+insert into hobbies (hobby) values ( 'Learning');
 insert into hobbies (hobby) values ( 'exercising');
-insert into hobbies (hobby) values ( 'reading');
-insert into hobbies (hobby) values ( 'video games');
-insert into hobbies (hobby) values ( 'shopping');
-insert into hobbies (hobby) values ( 'baking');
+insert into hobbies (hobby) values ( 'Writing');
+insert into hobbies (hobby) values ( 'Dance');
+insert into hobbies (hobby) values ( 'Photography');
+insert into hobbies (hobby) values ( 'Hiking');
+insert into hobbies (hobby) values ( 'Drawing/Painting');
+insert into hobbies (hobby) values ( 'Hunting');
+insert into hobbies (hobby) values ( 'Sewing');
+insert into hobbies (hobby) values ( 'Sports/Extreme Sports');
+insert into hobbies (hobby) values ( 'Programming');
+insert into hobbies (hobby) values ( 'Biking');
+insert into hobbies (hobby) values ( 'Camping');
+insert into hobbies (hobby) values ( 'Wood Working');
+insert into hobbies (hobby) values ( 'Pottery');
+insert into hobbies (hobby) values ( 'Exercise');
+insert into hobbies (hobby) values ( 'Traveling');
+insert into hobbies (hobby) values ( 'Playing Instruments');
+insert into hobbies (hobby) values ( 'Volunteer Work');
+
+insert into traits (trait) values ( 'Giving');
+insert into traits (trait) values ( 'Clever');
+insert into traits (trait) values ( 'Ambitious');
+insert into traits (trait) values ( 'Honest');
+insert into traits (trait) values ( 'Easygoing');
+insert into traits (trait) values ( 'Quiet');
+insert into traits (trait) values ( 'Insightful');
+insert into traits (trait) values ( 'Devoted');
+insert into traits (trait) values ( 'Confident');
+insert into traits (trait) values ( 'Adventurous');
+insert into traits (trait) values ( 'Focused');
+insert into traits (trait) values ( 'Friendly');
+insert into traits (trait) values ( 'Open minded');
+insert into traits (trait) values ( 'Dependable');
+insert into traits (trait) values ( 'Generous');
+insert into traits (trait) values ( 'Wise');
+insert into traits (trait) values ( 'Strong');
+insert into traits (trait) values ( 'Loyal');
+insert into traits (trait) values ( 'Hard Working');
+insert into traits (trait) values ( 'Creative');
+
+
+
+
+
+
+
+
 
 
 

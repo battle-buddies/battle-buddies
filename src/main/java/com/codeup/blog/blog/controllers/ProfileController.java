@@ -5,9 +5,7 @@ import com.codeup.blog.blog.models.FriendStatus;
 import com.codeup.blog.blog.models.Profile;
 import com.codeup.blog.blog.models.Relationship;
 import com.codeup.blog.blog.models.User;
-import com.codeup.blog.blog.repositories.ProfileRepository;
-import com.codeup.blog.blog.repositories.RelationshipRepository;
-import com.codeup.blog.blog.repositories.UserRepository;
+import com.codeup.blog.blog.repositories.*;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,15 +24,19 @@ public class ProfileController {
     private ProfileRepository profileDao;
     private UserRepository userDao;
     private RelationshipRepository relationshipDao;
+    private HobbyRepository hobbyDao;
+    private TraitRepository traitDao;
 
 
     @Autowired
     private UserService usersService;
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
+        this.hobbyDao = hobbyDao;
+        this.traitDao = traitDao;
     }
 
     @GetMapping("/users/profile/{id}")
@@ -67,6 +69,8 @@ public class ProfileController {
     @GetMapping("/users/userdetails")
     public String showUserDetails(Model model){
         model.addAttribute("profile", new Profile());
+        model.addAttribute("hobbies", hobbyDao.findAll());
+        model.addAttribute("traits", traitDao.findAll());
 
         return "users/userdetails";
     }
@@ -74,7 +78,7 @@ public class ProfileController {
     @PostMapping("/users/userdetails")
     public String submitUserDetails(@ModelAttribute Profile profileDetails){
         User user = usersService.loggedInUser();
-        Profile savedProfileDetails = profileDao.save(profileDetails);
+         profileDao.save(profileDetails);
 
         return "users/profile/" + user.getId();
     }
