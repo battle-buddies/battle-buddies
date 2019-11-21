@@ -2,20 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title th:text="${hobby.hobby}"></title>
+    <title>Browse Traits</title>
     <th:block th:replace="fragments/header :: profile-header"/>
 
 </head>
 <body>
-<h1 th:text="${hobby.hobby}"></h1>
-
+<h1>TRAITS</h1>
 <div class="container" >
     <div class="row" >
-        <div class="col s4" th:each="profile: ${profiles}">
+        <div class="col s4" th:each="trait: ${traits}">
             <div class="card card-small">
                 <div class="card-content">
-                    <a th:href="@{'/users/profile/' + ${profile.getUser().id}}">
-                        <span class="card-title" th:text="${profile.firstName + ' '+ profile.lastName}"></span>
+                    <a th:href="@{'/browse/traits/' + ${trait.id}}">
+                        <span class="card-title" th:text="${trait.trait}"></span>
                     </a>
                 </div>
             </div>

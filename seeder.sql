@@ -415,14 +415,6 @@ insert into hobby_profile (hobby_id, profile_id) values (3, 58);
 
 
 
-insert into traits (id, trait) values (1, 'quiet');
-insert into traits (id, trait) values (2, 'talkative');
-insert into traits (id, trait) values (3, 'easy-going');
-insert into traits (id, trait) values (4, 'extroverted');
-insert into traits (id, trait) values (5, 'introverted');
-insert into traits (id, trait) values (6, 'quiet');
-insert into traits (id, trait) values (7, 'social');
-
 
 insert into profile_trait (profile_id, trait_id) values (2, 6);
 insert into profile_trait (profile_id, trait_id) values (99, 7);
