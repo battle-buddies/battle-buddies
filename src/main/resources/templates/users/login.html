@@ -1,24 +1,79 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <title>Log In</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Log In</h1>-->
+<!--<div th:if="${param.error}">-->
+<!--    Invalid Username and Password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--    You have been logged out.-->
+<!--</div>-->
+
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <label for="username">Username</label>-->
+<!--    <input id="username" name="username" type="text" />-->
+<!--    <label for="password">Password</label>-->
+<!--    <input id="password" name="password" type="password" />-->
+<!--    <input type="submit" value="Log In" />-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Log In</title>
+    <th:block th:replace="fragments/header :: login-header"/>
 </head>
 <body>
-<h1>Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
+<div class="login-reg-panel">
+    <div class="login-info-box">
+        <h2>Have an account?</h2>
+        <p>Welcome back!</p>
+        <label id="label-register" for="log-reg-show">Login</label>
+        <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+    </div>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+    <div class="register-info-box">
+        <h2>Don't have an account?</h2>
+        <p>Join us!</p>
+        <label id="label-login" for="log-login-show">Register</label>
+        <input type="radio" name="active-log-panel" id="log-login-show">
+    </div>
+
+    <div class="white-panel">
+        <div class="login-show">
+            <form th:action="@{/login}" method="post">
+                <h2>LOGIN</h2>
+                <input id="username" name="username" type="text" placeholder="Username"/>
+                <input id="password" name="password" type="password" placeholder="Password"/>
+                <input type="submit" value="Log In"/>
+            </form>
+        </div>
+        <div class="register-show">
+            <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+                <h2>REGISTER</h2>
+                <input type="text" th:field="*{username}" placeholder="Username">
+                <input type="email" th:field="*{email}" placeholder="Email">
+                <input type="password" th:field="*{password}" placeholder="Password">
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:replace="fragments/footer :: login-footer"/>
 </body>
 </html>
