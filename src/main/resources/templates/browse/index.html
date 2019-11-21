@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Browse</title>
+    <th:block th:replace="fragments/header :: profile-header"/>
+
+</head>
+<body>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
+
+<h1>BROWSE</h1>
+<div class="container" >
+
+    <!--TRAITS CARD-->
+    <div class="row" >
+        <div class="col s4" >
+            <div class="card card-small">
+                <div class="card-content">
+                    <a th:href="@{'/browse/traits-index/'}">
+                        <span class="card-title" >TRAITS</span>
+                    </a>
+                    <p>Find friends based on common character traits</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--HOBBIES CARD-->
+    <div class="row" >
+        <div class="col s4">
+            <div class="card card-small">
+                <div class="card-content">
+                    <a th:href="@{'/browse/hobbies-index/'}">
+                        <span class="card-title" >HOBBIES</span>
+                    </a>
+                    <p>Find friends based on common hobbies</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--LOCATION CARD-->
+
+
+
+    <!--BRANCH CARD-->
+
+
+
+    <!--RANK CARD-->
+</div>
+
+
+
+</body>
+</html>
