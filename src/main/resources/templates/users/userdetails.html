@@ -50,33 +50,19 @@
                 <div class="input-field col s6">
                     <select multiple>
                         <option value="" disabled selected>Choose your traits</option>
-                        <option value="1" name="Giving">Giving</option>
-                        <option value="2" name="Clever">Clever</option>
-                        <option value="3" name="Honest">Honest</option>
-                        <option value="4" name="Ambitious">Ambitious</option>
-                        <option value="5" name="EasyGoing">Easygoing</option>
-                        <option value="6" name="Quiet">Quiet</option>
-                        <option value="7" name="Insightful">Insightful</option>
-                        <option value="8" name="Devoted">Devoted</option>
-                        <option value="9" name="Confident">Confident</option>
-                        <option value="10" name="Adventurous">Adventurous</option>
-                        <option value="11" name="Wise">Wise</option>
-                        <option value="12" name="Focused">Focused</option>
-                        <option value="13" name="Friendly">Friendly</option>
-                        <option value="14" name="Open minded">Open minded</option>
-                        <option value="15" name="Dependable">Dependable</option>
-                        <option value="16" name="Generous">Generous</option>
-                        <option value="17" name="Strong">Strong</option>
-                        <option value="18" name="Loyal">Loyal</option>
-                        <option value="19" name="Hard Working">Hard Working</option>
-                        <option value="20" name="Creative">Creative</option>
+                        <th:block th:each="trait: ${traits}">
+                            <option th:name="traits" th:value="${trait}"><span th:text="${trait.trait}"></span></option>
+                        </th:block>
+
                     </select>
                     <label>Pick 5 traits that best describe you</label>
                 </div>
                 <div class="input-field col s6">
                     <select multiple>
                         <option value="" disabled selected>Choose your hobbies</option>
-                        <option th:value="${hobbies}" name="Gardening">Gardening</option>
+                        <th:block th:each="hobby: ${hobbies}">
+                            <option th:name="hobbies" th:value="${hobby}"><span th:text="${hobby.hobby}"></span></option>
+                        </th:block>
 
                     </select>
                     <label>Pick 5 hobbies that interest you</label>
@@ -110,25 +96,9 @@
                 <div class="input-field col s3">
                     <select>
                         <option value="" disabled selected>Rank</option>
-                        <option value="1">E1</option>
-                        <option value="2">E2</option>
-                        <option value="3">E3</option>
-                        <option value="4">E4</option>
-                        <option value="5">E5</option>
-                        <option value="6">E6</option>
-                        <option value="7">E7</option>
-                        <option value="8">E8</option>
-                        <option value="9">E9</option>
-                        <option value="10">O1</option>
-                        <option value="11">O2</option>
-                        <option value="12">O3</option>
-                        <option value="13">O4</option>
-                        <option value="14">O5</option>
-                        <option value="15">O6</option>
-                        <option value="16">O7</option>
-                        <option value="17">O8</option>
-                        <option value="18">O9</option>
-                        <option value="19">O10</option>
+                        <th:block th:each="rank: ${ranks}">
+                            <option th:name="rank" th:value="${rank}"><span th:text="${rank.rank}"></span></option>
+                        </th:block>
                     </select>
                     <label>Please select your rank</label>
                 </div>
@@ -138,11 +108,9 @@
                 <div class="input-field col s3">
                     <select>
                         <option value="" disabled selected>Branch</option>
-                        <option value="1" name="Army">Army</option>
-                        <option value="2" name="Marine Corps">Marine Corps</option>
-                        <option value="3" name="Navy">Navy</option>
-                        <option value="4" name="Air Force">Air Force</option>
-                        <option value="5" name="Coast Guard">Coast Guard</option>
+                        <th:block th:each="branch: ${branches}">
+                            <option th:name="branch" th:value="${branch}"><span th:text="${branch.branch}"></span></option>
+                        </th:block>
                     </select>
                     <label>Please select your branch</label>
                 </div>

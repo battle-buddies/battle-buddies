@@ -1,14 +1,10 @@
 package com.codeup.blog.blog.controllers;
 
 
-import com.codeup.blog.blog.models.FriendStatus;
+import com.codeup.blog.blog.models.*;
 
-import com.codeup.blog.blog.models.Profile;
-import com.codeup.blog.blog.models.Relationship;
-import com.codeup.blog.blog.models.User;
 import com.codeup.blog.blog.repositories.*;
 
-import com.codeup.blog.blog.models.Location;
 import com.codeup.blog.blog.models.Relationship;
 import com.codeup.blog.blog.models.User;
 import com.codeup.blog.blog.repositories.LocationRepository;
@@ -19,12 +15,10 @@ import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.PrivateKey;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +28,12 @@ public class ProfileController {
     private ProfileRepository profileDao;
     private UserRepository userDao;
     private RelationshipRepository relationshipDao;
-
     private HobbyRepository hobbyDao;
     private TraitRepository traitDao;
-
     private LocationRepository locationDao;
+    private BranchRepository branchDao;
+    private RankRepository rankDao;
+
 
 
 
@@ -46,13 +41,15 @@ public class ProfileController {
     private UserService usersService;
 
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
         this.hobbyDao = hobbyDao;
         this.traitDao = traitDao;
         this.locationDao = locationDao;
+        this.branchDao = branchDao;
+        this.rankDao = rankDao;
     }
 
     @GetMapping("/users/profile/{id}")
@@ -89,16 +86,43 @@ public class ProfileController {
         model.addAttribute("profile", new Profile());
         model.addAttribute("hobbies", hobbyDao.findAll());
         model.addAttribute("traits", traitDao.findAll());
+        model.addAttribute("branches", branchDao.findAll());
+        model.addAttribute("ranks", rankDao.findAll());
+
 
         return "users/userdetails";
     }
 
     @PostMapping("/users/userdetails")
-    public String submitUserDetails(@ModelAttribute Profile profileDetails){
+    public String submitUserDetails
+            (@ModelAttribute Profile profileDetails,
+             @RequestParam(value="traits", required = false)ArrayList<Trait> traits,
+             @RequestParam(value="hobbies", required = false)ArrayList<Hobby> hobbies,
+             @RequestParam(value="branch", required = false) Branch branch,
+             @RequestParam(value="rank", required = false) Rank rank){
         User user = usersService.loggedInUser();
-         profileDao.save(profileDetails);
+        Profile person = new Profile();
+        person.setUser(user);
+        person.setTraits(traits);
+        person.setHobbies(hobbies);
+        person.setBranch(branch);
+        person.setRank(rank);
 
-        return "users/profile/" + user.getId();
+        person.setBio("jshdkjhdkjdhk");
+        person.setGender("female");
+        List<Child> children = new ArrayList<>();
+        children.add(new Child("female", 6));
+        person.setChildren(children);
+        person.setFirstName("dani");
+        person.setLastName("lame");
+        person.setMarried(true);
+        person.setMilSpouse(false);
+        person.setage(45);
+
+        profileDao.save(person);
+
+
+        return "redirect:/users/profile/" + user.getId();
     }
 
 
