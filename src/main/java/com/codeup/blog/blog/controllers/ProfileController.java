@@ -2,6 +2,7 @@ package com.codeup.blog.blog.controllers;
 
 
 import com.codeup.blog.blog.models.FriendStatus;
+import com.codeup.blog.blog.models.Profile;
 import com.codeup.blog.blog.models.Relationship;
 import com.codeup.blog.blog.models.User;
 import com.codeup.blog.blog.repositories.ProfileRepository;
@@ -12,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,9 +65,20 @@ public class ProfileController {
 
 
     @GetMapping("/users/userdetails")
-    public String showUserDetails(){
+    public String showUserDetails(Model model){
+        model.addAttribute("profile", new Profile());
+
         return "users/userdetails";
     }
+
+    @PostMapping("/users/userdetails")
+    public String submitUserDetails(@ModelAttribute Profile profileDetails){
+        User user = usersService.loggedInUser();
+        Profile savedProfileDetails = profileDao.save(profileDetails);
+
+        return "users/profile/" + user.getId();
+    }
+
 
     @GetMapping("/users/{id}/friend-request")
     public String sendFriendRequest(@PathVariable long id, Model vModel) {
