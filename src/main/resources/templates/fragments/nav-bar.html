@@ -2,17 +2,16 @@
 
 
 <th:block th:fragment="main-nav">
-    <nav>
+    <nav class="navul">
         <div class="nav-wrapper">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <!--            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
             <ul class="left hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
             </ul>
-
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down">
-                    <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
+                    <li><a th:href="@{'/browse/'}">Browse</a></li>
                 </ul>
             </th:block>
 
@@ -31,6 +30,11 @@
                 <li><a href="/sign-up">Register</a></li>
                 </ul>
             </ul>
+            <th:block sec:authorize="isAuthenticated()">
+                <ul class="right hide-on-med-and-down">
+                    <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
+                </ul>
+            </th:block>
         </div>
     </nav>
 
