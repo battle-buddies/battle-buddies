@@ -2,8 +2,10 @@ package com.codeup.blog.blog.controllers;
 
 
 import com.codeup.blog.blog.models.FriendStatus;
+import com.codeup.blog.blog.models.Location;
 import com.codeup.blog.blog.models.Relationship;
 import com.codeup.blog.blog.models.User;
+import com.codeup.blog.blog.repositories.LocationRepository;
 import com.codeup.blog.blog.repositories.ProfileRepository;
 import com.codeup.blog.blog.repositories.RelationshipRepository;
 import com.codeup.blog.blog.repositories.UserRepository;
@@ -12,8 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,15 +28,17 @@ public class ProfileController {
     private ProfileRepository profileDao;
     private UserRepository userDao;
     private RelationshipRepository relationshipDao;
+    private LocationRepository locationDao;
 
 
     @Autowired
     private UserService usersService;
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, LocationRepository locationDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
+        this.locationDao = locationDao;
     }
 
     @GetMapping("/users/profile/{id}")
@@ -59,6 +66,8 @@ public class ProfileController {
 
         return "users/profile";
     }
+
+
 
 
     @GetMapping("/users/userdetails")
@@ -94,6 +103,23 @@ public class ProfileController {
 
 
         return "redirect:/users/profile/"+ userOne.getId();
+    }
+
+
+
+    @GetMapping("/users/location")
+
+    public String showCreateForm(Model model) {
+        model.addAttribute("location", new Location());
+
+        return "users/location";
+    }
+
+    @PostMapping("/users/location")
+    public String create(@ModelAttribute Location locationToBeCreated){
+//        locationToBeCreated.setProfiles(profileDao.getOne(1));
+        Location savedLocation = locationDao.save(locationToBeCreated);
+        return "redirect:/users/location" + savedLocation.getId();
     }
 
 
