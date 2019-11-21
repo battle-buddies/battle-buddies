@@ -3,6 +3,20 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+
+    <th:block th:replace="fragments/header :: profile-header"/>
+    <!--    <link rel="stylesheet" href="/css/owl.carousel.css">-->
+    <!--    <link rel="stylesheet" href="/css/owl.theme.default.css">-->
+    <!--<script src="jquery.min.js"></script>-->
+    <!--<script src="/js/owl.carousel.js"></script>-->
+    <!--</head>-->
+    <!--    <script>-->
+
+    <!--        $(document).ready(function(){-->
+    <!--            $('.sidenav').sidenav();-->
+    <!--        });-->
+    <!--    </script>-->
+
 <!--     Compiled and minified JavaScript-->
 
 <th:block th:replace="fragments/header :: profile-header"/>
@@ -21,11 +35,47 @@
         $('.sidenav').sidenav();
     });
 </script>
+
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 
 <th:block th:replace="fragments/nav-bar :: main-nav"/>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--    <header class="mdl-layout__header mdl-layout__header&#45;&#45;scroll mdl-color&#45;&#45;primary">-->
+    <!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
+    <!--        </div>-->
+    <!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
+    <!--            <h3>Name &amp; Title</h3>-->
+    <!--        </div>-->
+    <!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
+    <!--        </div>-->
+    <!--        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color&#45;&#45;primary-dark">-->
+
+    <!--            <a href="#overview" class="mdl-layout__tab is-active">Overview</a>-->
+    <!--            <a href="#features" class="mdl-layout__tab">Features</a>-->
+    <!--            <a href="#features" class="mdl-layout__tab">Details</a>-->
+    <!--            <a href="#features" class="mdl-layout__tab">Technology</a>-->
+    <!--            <a href="#features" class="mdl-layout__tab">FAQ</a>-->
+    <!--            <button class="mdl-button mdl-js-button mdl-button&#45;&#45;fab mdl-js-ripple-effect mdl-button&#45;&#45;colored mdl-shadow&#45;&#45;4dp mdl-color&#45;&#45;accent"-->
+    <!--                    id="add">-->
+    <!--                <i class="material-icons" role="presentation">add</i>-->
+    <!--                <span class="visuallyhidden">Add</span>-->
+    <!--            </button>-->
+    <!--        </div>-->
+
+    <!--    TEMP SECTION FOR ADDING FRIENDS-->
+    <div>
+        <h1 th:text="${user.username}"></h1>
+        <input type="hidden" th:value="${user.id}">
+        <a th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
+        <h4>friends <span th:text="${user.username}"></span> has requested</h4>
+        <div th:each="friend : ${user.getRelationships()}"
+             th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+            <p th:text="${friend.getFriend().username}"></p>
+            <p th:text="${friend.getStatus()}"></p>
+        </div>
+
 <!--    <header class="mdl-layout__header mdl-layout__header&#45;&#45;scroll mdl-color&#45;&#45;primary">-->
 <!--        <div class="mdl-layout&#45;&#45;large-screen-only mdl-layout__header-row">-->
 <!--        </div>-->
@@ -74,6 +124,7 @@
             <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
                 <p  th:text="${friend.getFriend().username}"></p>
                 <p th:text="${friend.getStatus()}"></p>
+
             </th:block>
 
         </div>
@@ -82,6 +133,7 @@
         <!--FRIEND REQUESTS-->
         <div id="requests" class="col s12 red">
             <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+
 
                 <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
 
@@ -123,7 +175,6 @@
 
 
 
-
     <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="overview">
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
@@ -150,75 +201,45 @@
                 </ul>
             </section>
 
-<!--<section class ="section&#45;&#45;center mdl-grid mdl-grid&#45;&#45;no-spacing mdl-shadow&#45;&#45;2dp">-->
-                <section id="owl-2">
-                    <div class="owl-carousel owl-theme">
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
-                        <div>
-                            <img src="/img/form-v6.jpg">
-                        </div>
+            <!--<section class ="section&#45;&#45;center mdl-grid mdl-grid&#45;&#45;no-spacing mdl-shadow&#45;&#45;2dp">-->
+            <section id="owl-2">
+                <div class="owl-carousel owl-theme">
+                    <div>
+                        <img src="/img/form-v6.jpg">
                     </div>
-<!--                </section>-->
+                    <div>
+                        <img src="/img/form-v6.jpg">
+                    </div>
+                    <div>
+                        <img src="/img/form-v6.jpg">
+                    </div>
+                    <div>
+                        <img src="/img/form-v6.jpg">
+                    </div>
+                    <div>
+                        <img src="/img/form-v6.jpg">
+                    </div>
+                    <div>
+                        <img src="/img/form-v6.jpg">
+                    </div>
+                    <div>
+                        <img src="/img/form-v6.jpg">
+                    </div>
+                </div>
+                <!--                </section>-->
 
             </section>
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                <div class="mdl-card mdl-cell mdl-cell--12-col">
-                    <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                        <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
-                        <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                            <div class="section__circle-container__circle mdl-color--primary"></div>
-                        </div>
-                        <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                            <h5>Lorem ipsum dolor sit amet</h5>
-                            Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla
-                            tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                        </div>
-                        <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                            <div class="section__circle-container__circle mdl-color--primary"></div>
-                        </div>
-                        <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                            <h5>Lorem ipsum dolor sit amet</h5>
-                            Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla
-                            tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                        </div>
-                        <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                            <div class="section__circle-container__circle mdl-color--primary"></div>
-                        </div>
-                        <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                            <h5>Lorem ipsum dolor sit amet</h5>
-                            Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla
-                            tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                        </div>
+                <form>
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Select</label>
                     </div>
-                    <div class="mdl-card__actions">
-                        <a href="#" class="mdl-button">Read our features</a>
-                    </div>
-                </div>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
-                    <i class="material-icons">more_vert</i>
-                </button>
-                <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
-                    <li class="mdl-menu__item">Lorem</li>
-                    <li class="mdl-menu__item" disabled>Ipsum</li>
-                    <li class="mdl-menu__item">Dolor</li>
-                </ul>
             </section>
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                 <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -396,6 +417,8 @@
                         <li><a href="#">Contracts</a></li>
                     </ul>
                 </div>
+
+
                 <div class="mdl-mega-footer--drop-down-section">
                     <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                     <h1 class="mdl-mega-footer--heading">FAQ</h1>
@@ -419,13 +442,40 @@
         </footer>
     </main>
 </div>
+</div>
+
 
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
+
+<script>$('#butt').click(function(){
+
+    var $orginal = $('form #container');
+    var $cloned = $orginal.clone();
+
+//get original selects into a jq object
+    var $originalSelects = $orginal.find('select');
+    $cloned.find('select').each(function(index, item) {
+        //set new select to value of old select
+        $(item).val( $originalSelects.eq(index).val() );
+
+    });
+//get original textareas into a jq object
+    var $originalTextareas = $orginal.find('textarea');
+
+    $cloned.find('textarea').each(function(index, item) {
+//set new textareas to value of old textareas
+        $(item).val($originalTextareas.eq(index).val());
+    });
+    $cloned.appendTo('#clonedItem');
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
 
-
 </body>
+
 </html>
