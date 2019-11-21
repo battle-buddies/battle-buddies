@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Browse Hobbies</title>
+    <th:block th:replace="fragments/header :: profile-header"/>
+</head>
+<body>
+    <h1>HOBBIES</h1>
+    <div class="container" th:each="hobby: ${hobbies}">
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card-small">
+                    <div class="card-content white-text">
+                        <a href="">
+                            <span class="card-title"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+</body>
+</html>
