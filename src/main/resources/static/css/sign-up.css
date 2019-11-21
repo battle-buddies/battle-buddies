@@ -28,7 +28,7 @@ body {
     -ms-border-radius: 8px;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
-    margin: 180px 0;
+    margin: 100px 0;
     font-family: 'Nunito', sans-serif;
     color: #fff;
     font-weight: 700;
@@ -151,7 +151,7 @@ input:-moz-placeholder { /* Firefox 18- */
         border-top-right-radius: 8px;
     }
     .form-v6-content .form-detail {
-        padding: 30px 20px 30px 20px;
+        padding: 30px 20px 0px 20px;
         width: auto;
     }
     .form-v6-content .form-detail .form-row input {
@@ -171,4 +171,7 @@ input:-moz-placeholder { /* Firefox 18- */
     .form-v6-content .form-detail .form-row input {
         width: 89%;
     }
+}
+.form-detail{
+    padding-bottom: 0;
 }
