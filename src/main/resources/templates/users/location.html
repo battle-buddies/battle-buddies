@@ -23,47 +23,37 @@
     </style>
 </head>
 <body>
-<form id ="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}">
+
+<form id="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
 
 
+    <div class='sidebar'>
+        <form id="form1">
+            <div id="locationList"></div>
+            <br>
+            <div class="input-field">
+                <input class="input_fields" id="city" type="text">
+                <label class="active" for="city">City/District/Town</label>
+            </div>
+            <div class="input-field">
+                <input class="input_fields" id="state" type="text">
+                <label class="active" for="State">State</label>
+            </div>
+            <div class="input-field">
+                <input class="input_fields" id="country" type="text">
+                <label class="active" for="country">Country</label>
+            </div>
+            <input type='button' value='Submit form 1' id="view" name="view"/>
+        </form>
+    </div>
+    <div>
+        <h2 id=a></h2>
+        <h2 id=b></h2>
+        <h2 id=c></h2>
+    </div>
+    <input type="hidden" id="location" th:field="*{location}"/>
 
-
-
-
-<div class='sidebar'>
-    <form id="form1">
-        <div id="locationList"></div>
-        <br>
-        <div class="input-field">
-            <input class="input_fields" id="city" type="text">
-            <label class="active" for="city">City/District/Town</label>
-        </div>
-        <div class="input-field">
-            <input class="input_fields" id="state" type="text">
-            <label class="active" for="State">State</label>
-        </div>
-<!--        <div class="input-field">-->
-<!--            <input class="input_fields" id="postal_code" type="text">-->
-<!--            <label class="active" for="postal_code">Zip Code</label>-->
-<!--        </div>-->
-        <div class="input-field">
-            <input class="input_fields" id="country" type="text">
-            <label class="active" for="country">Country</label>
-        </div>
-        <input type='submit' value='Submit form 1' id="view" name="view"/>
-    </form>
-</div>
-<div>
-    <h2 id = a ></h2>
-    <h2 id = b ></h2>
-    <h2 id = c ></h2>
-</div>
-    <input type="hidden" id="sqlCity" value="replace-me" th:field="*{city}"/>
-    <input type="hidden" id="sqlState" value="replace-me" th:field="*{state}"/>
-    <input type="hidden" id="sqlCountry" value="replace-me" th:field="*{country}"/>
-
-    <input type='submit' id="send" name="send"/>
-<!--<div id='map' class='map pad2'>Map</div>-->
+    <input type='button' value='Submit form 2' id="send" name="send"/>
 </form>
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -71,6 +61,7 @@
         crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
+
         $('#view').click(function (e) {
             e.preventDefault();
             var city = $("#city").val().toLowerCase().split(' ').join('%20');
@@ -78,104 +69,68 @@
             var country = $("#country").val().toLowerCase().split(' ').join('%20');
 
 
-
             let longStr = city.concat("%20").concat(state);
             console.log(longStr);
 
-
-            // console.log(city);
-var respCity;
-var respState;
-var respCountry;
+            var respCity;
+            var respState;
+            var respCountry;
             $.ajax({
-                url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+longStr+'.json?access_token=pk.eyJ1IjoiYnJpZGdldG1pbGxzIiwiYSI6ImNqemloYXVlazEzZGQzY3BoeTJ5N2xicmEifQ.c8m3gGOrooUHDV7g_frHMA',
+                url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + longStr + '.json?access_token=pk.eyJ1IjoiYnJpZGdldG1pbGxzIiwiYSI6ImNqemloYXVlazEzZGQzY3BoeTJ5N2xicmEifQ.c8m3gGOrooUHDV7g_frHMA',
                 type: 'GET',
-                success: function(geoData){
-                    console.log(geoData)
-                    for (var i = 0; i <= geoData.features[0].context.length; i++){
+                success: function (geoData) {
+                    console.log(geoData);
+                    for (var i = 0; i <= geoData.features[0].context.length; i++) {
                         document.getElementById('a').innerHTML = geoData.features[1].context.slice(-3)[0].text;
                         respCity = geoData.features[1].context.slice(-3)[0].text;
-                        getCity(respCity);
+                        // getCity(respCity);
                     }
 
 
-                    for (var i = 0; i <= geoData.features[0].context.length; i++){
+                    for (var i = 0; i <= geoData.features[0].context.length; i++) {
                         document.getElementById('b').innerHTML = geoData.features[1].context.slice(-2)[0].text;
 
                         respState = geoData.features[1].context.slice(-2)[0].text;
-                        getState(respState);
+                        // getState(respState);
                     }
 
-                    for (var i = 0; i <= geoData.features[0].context.length; i++){
-                        // console.log(geoData.features[0].context.slice(-1)[0].text)
-                    document.getElementById('c').innerHTML = geoData.features[0].context.slice(-1)[0].text;
+                    for (var i = 0; i <= geoData.features[0].context.length; i++) {
+                        document.getElementById('c').innerHTML = geoData.features[0].context.slice(-1)[0].text;
                         respCountry = geoData.features[0].context.slice(-1)[0].text;
-                        getCountry(respCountry);
+                        // getCountry(respCountry);
                     }
 
-
+                    getLocation(respCity, respState, respCountry);
                 }
             });
-//             $.get("https://api.mapbox.com/geocoding/v5/mapbox.places/"+longStr+".json?access_token=pk.eyJ1IjoiYnJpZGdldG1pbGxzIiwiYSI6ImNqemloYXVlazEzZGQzY3BoeTJ5N2xicmEifQ.c8m3gGOrooUHDV7g_frHMA")
-//                 .done(function (geoData) {
-//
-//                     console.log(geoData);
-//
-//                     for (var i = 0; i <= geoData.features[0].context.length; i++){
-//                         // console.log(geoData.features[0].context.slice(-1)[0].text)
-//                     document.getElementById('c').innerHTML = geoData.features[0].context.slice(-1)[0].text;
-//                     }
-//
-//                     for (var i = 0; i <= geoData.features[0].context.length; i++){
-//                         // console.log(geoData.features[0].context.slice(-1)[0].text)
-//                         document.getElementById('b').innerHTML = geoData.features[1].context.slice(-2)[0].text;
-//                     // document.getElementById('b').innerHTML = geoData.features[1].context[2].text;
-//                     }
-//
-//                     for (var i = 0; i <= geoData.features[0].context.length; i++){
-//                         // console.log(geoData.features[0].context.slice(-1)[0].text)
-//                         document.getElementById('a').innerHTML = geoData.features[1].context.slice(-3)[0].text;
-//                     }
-//                     // document.getElementById('b').innerHTML = geoData.features[1].context[3].text;
-//
-//                     $('#sqlCity').val( geoData.features[1].context[1].text);
-//                     $('#sqlState').val( geoData.features[1].context[2].text);
-//                     $('#sqlCountry').val( geoData.features[1].context[3].text);
-//
-// //
-//                 });
-        });
-
-        function getCity(respCity){
-            console.log(respCity); // do something with resp here
-            $('#sqlCity').val(respCity);
-        }
-        function getState(respState){
-            console.log(respState) ;// do something with resp here
-            $('#sqlState').val(respState);
-        }
-        function getCountry(respCountry){
-            console.log(respCountry); // do something with resp here
-            $('#sqlCountry').val(respCountry);
-        }
-
-
-        $("#send").click(function (e) {
-            // e.preventDefault();
-            var thecity = document.getElementById("sqlCity");
-            var thestate = document.getElementById("sqlState");
-            var thecountry = document.getElementById("sqlCountry");
-            console.log(thecity.value);
-            console.log(thestate.value);
-            console.log(thecountry.value);
 
         });
 
 
+        function getLocation(respCity, respState, respCountry) {
 
-        // $("button").click(function () {
-        //     $("form").submit();
-        // });
+            $('#location').val(respCity + "," + respState + "," + respCountry);
+            console.log($('#location').val());
+
+        }
+
+
+        $("#send").click(function () {
+
+            var thelocation = document.getElementById("location");
+            $('#form2').submit();
+            console.log(thelocation.value);
+
+
+
+
+
+            // var thestate = document.getElementById("sqlState");
+            // var thecountry = document.getElementById("sqlCountry");
+            // console.log(thecity.value);
+            // console.log(thestate.value);
+
+        });
 
     });
 

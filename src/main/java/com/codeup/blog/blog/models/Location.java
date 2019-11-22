@@ -12,14 +12,8 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(80)")
-    private String city;
-
-    @Column( columnDefinition = "VARCHAR(2)")
-    private String state;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(80)")
-    private String country;
+    @Column(nullable = false, columnDefinition = "text")
+    private String location;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
     private List<MeetUp> meetUps;
@@ -27,22 +21,25 @@ public class Location {
     @ManyToMany(mappedBy = "location")
     private List<Profile> profiles;
 
-    public Location(String city, String state, String country, List<MeetUp> meetUps, List<Profile> profiles) {
-        this.city = city;
-        this.state = state;
-        this.country = country;
-        this.meetUps = meetUps;
-        this.profiles = profiles;
+    public Location() {
     }
-    public Location(long id, String city, String state, String country, List<MeetUp> meetUps, List<Profile> profiles) {
-        this.city = city;
-        this.state = state;
-        this.country = country;
+
+    public Location(String location) {
+        this.location = location;
+    }
+
+    public Location(long id, String location, List<MeetUp> meetUps, List<Profile> profiles) {
+        this.id = id;
+        this.location = location;
         this.meetUps = meetUps;
         this.profiles = profiles;
     }
 
-    public Location (){}
+    public Location(String location, List<MeetUp> meetUps, List<Profile> profiles) {
+        this.location = location;
+        this.meetUps = meetUps;
+        this.profiles = profiles;
+    }
 
     public long getId() {
         return id;
@@ -52,28 +49,12 @@ public class Location {
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
+    public String getLocation() {
+        return location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public List<MeetUp> getMeetUps() {
@@ -91,6 +72,4 @@ public class Location {
     public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
     }
-
-
 }

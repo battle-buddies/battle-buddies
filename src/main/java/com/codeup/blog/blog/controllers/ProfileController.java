@@ -203,8 +203,10 @@ public class ProfileController {
     @PostMapping("/users/location")
     public String create(@ModelAttribute Location locationToBeCreated){
 //        locationToBeCreated.setProfiles(profileDao.getOne(1));
-        Location savedLocation = locationDao.save(locationToBeCreated);
-        return "redirect:/users/location" + savedLocation.getId();
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This!!!!!!!!!!!!!!!!!!!!!!" + locationToBeCreated.getLocation());
+        locationDao.save(locationToBeCreated);
+        return "redirect:/users/location";
     }
 
 
