@@ -112,12 +112,6 @@
                     <select th:field="*{branch}">
                         <option value="" disabled selected>Branch</option>
                         <th:block th:each="branch: ${branches}">
-                            <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span></option>
-
-                <div class="input-field col s6">
-                    <select>
-                        <option value="" disabled selected>Branch</option>
-                        <th:block th:each="branch: ${branches}">
                             <option th:name="branch" th:value="${branch}"><span th:text="${branch.branch}"></span>
                             </option>
 

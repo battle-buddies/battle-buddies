@@ -54,6 +54,13 @@ public class ProfileController {
 
     @GetMapping("/users/profile/{id}")
     public String showUserProfile(Model vModel, @PathVariable long id){
+        User loggedInUser = usersService.loggedInUser();
+        Profile loggedInProfile = loggedInUser.getProfile();
+        if (loggedInProfile == null ||loggedInProfile.getFirstName() == null || loggedInProfile.getLastName() == null){
+            return "redirect:/users/userdetails";
+        }
+
+
 
         vModel.addAttribute("user", userDao.getOne(id));
 
