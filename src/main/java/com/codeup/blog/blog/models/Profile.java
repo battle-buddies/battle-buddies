@@ -22,8 +22,8 @@ public class Profile {
     @Column(nullable = false)
     private int age;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
-    private String gender;
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean gender;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean married;
@@ -84,7 +84,7 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, int age, String gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -103,7 +103,7 @@ public class Profile {
         this.rank = rank;
     }
 
-    public Profile(String firstName, String lastName, int age, String gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -121,7 +121,7 @@ public class Profile {
         this.rank = rank;
     }
 
-    public String getGender() {
+    public boolean getGender() {
         return gender;
     }
 
@@ -181,7 +181,7 @@ public class Profile {
         this.bio = bio;
     }
 
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
