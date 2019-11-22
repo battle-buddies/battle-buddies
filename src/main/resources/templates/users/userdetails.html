@@ -61,7 +61,8 @@
                     <select multiple th:field="*{hobbies}">
                         <option value="" disabled selected>Choose your hobbies</option>
                         <th:block th:each="hobby: ${hobbies}">
-                            <option th:name="hobbies" th:value="${hobby}"><span th:text="${hobby.hobby}"></span></option>
+                            <option th:name="hobbies" th:value="${hobby}"><span th:text="${hobby.hobby}"></span>
+                            </option>
                         </th:block>
 
                     </select>
@@ -75,12 +76,12 @@
                 <!--                        end hobbies and traits-->
             </div>
 
-<!--            children start -->
-                <p>Adding your children will help us match you with friends that have children the same age! </p>
-            <div id ="formbody" class="input-field col s6 input_fields_wrap">
+            <!--            children start -->
+            <p>Adding your children will help us match you with friends that have children the same age! </p>
+            <div id="formbody" class="input-field col s6 input_fields_wrap">
                 <button class="btn add_field_button">Add another child</button>
                 <div>
-               <input type="date" name="dob">
+                    <input type="date" name="dob">
                     <input type="text" name="gender" placeholder="Gender">
                 </div>
             </div>
@@ -93,6 +94,7 @@
             <div class="row">
 
                 <!--                rank start-->
+
                 <div class="input-field col s3">
                     <select th:field="*{rank}">
                         <option value="" disabled selected>Rank</option>
@@ -105,27 +107,56 @@
                 <!--                rank end-->
 
                 <!--                branch start-->
+
                 <div class="input-field col s3">
                     <select th:field="*{branch}">
                         <option value="" disabled selected>Branch</option>
                         <th:block th:each="branch: ${branches}">
                             <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span></option>
+
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Branch</option>
+                        <th:block th:each="branch: ${branches}">
+                            <option th:name="branch" th:value="${branch}"><span th:text="${branch.branch}"></span>
+                            </option>
+
                         </th:block>
                     </select>
                     <label>Please select your branch</label>
                 </div>
                 <!--                branch end-->
-                <div class="input-field col s3">
-                    <select th:field="*{milSpouse}">
-                        <option value="false" disabled selected>Yes or No</option>
-                        <option value="true" name="true">Yes</option>
-                        <option value="false" name="false">No</option>
+
+                <!--                mill spouse-->
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Are you a military spouse?</option>
+                        <option value="1" name="true">Yes</option>
+                        <option value="2" name="false">No</option>
+
                     </select>
                     <label>Are you signing up as a military spouse?</label>
                 </div>
-                <div class="row col s6">
+                <!--                mill spouse end-->
+
+                <!--                marital status-->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Marital Status</option>
+                            <option value="1" name="single">Single</option>
+                            <option value="2" name="married">Married</option>
+                        </select>
+                        <label>Marital Status</label>
+                    </div>
+                </div>
+                <!--                marital status-->
+                <!--                location-->
+                <div class="col s6">
                     <h3>Location will go here</h3>
                 </div>
+                <!--                location end-->
+
             </div>
             <!--           row end-->
             <button class="waves-effect waves-light btn">Submit!</button>
@@ -134,32 +165,33 @@
 </div>
 <!--    main container end-->
 
-    <script>
-        $(document).ready(function () {
-            $('select').material_select();
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
 
-        });
-
-
-
-            var max_fields      = 10; //maximum input boxes allowed
-            var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
-            var add_button      = $(".add_field_button"); //Add button ID
-            var x = 1; //initlal text box count
-            $(add_button).click(function(e){ //on add input button click
-                e.preventDefault();
-                if(x < max_fields){ //max input box allowed
-                    x++; //text box increment
-                    $(wrapper).append('<div><input type="date" name="dob"/>\n' +
-                        '                    <input type="text" name="gender" placeholder="gender"><a href="#" class="remove_field">Remove</a></div>'); //add input box
-                }
-            });
-            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-                e.preventDefault(); $(this).parent('div').remove(); x--;
-            })
+    });
 
 
-    </script>
+    var max_fields = 10; //maximum input boxes allowed
+    var wrapper = $(".input_fields_wrap"); //Fields wrapper
+    var add_button = $(".add_field_button"); //Add button ID
+    var x = 1; //initlal text box count
+    $(add_button).click(function (e) { //on add input button click
+        e.preventDefault();
+        if (x < max_fields) { //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input type="date" name="dob"/>\n' +
+                '                    <input type="text" name="gender" placeholder="gender"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+        }
+    });
+    $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+    })
+
+
+</script>
 
 </body>
 </html>
