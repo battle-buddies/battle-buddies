@@ -20,19 +20,19 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
+                    <input id="firstName" type="text" class="validate" th:field="*{firstName}">
+                    <label for="firstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
+                    <input id="lastName" type="text" class="validate" th:field="*{lastName}">
+                    <label for="lastName">Last Name</label>
                 </div>
                 <!--                        gender pick start-->
                 <div class="input-field col s6">
                     <select>
-                        <option value="" disabled selected>gender</option>
-                        <option value="1" name="Male">Male</option>
-                        <option value="2" name="Female">Female</option>
+                        <option value="0" disabled selected>gender</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
                     </select>
                     <label>Select gender</label>
                 </div>
@@ -41,7 +41,7 @@
                 <!--                        DOB start-->
 
                 <div class="input-field col s6">
-                    <input type="date" class="datepicker"/>
+                    <input id="age" type="text" placeholder="Please enter your age as a number" th:field="*{age}"/>
 
                 </div>
                 <!--                        DOB end-->
@@ -51,7 +51,8 @@
                     <select multiple th:field="*{traits}">
                         <option value="" disabled selected>Choose your traits</option>
                         <th:block th:each="trait: ${traits}">
-                            <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span></option>
+                            <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span>
+                            </option>
                         </th:block>
 
                     </select>
@@ -61,18 +62,23 @@
                     <select multiple th:field="*{hobbies}">
                         <option value="" disabled selected>Choose your hobbies</option>
                         <th:block th:each="hobby: ${hobbies}">
-                            <option th:name="hobbies" th:value="${hobby}"><span th:text="${hobby.hobby}"></span>
+                            <option th:name="hobbies" th:value="${hobby.id}"><span th:text="${hobby.hobby}"></span>
                             </option>
                         </th:block>
 
                     </select>
                     <label>Pick 5 hobbies that interest you</label>
                 </div>
+
+                <!--                bio start-->
                 <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea" data-length="2000"></textarea>
-                    <label for="textarea1">Tell us more about yourself! Write a bio or share some interesting
+                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"></textarea>
+                    <label for="bio">Tell us more about yourself! Write a bio or share some interesting
                         facts!</label>
                 </div>
+
+                <!--                bio end-->
+
                 <!--                        end hobbies and traits-->
             </div>
 
@@ -81,13 +87,16 @@
             <div id="formbody" class="input-field col s6 input_fields_wrap">
                 <button class="btn add_field_button">Add another child</button>
                 <div>
-                    <input type="date" name="dob">
-                    <input type="text" name="gender" placeholder="Gender">
+                    <input type="text" name="childAge" placeholder="Please enter child's age as a number">
+                    <input type="text" name="childGender" placeholder="Please enter child's gender as male or female">
+
                 </div>
             </div>
 
 
         </div>
+
+        <!--        end children-->
 
         <!--        start of second tab-->
         <div id="Service-details" class="col s12">
@@ -112,7 +121,7 @@
                     <select th:field="*{branch}">
                         <option value="" disabled selected>Branch</option>
                         <th:block th:each="branch: ${branches}">
-                            <option th:name="branch" th:value="${branch}"><span th:text="${branch.branch}"></span>
+                            <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span>
                             </option>
 
                         </th:block>
@@ -123,10 +132,10 @@
 
                 <!--                mill spouse-->
                 <div class="input-field col s6">
-                    <select>
-                        <option value="" disabled selected>Are you a military spouse?</option>
+                    <select th:field="*{milSpouse}">
+                        <option value="0" disabled selected>Are you a military spouse?</option>
                         <option value="1" name="true">Yes</option>
-                        <option value="2" name="false">No</option>
+                        <option value="0" name="false">No</option>
 
                     </select>
                     <label>Are you signing up as a military spouse?</label>
@@ -136,10 +145,10 @@
                 <!--                marital status-->
                 <div class="row">
                     <div class="input-field col s6">
-                        <select>
-                            <option value="" disabled selected>Marital Status</option>
+                        <select th:field="*{married}">
+                            <option value="0" disabled selected>Marital Status</option>
                             <option value="1" name="single">Single</option>
-                            <option value="2" name="married">Married</option>
+                            <option value="0" name="married">Married</option>
                         </select>
                         <label>Marital Status</label>
                     </div>
@@ -170,13 +179,19 @@
     var wrapper = $(".input_fields_wrap"); //Fields wrapper
     var add_button = $(".add_field_button"); //Add button ID
     var x = 1; //initlal text box count
+    var arr = [
+        {val: 1, text: 'Male'},
+        {val: 0, text: 'Female'}
+    ];
+    var sel = $('<select th:field="*{Children}>').appendTo(wrapper);
     $(add_button).click(function (e) { //on add input button click
         e.preventDefault();
         if (x < max_fields) { //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div><input type="date" name="dob"/>\n' +
-                '                    <input type="text" name="gender" placeholder="gender"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+            $(wrapper).append('<div><input type="text" name="age1" placeholder="Please enter child\'s age as a number"><input type="text" name="gender" placeholder="Please enter child\'s gender as male or female">' +
+                '<a href="#" class="remove_field">Remove</a></div>'); //add input box
         }
+
     });
     $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
         e.preventDefault();
