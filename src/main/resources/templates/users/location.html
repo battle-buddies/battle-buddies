@@ -23,6 +23,7 @@
     </style>
 </head>
 <body>
+
 <form id="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
 
 
@@ -119,6 +120,8 @@
             var thelocation = document.getElementById("location");
             $('#form2').submit();
             console.log(thelocation.value);
+
+
 
 
 

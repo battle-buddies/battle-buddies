@@ -16,16 +16,16 @@ insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibz
 
 
 
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,'Male', 'Gayla', 'Hedgecock', 18, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus', true, true, 1);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,6,'Female', 'Olympie', 'Jurries', 23, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',false, false, 2);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,10,'Female', 'Obadias', 'Goby', 56, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.', false, false, 3);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,4,'Male', 'Goldarina', 'Perrinchief', 34, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',false, false, 4);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,7,'Female', 'Hans', 'Clay', 43, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',false, true, 5);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,'Female', 'Garold', 'Spark', 65, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', false, false, 6);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,10,'Female', 'Darb', 'Boncore', 57, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.',false, false, 7);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,9,'Male', 'Eugen', 'Thomazet', 27, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',true, false, 8);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,7,'Female', 'Zsazsa', 'Haslen', 39, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',true, true, 9);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values (5,1,'Female', 'Calvin', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,false, 'Gayla', 'Hedgecock', 18, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus', true, true, 1);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,6,true, 'Olympie', 'Jurries', 23, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',false, false, 2);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,10,true, 'Obadias', 'Goby', 56, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.', false, false, 3);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,4,false, 'Goldarina', 'Perrinchief', 34, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',false, false, 4);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,7,true, 'Hans', 'Clay', 43, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',false, true, 5);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,true, 'Garold', 'Spark', 65, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', false, false, 6);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,10,true, 'Darb', 'Boncore', 57, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.',false, false, 7);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,9,false, 'Eugen', 'Thomazet', 27, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',true, false, 8);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,7,true, 'Zsazsa', 'Haslen', 39, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',true, true, 9);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values (5,1,false, 'Calvin', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
 
 
 
@@ -98,10 +98,6 @@ insert into traits (trait) values ( 'Strong');
 insert into traits (trait) values ( 'Loyal');
 insert into traits (trait) values ( 'Hard Working');
 insert into traits (trait) values ( 'Creative');
-
-
-
-
 
 
 
