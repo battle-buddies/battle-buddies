@@ -55,11 +55,7 @@ public class ProfileController {
             return "redirect:/users/userdetails";
         }
 
-
-
         vModel.addAttribute("user", userDao.getOne(id));
-
-
 
 //        FRIEND REQUESTS
         List<User> allUsers = userDao.findAll();
@@ -90,9 +86,6 @@ public class ProfileController {
         model.addAttribute("traits", traitDao.findAll());
         model.addAttribute("branches", branchDao.findAll());
         model.addAttribute("ranks", rankDao.findAll());
-
-
-
 
         return "users/userdetails";
     }
