@@ -90,36 +90,59 @@ public class ProfileController {
         model.addAttribute("ranks", rankDao.findAll());
 
 
+
         return "users/userdetails";
     }
 
     @PostMapping("/users/userdetails")
-    public String submitUserDetails
-            (@ModelAttribute Profile profileDetails,
-             @RequestParam(value="traits", required = false)ArrayList<Trait> traits,
-             @RequestParam(value="hobbies", required = false)ArrayList<Hobby> hobbies,
-             @RequestParam(value="branch", required = false) Branch branch,
-             @RequestParam(value="rank", required = false) Rank rank){
+    public String submitUserDetails(
+             @ModelAttribute Profile profile,
+             @RequestParam(name="traits", required = false)ArrayList<Long> traitIds,
+             @RequestParam(name="hobbies", required = false)ArrayList<Hobby> hobbies,
+             @RequestParam(name="branch", required = false)Long branchId,
+             @RequestParam(name="rank", required = false) Long rankId
+    ){
         User user = usersService.loggedInUser();
-        Profile person = new Profile();
-        person.setUser(user);
-        person.setTraits(traits);
-        person.setHobbies(hobbies);
-        person.setBranch(branch);
-        person.setRank(rank);
+       profile.setUser(user);
+//
+//        person.setHobbies(hobbies);
 
-        person.setBio("jshdkjhdkjdhk");
-        person.setGender("female");
+        profile.setBranch(branchDao.getOne(branchId));
+        profile.setRank(rankDao.getOne(rankId));
+
+
+        // FINDS THE TRAITS THAT WERE SELECTED BY USER
+        List<Trait> traitsToAdd = new ArrayList<>();
+        for (long traitId : traitIds) {
+            for (Trait all: traitDao.findAll()){
+                if(traitId == all.getId()){
+                   traitsToAdd.add(traitDao.getOne(traitId));
+                }
+            }
+        }
+
+        // ADDS EACH INDIVIDUAL TRAIT TO PROFILE
+        if (traitsToAdd != null){
+            profile.setTraits(new ArrayList<>());
+            for (Trait trait: traitsToAdd){
+                profile.getTraits().add(trait);
+            }
+        }
+
+        profile.setBio("jshdkjhdkjdhk");
+        profile.setGender("female");
         List<Child> children = new ArrayList<>();
         children.add(new Child("female", 6));
-        person.setChildren(children);
-        person.setFirstName("dani");
-        person.setLastName("lame");
-        person.setMarried(true);
-        person.setMilSpouse(false);
-        person.setage(45);
+        profile.setChildren(children);
+        profile.setFirstName("bizzy");
+        profile.setLastName("dude");
+        profile.setMarried(true);
+        profile.setMilSpouse(false);
+        profile.setage(45);
 
-        profileDao.save(person);
+        profileDao.save(profile);
+        user.setProfile(profile);
+        userDao.save(user);
 
 
         return "redirect:/users/profile/" + user.getId();

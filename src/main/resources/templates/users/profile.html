@@ -90,8 +90,16 @@
 <!--        </div>-->
 
 <!--    TEMP SECTION FOR ADDING FRIENDS-->
-    <h1 th:text="${user.username}"></h1>
+    <h1><span th:text="${user.getProfile().firstName}" ></span> <span th:text="${user.getProfile().lastName}"></span></h1>
 
+    <div th:each="trait : ${user.getProfile().getTraits()}">
+        <p th:text="${trait.trait}"></p>
+    </div>
+
+    <div>
+        <p th:text="${user.getProfile().branch.branch}"></p>
+        <p th:text="${user.getProfile().rank.rank}"></p>
+    </div>
 
 
 
