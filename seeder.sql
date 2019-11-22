@@ -1,7 +1,7 @@
 
-drop database if exists battle_buddies_db;
+drop database if exists battlebuddies_db;
 
-use battle_buddies_db;
+use battlebuddies_db;
 insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'admin', 'cwhitloe0@kickstarter.com', true);
 insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'izzy', 'veye1@printfriendly.com', true);
 insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'bridget', 'crudiger2@vk.com',  true);
@@ -155,11 +155,11 @@ insert into profile_trait (trait_id, profile_id) values ( 20, 10);
 
 
 
-insert into locations (id, city, country, state) values (1, 'Salt Lake City', 'United States', 'UT');
-insert into locations (id, city, country, state) values (2, 'San Antonio', 'United States', 'TX');
-insert into locations (id, city, country, state) values (3, 'Charlotte', 'United States', 'NC');
-insert into locations (id, city, country, state) values (4, 'Miami', 'United States', 'FL');
-insert into locations (id, city, country, state) values (5, 'Honolulu', 'United States', 'HI');
+insert into locations (location) values ('Salt Lake City,Utah,United States');
+insert into locations (location) values ('San Antonio,Texas,United States');
+insert into locations (location) values ('Charlotte,North Carolina,United States');
+insert into locations (location) values ('Miami,Florida,United States');
+insert into locations (location) values ('Honolulu,Hawaii,United States');
 
 
 insert into location_profile (profile_id, location_id) values (1, 2);
