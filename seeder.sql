@@ -30,29 +30,29 @@ insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bi
 
 
 
-insert into children  (birth_date, gender, profile_id) values ('2015-03-07', 'Female', 2);
-insert into children  (birth_date, gender, profile_id) values ('2010-06-14', 'Male', 2);
-insert into children  (birth_date, gender, profile_id) values ('2016-05-23', 'Female', 4);
-insert into children  (birth_date, gender, profile_id) values ('2019-10-18', 'Male', 10);
-insert into children  (birth_date, gender, profile_id) values ('2018-11-12', 'Male', 7);
-insert into children  (birth_date, gender, profile_id) values ('2019-09-21', 'Male', 6);
-insert into children  (birth_date, gender, profile_id) values ('2011-07-20', 'Female', 8);
-insert into children  (birth_date, gender, profile_id) values ('2014-03-31', 'Female', 4);
-insert into children  (birth_date, gender, profile_id) values ('2012-03-05', 'Female', 10);
-insert into children  (birth_date, gender, profile_id) values ( '2017-12-15', 'Male', 3);
-insert into children  (birth_date, gender, profile_id) values ( '2014-12-21', 'Male', 7);
-insert into children  (birth_date, gender, profile_id) values ( '2017-09-04', 'Female', 5);
-insert into children  (birth_date, gender, profile_id) values ( '2010-01-28', 'Male', 8);
-insert into children  (birth_date, gender, profile_id) values ( '2014-05-03', 'Female', 4);
-insert into children  (birth_date, gender, profile_id) values ( '2017-10-06', 'Female', 2);
-insert into children  (birth_date, gender, profile_id) values ( '2013-10-03', 'Female', 1);
-insert into children  (birth_date, gender, profile_id) values ( '2015-02-22', 'Male', 1);
-insert into children  (birth_date, gender, profile_id) values ( '2015-09-19', 'Female', 7);
-insert into children  (birth_date, gender, profile_id) values ( '2018-02-17', 'Female', 9);
-insert into children  (birth_date, gender, profile_id) values ( '2019-02-14', 'Male', 3);
-insert into children  (birth_date, gender, profile_id) values ( '2010-03-16', 'Male', 3);
-insert into children  (birth_date, gender, profile_id) values ( '2017-07-22', 'Male', 8);
-insert into children  (birth_date, gender, profile_id) values ( '2016-11-10', 'Male', 7);
+insert into children  (age, gender, profile_id) values (2, 'Female', 2);
+insert into children  (age, gender, profile_id) values (6, 'Male', 2);
+insert into children  (age, gender, profile_id) values (13, 'Female', 4);
+insert into children  (age, gender, profile_id) values (9, 'Male', 10);
+insert into children  (age, gender, profile_id) values (2, 'Male', 7);
+insert into children  (age, gender, profile_id) values (4, 'Male', 6);
+insert into children  (age, gender, profile_id) values (4, 'Female', 8);
+insert into children  (age, gender, profile_id) values (6, 'Female', 4);
+insert into children  (age, gender, profile_id) values (7, 'Female', 10);
+insert into children  (age, gender, profile_id) values (10, 'Male', 3);
+insert into children  (age, gender, profile_id) values (5, 'Male', 7);
+insert into children  (age, gender, profile_id) values (5, 'Female', 5);
+insert into children  (age, gender, profile_id) values (3, 'Male', 8);
+insert into children  (age, gender, profile_id) values (1, 'Female', 4);
+insert into children  (age, gender, profile_id) values (1, 'Female', 2);
+insert into children  (age, gender, profile_id) values (16, 'Female', 1);
+insert into children  (age, gender, profile_id) values (8, 'Male', 1);
+insert into children  (age, gender, profile_id) values (8, 'Female', 7);
+insert into children  (age, gender, profile_id) values (6, 'Female', 9);
+insert into children  (age, gender, profile_id) values (10, 'Male', 3);
+insert into children  (age, gender, profile_id) values (12, 'Male', 3);
+insert into children  (age, gender, profile_id) values (3, 'Male', 8);
+insert into children  (age, gender, profile_id) values (9, 'Male', 7);
 
 
 
