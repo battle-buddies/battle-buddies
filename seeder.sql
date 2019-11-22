@@ -105,10 +105,6 @@ insert into traits (trait) values ( 'Creative');
 
 
 
-
-
-
-
 insert into hobby_profile (hobby_id, profile_id) values ( 1, 1);
 insert into hobby_profile (hobby_id, profile_id) values ( 2, 2);
 insert into hobby_profile (hobby_id, profile_id) values ( 3, 3);
