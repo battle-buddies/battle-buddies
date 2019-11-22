@@ -2,16 +2,18 @@
 drop database if exists battlebuddies_db;
 
 use battlebuddies_db;
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'admin', 'cwhitloe0@kickstarter.com', true);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'izzy', 'veye1@printfriendly.com', true);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'bridget', 'crudiger2@vk.com',  true);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'dani', 'mpellatt3@themeforest.net',  true);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'vdunbar4', 'oharrowsmith4@marriott.com',  false);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'dgirardi5', 'areignard5@xing.com', false);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'ofrye6', 'susher6@state.gov', true);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'naspinall7', 'emartyn7@free.fr', true);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'cogers8', 'druoss8@netscape.com', false);
-insert into users (password,  username, email,  is_admin) values ( '$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.',  'mghelardoni9', 'koylett9@cnbc.com', false);
+
+
+insert into users (profile_id, password,  username, email,  is_admin) values ( 1,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'admin', 'cwhitloe0@kickstarter.com', true);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 2,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'izzy', 'veye1@printfriendly.com', true);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 3,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'bridget', 'crudiger2@vk.com',  true);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 4,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'dani', 'mpellatt3@themeforest.net',  true);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 5,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'vdunbar4', 'oharrowsmith4@marriott.com',  false);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 6,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'dgirardi5', 'areignard5@xing.com', false);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 7,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'ofrye6', 'susher6@state.gov', true);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 8,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'naspinall7', 'emartyn7@free.fr', true);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 9,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'cogers8', 'druoss8@netscape.com', false);
+insert into users (profile_id, password,  username, email,  is_admin) values ( 10,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.',  'mghelardoni9', 'koylett9@cnbc.com', false);
 
 
 
@@ -175,25 +177,26 @@ Insert into branches (branch) values('Marine Corps');
 Insert into branches (branch) values('Air Force');
 Insert into branches (branch) values('Coast Guard');
 
-Insert into Ranks (rank) values('E1');
-Insert into Ranks (rank) values('E2');
-Insert into Ranks (rank) values('E3');
-Insert into Ranks (rank) values('E4');
-Insert into Ranks (rank) values('E5');
-Insert into Ranks (rank) values('E6');
-Insert into Ranks (rank) values('E7');
-Insert into Ranks (rank) values('E8');
-Insert into Ranks (rank) values('E9');
-Insert into Ranks (rank) values('O1');
-Insert into Ranks (rank) values('O2');
-Insert into Ranks (rank) values('O3');
-Insert into Ranks (rank) values('O4');
-Insert into Ranks (rank) values('O5');
-Insert into Ranks (rank) values('O6');
-Insert into Ranks (rank) values('O7');
-Insert into Ranks (rank) values('O8');
-Insert into Ranks (rank) values('O9');
-Insert into Ranks (rank) values('O10');
+
+Insert into ranks (rank) values('E1');
+Insert into ranks (rank) values('E2');
+Insert into ranks (rank) values('E3');
+Insert into ranks (rank) values('E4');
+Insert into ranks (rank) values('E5');
+Insert into ranks (rank) values('E6');
+Insert into ranks (rank) values('E7');
+Insert into ranks (rank) values('E8');
+Insert into ranks (rank) values('E9');
+Insert into ranks (rank) values('O1');
+Insert into ranks (rank) values('O2');
+Insert into ranks (rank) values('O3');
+Insert into ranks (rank) values('O4');
+Insert into ranks (rank) values('O5');
+Insert into ranks (rank) values('O6');
+Insert into ranks (rank) values('O7');
+Insert into ranks (rank) values('O8');
+Insert into ranks (rank) values('O9');
+Insert into ranks (rank) values('O10');
 
 
 
