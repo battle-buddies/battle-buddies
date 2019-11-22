@@ -48,17 +48,17 @@
 
                 <!--                        pick hobbies and traits-->
                 <div class="input-field col s6">
-                    <select multiple>
+                    <select multiple th:field="*{traits}">
                         <option value="" disabled selected>Choose your traits</option>
                         <th:block th:each="trait: ${traits}">
-                            <option th:name="traits" th:value="${trait}"><span th:text="${trait.trait}"></span></option>
+                            <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span></option>
                         </th:block>
 
                     </select>
                     <label>Pick 5 traits that best describe you</label>
                 </div>
                 <div class="input-field col s6">
-                    <select multiple>
+                    <select multiple th:field="*{hobbies}">
                         <option value="" disabled selected>Choose your hobbies</option>
                         <th:block th:each="hobby: ${hobbies}">
                             <option th:name="hobbies" th:value="${hobby}"><span th:text="${hobby.hobby}"></span>
@@ -94,11 +94,12 @@
             <div class="row">
 
                 <!--                rank start-->
-                <div class="input-field col s6">
-                    <select>
+
+                <div class="input-field col s3">
+                    <select th:field="*{rank}">
                         <option value="" disabled selected>Rank</option>
                         <th:block th:each="rank: ${ranks}">
-                            <option th:name="rank" th:value="${rank}"><span th:text="${rank.rank}"></span></option>
+                            <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
                         </th:block>
                     </select>
                     <label>Please select your rank</label>
@@ -106,23 +107,33 @@
                 <!--                rank end-->
 
                 <!--                branch start-->
+
+                <div class="input-field col s3">
+                    <select th:field="*{branch}">
+                        <option value="" disabled selected>Branch</option>
+                        <th:block th:each="branch: ${branches}">
+                            <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span></option>
+
                 <div class="input-field col s6">
                     <select>
                         <option value="" disabled selected>Branch</option>
                         <th:block th:each="branch: ${branches}">
                             <option th:name="branch" th:value="${branch}"><span th:text="${branch.branch}"></span>
                             </option>
+
                         </th:block>
                     </select>
                     <label>Please select your branch</label>
                 </div>
                 <!--                branch end-->
+
                 <!--                mill spouse-->
                 <div class="input-field col s6">
                     <select>
                         <option value="" disabled selected>Are you a military spouse?</option>
                         <option value="1" name="true">Yes</option>
                         <option value="2" name="false">No</option>
+
                     </select>
                     <label>Are you signing up as a military spouse?</label>
                 </div>
