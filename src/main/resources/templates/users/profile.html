@@ -110,7 +110,7 @@
     <div class="container">
 
         <!--ADD FRIEND BUTTON-->
-        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">add friend</a>
+        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Friend Request</a>
 
         <ul id="tabs-swipe-demo" class="tabs">
             <li class="tab col s3"><a href="#friends">FRIENDS</a></li>
