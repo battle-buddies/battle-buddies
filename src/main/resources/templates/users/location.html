@@ -50,7 +50,7 @@
             <input class="input_fields" id="country" type="text">
             <label class="active" for="country">Country</label>
         </div>
-        <input type='button' value='Submit form 1' id="view" name="view"/>
+        <input type='submit' value='Submit form 1' id="view" name="view"/>
     </form>
 </div>
 <div>
@@ -62,7 +62,7 @@
     <input type="hidden" id="sqlState" value="replace-me" th:field="*{state}"/>
     <input type="hidden" id="sqlCountry" value="replace-me" th:field="*{country}"/>
 
-    <input type='button' value='Submit form 2' id="send" name="send"/>
+    <input type='submit' id="send" name="send"/>
 <!--<div id='map' class='map pad2'>Map</div>-->
 </form>
 <script
@@ -161,7 +161,7 @@ var respCountry;
 
 
         $("#send").click(function (e) {
-            e.preventDefault();
+            // e.preventDefault();
             var thecity = document.getElementById("sqlCity");
             var thestate = document.getElementById("sqlState");
             var thecountry = document.getElementById("sqlCountry");

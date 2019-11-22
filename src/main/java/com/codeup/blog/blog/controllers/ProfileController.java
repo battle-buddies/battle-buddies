@@ -49,10 +49,13 @@ public class ProfileController {
 
     @GetMapping("/users/profile/{id}")
     public String showUserProfile(Model vModel, @PathVariable long id){
+        User loggedInUser = usersService.loggedInUser();
+        Profile loggedInProfile = loggedInUser.getProfile();
+        if (loggedInProfile == null ||loggedInProfile.getFirstName() == null || loggedInProfile.getLastName() == null){
+            return "redirect:/users/userdetails";
+        }
 
         vModel.addAttribute("user", userDao.getOne(id));
-
-
 
 //        FRIEND REQUESTS
         List<User> allUsers = userDao.findAll();
@@ -83,9 +86,6 @@ public class ProfileController {
         model.addAttribute("traits", traitDao.findAll());
         model.addAttribute("branches", branchDao.findAll());
         model.addAttribute("ranks", rankDao.findAll());
-
-
-
 
         return "users/userdetails";
     }
