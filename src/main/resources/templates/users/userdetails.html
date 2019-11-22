@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <div class="container">
     <ul id="tabs-swipe-demo" class="tabs">
         <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
@@ -106,7 +107,6 @@
 
                 <div class="input-field col s3">
                     <select th:field="*{rank}">
-                        <option value="" disabled selected>Rank</option>
                         <th:block th:each="rank: ${ranks}">
                             <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
                         </th:block>
@@ -119,7 +119,6 @@
 
                 <div class="input-field col s3">
                     <select th:field="*{branch}">
-                        <option value="" disabled selected>Branch</option>
                         <th:block th:each="branch: ${branches}">
                             <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span>
                             </option>
