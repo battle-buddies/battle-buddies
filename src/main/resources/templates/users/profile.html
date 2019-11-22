@@ -95,6 +95,9 @@
     <div th:each="trait : ${user.getProfile().getTraits()}">
         <p th:text="${trait.trait}"></p>
     </div>
+    <div th:each="hobby : ${user.getProfile().getHobbies()}">
+        <p th:text="${hobby.hobby}"></p>
+    </div>
 
     <div>
         <p th:text="${user.getProfile().branch.branch}"></p>
