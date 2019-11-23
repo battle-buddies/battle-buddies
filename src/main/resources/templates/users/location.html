@@ -24,7 +24,6 @@
 </head>
 <body>
 
-<form id="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
 
 
     <div class='sidebar'>
@@ -51,6 +50,7 @@
         <h2 id=b></h2>
         <h2 id=c></h2>
     </div>
+<form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
     <input type="hidden" id="location" th:field="*{location}"/>
 
     <input type='button' value='Submit form 2' id="send" name="send"/>
