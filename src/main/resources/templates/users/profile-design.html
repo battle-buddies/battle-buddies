@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material Portfolio Template Demo</title>
+    <meta name="description" content="Demo of Material design portfolio template by TemplateFlip.com."/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
+    <script>
+        WebFontConfig = {
+            google: {
+                families: ['Roboto:300,400,500,700:latin']
+            },
+            classes: false,
+            events: false,
+            timeout: 1500
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.defer = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+    <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect" />
+    <link href="https://ajax.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link rel="stylesheet" href="/stylesheets/style-0.1.5.css">
+    <style type="text/css">
+        img {
+            max-width: 100%;
+        }
+
+        .site-header {
+            position: relative;
+        }
+
+        .site-header .mdl-layout__header-row {
+            padding: 0;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .site-description {
+            display: block;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .is-compact .mdl-layout__title span {
+            display: none;
+        }
+
+        .site-logo-row {
+            min-height: 200px;
+        }
+
+        .is-compact .site-logo-row {
+            min-height: auto;
+        }
+
+        .site-logo {
+            background: url(../img/site-logo.png) 50% no-repeat;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+
+        .is-compact .site-logo {
+            height: 50px;
+            width: 50px;
+            margin: 7px auto;
+        }
+
+        .site-navigation-row {
+            background-color: rgba(0, 0, 0, 0.08);
+            text-transform: uppercase;
+            height: 45px;
+        }
+
+        .site-navigation-row .mdl-navigation {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .site-navigation-row .mdl-navigation__link {
+            -ms-flex: 1;
+            flex: 1;
+            line-height: 42px;
+            color: #fff;
+        }
+
+        .site-navigation-row .is-active {
+            position: relative;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .site-navigation-row .mdl-navigation__link:hover {
+            opacity: 1;
+        }
+
+        .mdl-layout__header .mdl-layout__drawer-button {
+            color: #fff;
+        }
+
+        .mdl-layout__content {
+            background-color: #fefefe;
+        }
+
+        .site-content {
+            margin: 1em auto;
+            min-height: 580px;
+        }
+
+        .page-content {
+            padding-bottom: 2em;
+        }
+
+        .site-max-width {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .site-copy {
+            max-width: 700px;
+        }
+
+        .welcome-card > .mdl-card__title {
+            color: #fff;
+            height: 290px;
+            background: url("/img/cover.jpg") center/cover;
+        }
+
+        .event-card {
+            background: #3E4EB8;
+        }
+
+        .event-card .mdl-card__actions {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .event-card .mdl-card__title {
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+
+        .event-card .mdl-card__title > h4 {
+            margin-top: 0;
+        }
+
+        .event-card .mdl-card__actions {
+            display: -ms-flexbox;
+            display: flex;
+            box-sizing: border-box;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .event-card .mdl-card__actions > .material-icons {
+            padding-right: 10px;
+        }
+
+        .event-card .mdl-card__title,
+        .event-card .mdl-card__actions,
+        .event-card .mdl-card__actions > .mdl-button {
+            color: #fff;
+        }
+
+        .section__play-btn {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .section__play-btn .material-icons {
+            font-size: 3rem;
+        }
+
+        .section--center {
+            margin: 0 auto 2rem;
+        }
+
+        .homepage-portfolio .mdl-button {
+            margin: 0 auto;
+        }
+
+        .homepage-footer {
+            background: #eee;
+            margin-bottom: -1em;
+            padding: 2rem 0;
+        }
+
+        .portfolio-card .mdl-card__title {
+            padding-bottom: 0;
+        }
+
+        img.article-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .demo-card-image.mdl-card {
+            width: 192px;
+            height: 192px;
+        }
+
+        .person1 {
+            background: url("/img/person1.jpg") center/cover;
+        }
+
+        .person2 {
+            background: url("/img/person2.jpg") center/cover;
+        }
+
+        .demo-card-image > .mdl-card__actions {
+            height: 52px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-card-image__filename {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-contact .mdl-textfield {
+            width: 100%;
+        }
+
+        #contact-button {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+        footer .mdl-logo a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dotted #aaa;
+        }
+
+        .footer-container {
+            margin: 0 auto;
+        }
+
+    </style>
+    <script>
+        function hideLoader() {
+            document.getElementById('loaderWrapper').style.display = "none";
+        }
+    </script>
+<!--    <script>-->
+<!--        (function(i, s, o, g, r, a, m) {-->
+<!--            i['GoogleAnalyticsObject'] = r;-->
+<!--            i[r] = i[r] || function() {-->
+<!--                (i[r].q = i[r].q || []).push(arguments)-->
+<!--            }, i[r].l = 1 * new Date();-->
+<!--            a = s.createElement(o),-->
+<!--                m = s.getElementsByTagName(o)[0];-->
+<!--            a.async = 1;-->
+<!--            a.src = g;-->
+<!--            m.parentNode.insertBefore(a, m)-->
+<!--        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
+
+<!--        ga('create', 'UA-37350394-12', 'auto');-->
+<!--        ga('send', 'pageview');-->
+<!--    </script>-->
+</head>
+
+<body id="top">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="contact.html" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i class="material-icons">mail</i></a>
+    <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
+        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
+            <div class="site-logo"></div><span class="site-description" >Material Design Portfolio</span></span></div>
+        <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
+            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="index.html">Home</a><a class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link" href="about.html">About</a><a class="mdl-navigation__link" href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="index.html">Home</a><a class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link" href="about.html">About</a><a class="mdl-navigation__link" href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="site-content">
+            <div class="container"><div class="mdl-grid site-max-width">
+                <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Welcome</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Demo of Material Design Portfolio Template by TemplateFlip. Click on &quot;Download&quot; button below to download the template.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href=" https://templateflip.com/templates/material-portfolio/" target="_blank">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                <section class="section--center mdl-grid site-max-width">
+                    <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp">
+                        <i class="material-icons">play_circle_filled</i>
+                    </header>
+                    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Introduction</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                        </div>
+                        <div class="mdl-card__actions  mdl-card--border">
+                            <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">Watch Intro</a>
+                        </div>
+                    </div>
+                </section>
+                <section class="section--center mdl-grid site-max-width">
+                    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                        <div class="mdl-card__media">
+                            <img class="article-image" src="/img/portfolio1.jpg" border="0" alt="">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Rocky Peak</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                        <div class="mdl-card__media">
+                            <img class="article-image" src="/img/portfolio2.jpg" border="0" alt="">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Night Shadow</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                        <div class="mdl-card__media">
+                            <img class="article-image" src="/img/portfolio3.jpg" border="0" alt="">
+                        </div>
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Sky Reach</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section--center mdl-grid site-max-width homepage-portfolio">
+                    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio.html">View Portfolio</a>
+                </section>
+
+                <div class="homepage-footer">
+                    <section class="mdl-grid site-max-width">
+                        <div class="mdl-cell mdl-card mdl-cell--8-col mdl-cell--4-col-tablet  mdl-shadow--4dp portfolio-card">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Testimonials</h2>
+                            </div>
+                            <ul class="demo-list-three mdl-list">
+                                <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">person</i>
+                <span>Amazing people, always ready to help!</span>
+                <span class="mdl-list__item-text-body">
+                  Bryan Cranston, CEO, Amazing.com
+                </span>
+              </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons  mdl-list__item-avatar">person</i>
+                <span>Awesome work, they can do almost anything..</span>
+                <span class="mdl-list__item-text-body">
+                Aaron Paul, Marketing Lead, Awesome.com
+                </span>
+              </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
+                            <div class="mdl-card__title mdl-card--expand">
+                                <h4>
+                                    Featured event:<br>
+                                    Community Meetup
+                                    May 24, 2018<br>
+                                    7-11pm
+                                </h4>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                                    Add to Calendar
+                                </a>
+                                <div class="mdl-layout-spacer"></div>
+                                <i class="material-icons">event</i>
+                            </div>
+                        </div>
+                    </section>
+                </div></div>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="footer-container">
+                <div class="mdl-logo">&copy; Unitiled. Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a></div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+</div>
+</body>
+</html>
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        adjustIframe()-->
+<!--        $(window).resize(adjustIframe)-->
+
+<!--        $('.device-icon').click(function() {-->
+<!--            $('.device-icon').removeClass('active')-->
+<!--            $(this).addClass('active')-->
+<!--            $("#iframe").attr("width", $(this).data('width'))-->
+<!--        })-->
+<!--    })-->
+
+<!--    function adjustIframe() {-->
+<!--        iframe_height = $(window).height() + "px"-->
+<!--        $("#iframe").attr("height", iframe_height)-->
+<!--    }-->
+<!--</script>-->
