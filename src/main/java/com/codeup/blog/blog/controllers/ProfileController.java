@@ -201,7 +201,7 @@ public class ProfileController {
     }
 
     @PostMapping("/users/location")
-    public String create(@ModelAttribute Location locationToBeCreated){
+    public String create(@ModelAttribute ("form2") Location locationToBeCreated){
 //        locationToBeCreated.setProfiles(profileDao.getOne(1));
 
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This!!!!!!!!!!!!!!!!!!!!!!" + locationToBeCreated.getLocation());
