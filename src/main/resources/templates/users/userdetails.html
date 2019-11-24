@@ -154,8 +154,16 @@
                 </div>
                 <!--                marital status-->
                 <!--                location-->
-                <div class="col s6">
-                    <h3>Location will go here</h3>
+                <div class="input-field col s3">
+                    <select th:field="*{location}">
+                        <option value="0" disabled selected>Locatiom</option>
+                        <th:block th:each="location: ${locations}">
+                            <option th:name="branch" th:value="${location.id}"><span th:text="${location.location}"></span>
+                            </option>
+
+                        </th:block>
+                    </select>
+                    <label>Please select your location</label>
                 </div>
                 <!--                location end-->
 
