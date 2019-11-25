@@ -57,7 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/users/profile/{id}",
                         "/browse/**",
-                        "/users/userdetails"
+                        "/users/userdetails",
+                        "/meetups/**"
                         // only authenticated users can create ads
                 )
                 .authenticated()

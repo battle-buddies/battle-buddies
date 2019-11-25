@@ -210,5 +210,13 @@ public class ProfileController {
         return "redirect:/users/location";
     }
 
+    @GetMapping("/users/profile-design")
+
+    public String showProfile(Model model) {
+
+
+        return "users/profile-design";
+    }
+
 
 }
