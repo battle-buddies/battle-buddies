@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meet Ups</title>
-    <th:block th:replace="fragments/header :: profile-header"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,15 +11,30 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+    <style>
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mt{
+            margin-top: 3.7em;
+        }
+
+
+    </style>
 </head>
-<th:block th:replace="fragments/nav-bar :: browse"/>
+<th:block th:replace="fragments/nav-bar :: meetups"/>
 <body>
 
-    <h1>Meet Ups</h1>
 
     <div class="container" >
+        <div class="flex">
+            <h1>Meet Ups</h1>
+            <a class="btn col s3 mt" href="/meetups/create"> Create New Meet Up</a>
+
+        </div>
         <div class="row" >
-            <a class="btn col s2 offset-s10" href="/meetups/create"> Create New Meet Up</a>
             <div class="col s12" th:each="meetup : ${meetups}">
                 <div class="card">
                     <div class="card-content">

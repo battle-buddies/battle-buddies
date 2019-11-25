@@ -13,9 +13,9 @@
 </head>
 <body>
 <th:block th:replace="fragments/nav-bar :: browse"/>
-<h1 th:text="${trait.trait}"></h1>
 
 <div class="container" >
+    <h1 th:text="${trait.trait}"></h1>
     <div class="row" >
         <div class="col s4" th:each="profile: ${profiles}">
             <div class="card card-small">

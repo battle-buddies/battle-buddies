@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <th:block th:replace="fragments/header :: profile-header"/>
+
     <title>Create Meet Up</title>
 </head>
-<th:block th:replace="fragments/nav-bar :: main-nav"/>
+<th:block th:replace="fragments/nav-bar :: meetups"/>
 <body>
-<h1>Create New Meet Up</h1>
     <form th:action="@{'/meetups/create'}" th:method="post" th:object="${meetup}">
         <div class="container">
+            <h1>Create New Meet Up</h1>
             <div class="form-row">
                 <label>Meet Up Title</label><br>
                 <input type="text" id="title" class="input-text" th:field="*{title}" placeholder="Please enter a title" required>
