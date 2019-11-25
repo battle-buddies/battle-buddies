@@ -4,6 +4,16 @@
         display: none;
     }
 
+    h2{
+        text-align: center;
+    }
+
+    #reg{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
 
 

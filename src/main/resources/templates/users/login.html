@@ -66,23 +66,23 @@
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="login-show">
+        <div class="form-group">
             <form th:action="@{/login}" method="post">
                 <h2>LOGIN</h2>
-                <input id="username1" name="username" type="text" placeholder="Username"/>
-                <input id="password1" name="password" type="password" placeholder="Password"/>
-                <input type="submit" value="Log In"/>
+                <input class="form-control" id="username1" name="username" type="text" placeholder="Username"/>
+                <input class="form-control"  id="password1" name="password" type="password" placeholder="Password"/>
+                <button type="button" class="btn btn-outline-info">Login</button>
             </form>
         </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="register-show">
+        <div class="form group">
             <form th:action="@{/sign-up}" method="POST" th:object="${user}">
                 <h2>REGISTER</h2>
-                <input type="text" th:field="*{username}" placeholder="Username">
-                <input type="email" th:field="*{email}" placeholder="Email">
-                <input type="password" th:field="*{password}" placeholder="Password">
-                <input type="submit" value="Register">
+                <input class="form-control" type="text" th:field="*{username}" placeholder="Username">
+                <input class="form-control"  type="email" th:field="*{email}" placeholder="Email">
+                <input class="form-control"  type="password" th:field="*{password}" placeholder="Password">
+                <button type="button" class="btn btn-outline-info">Register</button>
             </form>
         </div>
     </div>
