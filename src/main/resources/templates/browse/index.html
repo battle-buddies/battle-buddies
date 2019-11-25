@@ -14,8 +14,8 @@
 <body>
 <th:block th:replace="fragments/nav-bar :: browse"/>
 
-<h1>BROWSE</h1>
 <div class="container" >
+    <h1>Browse</h1>
 
     <!--TRAITS CARD-->
     <div class="row" >
@@ -48,8 +48,21 @@
     </div>
 
 
-    <!--LOCATION CARD-->
+    <!--MEETUPS CARD-->
 
+    <div class="row" >
+        <div class="col s4">
+            <div class="card card-small">
+                <div class="card-content">
+                    <a th:href="@{'/meetups/'}">
+                        <span class="card-title" >MEET UPS</span>
+                    </a>
+                    <p>Find different meet ups and events</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
     <!--BRANCH CARD-->
