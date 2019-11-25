@@ -4,9 +4,10 @@ body{
     min-height:550px;
     width: 100%;
     margin:  0 auto;
-    background-image: -moz-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
-    background-image: -webkit-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
-    background-image: -ms-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
+    /*background-image: -moz-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);*/
+    /*background-image: -webkit-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);*/
+    /*background-image: -ms-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);*/
+    background:url("/img/flag_bg.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     background-position:center;
@@ -26,7 +27,7 @@ a{
     right:0;left:0;
     margin:auto;
     height:400px;
-    background-color: rgba(236, 48, 20, 0.9);
+    background-color: #a08c88;
 }
 .white-panel{
     background-color: rgba(255,255, 255, 1);
@@ -44,7 +45,7 @@ a{
     display:none;
 }
 .login-reg-panel{
-    color:#B8B8B8;
+    color:#ffffff;
 }
 .login-reg-panel #label-login,
 .login-reg-panel #label-register{

@@ -12,7 +12,7 @@
                 <li class="active"><a href="/login">Login</a></li>
             </ul>
                 <th:block sec:authorize="isAuthenticated()">
-            <ul class="left hide-on-med-and-down">
+            <ul class="left hide-on-med-and-down" >
                     <li><a th:href="@{'/browse/'}">Browse</a></li>
             </ul>
                 </th:block>
@@ -27,7 +27,6 @@
                     <a href="/login">Logout</a>
                 </form></li>
             </ul>
-
                     <th:block sec:authorize="isAuthenticated()">
                 <ul class="right hide-on-med-and-down">
                         <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
@@ -140,9 +139,7 @@
             <ul class="left hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
             </ul>
-            <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()">
-                <li class="active"><a href="/login">Login</a></li>
-            </ul>
+            <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()"><li class="active"><a href="/login">Login</a></li></ul>
 
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down">
@@ -253,4 +250,59 @@
             </ul>
         </div>
     </nav>
+</th:block>
+
+<th:block th:fragment="home-blue">
+    <nav class="pushpin-demo-nav pinned grey darken-3" data-target="blue" style="top: 0px;">
+        <div class="nav-wrapper grey darken-3">
+            <div class="container home-container">
+                <ul class="left hide-on-med-and-down"><li><a href="/">Home</a></li></ul>
+                <a href="/" class="brand-logo center"> <img class ="logo_txt" src="/img/imageedit_15_4976664328.png" alt="Flowers in Chania"></a>
+                <th:block sec:authorize="!isAuthenticated()">
+                <ul class="right hide-on-med-and-down" >
+                    <li class=""><a href="/login">Login</a></li>
+                </ul>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                <ul class="right hide-on-med-and-down">
+                    <li><a th:href="@{'/browse/'}">Browse</a></li>
+                    <li><a th:href="@{'/meetups/'}">Meetups</a></li>
+                    <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
+                    <li><form th:action="@{/logout}" th:method="post"><a href="/login">Logout</a></form></li>
+                        </ul>
+                </th:block>
+            </div>
+        </div>
+    </nav>
+</th:block>
+
+<th:block th:fragment="home-red">
+    <nav class="pushpin-demo-nav pin-top" data-target="red" style="top: 0px;">
+        <div class="nav-wrapper red">
+            <div class="container">
+                <a href="#" class="brand-logo">Red</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#!">Red Link 1</a></li>
+                    <li><a href="#!">Red Link 2</a></li>
+                    <li><a href="#!">Red Link 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</th:block>
+
+<th:block th:fragment="home-green">
+    <nav class="pushpin-demo-nav pin-top" data-target="green" style="top: 0px;">
+        <div class="nav-wrapper green">
+            <div class="container">
+                <a href="#" class="brand-logo">Green</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#!">Green Link 1</a></li>
+                    <li><a href="#!">Green Link 2</a></li>
+                    <li><a href="#!">Green Link 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 </th:block>

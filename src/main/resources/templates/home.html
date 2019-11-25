@@ -3,19 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+    <th:block th:replace="fragments/header :: home-header"/>
 </head>
-<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <body>
 
-    <h1>Battle Buddies Home Page</h1>
+<div id="blue" class="block">
+    <th:block th:replace="fragments/nav-bar :: home-blue"/>
+<!--    <div class="divider"></div>-->
+    <div class="row">
+        <div class="col l12 m12 s12">
+            <div class="background">
+                <div class="transbox">
+<!--                    <img src="/img/testhomeimg.jpg" alt="Flowers in Chania">-->
+                </div>
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+<!--<div id="red" class="block red lighten-1">-->
+<!--    <th:block th:replace="fragments/nav-bar :: home-red"/>-->
+<!--</div>-->
+<!--<div id="green" class="block green lighten-1">-->
+<!--    <th:block th:replace="fragments/nav-bar :: home-green"/>-->
+<!--</div>-->
 
 <script>
     $(".button-collapse").sideNav();
+
+    $(document).ready(function () {
+        $('.pushpin-demo-nav').each(function () {
+            var $this = $(this);
+            var $target = $('#' + $(this).attr('data-target'));
+            $this.pushpin({
+                top: $target.offset().top,
+                bottom: $target.offset().top + $target.outerHeight() - $this.height()
+            });
+        });
+    });
 </script>
 </body>
 </html>
