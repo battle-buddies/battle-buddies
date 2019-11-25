@@ -51,16 +51,16 @@
                         <li><a th:href="@{'/meetups/'}">Meetups</a></li>
                     </ul>
                 </th:block>
-                    <ul sec:authorize="isAuthenticated()">
-                        <li>
-                            <a href="/login">Logout</a>
-                       </li>
-                    </ul>
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
                         <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
                     </ul>
                 </th:block>
+                    <ul sec:authorize="isAuthenticated()">
+                        <li>
+                            <a href="/login">Logout</a>
+                       </li>
+                    </ul>
 
             </ul>
         </div>
@@ -112,17 +112,18 @@
                     </ul>
                 </th:block>
 
-                    <ul sec:authorize="isAuthenticated()">
-                        <li>
-                            <a href="/login">Logout</a>
-                       </li>
-                    </ul>
 
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
                         <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
                     </ul>
                 </th:block>
+
+                <ul sec:authorize="isAuthenticated()">
+                    <li>
+                        <a href="/login">Logout</a>
+                    </li>
+                </ul>
 
             </ul>
         </div>
