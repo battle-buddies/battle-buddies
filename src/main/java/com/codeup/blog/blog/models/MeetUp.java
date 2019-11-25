@@ -21,6 +21,9 @@ public class MeetUp {
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String address;
 
+//    @Column(nullable = false, columnDefinition = "Date()")
+//    private
+
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
