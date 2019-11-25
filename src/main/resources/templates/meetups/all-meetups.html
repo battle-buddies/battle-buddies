@@ -1,13 +1,32 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"><head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Meet Ups</title>
+    <th:block th:replace="fragments/header :: profile-header"/>
 </head>
+<th:block th:replace="fragments/nav-bar :: browse"/>
 <body>
-    <h1>meetups</h1>
+    <h1>Meet Ups</h1>
+
+    <div class="container" >
+        <div class="row" >
+            <a class="btn col s2 offset-s10" href="/meetups/create"> Create New Meet Up</a>
+            <div class="col s12" th:each="meetup : ${meetups}">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-title">
+                            <a th:href="@{'/meetups/' + ${meetup.id}}">
+                                <span  th:text="${meetup.title}"></span>
+                            </a>
+                        </div>
+                        <p th:text="${meetup.description}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
