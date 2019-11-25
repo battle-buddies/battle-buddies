@@ -86,6 +86,7 @@ public class ProfileController {
         model.addAttribute("traits", traitDao.findAll());
         model.addAttribute("branches", branchDao.findAll());
         model.addAttribute("ranks", rankDao.findAll());
+        model.addAttribute("locations", locationDao.findAll());
 
         return "users/userdetails";
     }

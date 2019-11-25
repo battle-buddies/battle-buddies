@@ -1,0 +1,131 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <title th:value="${meetup.title}"></title>
+    <style>
+        .mapboxgl-canvas-container {
+
+            height: 50vh;
+        }
+
+        .margin-left{
+            text-align: right;
+        }
+
+        .margin-left label{
+            margin-right: 1em;
+        }
+
+        h6{
+            margin-top: 24em;
+            margin-left: 1em;
+        }
+
+        .ml{
+            margin-left: 1em;
+        }
+
+    </style>
+
+</head>
+<th:block th:replace="fragments/nav-bar :: browse"/>
+
+<body>
+
+
+<div class="container" >
+    <h1 th:text="${meetup.title}"/>
+    <div class="row" >
+        <br>
+        <input type="hidden" id="address" th:value="${meetup.address}">
+        <div class="col s12" >
+            <div class="card">
+                <div class="card-content">
+                    <h5  th:text="${meetup.address}"></h5>
+                    <div class="card-image">
+                        <div>
+                            <div id="mapContainer" class="col s12">
+                                <div id="map"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h6>Meet Up Description: </h6>
+                    <div class="ml">
+                        <p th:text="${meetup.description}"></p>
+                    </div>
+                    <div class="margin-left">
+                        <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+<!--<script src="../../static/js/mapbox-utils.js"></script>-->
+<script>
+
+    function geocode(search, token) {
+        var baseUrl = 'https://api.mapbox.com';
+        var endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+            .then(function(res) {
+                return res.json();
+                // to get all the data from the request, comment out the following three lines...
+            }).then(function(data) {
+                return data.features[0].center;
+            });
+    }
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaXNhaWFoYnJhc2hlYXJzIiwiYSI6ImNqemloYnV1YjE2bHEzbGxrNWRvMzJjcWcifQ.Dr5-4nQp4Z6piGiXrLaaww';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 17,
+        center: [-98.4936, 29.4241]
+
+    });
+
+    var marker = new mapboxgl.Marker()
+        .setLngLat([30.5, 50.5])
+        .addTo(map);
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: {
+            color: 'orange'
+        },
+        mapboxgl: mapboxgl
+    });
+
+
+    map.addControl(geocoder);
+
+    let address = $('#address').val();
+
+    geocode(address, 'pk.eyJ1IjoiaXNhaWFoYnJhc2hlYXJzIiwiYSI6ImNqemloYnV1YjE2bHEzbGxrNWRvMzJjcWcifQ.Dr5-4nQp4Z6piGiXrLaaww')
+        .then(function (result) {
+            map.flyTo({ center:result});
+            marker.setLngLat(result);
+
+        });
+
+</script>
+</html>

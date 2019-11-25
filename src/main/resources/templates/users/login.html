@@ -1,32 +1,11 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8" />-->
-<!--    <title>Log In</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Log In</h1>-->
-<!--<div th:if="${param.error}">-->
-<!--    Invalid Username and Password.-->
-<!--</div>-->
-<!--<div th:if="${param.logout}">-->
-<!--    You have been logged out.-->
-<!--</div>-->
 
-<!--<form th:action="@{/login}" method="post">-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" name="username" type="text" />-->
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" name="password" type="password" />-->
-<!--    <input type="submit" value="Log In" />-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
     <title>Log In</title>
     <th:block th:replace="fragments/header :: login-header"/>
 </head>
@@ -34,7 +13,7 @@
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
-<div th:if="${param.logout}">
+<div class="alert alert-success" role="alert" th:if="${param.logout}">
     You have been logged out.
 </div>
 <div class="login-reg-panel">
@@ -74,6 +53,53 @@
 </div>
 
 
+<!--MOBILE VIEW-->
+
+<div id="mobile-login">
+<div class="jumbotron">
+    <h1 class="display-4">Battle Buddies</h1>
+
+</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="form-group">
+            <form th:action="@{/login}" method="post">
+                <h2>LOGIN</h2>
+                <input class="form-control" id="username1" name="username" type="text" placeholder="Username"/>
+                <input class="form-control"  id="password1" name="password" type="password" placeholder="Password"/>
+                <input id="log" class="btn btn-outline-danger btn-block" type="submit" value="Log In"/>
+
+            </form>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="form group">
+            <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+                <h2>REGISTER</h2>
+                <input class="form-control" type="text" th:field="*{username}" placeholder="Username">
+                <input class="form-control"  type="email" th:field="*{email}" placeholder="Email">
+                <input class="form-control"  type="password" th:field="*{password}" placeholder="Password">
+                <input id="reg" class="btn btn-outline-danger btn-block" type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
 <th:block th:replace="fragments/footer :: login-footer"/>
+
+
 </body>
 </html>
