@@ -8,33 +8,17 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en"
               rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-indigo.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"/>
         <link href="https://ajax.googleapis.com" rel="preconnect"/>
         <link href="https://fonts.googleapis.com" rel="preconnect"/>
         <link rel="stylesheet" href="/stylesheets/style-0.1.5.css">
+<!--        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-indigo.min.css"/>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-        <script>
-            WebFontConfig = {
-                google: {
-                    families: ['Roboto:300,400,500,700:latin']
-                },
-                classes: false,
-                events: false,
-                timeout: 1500
-            };
-            (function () {
-                var wf = document.createElement('script');
-                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                wf.type = 'text/javascript';
-                wf.defer = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
-        </script>
+
+
         <style>
             .about-header {
 
@@ -324,18 +308,6 @@
             }
 
         </style>
-        <script>
-
-            function hideLoader() {
-                document.getElementById('loaderWrapper').style.display = "none";
-            }
-
-            var instance = M.Tabs.getInstance(elem);
-
-            $(document).ready(function () {
-                $('.tabs').tabs();
-            });
-        </script>
         <!--    <script>-->
         <!--        (function(i, s, o, g, r, a, m) {-->
         <!--            i['GoogleAnalyticsObject'] = r;-->
@@ -358,28 +330,32 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="contact.html" id="contact-button"
                                                                   class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i
         class="material-icons">mail</i></a>
-    <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
-        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
-            <div class="site-logo"></div><span class="site-description"
-                                               th:text="${user.getProfile().firstName} + '\'s Profile'">Material Design Portfolio</span></span>
-        </div>
-        <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link"
-                                                                                       href="index.html">Home</a><a
-                    class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link"
-                                                                                       href="about.html">About</a><a
-                    class="mdl-navigation__link" href="contact.html">Contact</a>
-            </nav>
-        </div>
+    <header>
+<!--        <header class="mdl-layout__header mdl-layout__header&#45;&#45;waterfall site-header">-->
+<!--        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">-->
+<!--            <div class="site-logo"></div><span class="site-description"-->
+<!--                                               th:text="${user.getProfile().firstName} + '\'s Profile'">Material Design Portfolio</span></span>-->
+<!--        </div>-->
+<!--        <div class="mdl-layout__header-row site-navigation-row mdl-layout&#45;&#45;large-screen-only">-->
+<!--            <nav class="mdl-navigation mdl-typography&#45;&#45;body-1-force-preferred-font"><a class="mdl-navigation__link"-->
+<!--                                                                                       href="index.html">Home</a><a-->
+<!--                    class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link"-->
+<!--                                                                                       href="about.html">About</a><a-->
+<!--                    class="mdl-navigation__link" href="contact.html">Contact</a>-->
+<!--            </nav>-->
+            <th:block th:replace="fragments/nav-bar :: profile"/>
+
+
+<!--        </div>-->
     </header>
-    <div class="mdl-layout__drawer mdl-layout--small-screen-only red">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link"
-                                                                                   href="index.html">Home</a><a
-                class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link"
-                                                                                   href="about.html">About</a><a
-                class="mdl-navigation__link" href="contact.html">Contact</a>
-        </nav>
-    </div>
+<!--    <div class="mdl-layout__drawer mdl-layout&#45;&#45;small-screen-only red">-->
+<!--        <nav class="mdl-navigation mdl-typography&#45;&#45;body-1-force-preferred-font"><a class="mdl-navigation__link"-->
+<!--                                                                                   href="index.html">Home</a><a-->
+<!--                class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link"-->
+<!--                                                                                   href="about.html">About</a><a-->
+<!--                class="mdl-navigation__link" href="contact.html">Contact</a>-->
+<!--        </nav>-->
+<!--    </div>-->
     <main class="mdl-layout__content">
         <div class="site-content">
 <!--                <header class="section__play-btn mdl-cell mdl-cell&#45;&#45;3-col-desktop mdl-cell&#45;&#45;2-col-tablet mdl-cell&#45;&#45;4-col-phone mdl-color&#45;&#45;teal-100 mdl-color-text&#45;&#45;white  mdl-shadow&#45;&#45;4dp">-->
@@ -598,7 +574,6 @@
                 </div>
             </div>
         </div>
-        <th:block th:replace="fragments/nav-bar :: profile"/>
         <footer class="mdl-mini-footer">
             <div class="footer-container">
                 <div class="mdl-logo">&copy; Unitiled. Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a>
@@ -612,8 +587,41 @@
 
 
     <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script>
+
+        $(".button-collapse").sideNav();
+
+
+        function hideLoader() {
+            document.getElementById('loaderWrapper').style.display = "none";
+        }
+
+        var instance = M.Tabs.getInstance(elem);
+
+        $(document).ready(function () {
+            $('.tabs').tabs();
+        });
+
+        WebFontConfig = {
+            google: {
+                families: ['Roboto:300,400,500,700:latin']
+            },
+            classes: false,
+            events: false,
+            timeout: 1500
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.defer = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
 </div>
 </body>
 </html>
