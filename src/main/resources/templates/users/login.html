@@ -71,7 +71,7 @@
                 <h2>LOGIN</h2>
                 <input class="form-control" id="username1" name="username" type="text" placeholder="Username"/>
                 <input class="form-control"  id="password1" name="password" type="password" placeholder="Password"/>
-                <button type="button" class="btn btn-outline-info">Login</button>
+                <button id="login" type="button" class="btn btn-outline-info">Login</button>
             </form>
         </div>
     </div>
@@ -94,6 +94,10 @@
 
 
 <th:block th:replace="fragments/footer :: login-footer"/>
+<script>
+    $('.alert').alert('close');
+    $('#login').alert()
+</script>
 
 </body>
 </html>
