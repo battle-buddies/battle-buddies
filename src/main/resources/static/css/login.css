@@ -8,11 +8,18 @@
         text-align: center;
     }
 
-    #reg{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .jumbotron{
+      background-color: red;
+      text-align: center;
+  }
+
+  #reg, #log{
+      display: block;
+      margin: 0 auto;
+  }
+
+
+
 
 
 

@@ -10,7 +10,7 @@
     <th:block th:replace="fragments/header :: login-header"/>
 </head>
 <body>
-<div class="alert alert-danger" role="alert" th:if="${param.error}">
+<div th:if="${param.error}">
     Invalid Username and Password.
 </div>
 <div class="alert alert-success" role="alert" th:if="${param.logout}">
@@ -55,7 +55,11 @@
 
 <!--MOBILE VIEW-->
 
-<Div id="mobile-login">
+<div id="mobile-login">
+<div class="jumbotron">
+    <h1 class="display-4">Battle Buddies</h1>
+
+</div>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
@@ -71,7 +75,8 @@
                 <h2>LOGIN</h2>
                 <input class="form-control" id="username1" name="username" type="text" placeholder="Username"/>
                 <input class="form-control"  id="password1" name="password" type="password" placeholder="Password"/>
-                <button id="login" type="button" class="btn btn-outline-info">Login</button>
+                <input id="log" class="btn btn-outline-danger btn-block" type="submit" value="Log In"/>
+
             </form>
         </div>
     </div>
@@ -82,22 +87,19 @@
                 <input class="form-control" type="text" th:field="*{username}" placeholder="Username">
                 <input class="form-control"  type="email" th:field="*{email}" placeholder="Email">
                 <input class="form-control"  type="password" th:field="*{password}" placeholder="Password">
-                <button type="button" class="btn btn-outline-info">Register</button>
+                <input id="reg" class="btn btn-outline-danger btn-block" type="submit" value="Register">
             </form>
         </div>
     </div>
 
 </div>
 
-</Div>
+</div>
 
 
 
 <th:block th:replace="fragments/footer :: login-footer"/>
-<script>
-    $('.alert').alert('close');
-    $('#login').alert()
-</script>
+
 
 </body>
 </html>
