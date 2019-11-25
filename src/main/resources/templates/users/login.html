@@ -4,6 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
     <title>Log In</title>
     <th:block th:replace="fragments/header :: login-header"/>
@@ -52,6 +53,47 @@
 </div>
 
 
+<!--MOBILE VIEW-->
+
+<Div id="mobile-login">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="login-show">
+            <form th:action="@{/login}" method="post">
+                <h2>LOGIN</h2>
+                <input id="username1" name="username" type="text" placeholder="Username"/>
+                <input id="password1" name="password" type="password" placeholder="Password"/>
+                <input type="submit" value="Log In"/>
+            </form>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="register-show">
+            <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+                <h2>REGISTER</h2>
+                <input type="text" th:field="*{username}" placeholder="Username">
+                <input type="email" th:field="*{email}" placeholder="Email">
+                <input type="password" th:field="*{password}" placeholder="Password">
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</Div>
+
+
+
 <th:block th:replace="fragments/footer :: login-footer"/>
+
 </body>
 </html>
