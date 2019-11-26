@@ -31,7 +31,13 @@ public class MeetUp {
     @JoinColumn (name = "user_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetUp")
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "meetup_users",
+            joinColumns = {@JoinColumn(name="meetup_id")},
+            inverseJoinColumns = {@JoinColumn(name="users_id")}
+    )
     private List<User> interestedUsers;
 
 

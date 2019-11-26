@@ -73,25 +73,16 @@ public class MeetUpController {
         MeetUp meetUp = meetUpDao.getOne(id);
 
 
-//        if (meetUp.getInterestedUsers().isEmpty()){
-//            meetUp.setInterestedUsers(new ArrayList<>());
-//        }
-
         ArrayList<User> usersToAdd = new ArrayList<>();
 
-
-        for (User el: meetUp.getInterestedUsers()) {
-              usersToAdd.add(el);
-        }
+        usersToAdd.addAll(meetUp.getInterestedUsers());
 
 
-
-        if(!meetUp.getInterestedUsers().contains(user)){
+        if(!usersToAdd.contains(user)){
             usersToAdd.add(user);
         }
 
         meetUp.setInterestedUsers(usersToAdd);
-
 
         int total = 0;
         for (User el: meetUp.getInterestedUsers()) {
