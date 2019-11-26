@@ -1,6 +1,6 @@
 
-drop database if exists battlebuddies_db;
 
+drop database if exists battlebuddies_db;
 use battlebuddies_db;
 
 
