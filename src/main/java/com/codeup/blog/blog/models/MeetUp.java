@@ -21,8 +21,12 @@ public class MeetUp {
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String address;
 
-//    @Column(nullable = false, columnDefinition = "Date()")
-//    private
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String date;
+
+    @Column
+    private List<Long> count;
+
 
     @ManyToOne
     @JoinColumn (name = "user_id")
@@ -34,19 +38,23 @@ public class MeetUp {
 
     public MeetUp(){}
 
-    public MeetUp(String title, String description, String address, User user, Location location) {
+    public MeetUp(String title, String description, String address, User user, Location location, String date, List<Long> count) {
         this.title = title;
         this.description = description;
         this.address = address;
         this.user = user;
         this.location = location;
+        this.date = date;
+        this.count = count;
     }
-    public MeetUp(long id, String title, String description, String address, User user, Location location) {
+    public MeetUp(long id, String title, String description, String address, User user, Location location, String date, List<Long> count) {
         this.title = title;
         this.description = description;
         this.address = address;
         this.user = user;
         this.location = location;
+        this.date = date;
+        this.count = count;
     }
 
 
@@ -99,5 +107,19 @@ public class MeetUp {
         this.location = location;
     }
 
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public List<Long> getCount() {
+        return count;
+    }
+
+    public void setCount(List<Long> count) {
+        this.count = count;
+    }
 }
