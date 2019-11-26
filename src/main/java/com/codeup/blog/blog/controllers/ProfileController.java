@@ -166,10 +166,9 @@ public class ProfileController {
 
 
     //    user details edit GET
-    @GetMapping("/users/{id}/user-details-edit")
-    public String showUserDetailsEdit(@PathVariable long id, Model m){
-
-         User user = userDao.getOne(id);
+    @GetMapping("/users/user-details-edit")
+    public String showUserDetailsEdit(Model m){
+        User user = usersService.loggedInUser();
          Profile profile = user.getProfile();
          m.addAttribute("profile", profile);
         m.addAttribute("hobbies", hobbyDao.findAll());
@@ -179,24 +178,40 @@ public class ProfileController {
         m.addAttribute("locations", locationDao.findAll());
         return "users/user-details-edit";
     }
+//
+//// user detail edit POST
 
-// user detail edit POST
-
-    @PostMapping("/users/{id}/user-details-edit")
+    @PostMapping("/users/user-details-edit")
     public String submitUserDetailsEdit(
-            @PathVariable long id,
-            @ModelAttribute Profile profile,
             @RequestParam(name="traits", required = false)ArrayList<Long> traitIds,
             @RequestParam(name="hobbies", required = false)ArrayList<Long> hobbyIds,
             @RequestParam(name="branch", required = false)Long branchId,
-            @RequestParam(name="rank", required = false) Long rankId
+            @RequestParam(name="rank", required = false) Long rankId,
+            @RequestParam(name="firstName", required = false) String firstName,
+            @RequestParam(name="lastName", required = false) String lastName,
+            @RequestParam(name="bio", required = false) String bio,
+            @RequestParam(name="age", required = false) int age,
+            @RequestParam(name="milSpouse", required = false) boolean millSpouse,
+            @RequestParam(name="married", required = false) boolean married
+
 
     ){
 
-        User user = userDao.getOne(id);
-        Profile profilee = user.getProfile();
+        User user = usersService.loggedInUser();
+        Profile profile = user.getProfile();
+
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
+
+        profile.setFirstName(firstName);
+        profile.setLastName(lastName);
+        profile.setBio(bio);
+        profile.setage(age);
+        profile.setMilSpouse(millSpouse);
+        profile.setMilSpouse(married);
+
+
+
 
 
 
@@ -213,7 +228,7 @@ public class ProfileController {
 
         // ADDS EACH INDIVIDUAL Hobby TO PROFILE
         if (hobbiesToAdd != null){
-            profilee.setHobbies(new ArrayList<>());
+            profile.setHobbies(new ArrayList<>());
             for (Hobby hobby: hobbiesToAdd){
                 profile.getHobbies().add(hobby);
             }
@@ -247,7 +262,7 @@ public class ProfileController {
 
         profileDao.save(profile);
 
-        return "redirect:/users/profile/" + id;
+        return "redirect:/users/profile/" + user.getId();
     }
 
 

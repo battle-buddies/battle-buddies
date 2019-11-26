@@ -18,7 +18,7 @@
         <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
         <li class="tab col s3"><a href="#Service-details">Service Detail</a></li>
     </ul>
-    <form th:action="@{'/users/' + ${profile.getUser().getId()} + '/user-details-edit'}" th:method="post" th:object="${profile}">
+    <form th:action="@{'/users/user-details-edit'}" th:method="post" th:object="${profile}">
         <div id="Basic-info" class="col s12">
 
             <div class="row">
