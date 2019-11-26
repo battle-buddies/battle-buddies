@@ -361,6 +361,15 @@
 <!--                    <div class="side-pic"></div>-->
 <!--                </header>-->
             <div class ="container">
+
+
+                <!--***********************************EDIT USER-DETAILS BUTTON *****************************-->
+
+
+
+                <a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
+
+                <!--*********************************** END EDIT USER-DETAILS BUTTON *****************************-->
             <section class="section--center mdl-grid site-max-width">
                 <div>
                     <img th:if="${user.getProfile().getPhotos() == null}" class="responsive-img" th:src="${'https://picsum.photos/300?pic=' + #strings.randomAlphanumeric(2)}" alt="placeholder" />
@@ -578,6 +587,8 @@
                     </section>
                 </div>
             </div>
+
+
         </div>
         <footer class="mdl-mini-footer">
             <div class="footer-container">

@@ -22,6 +22,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Controller
 public class ProfileController {
 
@@ -44,6 +45,8 @@ public class ProfileController {
 
     @Autowired
     private UserService usersService;
+    @Autowired
+    UserService usersSvc;
 
 
     public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao, ChildRepository childDao, PhotoRepository  photoDao) {
@@ -204,6 +207,116 @@ public class ProfileController {
 
         }
     }
+
+
+
+    //    user details edit GET
+    @GetMapping("/users/user-details-edit")
+    public String showUserDetailsEdit(Model m){
+        User user = usersService.loggedInUser();
+         Profile profile = user.getProfile();
+         m.addAttribute("profile", profile);
+        m.addAttribute("hobbies", hobbyDao.findAll());
+        m.addAttribute("traits", traitDao.findAll());
+        m.addAttribute("branches", branchDao.findAll());
+        m.addAttribute("ranks", rankDao.findAll());
+        m.addAttribute("locations", locationDao.findAll());
+        return "users/user-details-edit";
+    }
+//
+//// user detail edit POST
+
+    @PostMapping("/users/user-details-edit")
+    public String submitUserDetailsEdit(
+            @RequestParam(name="traits", required = false)ArrayList<Long> traitIds,
+            @RequestParam(name="hobbies", required = false)ArrayList<Long> hobbyIds,
+            @RequestParam(name="branch", required = false)Long branchId,
+            @RequestParam(name="rank", required = false) Long rankId,
+            @RequestParam(name="firstName", required = false) String firstName,
+            @RequestParam(name="lastName", required = false) String lastName,
+            @RequestParam(name="bio", required = false) String bio,
+            @RequestParam(name="age", required = false) int age,
+            @RequestParam(name="milSpouse", required = false) boolean millSpouse,
+            @RequestParam(name="married", required = false) boolean married
+
+
+    ){
+
+        User user = usersService.loggedInUser();
+        Profile profile = user.getProfile();
+
+        profile.setBranch(branchDao.getOne(branchId));
+        profile.setRank(rankDao.getOne(rankId));
+
+        profile.setFirstName(firstName);
+        profile.setLastName(lastName);
+        profile.setBio(bio);
+        profile.setage(age);
+        profile.setMilSpouse(millSpouse);
+        profile.setMilSpouse(married);
+
+
+
+
+
+
+
+        // FINDS THE Hobbies THAT WERE SELECTED BY USER
+        List<Hobby> hobbiesToAdd = new ArrayList<>();
+        for (long hobbyId : hobbyIds) {
+            for (Hobby all: hobbyDao.findAll()){
+                if(hobbyId == all.getId()){
+                    hobbiesToAdd.add(hobbyDao.getOne(hobbyId));
+                }
+            }
+        }
+
+        // ADDS EACH INDIVIDUAL Hobby TO PROFILE
+        if (hobbiesToAdd != null){
+            profile.setHobbies(new ArrayList<>());
+            for (Hobby hobby: hobbiesToAdd){
+                profile.getHobbies().add(hobby);
+            }
+        }
+
+
+
+
+        // FINDS THE TRAITS THAT WERE SELECTED BY USER
+        List<Trait> traitsToAdd = new ArrayList<>();
+        for (long traitId : traitIds) {
+            for (Trait all: traitDao.findAll()){
+                if(traitId == all.getId()){
+                    traitsToAdd.add(traitDao.getOne(traitId));
+                }
+            }
+        }
+
+        // ADDS EACH INDIVIDUAL TRAIT TO PROFILE
+        if (traitsToAdd != null){
+            profile.setTraits(new ArrayList<>());
+            for (Trait trait: traitsToAdd){
+                profile.getTraits().add(trait);
+            }
+        }
+//        hard coded children for now
+        List<Child> children = new ArrayList<>();
+        children.add(new Child("female", 6));
+        profile.setChildren(children);
+
+
+        profileDao.save(profile);
+
+        return "redirect:/users/profile/" + user.getId();
+    }
+
+
+
+
+
+
+
+
 
 
     @GetMapping("/users/{id}/friend-request")

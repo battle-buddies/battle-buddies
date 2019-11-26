@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <title>Edit about me!</title>
+
+</head>
+<body>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
+<div class="container">
+    <ul id="tabs-swipe-demo" class="tabs">
+        <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
+        <li class="tab col s3"><a href="#Service-details">Service Detail</a></li>
+    </ul>
+    <form th:action="@{'/users/user-details-edit'}" th:method="post" th:object="${profile}">
+        <div id="Basic-info" class="col s12">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="firstName" type="text" class="validate" th:value="${profile.firstName}"  th:field="*{firstName}">
+
+                </div>
+                <div class="input-field col s6">
+                    <input id="lastName" type="text" class="validate" th:value="${profile.lastName}" th:field="*{lastName}">
+
+                </div>
+                <!--                        gender pick start-->
+                <div class="input-field col s6">
+                    <select th:field="*{gender}">
+                        <option value="0" disabled selected>gender</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                    <label>Select gender</label>
+                </div>
+                <!--                        gender pick end-->
+
+                <!--                        DOB start-->
+
+                <div class="input-field col s6">
+                    <input id="age" type="text" placeholder="Please enter your age as a number" th:field="*{age}"/>
+
+                </div>
+                <!--                        DOB end-->
+
+                <!--                        pick hobbies and traits-->
+                <div class="input-field col s6">
+                    <select multiple th:field="*{traits}">
+                        <option value="" disabled selected>Choose your traits</option>
+                        <th:block th:each="trait: ${traits}">
+                            <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span>
+                            </option>
+                        </th:block>
+
+                    </select>
+                    <label>Pick 5 traits that best describe you</label>
+                </div>
+                <div class="input-field col s6">
+                    <select multiple th:field="*{hobbies}">
+                        <option value="" disabled selected>Choose your hobbies</option>
+                        <th:block th:each="hobby: ${hobbies}">
+                            <option th:name="hobbies" th:value="${hobby.id}"><span th:text="${hobby.hobby}"></span>
+                            </option>
+                        </th:block>
+
+                    </select>
+                    <label>Pick 5 hobbies that interest you</label>
+                </div>
+
+                <!--                bio start-->
+                <div class="input-field col s12">
+                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"></textarea>
+                    <label for="bio">Tell us more about yourself! Write a bio or share some interesting
+                        facts!</label>
+                </div>
+
+                <!--                bio end-->
+
+                <!--                        end hobbies and traits-->
+            </div>
+
+            <!--            children start -->
+            <p>Adding your children will help us match you with friends that have children the same age! </p>
+            <div id="formbody" class="input-field col s6 input_fields_wrap">
+                <button class="btn add_field_button">Add another child</button>
+                <div>
+                    <input type="text" name="childAge" placeholder="Please enter child's age as a number">
+                    <input type="text" name="childGender" placeholder="Please enter child's gender as male or female">
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!--        end children-->
+
+        <!--        start of second tab-->
+        <div id="Service-details" class="col s12">
+            <div class="row">
+
+                <!--                rank start-->
+
+                <div class="input-field col s3">
+                    <select th:field="*{rank}">
+                        <th:block th:each="rank: ${ranks}">
+                            <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
+                        </th:block>
+                    </select>
+                    <label>Please select your rank</label>
+                </div>
+                <!--                rank end-->
+
+                <!--                branch start-->
+
+                <div class="input-field col s3">
+                    <select th:field="*{branch}">
+                        <th:block th:each="branch: ${branches}">
+                            <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span>
+                            </option>
+
+                        </th:block>
+                    </select>
+                    <label>Please select your branch</label>
+                </div>
+                <!--                branch end-->
+
+                <!--                mill spouse-->
+                <div class="input-field col s6">
+                    <select th:field="*{milSpouse}">
+                        <option value="0" disabled selected>Are you a military spouse?</option>
+                        <option value="1" name="true">Yes</option>
+                        <option value="0" name="false">No</option>
+
+                    </select>
+                    <label>Are you signing up as a military spouse?</label>
+                </div>
+                <!--                mill spouse end-->
+
+                <!--                marital status-->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select th:field="*{married}">
+                            <option value="0" disabled selected>Marital Status</option>
+                            <option value="1" name="single">Single</option>
+                            <option value="0" name="married">Married</option>
+                        </select>
+                        <label>Marital Status</label>
+                    </div>
+                </div>
+                <!--                marital status-->
+                <!--                location-->
+                <div class="input-field col s3">
+                    <select th:field="*{location}">
+                        <option value="0" disabled selected>Location</option>
+                        <th:block th:each="location: ${locations}">
+                            <option th:name="branch" th:value="${location.id}"><span th:text="${location.location}"></span>
+                            </option>
+
+                        </th:block>
+                    </select>
+                    <label>Please select your location</label>
+                </div>
+                <!--                location end-->
+
+            </div>
+            <!--           row end-->
+            <button class="waves-effect waves-light btn">Submit Changes!</button>
+        </div>
+    </form>
+</div>
+<!--    main container end-->
+
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+
+    });
+
+
+    var max_fields = 10; //maximum input boxes allowed
+    var wrapper = $(".input_fields_wrap"); //Fields wrapper
+    var add_button = $(".add_field_button"); //Add button ID
+    var x = 1; //initlal text box count
+    var arr = [
+        {val: 1, text: 'Male'},
+        {val: 0, text: 'Female'}
+    ];
+    var sel = $('<select th:field="*{Children}>').appendTo(wrapper);
+    $(add_button).click(function (e) { //on add input button click
+        e.preventDefault();
+        if (x < max_fields) { //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input type="text" name="age1" placeholder="Please enter child\'s age as a number"><input type="text" name="gender" placeholder="Please enter child\'s gender as male or female">' +
+                '<a href="#" class="remove_field">Remove</a></div>'); //add input box
+        }
+
+    });
+    $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+    })
+
+
+</script>
+
+</body>
+</html>
