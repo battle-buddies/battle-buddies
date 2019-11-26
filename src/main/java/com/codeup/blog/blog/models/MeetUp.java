@@ -25,7 +25,7 @@ public class MeetUp {
     private String date;
 
     @Column
-    private List<Long> count;
+    private int count;
 
 
     @ManyToOne
@@ -38,7 +38,7 @@ public class MeetUp {
 
     public MeetUp(){}
 
-    public MeetUp(String title, String description, String address, User user, Location location, String date, List<Long> count) {
+    public MeetUp(String title, String description, String address, User user, Location location, String date, int count) {
         this.title = title;
         this.description = description;
         this.address = address;
@@ -47,7 +47,7 @@ public class MeetUp {
         this.date = date;
         this.count = count;
     }
-    public MeetUp(long id, String title, String description, String address, User user, Location location, String date, List<Long> count) {
+    public MeetUp(long id, String title, String description, String address, User user, Location location, String date, int count) {
         this.title = title;
         this.description = description;
         this.address = address;
@@ -115,11 +115,11 @@ public class MeetUp {
         this.date = date;
     }
 
-    public List<Long> getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(List<Long> count) {
+    public void setCount(int count) {
         this.count = count;
     }
 }

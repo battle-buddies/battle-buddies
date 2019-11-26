@@ -57,7 +57,7 @@ public class MeetUpController {
         if (locationID != null){
             meetup.setLocation(locationDao.getOne(locationID));
         }
-        meetup.setD
+        meetup.setDate(date);
 
         System.out.println(date);
         meetUpDao.save(meetup);

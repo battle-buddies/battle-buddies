@@ -35,6 +35,11 @@
             margin-left: 1em;
         }
 
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+
     </style>
 
 </head>
@@ -47,11 +52,15 @@
     <h1 th:text="${meetup.title}"/>
     <div class="row" >
         <br>
+
         <input type="hidden" id="address" th:value="${meetup.address}">
         <div class="col s12" >
             <div class="card">
                 <div class="card-content">
-                    <h5  th:text="${meetup.address}"></h5>
+                    <div class="flex">
+                        <h5  th:text="${meetup.address}"></h5>
+                        <h5 th:text="${meetup.date}"></h5>
+                    </div>
                     <div class="card-image">
                         <div>
                             <div id="mapContainer" class="col s12">

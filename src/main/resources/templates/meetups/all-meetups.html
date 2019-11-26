@@ -39,9 +39,17 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-title">
-                            <a th:href="@{'/meetups/' + ${meetup.id}}">
-                                <span  th:text="${meetup.title}"></span>
-                            </a>
+                            <div class="flex">
+
+                                <a th:href="@{'/meetups/' + ${meetup.id}}">
+                                    <h5  th:text="${meetup.title}"></h5>
+                                </a>
+
+                                <a href="#">
+                                    <h5 th:text="${meetup.location.location}"></h5>
+                                </a>
+                            </div>
+
                         </div>
                         <p th:text="${meetup.description}"></p>
                     </div>
