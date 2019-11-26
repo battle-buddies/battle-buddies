@@ -267,6 +267,7 @@
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down" >
                     <li><a th:href="@{'/browse/'}">Browse</a></li>
+
                 </ul>
             </th:block>
             <th:block sec:authorize="isAuthenticated()">
@@ -274,6 +275,7 @@
                     <li><a th:href="@{'/meetups/'}">Meetups</a></li>
                 </ul>
             </th:block>
+
 
             <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
                 <li> <form th:action="@{/logout}" th:method="post">
@@ -288,7 +290,7 @@
 
 
             <!--           MOBILE VIEW FOR MAIN-->
-            <ul class="side-nav" id="mobile-demo">
+            <ul class="side-nav" id="mobile-demo5">
                 <li><a href="/">Home</a></li>
                 <ul sec:authorize="!isAuthenticated()">
                     <li class="active"><a href="/login">Login</a></li>

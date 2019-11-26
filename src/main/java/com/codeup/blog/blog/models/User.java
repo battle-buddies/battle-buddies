@@ -24,6 +24,9 @@ public class User {
     @Column( columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
+    @ManyToOne
+    @JoinColumn(name = "meet_up_id")
+    private MeetUp meetUp;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
