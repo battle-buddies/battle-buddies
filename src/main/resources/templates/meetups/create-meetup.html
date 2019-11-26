@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+    <th:block th:replace="fragments/header :: main-header"/>
     <title>Create Meet Up</title>
 </head>
 <th:block th:replace="fragments/nav-bar :: meetups"/>
@@ -44,6 +44,10 @@
                         </option>
                     </th:block>
                 </select>
+            </div>
+
+            <div class="input-field">
+                <input type="date" name="" id="date" th:name="date" required>
             </div>
 
 

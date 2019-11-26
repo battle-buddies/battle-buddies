@@ -13,301 +13,300 @@
         <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"/>
         <link href="https://ajax.googleapis.com" rel="preconnect"/>
         <link href="https://fonts.googleapis.com" rel="preconnect"/>
-        <link rel="stylesheet" href="/stylesheets/style-0.1.5.css">
 <!--        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-indigo.min.css"/>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <th:block th:replace="fragments/header :: main-header"/>
 
 
+<!--        <style>-->
+<!--            .about-header {-->
 
-        <style>
-            .about-header {
+<!--                display: flex;-->
+<!--                margin-left:1em;-->
+<!--            }-->
 
-                display: flex;
-                margin-left:1em;
-            }
+<!--            .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {-->
+<!--                -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0) !important;-->
+<!--                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0) !important;-->
+<!--            }-->
 
-            .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
-                -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0) !important;
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0) !important;
-            }
+<!--            nav {-->
+<!--                background-color: rgba(0, 0, 0, 0);-->
+<!--            }-->
 
-            nav {
-                background-color: rgba(0, 0, 0, 0);
-            }
+<!--            .site-navigation-row {-->
+<!--                background-color: rgba(0, 0, 0, 0);-->
+<!--            }-->
 
-            .site-navigation-row {
-                background-color: rgba(0, 0, 0, 0);
-            }
+<!--            img {-->
+<!--                max-width: 100%;-->
+<!--            }-->
 
-            img {
-                max-width: 100%;
-            }
+<!--            .current-city {-->
+<!--                margin-left:auto;-->
+<!--            }-->
 
-            .current-city {
-                margin-left:auto;
-            }
+<!--            .site-header {-->
+<!--                position: relative;-->
+<!--            }-->
 
-            .site-header {
-                position: relative;
-            }
+<!--            .site-header .mdl-layout__header-row {-->
+<!--                padding: 0;-->
+<!--                -ms-flex-pack: center;-->
+<!--                justify-content: center;-->
+<!--            }-->
 
-            .site-header .mdl-layout__header-row {
-                padding: 0;
-                -ms-flex-pack: center;
-                justify-content: center;
-            }
+<!--            .site-description {-->
+<!--                display: block;-->
+<!--                font-size: 14px;-->
+<!--                text-align: center;-->
+<!--                font-weight: 400;-->
+<!--                margin-bottom: 10px;-->
+<!--            }-->
 
-            .site-description {
-                display: block;
-                font-size: 14px;
-                text-align: center;
-                font-weight: 400;
-                margin-bottom: 10px;
-            }
+<!--            .is-compact .mdl-layout__title span {-->
+<!--                display: none;-->
+<!--            }-->
 
-            .is-compact .mdl-layout__title span {
-                display: none;
-            }
+<!--            .site-logo-row {-->
+<!--                min-height: 200px;-->
+<!--            }-->
 
-            .site-logo-row {
-                min-height: 200px;
-            }
+<!--            .is-compact .site-logo-row {-->
+<!--                min-height: auto;-->
+<!--            }-->
 
-            .is-compact .site-logo-row {
-                min-height: auto;
-            }
-
-            .site-logo {
-                background: url("https://www.fillmurray.com/640/360") 50% no-repeat;
-                background-size: cover;
-                height: 120px;
-                width: 120px;
-                margin: 15px auto;
-                border-radius: 50%;
-            }
+<!--            .site-logo {-->
+<!--                background: url("https://www.fillmurray.com/640/360") 50% no-repeat;-->
+<!--                background-size: cover;-->
+<!--                height: 120px;-->
+<!--                width: 120px;-->
+<!--                margin: 15px auto;-->
+<!--                border-radius: 50%;-->
+<!--            }-->
 
 
-            .is-compact .site-logo {
-                height: 50px;
-                width: 50px;
-                margin: 7px auto;
+<!--            .is-compact .site-logo {-->
+<!--                height: 50px;-->
+<!--                width: 50px;-->
+<!--                margin: 7px auto;-->
 
-            }
+<!--            }-->
 
-            .side-pic {
-                background: url(https://www.fillmurray.com/640/360) 50% no-repeat;
-                background-size: cover;
-                height: 100%;
-                width: 100%;
-                margin: 15px auto;
+<!--            .side-pic {-->
+<!--                background: url(https://www.fillmurray.com/640/360) 50% no-repeat;-->
+<!--                background-size: cover;-->
+<!--                height: 100%;-->
+<!--                width: 100%;-->
+<!--                margin: 15px auto;-->
 
-            }
+<!--            }-->
 
-            .site-navigation-row {
-                background-color: rgba(0, 0, 0, 0);
-                text-transform: uppercase;
-                height: 45px;
-            }
+<!--            .site-navigation-row {-->
+<!--                background-color: rgba(0, 0, 0, 0);-->
+<!--                text-transform: uppercase;-->
+<!--                height: 45px;-->
+<!--            }-->
 
-            .site-navigation-row .mdl-navigation {
-                text-align: center;
-                max-width: 900px;
-                width: 100%;
-            }
+<!--            .site-navigation-row .mdl-navigation {-->
+<!--                text-align: center;-->
+<!--                max-width: 900px;-->
+<!--                width: 100%;-->
+<!--            }-->
 
-            .site-navigation-row .mdl-navigation__link {
-                -ms-flex: 1;
-                flex: 1;
-                line-height: 42px;
-                color: #fff;
-            }
+<!--            .site-navigation-row .mdl-navigation__link {-->
+<!--                -ms-flex: 1;-->
+<!--                flex: 1;-->
+<!--                line-height: 42px;-->
+<!--                color: #fff;-->
+<!--            }-->
 
-            .site-navigation-row .is-active {
-                position: relative;
-                font-weight: bold;
-                opacity: 1;
-            }
+<!--            .site-navigation-row .is-active {-->
+<!--                position: relative;-->
+<!--                font-weight: bold;-->
+<!--                opacity: 1;-->
+<!--            }-->
 
-            .site-navigation-row .mdl-navigation__link:hover {
-                opacity: 1;
-            }
+<!--            .site-navigation-row .mdl-navigation__link:hover {-->
+<!--                opacity: 1;-->
+<!--            }-->
 
-            .mdl-layout__header .mdl-layout__drawer-button {
-                color: #fff;
-            }
+<!--            .mdl-layout__header .mdl-layout__drawer-button {-->
+<!--                color: #fff;-->
+<!--            }-->
 
-            .mdl-layout__content {
-                background-color: #fefefe;
-            }
+<!--            .mdl-layout__content {-->
+<!--                background-color: #fefefe;-->
+<!--            }-->
 
-            .site-content {
-                margin: 1em auto;
-                min-height: 580px;
-            }
+<!--            .site-content {-->
+<!--                margin: 1em auto;-->
+<!--                min-height: 580px;-->
+<!--            }-->
 
-            .page-content {
-                padding-bottom: 2em;
-            }
+<!--            .page-content {-->
+<!--                padding-bottom: 2em;-->
+<!--            }-->
 
-            .site-max-width {
-                max-width: 900px;
-                margin: auto;
-            }
+<!--            .site-max-width {-->
+<!--                max-width: 900px;-->
+<!--                margin: auto;-->
+<!--            }-->
 
-            .site-copy {
-                max-width: 700px;
-            }
+<!--            .site-copy {-->
+<!--                max-width: 700px;-->
+<!--            }-->
 
-            .welcome-card > .mdl-card__title {
-                color: #fff;
-                height: 290px;
-                background: url("/img/cover.jpg") center/cover;
-            }
+<!--            .welcome-card > .mdl-card__title {-->
+<!--                color: #fff;-->
+<!--                height: 290px;-->
+<!--                background: url("/img/cover.jpg") center/cover;-->
+<!--            }-->
 
-            .event-card {
-                background: #3E4EB8;
-            }
+<!--            .event-card {-->
+<!--                background: #3E4EB8;-->
+<!--            }-->
 
-            .event-card .mdl-card__actions {
-                border-color: rgba(255, 255, 255, 0.2);
-            }
+<!--            .event-card .mdl-card__actions {-->
+<!--                border-color: rgba(255, 255, 255, 0.2);-->
+<!--            }-->
 
-            .event-card .mdl-card__title {
-                -ms-flex-align: start;
-                align-items: flex-start;
-            }
+<!--            .event-card .mdl-card__title {-->
+<!--                -ms-flex-align: start;-->
+<!--                align-items: flex-start;-->
+<!--            }-->
 
-            .event-card .mdl-card__title > h4 {
-                margin-top: 0;
-            }
+<!--            .event-card .mdl-card__title > h4 {-->
+<!--                margin-top: 0;-->
+<!--            }-->
 
-            .event-card .mdl-card__actions {
-                display: -ms-flexbox;
-                display: flex;
-                box-sizing: border-box;
-                -ms-flex-align: center;
-                align-items: center;
-            }
+<!--            .event-card .mdl-card__actions {-->
+<!--                display: -ms-flexbox;-->
+<!--                display: flex;-->
+<!--                box-sizing: border-box;-->
+<!--                -ms-flex-align: center;-->
+<!--                align-items: center;-->
+<!--            }-->
 
-            .event-card .mdl-card__actions > .material-icons {
-                padding-right: 10px;
-            }
+<!--            .event-card .mdl-card__actions > .material-icons {-->
+<!--                padding-right: 10px;-->
+<!--            }-->
 
-            .event-card .mdl-card__title,
-            .event-card .mdl-card__actions,
-            .event-card .mdl-card__actions > .mdl-button {
-                color: #fff;
-            }
+<!--            .event-card .mdl-card__title,-->
+<!--            .event-card .mdl-card__actions,-->
+<!--            .event-card .mdl-card__actions > .mdl-button {-->
+<!--                color: #fff;-->
+<!--            }-->
 
-            .section__play-btn {
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-align: center;
-                align-items: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                max-height: 12em;
-            }
+<!--            .section__play-btn {-->
+<!--                display: -ms-flexbox;-->
+<!--                display: flex;-->
+<!--                -ms-flex-align: center;-->
+<!--                align-items: center;-->
+<!--                -ms-flex-pack: center;-->
+<!--                justify-content: center;-->
+<!--                max-height: 12em;-->
+<!--            }-->
 
-            .section__play-btn .material-icons {
-                font-size: 3rem;
-            }
+<!--            .section__play-btn .material-icons {-->
+<!--                font-size: 3rem;-->
+<!--            }-->
 
-            .section--center {
-                margin: 0 auto 2rem;
-            }
+<!--            .section&#45;&#45;center {-->
+<!--                margin: 0 auto 2rem;-->
+<!--            }-->
 
-            .homepage-portfolio .mdl-button {
-                margin: 0 auto;
-            }
+<!--            .homepage-portfolio .mdl-button {-->
+<!--                margin: 0 auto;-->
+<!--            }-->
 
-            .homepage-footer {
-                background: #eee;
-                margin-bottom: -1em;
-                padding: 2rem 0;
-            }
+<!--            .homepage-footer {-->
+<!--                background: #eee;-->
+<!--                margin-bottom: -1em;-->
+<!--                padding: 2rem 0;-->
+<!--            }-->
 
-            .portfolio-card .mdl-card__title {
-                padding-bottom: 0;
-            }
+<!--            .portfolio-card .mdl-card__title {-->
+<!--                padding-bottom: 0;-->
+<!--            }-->
 
-            img.article-image {
-                width: 100%;
-                height: auto;
-            }
+<!--            img.article-image {-->
+<!--                width: 100%;-->
+<!--                height: auto;-->
+<!--            }-->
 
-            .demo-card-image.mdl-card {
-                width: 192px;
-                height: 192px;
-            }
+<!--            .demo-card-image.mdl-card {-->
+<!--                width: 192px;-->
+<!--                height: 192px;-->
+<!--            }-->
 
-            .person1 {
-                background: url("/img/person1.jpg") center/cover;
-            }
+<!--            .person1 {-->
+<!--                background: url("/img/person1.jpg") center/cover;-->
+<!--            }-->
 
-            .person2 {
-                background: url("/img/person2.jpg") center/cover;
-            }
+<!--            .person2 {-->
+<!--                background: url("/img/person2.jpg") center/cover;-->
+<!--            }-->
 
-            .demo-card-image > .mdl-card__actions {
-                height: 52px;
-                padding: 16px;
-                background: rgba(0, 0, 0, 0.3);
-            }
+<!--            .demo-card-image > .mdl-card__actions {-->
+<!--                height: 52px;-->
+<!--                padding: 16px;-->
+<!--                background: rgba(0, 0, 0, 0.3);-->
+<!--            }-->
 
-            .demo-card-image__filename {
-                color: #fff;
-                font-size: 14px;
-                font-weight: 500;
-            }
+<!--            .demo-card-image__filename {-->
+<!--                color: #fff;-->
+<!--                font-size: 14px;-->
+<!--                font-weight: 500;-->
+<!--            }-->
 
-            .form-contact .mdl-textfield {
-                width: 100%;
-            }
+<!--            .form-contact .mdl-textfield {-->
+<!--                width: 100%;-->
+<!--            }-->
 
-            .mdl-card__title-text {
-                margin-bottom: 0;
-                color: #7b9566;
-            }
+<!--            .mdl-card__title-text {-->
+<!--                margin-bottom: 0;-->
+<!--                color: #7b9566;-->
+<!--            }-->
 
-            #contact-button {
-                position: fixed;
-                display: block;
-                right: 0;
-                bottom: 0;
-                margin-right: 40px;
-                margin-bottom: 40px;
-                z-index: 900;
-            }
+<!--            #contact-button {-->
+<!--                position: fixed;-->
+<!--                display: block;-->
+<!--                right: 0;-->
+<!--                bottom: 0;-->
+<!--                margin-right: 40px;-->
+<!--                margin-bottom: 40px;-->
+<!--                z-index: 900;-->
+<!--            }-->
 
-            footer .mdl-logo a {
-                color: #fff;
-                text-decoration: none;
-                border-bottom: 1px dotted #aaa;
-            }
+<!--            footer .mdl-logo a {-->
+<!--                color: #fff;-->
+<!--                text-decoration: none;-->
+<!--                border-bottom: 1px dotted #aaa;-->
+<!--            }-->
 
-            .footer-container {
-                margin: 0 auto;
-            }
-            .sec1{
-                margin-bottom: 0;
-            }
-            .bio{
-                padding-left: 2.5em;
-                padding-top: 0;
-                padding-bottom:0;
-            }
-            .hobbies{
-                padding:0;
-            }
-            .currently{
-                padding:0;
-            }
-            .traits{
-                padding:0;
-            }
+<!--            .footer-container {-->
+<!--                margin: 0 auto;-->
+<!--            }-->
+<!--            .sec1{-->
+<!--                margin-bottom: 0;-->
+<!--            }-->
+<!--            .bio{-->
+<!--                padding-left: 2.5em;-->
+<!--                padding-top: 0;-->
+<!--                padding-bottom:0;-->
+<!--            }-->
+<!--            .hobbies{-->
+<!--                padding:0;-->
+<!--            }-->
+<!--            .currently{-->
+<!--                padding:0;-->
+<!--            }-->
+<!--            .traits{-->
+<!--                padding:0;-->
+<!--            }-->
 
-        </style>
+<!--        </style>-->
         <!--    <script>-->
         <!--        (function(i, s, o, g, r, a, m) {-->
         <!--            i['GoogleAnalyticsObject'] = r;-->
@@ -327,9 +326,9 @@
     </head>
 
 <body id="top">
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="contact.html" id="contact-button"
-                                                                  class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i
-        class="material-icons">mail</i></a>
+<!--<div class="mdl-layout mdl-js-layout mdl-layout&#45;&#45;fixed-header"><a href="contact.html" id="contact-button"-->
+<!--                                                                  class="mdl-button mdl-button&#45;&#45;fab mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-color&#45;&#45;accent mdl-color-text&#45;&#45;accent-contrast mdl-shadow&#45;&#45;4dp"><i-->
+<!--        class="material-icons">mail</i></a>-->
     <header>
 <!--        <header class="mdl-layout__header mdl-layout__header&#45;&#45;waterfall site-header">-->
 <!--        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">-->
@@ -372,11 +371,17 @@
 
                 <!--*********************************** END EDIT USER-DETAILS BUTTON *****************************-->
             <section class="section--center mdl-grid site-max-width">
+                <div>
+                    <img th:if="${user.getProfile().getPhotos() == null}" class="responsive-img" th:src="${'https://picsum.photos/300?pic=' + #strings.randomAlphanumeric(2)}" alt="placeholder" />
+                    <img class="responsive-img post-img" th:if="${user.getProfile().getPhotos() != null}" th:src="${'srv/profile_pics' + user.getProfile().getPhotos() }" />
+                </div>
                 <div class="mdl-card__supporting-text">
                     <h4 class="headline 700 center" th:text=" ${'About '+ user.getProfile().firstName}">
                         About </span>
                     </h4>
                 </div>
+
+
                 <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
                     <div class="mdl-card__title about-header">
                         <h2 class="mdl-card__title-text mdl-color-text--light-green-700"> Bio: </h2>

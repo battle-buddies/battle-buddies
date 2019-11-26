@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+    <th:block th:replace="fragments/header :: main-header"/>
     <title th:value="${meetup.title}"></title>
     <style>
         .mapboxgl-canvas-container {
@@ -18,21 +18,28 @@
             height: 50vh;
         }
 
-        .margin-left{
-            text-align: right;
-        }
+
 
         .margin-left label{
             margin-right: 1em;
         }
 
-        h6{
+        .space{
             margin-top: 24em;
             margin-left: 1em;
         }
 
         .ml{
             margin-left: 1em;
+        }
+
+        .mt{
+            margin-top: 1em;
+        }
+
+        .flex{
+            display: flex;
+            justify-content: space-between;
         }
 
     </style>
@@ -47,28 +54,36 @@
     <h1 th:text="${meetup.title}"/>
     <div class="row" >
         <br>
+
         <input type="hidden" id="address" th:value="${meetup.address}">
         <div class="col s12" >
             <div class="card">
                 <div class="card-content">
-                    <h5  th:text="${meetup.address}"></h5>
+                    <div class="flex">
+                        <h5  th:text="${meetup.address}"></h5>
+                        <h5 th:text="${meetup.date}"></h5>
+                    </div>
                     <div class="card-image">
                         <div>
                             <div id="mapContainer" class="col s12">
                                 <div id="map"></div>
-
                             </div>
                         </div>
                     </div>
                     <br>
                     <br>
-                    <h6>Meet Up Description: </h6>
+                    <label class="space">Meet Up Description: </label>
                     <div class="ml">
                         <p th:text="${meetup.description}"></p>
                     </div>
-                    <div class="margin-left">
-                        <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
+                    <div class="flex mt">
+                        <label ><span th:text="${meetup.count}"></span> people interested in attending so far</label>
 
+                        <form th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
+                            <button type="submit">I'm Interested</button>
+                        </form>
+
+                        <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
                     </div>
                 </div>
             </div>
@@ -79,7 +94,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
-<!--<script src="../../static/js/mapbox-utils.js"></script>-->
+
 <script>
 
     function geocode(search, token) {
