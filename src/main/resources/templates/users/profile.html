@@ -367,7 +367,7 @@
 
 
 
-                <a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
+<!--                <a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>-->
 
                 <!--*********************************** END EDIT USER-DETAILS BUTTON *****************************-->
             <section class="section--center mdl-grid site-max-width">
@@ -444,8 +444,9 @@
                         <div class="mdc-tab-bar" role="tablist">
                             <div class="row">
                                 <div class="col s12">
+                                    <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
                                     <ul class="tabs">
-                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"  class="tab col s3"><a class="active" href="#test1">My Buddies</a></li>
+                                        <li  class="tab col s3"><a class="active" href="#test1">Buddies</a></li>
                                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test2">Potential Buddies</a></li>
                                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test3">Pending Buddies</a></li>
                                     </ul>
@@ -461,7 +462,7 @@
 
                                                 </div>
                                 </div>
-                                <div id="test2" class="col s12">
+                                <div id="test2" class="col s12"  th:if="${#authentication.principal.id == user.id}">
 
                                     <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
 
@@ -475,7 +476,7 @@
                                                     </div>
                                 </div>
 
-                                <div id="test3" class="col s12">
+                                <div id="test3" class="col s12" th:if="${#authentication.principal.id == user.id}">
                                     PENDING FRIENDS
                                     <div id="pending" class="col s12 green">
                                         <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
@@ -493,6 +494,8 @@
                         </div>
                     </div>
                 </div>
+
+                <div><a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a></div>
                 <section class="section--center mdl-grid site-max-width">
                     <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                         <div class="mdl-card__media">
