@@ -98,6 +98,16 @@ public class MeetUpController {
         return "redirect:/meetups/" + meetUp.getId();
     }
 
+    @PostMapping("meetups/delete/{id}")
+    public String deleteMeetUp(@PathVariable long id){
+        MeetUp meetUp = meetUpDao.getOne(id);
+
+        meetUp.setUser(new User());
+
+        meetUpDao.deleteById(id);
+
+        return "redirect:/meetups/";
+    }
 
 }
 
