@@ -22,6 +22,7 @@ public class Photo {
         this.url = url;
     }
 
+
     public Photo(long id, String url) {
         this.id = id;
         this.url = url;
@@ -52,4 +53,5 @@ public class Photo {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
 }
