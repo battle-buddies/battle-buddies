@@ -267,7 +267,7 @@
                 <th:block sec:authorize="isAuthenticated()">
                 <ul class="right hide-on-med-and-down">
                     <li><a th:href="@{'/browse/'}">Browse</a></li>
-                    <li><a th:href="@{'/meetups/'}">Meetups</a></li>
+                    <li><a href="@{'/meetups/'}">Meetups</a></li>
                     <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
                     <li><form th:action="@{/logout}" th:method="post"><a href="/login">Logout</a></form></li>
                         </ul>
