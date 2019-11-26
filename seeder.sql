@@ -3,7 +3,7 @@ drop database if exists battlebuddies_db;
 
 use battlebuddies_db;
 
-
+drop users;
 insert into users (profile_id, password,  username, email,  is_admin) values ( 1,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'admin', 'cwhitloe0@kickstarter.com', true);
 insert into users (profile_id, password,  username, email,  is_admin) values ( 2,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'izzy', 'veye1@printfriendly.com', true);
 insert into users (profile_id, password,  username, email,  is_admin) values ( 3,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'bridget', 'crudiger2@vk.com',  true);
@@ -27,7 +27,7 @@ insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bi
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,10,true, 'Darb', 'Boncore', 57, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.',false, false, 7);
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,9,false, 'Eugen', 'Thomazet', 27, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',true, false, 8);
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,7,true, 'Zsazsa', 'Haslen', 39, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',true, true, 9);
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values (5,1,false, 'Calvin', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,1,false, 'Calvin', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
 
 
 

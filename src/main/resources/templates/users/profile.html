@@ -362,6 +362,15 @@
 <!--                    <div class="side-pic"></div>-->
 <!--                </header>-->
             <div class ="container">
+
+
+                <!--***********************************EDIT USER-DETAILS BUTTON *****************************-->
+
+
+
+                <a class="waves-effect waves-light btn" th:href="@{'/users/' + ${user.getProfile().getId()} + '/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
+
+                <!--*********************************** END EDIT USER-DETAILS BUTTON *****************************-->
             <section class="section--center mdl-grid site-max-width">
                 <div class="mdl-card__supporting-text">
                     <h4 class="headline 700 center" th:text=" ${'About '+ user.getProfile().firstName}">
@@ -573,6 +582,8 @@
                     </section>
                 </div>
             </div>
+
+
         </div>
         <footer class="mdl-mini-footer">
             <div class="footer-container">
