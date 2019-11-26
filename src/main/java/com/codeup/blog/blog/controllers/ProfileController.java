@@ -9,9 +9,16 @@ import com.codeup.blog.blog.repositories.RelationshipRepository;
 import com.codeup.blog.blog.repositories.UserRepository;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +34,10 @@ public class ProfileController {
     private BranchRepository branchDao;
     private RankRepository rankDao;
     private ChildRepository childDao;
+    private PhotoRepository photoDao;
+
+    @Value("${file-upload-path}")
+    private String uploadPath;
 
 
 
@@ -35,7 +46,7 @@ public class ProfileController {
     private UserService usersService;
 
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao, ChildRepository childDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao, ChildRepository childDao, PhotoRepository  photoDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
@@ -45,6 +56,7 @@ public class ProfileController {
         this.branchDao = branchDao;
         this.rankDao = rankDao;
         this.childDao = childDao;
+        this.photoDao  = photoDao;
     }
 
     @GetMapping("/users/profile/{id}")
@@ -93,11 +105,13 @@ public class ProfileController {
 
     @PostMapping("/users/userdetails")
     public String submitUserDetails(
-             @ModelAttribute Profile profile,
+             @Valid Profile profile,
              @RequestParam(name="traits", required = false)ArrayList<Long> traitIds,
              @RequestParam(name="hobbies", required = false)ArrayList<Long> hobbyIds,
              @RequestParam(name="branch", required = false)Long branchId,
-             @RequestParam(name="rank", required = false) Long rankId
+             @RequestParam(name="rank", required = false) Long rankId,
+             Model m,
+             @RequestParam(name = "file") MultipartFile uploadedFile
 
     ){
         User user = usersService.loggedInUser();
@@ -151,13 +165,44 @@ public class ProfileController {
         children.add(new Child("female", 6));
         profile.setChildren(children);
 
+        // Files handle
+
+
 
         profileDao.save(profile);
+        uploadFileHandler(profile, m, uploadedFile);
         user.setProfile(profile);
         userDao.save(user);
 
 
+
+
         return "redirect:/users/profile/" + user.getId();
+    }
+    private void uploadFileHandler(@Valid Profile profile, Model m, @RequestParam(name = "file") MultipartFile uploadedFile) {
+        if(!uploadedFile.getOriginalFilename().isEmpty()){
+
+            String filename = uploadedFile.getOriginalFilename().replace(" ", "_").toLowerCase();
+            String filepath = Paths.get(uploadPath, filename).toString();
+            File destinationFile = new File(filepath);
+
+            // Try to save it in the server
+            try {
+                uploadedFile.transferTo(destinationFile);
+                m.addAttribute("message", "File successfully uploaded!");
+            } catch (IOException e) {
+                e.printStackTrace();
+                m.addAttribute("message", "Oops! Something went wrong! " + e);
+            }
+
+            Photo photo = new Photo(filename);
+            photo.setProfile(profile);
+            photoDao.save(photo);
+
+
+
+
+        }
     }
 
 
@@ -205,7 +250,6 @@ public class ProfileController {
     public String create(@ModelAttribute ("form2") Location locationToBeCreated){
 //        locationToBeCreated.setProfiles(profileDao.getOne(1));
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!This!!!!!!!!!!!!!!!!!!!!!!" + locationToBeCreated.getLocation());
         locationDao.save(locationToBeCreated);
         return "redirect:/users/location";
     }
@@ -217,6 +261,7 @@ public class ProfileController {
 
         return "users/profile-design";
     }
+
 
 
 }
