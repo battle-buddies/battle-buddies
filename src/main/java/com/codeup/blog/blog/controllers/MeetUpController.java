@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Controller
 public class MeetUpController {
 
@@ -49,13 +51,15 @@ public class MeetUpController {
     }
 
     @PostMapping("meetups/create")
-    public String createMeetUp(@ModelAttribute ("meetup") MeetUp meetup, @RequestParam(name = "locationID", required = false) Long locationID){
+    public String createMeetUp(@ModelAttribute ("meetup") MeetUp meetup, @RequestParam(name = "locationID", required = false) Long locationID, @RequestParam(name = "date")String date){
         User loggedInUser = usersService.loggedInUser();
         meetup.setUser(loggedInUser);
         if (locationID != null){
             meetup.setLocation(locationDao.getOne(locationID));
         }
+        meetup.setD
 
+        System.out.println(date);
         meetUpDao.save(meetup);
         return "redirect:/meetups/";
     }
