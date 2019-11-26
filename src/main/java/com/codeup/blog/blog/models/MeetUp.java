@@ -27,10 +27,13 @@ public class MeetUp {
     @Column
     private int count;
 
-
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetUp")
+    private List<User> interestedUsers;
+
 
     @ManyToOne
     @JoinColumn (name = "location_id")
@@ -38,7 +41,7 @@ public class MeetUp {
 
     public MeetUp(){}
 
-    public MeetUp(String title, String description, String address, User user, Location location, String date, int count) {
+    public MeetUp(String title, String description, String address, User user, Location location, String date, int count, List<User> interestedUsers) {
         this.title = title;
         this.description = description;
         this.address = address;
@@ -46,8 +49,9 @@ public class MeetUp {
         this.location = location;
         this.date = date;
         this.count = count;
+        this.interestedUsers = interestedUsers;
     }
-    public MeetUp(long id, String title, String description, String address, User user, Location location, String date, int count) {
+    public MeetUp(long id, String title, String description, String address, User user, Location location, String date, int count,List<User> interestedUsers ) {
         this.title = title;
         this.description = description;
         this.address = address;
@@ -55,6 +59,7 @@ public class MeetUp {
         this.location = location;
         this.date = date;
         this.count = count;
+        this.interestedUsers = interestedUsers;
     }
 
 
@@ -121,5 +126,13 @@ public class MeetUp {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public List<User> getInterestedUsers() {
+        return interestedUsers;
+    }
+
+    public void setInterestedUsers(List<User> users) {
+        this.interestedUsers = users;
     }
 }

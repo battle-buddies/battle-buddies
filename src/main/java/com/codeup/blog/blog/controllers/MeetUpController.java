@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 @Controller
@@ -38,6 +39,7 @@ public class MeetUpController {
     public String showIndividualMeetUp(@PathVariable long id, Model vModel){
         MeetUp meetUp = meetUpDao.getOne(id);
         vModel.addAttribute("meetup", meetUp);
+        vModel.addAttribute("signedInUser", usersService.loggedInUser());
 
         return "meetups/individual-meetup";
     }
@@ -58,9 +60,40 @@ public class MeetUpController {
             meetup.setLocation(locationDao.getOne(locationID));
         }
         meetup.setDate(date);
+        meetup.setCount(0);
 
         System.out.println(date);
         meetUpDao.save(meetup);
         return "redirect:/meetups/";
     }
+
+    @PostMapping("meetups/interest/{id}")
+    public String showInterestInMeetUp( @PathVariable long id){
+        User user = usersService.loggedInUser();
+        MeetUp meetUp = meetUpDao.getOne(id);
+
+//        if (meetUp.getInterestedUsers().isEmpty()){
+//            meetUp.setInterestedUsers(new ArrayList<>());
+//        }
+
+        if(!meetUp.getInterestedUsers().contains(user)){
+            meetUp.getInterestedUsers().add(user);
+        }
+        int total = 0;
+        for (User el: meetUp.getInterestedUsers()) {
+            total += 1;
+
+            System.out.println(el.getUsername());
+        }
+
+        meetUp.setCount(total);
+
+        meetUpDao.save(meetUp);
+
+        return "redirect:/meetups/" + meetUp.getId();
+    }
+
+
 }
+
+
