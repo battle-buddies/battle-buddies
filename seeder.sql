@@ -3,7 +3,7 @@
 drop database if exists battlebuddies_db;
 use battlebuddies_db;
 
-drop users;
+
 insert into users (profile_id, password,  username, email,  is_admin) values ( 1,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'admin', 'cwhitloe0@kickstarter.com', true);
 insert into users (profile_id, password,  username, email,  is_admin) values ( 2,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'izzy', 'veye1@printfriendly.com', true);
 insert into users (profile_id, password,  username, email,  is_admin) values ( 3,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'bridget', 'crudiger2@vk.com',  true);
