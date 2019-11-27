@@ -54,7 +54,9 @@
     <h1 th:text="${meetup.title}"/>
     <div class="row" >
         <br>
-
+        <form th:if="${#authentication.principal.id == meetup.user.id}" th:action="@{'/meetups/delete/' + ${meetup.id}}" method="post">
+            <button type="submit">Delete</button>
+        </form>
         <input type="hidden" id="address" th:value="${meetup.address}">
         <div class="col s12" >
             <div class="card">

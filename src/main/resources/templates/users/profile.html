@@ -385,14 +385,12 @@
                 <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
                     <div class="mdl-card__title about-header">
                         <h2 class="mdl-card__title-text mdl-color-text--light-green-700"> Bio: </h2>
+                        <div class="mdl-card__supporting-text bio">
+                            <span th:text="${user.getProfile().getBio()}"></span>
+                        </div>
 <!--                        <span class="mdl-card__title-text mdl-color-text&#45;&#45;indigo-A700" th:text=" ${'&nbsp; '+ user.getProfile().firstName}"></span>-->
-                        <h2 class="mdl-card__title-text current-city"
-                            th:each="location : ${user.getProfile().getLocation()}"><p
-                                class="mdl-color-text--indigo-A700" th:text="${location.location}"></h2>
                     </div>
-                    <div class="mdl-card__supporting-text bio">
-                        <span th:text="${user.getProfile().getBio()}"></span>
-                    </div>
+
                     <div class="mdl-card__actions">
                         <section class="section--center mdl-grid site-max-width sec1">
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
@@ -449,6 +447,8 @@
                                         <li  class="tab col s3"><a class="active" href="#test1">Buddies</a></li>
                                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test2">Potential Buddies</a></li>
                                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test3">Pending Buddies</a></li>
+                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test4">Suggested Buddies</a></li>
+
                                     </ul>
                                 </div>
                                 <div id="test1" class="col s12">
@@ -477,7 +477,7 @@
                                 </div>
 
                                 <div id="test3" class="col s12" th:if="${#authentication.principal.id == user.id}">
-                                    PENDING FRIENDS
+
                                     <div id="pending" class="col s12 green">
                                         <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                                             <input type="hidden" th:value="${user.id}">
@@ -489,7 +489,21 @@
                                         </th:block>
                                     </div>
                                 </div>
-<!--                                <div id="test4" class="col s12">Test 4</div>-->
+
+                                <div id="test4" class="col s12" th:if="${#authentication.principal.id == user.id}">
+
+                                    <div  class="col s12 green">
+                                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                                            <input type="hidden" th:value="${user.id}">
+                                            <h4>Suggested buddies for you</h4>
+                                            <div th:each="friend : ${suggestedFriends}" >
+                                                <a th:href="@{'/users/profile/' + ${friend.id}}"><span th:text="${friend.username}"></span></a>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

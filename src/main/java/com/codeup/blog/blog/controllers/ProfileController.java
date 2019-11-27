@@ -87,6 +87,36 @@ public class ProfileController {
 
         vModel.addAttribute("pendingFriends", pendingFriends);
 
+//        SUGGESTED FRIENDS
+        List<User> suggestedFriends = new ArrayList<>();
+        for (Profile profile : profileDao.findAll()) {
+            int total = 0;
+
+            // add logic to weed out accepted friends
+            if (loggedInProfile != profile){
+                if(loggedInProfile.getLocation().equals(profile.getLocation())){
+                    total += 5;
+                }
+
+                for (Trait trait : profile.getTraits()) {
+                    if (loggedInProfile.getTraits().contains(trait)){
+                        total += 2;
+                    }
+                }
+
+                for (Hobby hobby : profile.getHobbies()) {
+                    if (loggedInProfile.getHobbies().contains(hobby)){
+                        total += 2;
+                    }
+                }
+
+                if (total >= 10){
+                    suggestedFriends.add(profile.getUser());
+                }
+            }
+        }
+
+        vModel.addAttribute("suggestedFriends", suggestedFriends);
 
         return "users/profile";
     }
@@ -312,13 +342,6 @@ public class ProfileController {
 
 
 
-
-
-
-
-
-
-
     @GetMapping("/users/{id}/friend-request")
     public String sendFriendRequest(@PathVariable long id, Model vModel) {
         User userOne = usersService.loggedInUser();
@@ -374,6 +397,7 @@ public class ProfileController {
 
         return "users/profile-design";
     }
+
 
 
 
