@@ -497,7 +497,7 @@
                                             <input type="hidden" th:value="${user.id}">
                                             <h4>Suggested buddies for you</h4>
                                             <div th:each="friend : ${suggestedFriends}" >
-                                                <a th:href="@{'/users/profiles/' + ${friend.id}}"><span th:text="${friend.username}"></span></a>
+                                                <a th:href="@{'/users/profile/' + ${friend.id}}"><span th:text="${friend.username}"></span></a>
                                             </div>
                                         </th:block>
                                     </div>
