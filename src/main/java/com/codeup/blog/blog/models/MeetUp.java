@@ -45,9 +45,12 @@ public class MeetUp {
     @JoinColumn (name = "location_id")
     private Location location;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meetUp")
+    private List<Comment> comments;
+
     public MeetUp(){}
 
-    public MeetUp(String title, String description, String address, User user, Location location, String date, int count, List<User> interestedUsers) {
+    public MeetUp(String title, String description, String address, User user, Location location, String date, int count, List<User> interestedUsers, List<Comment> comments) {
         this.title = title;
         this.description = description;
         this.address = address;
@@ -56,6 +59,7 @@ public class MeetUp {
         this.date = date;
         this.count = count;
         this.interestedUsers = interestedUsers;
+        this.comments = comments;
     }
     public MeetUp(long id, String title, String description, String address, User user, Location location, String date, int count,List<User> interestedUsers ) {
         this.title = title;
@@ -140,5 +144,13 @@ public class MeetUp {
 
     public void setInterestedUsers(List<User> users) {
         this.interestedUsers = users;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
