@@ -3,17 +3,7 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
 
 
-    /*  h2{*/
-    /*      text-align: center;*/
-    /*  }*/
-    /*.jumbotron{*/
-    /*    background-color: red;*/
-    /*    text-align: center;*/
-    /*}*/
-    /*#reg, #log{*/
-    /*    display: block;*/
-    /*    margin: 0 auto;*/
-    /*}*/
+
     .login-reg-panel {
         display: none;
     }
@@ -22,12 +12,12 @@
     body {
         padding-top: 90px;
     }
-    .panel-login {
-        border-color: #ccc;
-        -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-        -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-    }
+    /*.panel-login {*/
+    /*    border-color: #ccc;*/
+    /*    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);*/
+    /*    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);*/
+    /*    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);*/
+    /*}*/
     .panel-login>.panel-heading {
         color: #00415d;
         background-color: #fff;
@@ -44,7 +34,7 @@
         transition: all 0.1s linear;
     }
     .panel-login>.panel-heading a.active{
-        color: #029f5b;
+        color: #1A2E5A;
         font-size: 18px;
     }
     .panel-login>.panel-heading hr{
@@ -75,7 +65,7 @@
         border-color: #ccc;
     }
     .btn-login {
-        background-color: #59B2E0;
+        background-color: #2c2c2c;
         outline: none;
         color: #fff;
         font-size: 14px;
@@ -83,13 +73,13 @@
         font-weight: normal;
         padding: 14px 0;
         text-transform: uppercase;
-        border-color: #59B2E6;
+        border-color: #2c2c2c;
     }
     .btn-login:hover,
     .btn-login:focus {
         color: #fff;
-        background-color: #53A3CD;
-        border-color: #53A3CD;
+        background-color: #1A2E5A;
+        border-color: #1A2E5A;
     }
     .forgot-password {
         text-decoration: underline;
@@ -101,7 +91,7 @@
         color: #666;
     }
     .btn-register {
-        background-color: #1CB94E;
+        background-color: #2c2c2c;
         outline: none;
         color: #fff;
         font-size: 14px;
@@ -109,13 +99,13 @@
         font-weight: normal;
         padding: 14px 0;
         text-transform: uppercase;
-        border-color: #1CB94A;
+        border-color: #2c2c2c;
     }
     .btn-register:hover,
     .btn-register:focus {
         color: #fff;
-        background-color: #1CA347;
-        border-color: #1CA347;
+        background-color: #1A2E5A;
+        border-color: #1A2E5A;
     }
 
 

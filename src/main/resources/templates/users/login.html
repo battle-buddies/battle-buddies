@@ -55,64 +55,22 @@
 
 <!--MOBILE VIEW-->
 
-<!--<div id="mobile-login">-->
-<!--<div class="jumbotron">-->
-<!--    <h1 class="display-4">Battle Buddies</h1>-->
-
-<!--</div>-->
-<!--<ul class="nav nav-tabs" id="myTab" role="tablist">-->
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>-->
-<!--    </li>-->
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>-->
-<!--    </li>-->
-<!--</ul>-->
-<!--<div class="tab-content" id="myTabContent">-->
-<!--    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">-->
-<!--        <div class="form-group">-->
-<!--            <form th:action="@{/login}" method="post">-->
-<!--                <h2>LOGIN</h2>-->
-<!--                <input class="form-control" id="username1" name="username" type="text" placeholder="Username" required="required"/>-->
-<!--                <input class="form-control"  id="password1" name="password" type="password" placeholder="Password" required="required"/>-->
-<!--                <input id="log" class="btn btn-outline-danger btn-block" type="submit" value="Log In"/>-->
-
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">-->
-<!--        <div class="form group">-->
-<!--            <form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
-<!--                <h2>REGISTER</h2>-->
-<!--                <input class="form-control" type="text" th:field="*{username}" placeholder="Username" required="required">-->
-<!--                <input class="form-control"  type="email" th:field="*{email}" placeholder="Email" required="required">-->
-<!--                <input class="form-control"  type="password" th:field="*{password}" placeholder="Password" required="required">-->
-<!--                <input id="reg" class="btn btn-outline-danger btn-block" type="submit" value="Register" required="required">-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--</div>-->
-
-<!--</div>-->
-
-
-<!--option 2-->
-
-
 <div class="container" id="mobile-login">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-login">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-6">
                             <a href="#" class="active" id="login-form-link">Login</a>
                         </div>
-                        <div class="col-xs-6">
+
+
+                        <div class="col-6">
                             <a href="#" id="register-form-link">Register</a>
                         </div>
-                    </div>
+
+
                     <hr>
                 </div>
                 <div class="panel-body">
@@ -133,15 +91,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="text-center">
-                                                <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </form>
                             <form id="register-form" th:action="@{/sign-up}"  th:object="${user}" method="post" role="form" style="display: none;">
                                 <div class="form-group">
