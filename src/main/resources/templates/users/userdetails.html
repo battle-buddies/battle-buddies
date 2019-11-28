@@ -23,16 +23,16 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="firstName" type="text" class="validate" th:field="*{firstName}" required="required">
+                    <input id="firstName" type="text" class="validate" th:field="*{firstName}">
                     <label for="firstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="lastName" type="text" class="validate" th:field="*{lastName}" required="required">
+                    <input id="lastName" type="text" class="validate" th:field="*{lastName}">
                     <label for="lastName">Last Name</label>
                 </div>
                 <!--                        gender pick start-->
                 <div class="input-field col s6">
-                    <select required="required">
+                    <select>
                         <option value="0" disabled selected>gender</option>
                         <option value="1">Male</option>
                         <option value="0">Female</option>
@@ -44,14 +44,14 @@
                 <!--                        DOB start-->
 
                 <div class="input-field col s6">
-                    <input id="age" type="text" placeholder="Please enter your age as a number" th:field="*{age}" required="required"/>
+                    <input id="age" type="text" placeholder="Please enter your age as a number" th:field="*{age}"/>
 
                 </div>
                 <!--                        DOB end-->
 
                 <!--                        pick hobbies and traits-->
                 <div class="input-field col s6">
-                    <select multiple th:field="*{traits}" required="required">
+                    <select multiple th:field="*{traits}">
                         <option value="" disabled selected>Choose your traits</option>
                         <th:block th:each="trait: ${traits}">
                             <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span>
@@ -62,7 +62,7 @@
                     <label>Pick 5 traits that best describe you</label>
                 </div>
                 <div class="input-field col s6">
-                    <select multiple th:field="*{hobbies}" required="required">
+                    <select multiple th:field="*{hobbies}">
                         <option value="" disabled selected>Choose your hobbies</option>
                         <th:block th:each="hobby: ${hobbies}">
                             <option th:name="hobbies" th:value="${hobby.id}"><span th:text="${hobby.hobby}"></span>
@@ -75,7 +75,7 @@
 
                 <!--                bio start-->
                 <div class="input-field col s12">
-                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}" required="required"></textarea>
+                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"></textarea>
                     <label for="bio">Tell us more about yourself! Write a bio or share some interesting
                         facts!</label>
                 </div>
@@ -108,7 +108,7 @@
                 <!--                rank start-->
 
                 <div class="input-field col s3">
-                    <select th:field="*{rank}" required="required">
+                    <select th:field="*{rank}">
                         <th:block th:each="rank: ${ranks}">
                             <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
                         </th:block>
@@ -120,7 +120,7 @@
                 <!--                branch start-->
 
                 <div class="input-field col s3">
-                    <select th:field="*{branch}" required="required">
+                    <select th:field="*{branch}">
                         <th:block th:each="branch: ${branches}">
                             <option th:name="branch" th:value="${branch.id}"><span th:text="${branch.branch}"></span>
                             </option>
@@ -133,7 +133,7 @@
 
                 <!--                mill spouse-->
                 <div class="input-field col s6">
-                    <select th:field="*{milSpouse}" required="required">
+                    <select th:field="*{milSpouse}">
                         <option value="0" disabled selected>Are you a military spouse?</option>
                         <option value="1" name="true">Yes</option>
                         <option value="0" name="false">No</option>
@@ -146,7 +146,7 @@
                 <!--                marital status-->
                 <div class="row">
                     <div class="input-field col s6">
-                        <select th:field="*{married}" required="required">
+                        <select th:field="*{married}">
                             <option value="0" disabled selected>Marital Status</option>
                             <option value="1" name="single">Single</option>
                             <option value="0" name="married">Married</option>
@@ -157,7 +157,7 @@
                 <!--                marital status-->
                 <!--                location-->
                 <div class="input-field col s3">
-                    <select th:field="*{location}" required="required">
+                    <select th:field="*{location}">
                         <option value="0" disabled selected>Location</option>
                         <th:block th:each="location: ${locations}">
                             <option th:name="branch" th:value="${location.id}"><span th:text="${location.location}"></span>

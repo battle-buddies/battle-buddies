@@ -268,8 +268,9 @@ public class ProfileController {
             @RequestParam(name="bio", required = false) String bio,
             @RequestParam(name="age", required = false) int age,
             @RequestParam(name="milSpouse", required = false) boolean millSpouse,
-            @RequestParam(name="married", required = false) boolean married
-//            @RequestParam(name="location", required = false) Long locationId
+            @RequestParam(name="married", required = false) boolean married,
+            @RequestParam(name="location", required = false) Long locationId,
+             @RequestParam(name="gender", required = false) boolean gender
 
 
     ){
@@ -286,7 +287,8 @@ public class ProfileController {
         profile.setBio(bio);
         profile.setage(age);
         profile.setMilSpouse(millSpouse);
-        profile.setMilSpouse(married);
+       profile.setMarried(married);
+       profile.setGender(gender);
 
 
 
