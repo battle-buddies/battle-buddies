@@ -8,10 +8,24 @@
         display: none;
     }
 
-    /*option 2*/
-    body {
-        padding-top: 90px;
+    .jumbotron{
+        background-image: url("/img/flag_bg.jpg");
     }
+
+    #jumbo{
+       text-align: center;
+    }
+
+    #jc{
+        padding: 0;
+    }
+
+
+    /*option 2*/
+    /*body {*/
+    /*    padding-top: 90px;*/
+
+    /*}*/
     /*.panel-login {*/
     /*    border-color: #ccc;*/
     /*    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);*/
