@@ -130,6 +130,10 @@
 
 
     #mobile-login {
+         display: none;
+     }
+
+    #jc{
         display: none;
     }
 
