@@ -3,29 +3,22 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
 
 
-
-  /*  h2{*/
-  /*      text-align: center;*/
-  /*  }*/
-
-  /*.jumbotron{*/
-  /*    background-color: red;*/
-  /*    text-align: center;*/
-  /*}*/
-
-  /*#reg, #log{*/
-  /*    display: block;*/
-  /*    margin: 0 auto;*/
-  /*}*/
-
-
-
+    /*  h2{*/
+    /*      text-align: center;*/
+    /*  }*/
+    /*.jumbotron{*/
+    /*    background-color: red;*/
+    /*    text-align: center;*/
+    /*}*/
+    /*#reg, #log{*/
+    /*    display: block;*/
+    /*    margin: 0 auto;*/
+    /*}*/
     .login-reg-panel {
         display: none;
     }
 
-
-
+    /*option 2*/
     body {
         padding-top: 90px;
     }
@@ -107,7 +100,6 @@
         text-decoration: underline;
         color: #666;
     }
-
     .btn-register {
         background-color: #1CB94E;
         outline: none;
@@ -125,10 +117,6 @@
         background-color: #1CA347;
         border-color: #1CA347;
     }
-
-
-
-
 
 
 
