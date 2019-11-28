@@ -44,7 +44,8 @@
                 <!--                        DOB start-->
 
                 <div class="input-field col s6">
-                    <input id="age" type="text" placeholder="Please enter your age as a number" th:field="*{age}"/>
+                    <label for="age">Please enter your age as a number</label>
+                    <input id="age" type="text"  th:field="*{age}"/>
 
                 </div>
                 <!--                        DOB end-->
@@ -52,7 +53,7 @@
                 <!--                        pick hobbies and traits-->
                 <div class="input-field col s6">
                     <select multiple th:field="*{traits}">
-                        <option value="" disabled selected>Choose your traits</option>
+                        <option value="0" disabled selected>Choose your traits</option>
                         <th:block th:each="trait: ${traits}">
                             <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span>
                             </option>
@@ -63,7 +64,7 @@
                 </div>
                 <div class="input-field col s6">
                     <select multiple th:field="*{hobbies}">
-                        <option value="" disabled selected>Choose your hobbies</option>
+                        <option value="0" disabled selected>Choose your hobbies</option>
                         <th:block th:each="hobby: ${hobbies}">
                             <option th:name="hobbies" th:value="${hobby.id}"><span th:text="${hobby.hobby}"></span>
                             </option>
