@@ -387,6 +387,10 @@
                         <h2 class="mdl-card__title-text mdl-color-text--light-green-700"> Bio: </h2>
                         <div class="mdl-card__supporting-text bio">
                             <span th:text="${user.getProfile().getBio()}"></span>
+                            <span th:text="${user.getProfile().getGender()}"> true = male or (1)</span>
+                            <span th:text="${user.getProfile().isMilSpouse()}"> true = single or (1)</span>
+                            <span th:text="${user.getProfile().isMarried()}"> true = yes or (1)</span>
+
                         </div>
 <!--                        <span class="mdl-card__title-text mdl-color-text&#45;&#45;indigo-A700" th:text=" ${'&nbsp; '+ user.getProfile().firstName}"></span>-->
                     </div>

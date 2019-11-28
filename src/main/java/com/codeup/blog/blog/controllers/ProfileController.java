@@ -3,6 +3,7 @@ import com.codeup.blog.blog.models.*;
 import com.codeup.blog.blog.repositories.*;
 import com.codeup.blog.blog.models.Relationship;
 import com.codeup.blog.blog.models.User;
+import com.codeup.blog.blog.models.Location;
 import com.codeup.blog.blog.repositories.LocationRepository;
 import com.codeup.blog.blog.repositories.ProfileRepository;
 import com.codeup.blog.blog.repositories.RelationshipRepository;
@@ -268,6 +269,7 @@ public class ProfileController {
             @RequestParam(name="age", required = false) int age,
             @RequestParam(name="milSpouse", required = false) boolean millSpouse,
             @RequestParam(name="married", required = false) boolean married
+//            @RequestParam(name="location", required = false) Long locationId
 
 
     ){
@@ -278,14 +280,13 @@ public class ProfileController {
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
 
+
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
         profile.setBio(bio);
         profile.setage(age);
         profile.setMilSpouse(millSpouse);
         profile.setMilSpouse(married);
-
-
 
 
 
