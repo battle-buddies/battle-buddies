@@ -55,51 +55,154 @@
 
 <!--MOBILE VIEW-->
 
-<div id="mobile-login">
-<div class="jumbotron">
-    <h1 class="display-4">Battle Buddies</h1>
+<!--<div id="mobile-login">-->
+<!--<div class="jumbotron">-->
+<!--    <h1 class="display-4">Battle Buddies</h1>-->
 
-</div>
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-        <div class="form-group">
-            <form th:action="@{/login}" method="post">
-                <h2>LOGIN</h2>
-                <input class="form-control" id="username1" name="username" type="text" placeholder="Username" required="required"/>
-                <input class="form-control"  id="password1" name="password" type="password" placeholder="Password" required="required"/>
-                <input id="log" class="btn btn-outline-danger btn-block" type="submit" value="Log In"/>
+<!--</div>-->
+<!--<ul class="nav nav-tabs" id="myTab" role="tablist">-->
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>-->
+<!--    </li>-->
+<!--</ul>-->
+<!--<div class="tab-content" id="myTabContent">-->
+<!--    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">-->
+<!--        <div class="form-group">-->
+<!--            <form th:action="@{/login}" method="post">-->
+<!--                <h2>LOGIN</h2>-->
+<!--                <input class="form-control" id="username1" name="username" type="text" placeholder="Username" required="required"/>-->
+<!--                <input class="form-control"  id="password1" name="password" type="password" placeholder="Password" required="required"/>-->
+<!--                <input id="log" class="btn btn-outline-danger btn-block" type="submit" value="Log In"/>-->
 
-            </form>
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">-->
+<!--        <div class="form group">-->
+<!--            <form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
+<!--                <h2>REGISTER</h2>-->
+<!--                <input class="form-control" type="text" th:field="*{username}" placeholder="Username" required="required">-->
+<!--                <input class="form-control"  type="email" th:field="*{email}" placeholder="Email" required="required">-->
+<!--                <input class="form-control"  type="password" th:field="*{password}" placeholder="Password" required="required">-->
+<!--                <input id="reg" class="btn btn-outline-danger btn-block" type="submit" value="Register" required="required">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+
+
+
+
+<div class="container" id="mobile-login">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="active" id="login-form-link">Login</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" id="register-form-link">Register</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="login-form" th:action="@{/login}"  method="post" role="form" style="display: block;">
+                                <div class="form-group">
+                                    <input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password1" tabindex="2" class="form-control" placeholder="Password" required="required">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form id="register-form" th:action="@{/sign-up}"  th:object="${user}" method="post" role="form" style="display: none;">
+                                <div class="form-group">
+                                    <input type="text" name="username" id="username2" tabindex="1" th:field="*{username}" class="form-control" placeholder="Username" value="" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" th:field="*{email}" placeholder="Email Address" value="" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password2" tabindex="2" class="form-control" th:field="*{password}" placeholder="Password" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-        <div class="form group">
-            <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-                <h2>REGISTER</h2>
-                <input class="form-control" type="text" th:field="*{username}" placeholder="Username" required="required">
-                <input class="form-control"  type="email" th:field="*{email}" placeholder="Email" required="required">
-                <input class="form-control"  type="password" th:field="*{password}" placeholder="Password" required="required">
-                <input id="reg" class="btn btn-outline-danger btn-block" type="submit" value="Register" required="required">
-            </form>
-        </div>
-    </div>
-
 </div>
 
-</div>
+
+
+
 
 
 
 <th:block th:replace="fragments/footer :: login-footer"/>
 
 
+<script>
+    $(function() {
+
+        $('#login-form-link').click(function(e) {
+            $("#login-form").delay(100).fadeIn(100);
+            $("#register-form").fadeOut(100);
+            $('#register-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+        $('#register-form-link').click(function(e) {
+            $("#register-form").delay(100).fadeIn(100);
+            $("#login-form").fadeOut(100);
+            $('#login-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+
+    });
+
+</script>
+
 </body>
+
 </html>
