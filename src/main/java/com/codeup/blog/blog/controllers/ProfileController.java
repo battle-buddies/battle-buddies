@@ -256,6 +256,7 @@ public class ProfileController {
         m.addAttribute("branches", branchDao.findAll());
         m.addAttribute("ranks", rankDao.findAll());
         m.addAttribute("locations", locationDao.findAll());
+        m.addAttribute("location", new Location());
         return "users/user-details-edit";
     }
 //
@@ -274,7 +275,8 @@ public class ProfileController {
             @RequestParam(name="milSpouse", required = false) boolean millSpouse,
             @RequestParam(name="married", required = false) boolean married,
             @RequestParam(name="location", required = false) List<Location> locationId,
-             @RequestParam(name="gender", required = false) boolean gender
+             @RequestParam(name="gender", required = false) boolean gender,
+            @RequestParam(name = "form2", required = false) Location locationToBeCreated
 
 
     ){
@@ -284,6 +286,7 @@ public class ProfileController {
 
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
+        locationDao.save(locationToBeCreated);
 
 
         profile.setFirstName(firstName);

@@ -13,6 +13,49 @@
 </head>
 <body>
 <th:block th:replace="fragments/nav-bar :: main-nav"/>
+
+
+<!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class='sidebar'>
+            <form id="form1">
+                <div id="locationList"></div>
+                <br>
+                <div class="input-field">
+                    <input class="input_fields" id="city" type="text">
+                    <label class="active" for="city">City/District/Town</label>
+                </div>
+                <div class="input-field">
+                    <input class="input_fields" id="state" type="text">
+                    <label class="active" for="State">State</label>
+                </div>
+                <div class="input-field">
+                    <input class="input_fields" id="country" type="text">
+                    <label class="active" for="country">Country</label>
+                </div>
+                <input type='button' value='Submit form 1' id="view" name="view"/>
+            </form>
+        </div>
+        <div>
+            <h2 id=a></h2>
+            <h2 id=b></h2>
+            <h2 id=c></h2>
+        </div>
+        <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
+            <input type="hidden" id="location" th:field="*{location}"/>
+
+            <input type='button' value='Submit form 2' id="send" name="send"/>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat modal-close">Cancel</a>
+    </div>
+</div>
+<!--        MODAL END-->
+
+
 <div class="container">
     <ul id="tabs-swipe-demo" class="tabs">
         <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
@@ -168,6 +211,17 @@
                     </select>
                     <label>Please select your location</label>
                 </div>
+
+
+                <!--                BUTTON FOR MODAL -->
+
+                <button data-target="modal1" class="btn modal-trigger">Add Location</button>
+
+
+                <!--            BUTTON FOR MODAL END-->
+
+
+
                 <!--                location end-->
 
             </div>
@@ -183,6 +237,8 @@
         $('select').material_select();
 
     });
+
+    $('.modal').modal();
 
 
     var max_fields = 10; //maximum input boxes allowed
