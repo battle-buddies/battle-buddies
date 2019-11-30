@@ -133,6 +133,7 @@ public class ProfileController {
         model.addAttribute("branches", branchDao.findAll());
         model.addAttribute("ranks", rankDao.findAll());
         model.addAttribute("locations", locationDao.findAll());
+        model.addAttribute("location", new Location());
 
         return "users/userdetails";
     }
@@ -145,13 +146,16 @@ public class ProfileController {
              @RequestParam(name="branch", required = false)Long branchId,
              @RequestParam(name="rank", required = false) Long rankId,
              Model m,
-             @RequestParam(name = "file") MultipartFile uploadedFile
+             @RequestParam(name = "file") MultipartFile uploadedFile,
+             @RequestParam(name = "form2", required = false) Location locationToBeCreated
+
 
     ){
         User user = usersService.loggedInUser();
        profile.setUser(user);
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
+        locationDao.save(locationToBeCreated);
 
 
 
@@ -376,7 +380,7 @@ public class ProfileController {
         return "redirect:/users/profile/"+ userOne.getId();
     }
 
-
+//location mapping
 
     @GetMapping("/users/location")
 
@@ -391,8 +395,10 @@ public class ProfileController {
 //        locationToBeCreated.setProfiles(profileDao.getOne(1));
 
         locationDao.save(locationToBeCreated);
-        return "redirect:/users/location";
+        return "redirect:/users/userdetails";
     }
+
+
 
     @GetMapping("/users/profile-design")
 
@@ -401,7 +407,6 @@ public class ProfileController {
 
         return "users/profile-design";
     }
-
 
 
 

@@ -13,7 +13,48 @@
 </head>
 <body>
 <th:block th:replace="fragments/nav-bar :: main-nav"/>
+
 <div class="container">
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class='sidebar'>
+                <form id="form1">
+                    <div id="locationList"></div>
+                    <br>
+                    <div class="input-field">
+                        <input class="input_fields" id="city" type="text">
+                        <label class="active" for="city">City/District/Town</label>
+                    </div>
+                    <div class="input-field">
+                        <input class="input_fields" id="state" type="text">
+                        <label class="active" for="State">State</label>
+                    </div>
+                    <div class="input-field">
+                        <input class="input_fields" id="country" type="text">
+                        <label class="active" for="country">Country</label>
+                    </div>
+                    <input type='button' value='Submit form 1' id="view" name="view"/>
+                </form>
+            </div>
+            <div>
+                <h2 id=a></h2>
+                <h2 id=b></h2>
+                <h2 id=c></h2>
+            </div>
+            <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
+                <input type="hidden" id="location" th:field="*{location}"/>
+
+                <input type='button' value='Submit form 2' id="send" name="send"/>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
+
     <ul id="tabs-swipe-demo" class="tabs">
         <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
         <li class="tab col s3"><a href="#Service-details">Service Detail</a></li>
@@ -23,16 +64,16 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="firstName" type="text" class="validate" th:field="*{firstName}"  required="required">
+                    <input id="firstName" type="text" class="validate" th:field="*{firstName}" required="required">
                     <label for="firstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="lastName" type="text" class="validate" th:field="*{lastName}"  required="required">
+                    <input id="lastName" type="text" class="validate" th:field="*{lastName}" required="required">
                     <label for="lastName">Last Name</label>
                 </div>
                 <!--                        gender pick start-->
                 <div class="input-field col s6">
-                    <select  required="required">
+                    <select required="required">
                         <option value="0" disabled selected>gender</option>
                         <option value="1">Male</option>
                         <option value="0">Female</option>
@@ -76,7 +117,8 @@
 
                 <!--                bio start-->
                 <div class="input-field col s12">
-                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}" required="required"></textarea>
+                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"
+                              required="required"></textarea>
                     <label for="bio">Tell us more about yourself! Write a bio or share some interesting
                         facts!</label>
                 </div>
@@ -163,25 +205,34 @@
                     <select th:field="*{location}" required="required">
                         <option value="0" disabled selected>Location</option>
                         <th:block th:each="location: ${locations}">
-                            <option th:name="branch" th:value="${location.id}"><span th:text="${location.location}"></span>
+                            <option th:name="branch" th:value="${location.id}"><span
+                                    th:text="${location.location}"></span>
                             </option>
 
                         </th:block>
                     </select>
                     <label>Please select your location</label>
                 </div>
+
+                <!--                MODAL FOR LOCATION START -->
+
+                <button data-target="modal1" class="btn modal-trigger">Add Location</button>
+
+
+                <!--            MODAL FOR LOCATION END-->
+
                 <!--                location end-->
 
-<!--                file upload-->
+                <!--                file upload-->
 
             </div>
             <div class="file-field input-field col s3">
                 <div class="btn">
                     <span>File</span>
-                    <input type="file" name="file" id="file" />
+                    <input type="file" name="file" id="file"/>
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" />
+                    <input class="file-path validate" type="text"/>
                 </div>
             </div>
             <!--           row end-->
@@ -197,6 +248,7 @@
 
     });
 
+    $('.modal').modal();
 
     var max_fields = 10; //maximum input boxes allowed
     var wrapper = $(".input_fields_wrap"); //Fields wrapper
