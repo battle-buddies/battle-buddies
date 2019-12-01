@@ -45,7 +45,8 @@
                 <h2>REGISTER</h2>
                 <input type="text" th:field="*{username}" placeholder="Username" required="required">
                 <input type="email" th:field="*{email}" placeholder="Email" required="required">
-                <input type="password" th:field="*{password}" placeholder="Password" required="required">
+                <input class="regpass" type="password" th:field="*{password}" placeholder="Password" required="required">
+                <input class="confirm_password" type="password" placeholder=" Confirm Password" required="required"><span class="message"></span><br>
                 <input type="submit" value="Register">
             </form>
         </div>
@@ -107,10 +108,11 @@
                                     <input type="email" name="email" id="email" tabindex="1" class="form-control" th:field="*{email}" placeholder="Email Address" value="" required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password2" tabindex="2" class="form-control" th:field="*{password}" placeholder="Password" required="required">
+                                    <input type="password" name="password" id="password2" tabindex="2" class="form-control regpassM" th:field="*{password}" placeholder="Password" required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" required="required">
+                                    <input  type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control confirm_passwordM" placeholder="Confirm Password" required="required">
+                                    <span class="messageM"></span><br>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
@@ -149,6 +151,20 @@
             $('#login-form-link').removeClass('active');
             $(this).addClass('active');
             e.preventDefault();
+        });
+
+        $('.regpass, .confirm_password').on('keyup', function () {
+            if ($('.regpass').val() == $('.confirm_password').val()) {
+                $('.message').html('Passwords match').css('color', 'green');
+            } else
+                $('.message').html('Password does not match').css('color', 'red');
+        });
+
+        $('.regpassM, .confirm_passwordM').on('keyup', function () {
+            if ($('.regpassM').val() == $('.confirm_passwordM').val()) {
+                $('.messageM').html('Passwords match').css('color', 'green');
+            } else
+                $('.messageM').html('Password does not match').css('color', 'red');
         });
 
     });
