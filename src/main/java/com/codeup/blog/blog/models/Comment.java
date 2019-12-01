@@ -14,7 +14,7 @@ public class Comment {
     private String comment;
 
     @ManyToOne
-    @JoinColumn (name = "meet-up_id")
+    @JoinColumn (name = "meet_up_id")
     private MeetUp meetUp;
 
     public Comment(String comment, MeetUp meetUp) {
