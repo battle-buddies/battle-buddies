@@ -155,7 +155,7 @@ public class ProfileController {
        profile.setUser(user);
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
-        locationDao.save(locationToBeCreated);
+//        locationDao.save(locationToBeCreated);
 
 
 

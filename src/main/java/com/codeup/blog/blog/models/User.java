@@ -38,6 +38,9 @@ public class User {
     @OneToOne
     private Profile profile;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comment> comments;
+
 
 
     public User(){
@@ -148,5 +151,13 @@ public class User {
 
     public void setInterestedInMeetUps(List<MeetUp> interestedInMeetUps) {
         this.interestedInMeetUps = interestedInMeetUps;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

@@ -17,9 +17,14 @@ public class Comment {
     @JoinColumn (name = "meet_up_id")
     private MeetUp meetUp;
 
-    public Comment(String comment, MeetUp meetUp) {
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Comment(String comment, MeetUp meetUp, User user) {
         this.comment = comment;
         this.meetUp = meetUp;
+        this.user = user;
     }
 
     public Comment() {
@@ -48,4 +53,9 @@ public class Comment {
     public void setMeetUp(MeetUp meetUp) {
         this.meetUp = meetUp;
     }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
 }
