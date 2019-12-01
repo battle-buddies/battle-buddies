@@ -24,13 +24,12 @@ public class User {
     @Column( columnDefinition = "TINYINT(1)")
     private boolean isAdmin;
 
-    @ManyToOne
-    @JoinColumn(name = "meet_up_id")
-    private MeetUp meetUp;
+    @ManyToMany(mappedBy = "user")
+    private List<MeetUp> meetUps;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<MeetUp> meetUps;
+    private List<MeetUp> interestedInMeetUps;
 
     @OneToMany(mappedBy = "user")
     @JsonBackReference
@@ -45,13 +44,14 @@ public class User {
 
     }
 
-    public User(String username, String email, String password, boolean isAdmin, List<MeetUp> meetUps, List<Relationship> relationships, Profile profile) {
+    public User(String username, String email, String password, boolean isAdmin, List<MeetUp> meetUps, List<Relationship> relationships, Profile profile, List<MeetUp> interestedInMeetUps) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.meetUps = meetUps;
         this.relationships = relationships;
         this.profile = profile;
+        this.interestedInMeetUps = interestedInMeetUps;
     }
 
     // Copy constructor an alternative for clone
@@ -140,5 +140,13 @@ public class User {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public List<MeetUp> getInterestedInMeetUps() {
+        return interestedInMeetUps;
+    }
+
+    public void setInterestedInMeetUps(List<MeetUp> interestedInMeetUps) {
+        this.interestedInMeetUps = interestedInMeetUps;
     }
 }

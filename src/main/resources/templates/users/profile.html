@@ -23,8 +23,144 @@
         html, body {
             height: 100%;
 
+<<<<<<< HEAD
             /* Location of the image */
             background-image: url("/img/flag_bg.jpg");
+=======
+                <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
+                    <div class="mdl-card__title about-header">
+                        <h2 class="mdl-card__title-text mdl-color-text--light-green-700"> Bio: </h2>
+                        <div class="mdl-card__supporting-text bio">
+                            <span th:text="${user.getProfile().getBio()}"></span><br>
+                            <span th:text="${user.getProfile().getGender()}"></span>
+                            <p>true = male or (1)</p>
+                            <span th:text="${user.getProfile().isMilSpouse()}"></span>
+                            <p>true = yes or (1)</p>
+                            <span th:text="${user.getProfile().isMarried()}"></span>
+                            <p> true = single or (1)</p>
+
+                        </div>
+<!--                        <span class="mdl-card__title-text mdl-color-text&#45;&#45;indigo-A700" th:text=" ${'&nbsp; '+ user.getProfile().firstName}"></span>-->
+                    </div>
+
+                    <div class="mdl-card__actions">
+                        <section class="section--center mdl-grid site-max-width sec1">
+                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                                <div class="mdl-card__title mdl-card--border">
+                                    <h2 class="mdl-card__title-text section--center mdl-color-text--light-green-700">
+                                        Hobbies</h2>
+                                </div>
+                                    <div class="mdl-card__supporting-text center hobbies">
+                                        <ul th:each="hobby : ${user.getProfile().getHobbies()}">
+                                            <li th:text="${hobby.hobby}"></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                                <div class="mdl-card__title mdl-card--border">
+                                    <h2 class="mdl-card__title-text mdl-color-text--light-green-700 section--center">
+                                        Personality</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text center traits">
+                                    <ul th:each="trait : ${user.getProfile().getTraits()}">
+                                        <li th:text="${trait.trait}"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                                <div class="mdl-card__title mdl-card--border">
+                                    <h2 class="mdl-card__title-text mdl-card--border mdl-color-text--light-green-700 section--center">
+                                        Current City</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text center currently">
+                                    <div th:each="location : ${user.getProfile().getLocation()}">
+                                        <p th:text="${location.location}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </div>
+            <div class="container">
+                <div class="mdl-grid site-max-width">
+                    <div class="mdl-card__supporting-text">
+                        <h4 class="headline 700 center">
+                            BattleBuddies</span>
+                        </h4>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+                        <div class="mdc-tab-bar" role="tablist">
+                            <div class="row">
+                                <div class="col s12">
+                                    <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+                                    <ul class="tabs">
+                                        <li  class="tab col s3"><a class="active" href="#test1">Buddies</a></li>
+                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test2">Potential Buddies</a></li>
+                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test3">Pending Buddies</a></li>
+                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test4">Suggested Buddies</a></li>
+
+                                    </ul>
+                                </div>
+                                <div id="test1" class="col s12">
+                                    <div id="friends" class="col s12 blue">
+                                                    <h4> Accepted Friends List</h4>
+                                                    <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+                                                        <p  th:text="${friend.getFriend().username}"></p>
+                                                        <p th:text="${friend.getStatus()}"></p>
+
+                                                    </th:block>
+
+                                                </div>
+                                </div>
+                                <div id="test2" class="col s12"  th:if="${#authentication.principal.id == user.id}">
+
+                                    <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
+
+                                                    <div th:each="friend : ${pendingFriends}">
+
+                                                        <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
+                                                            <p th:text="${friend.username}"></p>
+                                                            <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
+                                                        </th:block>
+
+                                                    </div>
+                                </div>
+
+                                <div id="test3" class="col s12" th:if="${#authentication.principal.id == user.id}">
+
+                                    <div id="pending" class="col s12 green">
+                                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                                            <input type="hidden" th:value="${user.id}">
+                                            <h4>friends <span th:text="${user.username}"></span> has requested</h4>
+                                            <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                                                <p th:text="${friend.getFriend().username}"></p>
+                                                <p th:text="${friend.getStatus()}"></p>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </div>
+
+                                <div id="test4" class="col s12" th:if="${#authentication.principal.id == user.id}">
+
+                                    <div  class="col s12 green">
+                                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                                            <input type="hidden" th:value="${user.id}">
+                                            <h4>Suggested buddies for you</h4>
+                                            <div th:each="friend : ${suggestedFriends}" >
+                                                <a th:href="@{'/users/profile/' + ${friend.id}}"><span th:text="${friend.username}"></span></a>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 613e50d0752eff04b1bbb1210d942a0cb380181a
 
             /* Image is centered vertically and horizontally at all times */
             background-position: center center;

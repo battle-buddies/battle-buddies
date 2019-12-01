@@ -72,13 +72,18 @@ public class MeetUpController {
         User user = usersService.loggedInUser();
         MeetUp meetUp = meetUpDao.getOne(id);
 
-//        if (meetUp.getInterestedUsers().isEmpty()){
-//            meetUp.setInterestedUsers(new ArrayList<>());
-//        }
 
-        if(!meetUp.getInterestedUsers().contains(user)){
-            meetUp.getInterestedUsers().add(user);
+        ArrayList<User> usersToAdd = new ArrayList<>();
+
+        usersToAdd.addAll(meetUp.getInterestedUsers());
+
+
+        if(!usersToAdd.contains(user)){
+            usersToAdd.add(user);
         }
+
+        meetUp.setInterestedUsers(usersToAdd);
+
         int total = 0;
         for (User el: meetUp.getInterestedUsers()) {
             total += 1;
@@ -93,6 +98,16 @@ public class MeetUpController {
         return "redirect:/meetups/" + meetUp.getId();
     }
 
+    @PostMapping("meetups/delete/{id}")
+    public String deleteMeetUp(@PathVariable long id){
+        MeetUp meetUp = meetUpDao.getOne(id);
+
+        meetUp.setUser(new User());
+
+        meetUpDao.deleteById(id);
+
+        return "redirect:/meetups/";
+    }
 
 }
 

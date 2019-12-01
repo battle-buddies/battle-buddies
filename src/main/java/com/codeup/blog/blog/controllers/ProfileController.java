@@ -3,6 +3,7 @@ import com.codeup.blog.blog.models.*;
 import com.codeup.blog.blog.repositories.*;
 import com.codeup.blog.blog.models.Relationship;
 import com.codeup.blog.blog.models.User;
+import com.codeup.blog.blog.models.Location;
 import com.codeup.blog.blog.repositories.LocationRepository;
 import com.codeup.blog.blog.repositories.ProfileRepository;
 import com.codeup.blog.blog.repositories.RelationshipRepository;
@@ -87,6 +88,36 @@ public class ProfileController {
 
         vModel.addAttribute("pendingFriends", pendingFriends);
 
+//        SUGGESTED FRIENDS
+        List<User> suggestedFriends = new ArrayList<>();
+        for (Profile profile : profileDao.findAll()) {
+            int total = 0;
+
+            // add logic to weed out accepted friends
+            if (loggedInProfile != profile){
+                if(loggedInProfile.getLocation().equals(profile.getLocation())){
+                    total += 5;
+                }
+
+                for (Trait trait : profile.getTraits()) {
+                    if (loggedInProfile.getTraits().contains(trait)){
+                        total += 2;
+                    }
+                }
+
+                for (Hobby hobby : profile.getHobbies()) {
+                    if (loggedInProfile.getHobbies().contains(hobby)){
+                        total += 2;
+                    }
+                }
+
+                if (total >= 10){
+                    suggestedFriends.add(profile.getUser());
+                }
+            }
+        }
+
+        vModel.addAttribute("suggestedFriends", suggestedFriends);
 
         return "users/profile";
     }
@@ -102,6 +133,7 @@ public class ProfileController {
         model.addAttribute("branches", branchDao.findAll());
         model.addAttribute("ranks", rankDao.findAll());
         model.addAttribute("locations", locationDao.findAll());
+        model.addAttribute("location", new Location());
 
         return "users/userdetails";
     }
@@ -114,13 +146,16 @@ public class ProfileController {
              @RequestParam(name="branch", required = false)Long branchId,
              @RequestParam(name="rank", required = false) Long rankId,
              Model m,
-             @RequestParam(name = "file") MultipartFile uploadedFile
+             @RequestParam(name = "file") MultipartFile uploadedFile,
+             @RequestParam(name = "form2", required = false) Location locationToBeCreated
+
 
     ){
         User user = usersService.loggedInUser();
        profile.setUser(user);
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
+        locationDao.save(locationToBeCreated);
 
 
 
@@ -128,57 +163,52 @@ public class ProfileController {
         // FINDS THE Hobbies THAT WERE SELECTED BY USER
         List<Hobby> hobbiesToAdd = new ArrayList<>();
         for (long hobbyId : hobbyIds) {
-            for (Hobby all: hobbyDao.findAll()){
-                if(hobbyId == all.getId()){
+            for (Hobby all : hobbyDao.findAll()) {
+                if (hobbyId == all.getId()) {
                     hobbiesToAdd.add(hobbyDao.getOne(hobbyId));
                 }
             }
-        }
-
-        // ADDS EACH INDIVIDUAL Hobby TO PROFILE
-        if (hobbiesToAdd != null){
-            profile.setHobbies(new ArrayList<>());
-            for (Hobby hobby: hobbiesToAdd){
-                profile.getHobbies().add(hobby);
-            }
-        }
-
-
-
-
-        // FINDS THE TRAITS THAT WERE SELECTED BY USER
-        List<Trait> traitsToAdd = new ArrayList<>();
-        for (long traitId : traitIds) {
-            for (Trait all: traitDao.findAll()){
-                if(traitId == all.getId()){
-                   traitsToAdd.add(traitDao.getOne(traitId));
+            // ADDS EACH INDIVIDUAL Hobby TO PROFILE
+            if (hobbiesToAdd != null) {
+                profile.setHobbies(new ArrayList<>());
+                for (Hobby hobby : hobbiesToAdd) {
+                    profile.getHobbies().add(hobby);
                 }
             }
-        }
 
-        // ADDS EACH INDIVIDUAL TRAIT TO PROFILE
-        if (traitsToAdd != null){
-            profile.setTraits(new ArrayList<>());
-            for (Trait trait: traitsToAdd){
-                profile.getTraits().add(trait);
+
+            // FINDS THE TRAITS THAT WERE SELECTED BY USER
+            List<Trait> traitsToAdd = new ArrayList<>();
+            for (long traitId : traitIds) {
+                for (Trait all : traitDao.findAll()) {
+                    if (traitId == all.getId()) {
+                        traitsToAdd.add(traitDao.getOne(traitId));
+                    }
+                }
             }
-        }
+
+            // ADDS EACH INDIVIDUAL TRAIT TO PROFILE
+            if (traitsToAdd != null) {
+                profile.setTraits(new ArrayList<>());
+                for (Trait trait : traitsToAdd) {
+                    profile.getTraits().add(trait);
+                }
+            }
 //        hard coded children for now
-        List<Child> children = new ArrayList<>();
-        children.add(new Child("female", 6));
-        profile.setChildren(children);
+            List<Child> children = new ArrayList<>();
+            children.add(new Child("female", 6));
+            profile.setChildren(children);
 
-        // Files handle
-
-
-
-        profileDao.save(profile);
-        uploadFileHandler(profile, m, uploadedFile);
-        user.setProfile(profile);
-        userDao.save(user);
+            // Files handle
 
 
+            profileDao.save(profile);
+            uploadFileHandler(profile, m, uploadedFile);
+            user.setProfile(profile);
+            userDao.save(user);
 
+
+        }
 
         return "redirect:/users/profile/" + user.getId();
     }
@@ -221,6 +251,7 @@ public class ProfileController {
         m.addAttribute("branches", branchDao.findAll());
         m.addAttribute("ranks", rankDao.findAll());
         m.addAttribute("locations", locationDao.findAll());
+        m.addAttribute("location", new Location());
         return "users/user-details-edit";
     }
 //
@@ -237,7 +268,10 @@ public class ProfileController {
             @RequestParam(name="bio", required = false) String bio,
             @RequestParam(name="age", required = false) int age,
             @RequestParam(name="milSpouse", required = false) boolean millSpouse,
-            @RequestParam(name="married", required = false) boolean married
+            @RequestParam(name="married", required = false) boolean married,
+            @RequestParam(name="location", required = false) List<Location> locationId,
+             @RequestParam(name="gender", required = false) boolean gender,
+            @RequestParam(name = "form2", required = false) Location locationToBeCreated
 
 
     ){
@@ -247,15 +281,17 @@ public class ProfileController {
 
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
+        locationDao.save(locationToBeCreated);
+
 
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
         profile.setBio(bio);
         profile.setage(age);
         profile.setMilSpouse(millSpouse);
-        profile.setMilSpouse(married);
-
-
+       profile.setMarried(married);
+       profile.setGender(gender);
+       profile.setLocation(locationId);
 
 
 
@@ -312,13 +348,6 @@ public class ProfileController {
 
 
 
-
-
-
-
-
-
-
     @GetMapping("/users/{id}/friend-request")
     public String sendFriendRequest(@PathVariable long id, Model vModel) {
         User userOne = usersService.loggedInUser();
@@ -349,7 +378,7 @@ public class ProfileController {
         return "redirect:/users/profile/"+ userOne.getId();
     }
 
-
+//location mapping
 
     @GetMapping("/users/location")
 
@@ -364,8 +393,10 @@ public class ProfileController {
 //        locationToBeCreated.setProfiles(profileDao.getOne(1));
 
         locationDao.save(locationToBeCreated);
-        return "redirect:/users/location";
+        return "redirect:/users/userdetails";
     }
+
+
 
     @GetMapping("/users/profile-design")
 
