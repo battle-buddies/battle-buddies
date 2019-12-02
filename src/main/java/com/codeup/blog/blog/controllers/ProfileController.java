@@ -411,6 +411,14 @@ public class ProfileController {
         return "users/profile-design";
     }
 
+    @GetMapping("/users/chat")
+
+    public @ResponseBody User getUser(Model model) {
+
+        return userDao.findById(1L).orElse(null);
+    }
+
+
 
 
 }

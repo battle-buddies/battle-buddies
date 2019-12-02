@@ -1,6 +1,9 @@
 package com.codeup.blog.blog.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -36,6 +39,7 @@ public class Profile {
 
 
     @OneToOne
+    @JsonBackReference
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -44,6 +48,7 @@ public class Profile {
             joinColumns = {@JoinColumn(name="profile_id")},
             inverseJoinColumns = {@JoinColumn(name="location_id")}
     )
+    @JsonIgnore
     private List<Location> location;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -52,6 +57,7 @@ public class Profile {
             joinColumns = {@JoinColumn(name="profile_id")},
             inverseJoinColumns = {@JoinColumn(name="trait_id")}
     )
+    @JsonIgnore
     private List<Trait> traits;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -60,24 +66,29 @@ public class Profile {
             joinColumns = {@JoinColumn(name="profile_id")},
             inverseJoinColumns = {@JoinColumn(name="hobby_id")}
     )
+    @JsonIgnore
     private List<Hobby> hobbies;
 
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Child> children;
 
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Photo> photos;
 
 
     @ManyToOne
     @JoinColumn (name = "branch_id")
+    @JsonIgnore
     private Branch branch;
 
 
     @ManyToOne
     @JoinColumn (name = "rank_id")
+    @JsonIgnore
     private Rank rank;
 
 
