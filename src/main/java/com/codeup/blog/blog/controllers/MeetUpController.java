@@ -1,9 +1,12 @@
 package com.codeup.blog.blog.controllers;
 
+import com.codeup.blog.blog.models.Comment;
 import com.codeup.blog.blog.models.MeetUp;
 import com.codeup.blog.blog.models.User;
+import com.codeup.blog.blog.repositories.CommentRepository;
 import com.codeup.blog.blog.repositories.LocationRepository;
 import com.codeup.blog.blog.repositories.MeetUpRepository;
+import com.codeup.blog.blog.repositories.UserRepository;
 import com.codeup.blog.blog.security.UserWithRoles;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +17,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class MeetUpController {
 
     private MeetUpRepository meetUpDao;
     private LocationRepository locationDao;
+    private CommentRepository commentDao;
+    private UserRepository userDao;
 
     @Autowired
     private UserService usersService;
 
-    public MeetUpController(MeetUpRepository meetUpDao, LocationRepository locationDao) {
+    public MeetUpController(MeetUpRepository meetUpDao, LocationRepository locationDao, CommentRepository commentDao, UserRepository userDao) {
         this.meetUpDao = meetUpDao;
         this.locationDao = locationDao;
+        this.commentDao = commentDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/meetups/")
@@ -40,6 +48,15 @@ public class MeetUpController {
         MeetUp meetUp = meetUpDao.getOne(id);
         vModel.addAttribute("meetup", meetUp);
         vModel.addAttribute("signedInUser", usersService.loggedInUser());
+
+        List<Comment> comments = new ArrayList<>();
+        for (Comment comment: commentDao.findAll()) {
+            if (comment.getMeetUp().getId() == meetUp.getId()){
+                comments.add(comment);
+            }
+        }
+
+        vModel.addAttribute("comments", comments);
 
         return "meetups/individual-meetup";
     }
@@ -107,6 +124,23 @@ public class MeetUpController {
         meetUpDao.deleteById(id);
 
         return "redirect:/meetups/";
+    }
+
+    @PostMapping("meetups/comment/{id}")
+    public String addMeetUpComment(@PathVariable long id, @RequestParam(name = "comment") String comment){
+        User loggedInUser = usersService.loggedInUser();
+        MeetUp meetUpBeingCommentedOn = meetUpDao.getOne(id);
+
+        Comment newComment = new Comment(comment, meetUpBeingCommentedOn, loggedInUser);
+        commentDao.save(newComment);
+
+        meetUpBeingCommentedOn.getComments().add(newComment);
+        meetUpDao.save(meetUpBeingCommentedOn);
+
+        loggedInUser.getComments().add(newComment);
+        userDao.save(loggedInUser);
+
+        return "redirect:/meetups/" + meetUpBeingCommentedOn.getId();
     }
 
 }
