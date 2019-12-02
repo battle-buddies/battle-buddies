@@ -10,19 +10,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <th:block th:replace="fragments/header :: main-header"/>
     <title>Edit Meet Up</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <style>
+        .flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
 <th:block th:replace="fragments/nav-bar :: meetups"/>
 <body>
-    <form th:action="@{'/meetups/edit/' + ${meetup.id}}" th:method="post" th:object="${meetup}">
-        <div class="container">
-            <h1>Edit Meet Up</h1>
 
+    <div class="container">
+        <div class="flex">
+            <h1>Edit Meet Up</h1>
             <div>
-                <form th:if="${#authentication.principal.id == meetup.user.id}" th:action="@{'/meetups/delete/' + ${meetup.id}}" method="post">
-                    <button type="submit">Delete</button>
+                <form id="delete" th:if="${#authentication.principal.id == meetup.user.id}" th:action="@{'/meetups/delete/' + ${meetup.id}}" method="post">
+                    <a href="#" class="red-text" onclick="document.getElementById('delete').submit();"> <i class="small material-icons">delete_forever</i></a>
                 </form>
             </div>
+        </div>
 
+
+        <form th:action="@{'/meetups/edit/' + ${meetup.id}}" th:method="post" th:object="${meetup}">
             <div class="form-row">
                 <label>Meet Up Title</label><br>
                 <input type="text" id="title" class="input-text" name="title"  th:value="${meetup.title}" required>
@@ -38,7 +51,7 @@
 
             <div class="form-row">
                 <label>Meet Up Description</label><br>
-                <textarea id="description" class="input-text" rows="10"  th:name="description" th:field="*{description}" th:value="${meetup.description}"  required/>
+                <textarea id="description" class="materialize-textarea" data-length="2000" th:name="description" th:field="*{description}" th:value="${meetup.description}"  required/>
             </div>
             <br>
 
@@ -54,15 +67,15 @@
             </div>
 
             <div class="input-field">
-                <input type="date" name="" id="date" th:name="date" required>
+                <input type="date" name="" id="date" th:name="date" th:field="*{date}" required>
             </div>
 
 
 
             <button type="submit">Submit</button>
-        </div>
+        </form>
+    </div>
 
-    </form>
 
 </body>
 <script>

@@ -118,7 +118,7 @@ public class MeetUpController {
     public String deleteMeetUp(@PathVariable long id){
         MeetUp meetUp = meetUpDao.getOne(id);
 
-        meetUp.setUser(new User());
+        meetUp.setUser(new User( "Delete Me"));
 
         meetUpDao.deleteById(id);
 
