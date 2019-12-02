@@ -1,6 +1,7 @@
 package com.codeup.blog.blog.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,6 +17,7 @@ public class User {
     @Column(nullable = false, columnDefinition = "VARCHAR(200)", unique = true)
     private String email;
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
+    @JsonIgnore
     private String password;
 
 //    @Column(nullable = false, columnDefinition = "TINYINT(1)")
@@ -25,20 +27,23 @@ public class User {
     private boolean isAdmin;
 
     @ManyToMany(mappedBy = "user")
+    @JsonIgnore
     private List<MeetUp> meetUps;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
     private List<MeetUp> interestedInMeetUps;
 
     @OneToMany(mappedBy = "user")
-    @JsonBackReference
+    @JsonIgnore
     private List<Relationship> relationships;
 
     @OneToOne
     private Profile profile;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
     private List<Comment> comments;
 
 
@@ -160,4 +165,5 @@ public class User {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
 }
