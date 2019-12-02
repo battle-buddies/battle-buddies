@@ -113,29 +113,11 @@
             margin-top: 3em;
         }
 
-
-        /*header {*/
-        /*    background-image: url('/img/flag_bg.jpg');*/
-        /*    background-position: center center;*/
-        /*    background-size: cover;*/
-        /*    height: 15em;*/
-        /*    !*opacity: .7; !* opacity to help smooth out jpeg artifacts *!*!*/
-        /*    padding-top: 2.5em;*/
-        /*}*/
-        /*@media (max-width: 599px) {*/
-        /*    header {*/
-        /*        background-position: bottom center;*/
-        /*    }*/
-        /*}*/
     </style>
 </head>
-<div>
+<body>
     <th:block th:replace="fragments/nav-bar :: profile"/>
-
-    <!--                    <div class="row logo valign-wrapper">-->
-    <!--                    </div>-->
-
-
+    
     <div class="container grey darken-3 top-card">
         <div class="row valign-wrapper">
 
@@ -153,7 +135,6 @@
 
         </div>
     </div>
-    <div><a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a></div>
     <div class="container grey darken-3 top-card">
         <div class="row valign-wrapper">
             <div class="card-content center-align col s6 offset-s3">
@@ -175,29 +156,20 @@
             <div class="row section-lg-top">
                 <div class="center col s12 m6 l3">
                     <i class="medium icon ion-social-html5 orange-text text-darken-3"></i>
-                    <h5>Hobbies</h5>
-                    <ul th:each="hobby : ${user.getProfile().getHobbies()}">
-                        <li th:text="${hobby.hobby}"></li>
-                    </ul>
+                    <h5>HTML</h5>
                 </div>
                 <div class="center col s12 m6 l3">
                     <i class="medium icon ion-social-css3 light-blue-text"></i>
-                    <h5>Personality</h5>
-                    <ul th:each="trait : ${user.getProfile().getTraits()}">
-                        <li th:text="${trait.trait}"></li>
-                    </ul>
+                    <h5>CSS</h5>
                 </div>
                 <div class="center col s12 m6 l3">
                     <i class="medium icon ion-social-javascript yellow-text"></i>
-                    <h5>Current City</h5>
-                    <div th:each="location : ${user.getProfile().getLocation()}">
-                        <p th:text="${location.location}"></p>
-                    </div>
+                    <h5>JAVASCRIPT</h5>
                 </div>
-<!--                <div class="center col s12 m6 l3">-->
-<!--                    <i class="medium icon ion-social-nodejs light-green-text"></i>-->
-<!--                    <h5>NODE JS</h5>-->
-<!--                </div>-->
+                <div class="center col s12 m6 l3">
+                    <i class="medium icon ion-social-nodejs light-green-text"></i>
+                    <h5>NODE JS</h5>
+                </div>
             </div>
         </div>
     </div>
@@ -205,68 +177,82 @@
 
     <h2 class="blue-grey-text text-darken-3 center">Buddies</h2>
     <div class="container">
-        <div class="mdc-tab-bar" role="tablist">
-            <div class="row">
-                <div class="col s12">
-                    <ul class="tabs">
-                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
-                            class="tab col s3"><a class="active" href="#test1">My Buddies</a></li>
-                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
-                            class="tab col s3"><a href="#test2">Potential Buddies</a></li>
-                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
-                            class="tab col s3"><a href="#test3">Pending Buddies</a></li>
-                    </ul>
-                </div>
-                <div id="test1" class="col s12">
-                    <div id="friends" class="col s12 blue">
-                        <h4> Accepted Friends List</h4>
-                        <th:block th:each="friend : ${user.getRelationships()}"
-                                  th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
-                            <p th:text="${friend.getFriend().username}"></p>
-                            <p th:text="${friend.getStatus()}"></p>
+        <div class="mdl-grid site-max-width">
+            <div class="mdl-card__supporting-text">
+                <h4 class="headline 700 center">
+                    <span> BattleBuddies</span>
+                </h4>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+                <div class="mdc-tab-bar" role="tablist">
+                    <div class="row">
+                        <div class="col s12">
+                            <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+                            <ul class="tabs">
+                                <li  class="tab col s3"><a class="active" href="#test1">Buddies</a></li>
+                                <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test2">Potential Buddies</a></li>
+                                <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test3">Pending Buddies</a></li>
+                                <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test4">Suggested Buddies</a></li>
 
-                        </th:block>
+                            </ul>
+                        </div>
+                        <div id="test1" class="col s12">
+                            <div id="friends" class="col s12 blue">
+                                <h4> Accepted Friends List</h4>
+                                <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+                                    <p  th:text="${friend.getFriend().username}"></p>
+                                    <p th:text="${friend.getStatus()}"></p>
 
-                    </div>
-                </div>
-                <div id="test2" class="col s12">
+                                </th:block>
 
-                    <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
-
-                    <div th:each="friend : ${pendingFriends}">
-
-                        <th:block th:each="relationship: ${friend.getRelationships()}"
-                                  th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
-                            <p th:text="${friend.username}"></p>
-                            <a th:if="${relationship.getFriend().username == user.username}"
-                               th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
-                        </th:block>
-
-                    </div>
-                </div>
-
-                <div id="test3" class="col s12">
-                    PENDING FRIENDS
-                    <div id="pending" class="col s12 green">
-                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                            <input type="hidden" th:value="${user.id}">
-                            <h4>friends <span th:text="${user.username}"></span> has requested</h4>
-                            <div th:each="friend : ${user.getRelationships()}"
-                                 th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
-                                <p th:text="${friend.getFriend().username}"></p>
-                                <p th:text="${friend.getStatus()}"></p>
                             </div>
-                        </th:block>
+                        </div>
+                        <div id="test2" class="col s12"  th:if="${#authentication.principal.id == user.id}">
+
+                            <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
+
+                            <div th:each="friend : ${pendingFriends}">
+
+                                <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
+                                    <p th:text="${friend.username}"></p>
+                                    <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
+                                </th:block>
+
+                            </div>
+                        </div>
+
+                        <div id="test3" class="col s12" th:if="${#authentication.principal.id == user.id}">
+
+                            <div id="pending" class="col s12 green">
+                                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                                    <input type="hidden" th:value="${user.id}">
+                                    <h4>friends <span th:text="${user.username}"></span> has requested</h4>
+                                    <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                                        <p th:text="${friend.getFriend().username}"></p>
+                                        <p th:text="${friend.getStatus()}"></p>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+
+                        <div id="test4" class="col s12" th:if="${#authentication.principal.id == user.id}">
+
+                            <div  class="col s12 green">
+                                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                                    <input type="hidden" th:value="${user.id}">
+                                    <h4>Suggested buddies for you</h4>
+                                    <div th:each="friend : ${suggestedFriends}" >
+                                        <a th:href="@{'/users/profile/' + ${friend.id}}"><span th:text="${friend.username}"></span></a>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!--                                <div id="test4" class="col s12">Test 4</div>-->
             </div>
         </div>
+
     </div>
-</div>
-</div>
-
-
 </body>
 
 <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
@@ -305,7 +291,5 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
-</div>
-</body>
 </html>
 

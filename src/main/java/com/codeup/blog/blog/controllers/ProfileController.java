@@ -229,8 +229,7 @@ public class ProfileController {
 
             // Files handle
 
-
-            profileDao.save(profile);
+          profileDao.save(profile);
             uploadFileHandler(profile, m, uploadedFile);
             user.setProfile(profile);
             userDao.save(user);
@@ -444,6 +443,14 @@ public class ProfileController {
     public String showchat(Model model) {
         return "users/chatbox";
     }
+
+    @GetMapping("/users/chat")
+
+    public @ResponseBody User getUser(Model model) {
+
+        return userDao.findById(1L).orElse(null);
+    }
+
 
 
 
