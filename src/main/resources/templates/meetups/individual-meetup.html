@@ -105,12 +105,12 @@
 
 <!--ADD COMMENT-->
 <div class="container">
-    <form th:action="@{'/meetups/comment/' + ${meetup.id}}" th:method="post">
+    <form id="add-comment" th:action="@{'/meetups/comment/' + ${meetup.id}}" th:method="post">
         <div class="row">
             <div class="input-field col s12">
                 <label >Add Comment</label>
                 <div class="right-align">
-                    <a  class="btn-flat ra teal-text" type="submit">Send</a>
+                    <a href="#" onclick="document.getElementById('add-comment').submit() class="btn-flat ra teal-text" type="submit">Send</a>
                 </div>
                 <textarea id="comment" th:name="comment" class="materialize-textarea" data-length="2000"></textarea>
             </div>
