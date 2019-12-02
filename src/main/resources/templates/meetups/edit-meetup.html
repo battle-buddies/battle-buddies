@@ -35,7 +35,7 @@
         </div>
 
 
-        <form th:action="@{'/meetups/edit/' + ${meetup.id}}" th:method="post" th:object="${meetup}">
+        <form id="edit" th:action="@{'/meetups/edit/' + ${meetup.id}}" th:method="post" th:object="${meetup}">
             <div class="form-row">
                 <label>Meet Up Title</label><br>
                 <input type="text" id="title" class="input-text" name="title"  th:value="${meetup.title}" required>
@@ -72,7 +72,7 @@
 
 
             <div class="right-align">
-                <a class="btn col s12" href="#" onclick="document.getElementById('delete').submit();">Submit</a>
+                <a class="btn col s12" href="#" onclick="document.getElementById('edit').submit();">Submit</a>
             </div>
         </form>
     </div>

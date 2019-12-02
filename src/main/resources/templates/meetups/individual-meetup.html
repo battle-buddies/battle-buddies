@@ -91,7 +91,7 @@
                         <label ><span th:text="${meetup.count}"></span> people interested in attending so far</label>
 
                         <form id="like" th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
-                            <a id="like-button"  ><i class="small material-icons">favorite_border</i></a>
+                            <a  href="#" onclick="document.getElementById('like').submit();" ><i class="small material-icons">favorite_border</i></a>
                         </form>
 
                         <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
@@ -183,20 +183,7 @@
 
         });
 
-    $('#like-button').on('click', function() {
-        var form = $('#like');
-        $.ajax({
-            url: form.attr('action'),
-            data: form.serialize(),
-            type: post,
-            success: function(result) {
-                // Do something with the response.
-                // Might want to check for errors here.
-            }, error: function(error) {
-                // Here you can handle exceptions thrown by the server or your controller.
-            }
-        })
-    }
+
 
 
 </script>
