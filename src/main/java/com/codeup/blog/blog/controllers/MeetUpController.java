@@ -130,15 +130,19 @@ public class MeetUpController {
         User loggedInUser = usersService.loggedInUser();
         MeetUp meetUpBeingCommentedOn = meetUpDao.getOne(id);
 
-        Comment newComment = new Comment(comment, meetUpBeingCommentedOn, loggedInUser);
-        commentDao.save(newComment);
+        if(!comment.isEmpty()){
 
-        meetUpBeingCommentedOn.getComments().add(newComment);
-        meetUpDao.save(meetUpBeingCommentedOn);
 
-        loggedInUser.getComments().add(newComment);
-        userDao.save(loggedInUser);
+            Comment newComment = new Comment(comment, meetUpBeingCommentedOn, loggedInUser);
+            commentDao.save(newComment);
 
+            meetUpBeingCommentedOn.getComments().add(newComment);
+            meetUpDao.save(meetUpBeingCommentedOn);
+
+            loggedInUser.getComments().add(newComment);
+            userDao.save(loggedInUser);
+
+        }
         return "redirect:/meetups/" + meetUpBeingCommentedOn.getId();
     }
 

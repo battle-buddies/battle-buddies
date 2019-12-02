@@ -22,7 +22,6 @@
             </div>
             <br>
 
-
             <div class="form-row">
                 <label>Meet Up Address</label><br>
                 <input type="text" id="address" class="input-text" th:field="*{address}"  placeholder="Street, city, state, zip" required>
@@ -49,10 +48,9 @@
             <div class="input-field">
                 <input type="date" name="" id="date" th:name="date" required>
             </div>
-
-
-
-            <button type="submit">Submit</button>
+            <div class="right-align">
+                <a class="btn col s12" href="#" onclick="document.getElementById('delete').submit();">Submit</a>
+            </div>
         </div>
 
     </form>

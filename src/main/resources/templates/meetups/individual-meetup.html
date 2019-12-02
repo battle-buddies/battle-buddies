@@ -8,6 +8,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <th:block th:replace="fragments/header :: main-header"/>
@@ -16,6 +17,10 @@
         .mapboxgl-canvas-container {
 
             height: 50vh;
+        }
+
+        .ra{
+            text-align: right;
         }
 
         .text-spacing{
@@ -55,10 +60,12 @@
     <h1 th:text="${meetup.title}"/>
     <div class="row" >
         <br>
+        <div class="right-align">
+            <a th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
+                <i class="small material-icons">edit</i>
+            </a>
+        </div>
 
-        <a th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
-            Edit Meetup
-        </a>
         <input type="hidden" id="address" th:value="${meetup.address}">
         <div class="col s12" >
             <div class="card">
@@ -83,8 +90,8 @@
                     <div class="flex mt">
                         <label ><span th:text="${meetup.count}"></span> people interested in attending so far</label>
 
-                        <form th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
-                            <button type="submit">I'm Interested</button>
+                        <form id="like" th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
+                            <a id="like-button"  ><i class="small material-icons">favorite_border</i></a>
                         </form>
 
                         <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
@@ -101,11 +108,14 @@
     <form th:action="@{'/meetups/comment/' + ${meetup.id}}" th:method="post">
         <div class="row">
             <div class="input-field col s12">
+                <label >Add Comment</label>
+                <div class="right-align">
+                    <a  class="btn-flat ra teal-text" type="submit">Send</a>
+                </div>
                 <textarea id="comment" th:name="comment" class="materialize-textarea" data-length="2000"></textarea>
-                <label for="comment">Add Comment</label>
             </div>
+
         </div>
-        <button class="btn" type="submit">Post</button>
     </form>
 </div>
 
@@ -172,6 +182,21 @@
             marker.setLngLat(result);
 
         });
+
+    $('#like-button').on('click', function() {
+        var form = $('#like');
+        $.ajax({
+            url: form.attr('action'),
+            data: form.serialize(),
+            type: post,
+            success: function(result) {
+                // Do something with the response.
+                // Might want to check for errors here.
+            }, error: function(error) {
+                // Here you can handle exceptions thrown by the server or your controller.
+            }
+        })
+    }
 
 
 </script>
