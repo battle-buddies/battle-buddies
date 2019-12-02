@@ -52,6 +52,11 @@ public class User {
 
     }
 
+    public User(String username){
+        this.username = username;
+    }
+
+
     public User(String username, String email, String password, boolean isAdmin, List<MeetUp> meetUps, List<Relationship> relationships, Profile profile, List<MeetUp> interestedInMeetUps) {
         this.username = username;
         this.email = email;
