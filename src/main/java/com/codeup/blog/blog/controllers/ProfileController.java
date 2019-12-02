@@ -163,57 +163,52 @@ public class ProfileController {
         // FINDS THE Hobbies THAT WERE SELECTED BY USER
         List<Hobby> hobbiesToAdd = new ArrayList<>();
         for (long hobbyId : hobbyIds) {
-            for (Hobby all: hobbyDao.findAll()){
-                if(hobbyId == all.getId()){
+            for (Hobby all : hobbyDao.findAll()) {
+                if (hobbyId == all.getId()) {
                     hobbiesToAdd.add(hobbyDao.getOne(hobbyId));
                 }
             }
-        }
-
-        // ADDS EACH INDIVIDUAL Hobby TO PROFILE
-        if (hobbiesToAdd != null){
-            profile.setHobbies(new ArrayList<>());
-            for (Hobby hobby: hobbiesToAdd){
-                profile.getHobbies().add(hobby);
-            }
-        }
-
-
-
-
-        // FINDS THE TRAITS THAT WERE SELECTED BY USER
-        List<Trait> traitsToAdd = new ArrayList<>();
-        for (long traitId : traitIds) {
-            for (Trait all: traitDao.findAll()){
-                if(traitId == all.getId()){
-                   traitsToAdd.add(traitDao.getOne(traitId));
+            // ADDS EACH INDIVIDUAL Hobby TO PROFILE
+            if (hobbiesToAdd != null) {
+                profile.setHobbies(new ArrayList<>());
+                for (Hobby hobby : hobbiesToAdd) {
+                    profile.getHobbies().add(hobby);
                 }
             }
-        }
 
-        // ADDS EACH INDIVIDUAL TRAIT TO PROFILE
-        if (traitsToAdd != null){
-            profile.setTraits(new ArrayList<>());
-            for (Trait trait: traitsToAdd){
-                profile.getTraits().add(trait);
+
+            // FINDS THE TRAITS THAT WERE SELECTED BY USER
+            List<Trait> traitsToAdd = new ArrayList<>();
+            for (long traitId : traitIds) {
+                for (Trait all : traitDao.findAll()) {
+                    if (traitId == all.getId()) {
+                        traitsToAdd.add(traitDao.getOne(traitId));
+                    }
+                }
             }
-        }
+
+            // ADDS EACH INDIVIDUAL TRAIT TO PROFILE
+            if (traitsToAdd != null) {
+                profile.setTraits(new ArrayList<>());
+                for (Trait trait : traitsToAdd) {
+                    profile.getTraits().add(trait);
+                }
+            }
 //        hard coded children for now
-        List<Child> children = new ArrayList<>();
-        children.add(new Child("female", 6));
-        profile.setChildren(children);
+            List<Child> children = new ArrayList<>();
+            children.add(new Child("female", 6));
+            profile.setChildren(children);
 
-        // Files handle
-
-
-
-        profileDao.save(profile);
-        uploadFileHandler(profile, m, uploadedFile);
-        user.setProfile(profile);
-        userDao.save(user);
+            // Files handle
 
 
+            profileDao.save(profile);
+            uploadFileHandler(profile, m, uploadedFile);
+            user.setProfile(profile);
+            userDao.save(user);
 
+
+        }
 
         return "redirect:/users/profile/" + user.getId();
     }
