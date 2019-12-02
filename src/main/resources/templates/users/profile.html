@@ -113,28 +113,10 @@
             margin-top: 3em;
         }
 
-
-        /*header {*/
-        /*    background-image: url('/img/flag_bg.jpg');*/
-        /*    background-position: center center;*/
-        /*    background-size: cover;*/
-        /*    height: 15em;*/
-        /*    !*opacity: .7; !* opacity to help smooth out jpeg artifacts *!*!*/
-        /*    padding-top: 2.5em;*/
-        /*}*/
-        /*@media (max-width: 599px) {*/
-        /*    header {*/
-        /*        background-position: bottom center;*/
-        /*    }*/
-        /*}*/
     </style>
 </head>
-<div>
+<body>
     <th:block th:replace="fragments/nav-bar :: profile"/>
-
-    <!--                    <div class="row logo valign-wrapper">-->
-    <!--                    </div>-->
-
 
     <div class="container grey darken-3 top-card">
         <div class="row valign-wrapper">
@@ -198,7 +180,7 @@
         <div class="mdl-grid site-max-width">
             <div class="mdl-card__supporting-text">
                 <h4 class="headline 700 center">
-                    BattleBuddies</span>
+                    <span> BattleBuddies</span>
                 </h4>
             </div>
             <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
@@ -265,10 +247,12 @@
                                 </th:block>
                             </div>
                         </div>
-</div>
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
+    </div>
 </body>
 
 <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
@@ -307,7 +291,5 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
-</div>
-</body>
 </html>
 
