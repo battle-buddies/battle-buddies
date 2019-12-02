@@ -398,21 +398,24 @@ public class ProfileController {
 
 
 
-    @GetMapping("/users/profile-design")
-
-    public String showProfile(Model model) {
-
-
-        return "users/profile-design";
-    }
 
     @GetMapping("/users/chat")
 
     public @ResponseBody User getUser(Model model) {
-
-        return userDao.findById(1L).orElse(null);
+        User current = usersService.loggedInUser();
+        if (current == null) {
+            return userDao.findById(1L).orElse(null);
+        }else{
+            return current;
+        }
     }
 
+
+
+    @GetMapping("/users/chatbox")
+    public String showchat(Model model) {
+        return "users/chatbox";
+    }
 
 
 
