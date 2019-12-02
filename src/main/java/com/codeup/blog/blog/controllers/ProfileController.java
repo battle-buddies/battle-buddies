@@ -96,24 +96,52 @@ public class ProfileController {
             // add logic to weed out accepted friends
             if (loggedInProfile != profile){
                 if(loggedInProfile.getLocation().equals(profile.getLocation())){
-                    total += 5;
+                    total += 40;
                 }
 
                 for (Trait trait : profile.getTraits()) {
                     if (loggedInProfile.getTraits().contains(trait)){
-                        total += 2;
+                        total += 5;
                     }
                 }
 
                 for (Hobby hobby : profile.getHobbies()) {
                     if (loggedInProfile.getHobbies().contains(hobby)){
-                        total += 2;
+                        total += 5;
                     }
                 }
 
-                if (total >= 10){
+                if (loggedInProfile.isMarried() == profile.isMarried()){
+                    total += 10;
+                }
+
+                if(loggedInProfile.getGender() == profile.getGender()){
+                    total += 10;
+                }
+
+                if(loggedInProfile.getBranch().getBranch() == profile.getBranch().getBranch()){
+                    total += 20;
+                }
+
+                if(loggedInProfile.isMilSpouse() == profile.isMilSpouse()) {
+                    total += 10;
+                }
+
+                if (profile.getage() >= loggedInProfile.getage() - 3 && profile.getage() <= loggedInProfile.getage() + 3){
+                    total += 20;
+                }
+
+                if(loggedInProfile.getRank().getRank().charAt(0) == profile.getRank().getRank().charAt(0) ){
+                    total += 10;
+                }else {
+                    total -=200;
+                }
+
+                if (total >= 100){
                     suggestedFriends.add(profile.getUser());
                 }
+
+
             }
         }
 

@@ -1,0 +1,73 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <th:block th:replace="fragments/header :: main-header"/>
+    <title>Edit Meet Up</title>
+</head>
+<th:block th:replace="fragments/nav-bar :: meetups"/>
+<body>
+    <form th:action="@{'/meetups/edit/' + ${meetup.id}}" th:method="post" th:object="${meetup}">
+        <div class="container">
+            <h1>Edit Meet Up</h1>
+
+            <div>
+                <form th:if="${#authentication.principal.id == meetup.user.id}" th:action="@{'/meetups/delete/' + ${meetup.id}}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+
+            <div class="form-row">
+                <label>Meet Up Title</label><br>
+                <input type="text" id="title" class="input-text" name="title"  th:value="${meetup.title}" required>
+            </div>
+            <br>
+
+
+            <div class="form-row">
+                <label>Meet Up Address</label><br>
+                <input type="text" id="address" class="input-text" th:name="address" th:field="*{address}"  th:value="${meetup.address}" required>
+            </div>
+            <br>
+
+            <div class="form-row">
+                <label>Meet Up Description</label><br>
+                <textarea id="description" class="input-text" rows="10"  th:name="description" th:field="*{description}" th:value="${meetup.description}"  required/>
+            </div>
+            <br>
+
+            <div class="input-field">
+                <label>Please select your area</label><br>
+                <select th:field="*{location}" required>
+                    <option value="0" disabled selected>Area</option>
+                    <th:block th:each="location: ${locations}">
+                        <option th:name="locationID" th:value="${location.id}"><span th:text="${location.location}"></span>
+                        </option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="input-field">
+                <input type="date" name="" id="date" th:name="date" required>
+            </div>
+
+
+
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
+</html>

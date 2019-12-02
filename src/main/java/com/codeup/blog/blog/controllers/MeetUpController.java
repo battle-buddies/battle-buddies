@@ -79,7 +79,6 @@ public class MeetUpController {
         meetup.setDate(date);
         meetup.setCount(0);
 
-        System.out.println(date);
         meetUpDao.save(meetup);
         return "redirect:/meetups/";
     }
@@ -141,6 +140,38 @@ public class MeetUpController {
         userDao.save(loggedInUser);
 
         return "redirect:/meetups/" + meetUpBeingCommentedOn.getId();
+    }
+
+    @GetMapping("meetups/edit/{id}")
+    public String viewEditMeetUp(@PathVariable long id, Model vModel){
+        MeetUp meetUp = meetUpDao.getOne(id);
+        vModel.addAttribute("meetup", meetUp);
+        vModel.addAttribute("locations", locationDao.findAll());
+
+        return "meetups/edit-meetup";
+
+    }
+
+    @PostMapping("meetups/edit/{id}")
+    public String editMeetUp(@PathVariable long id, @RequestParam(name = "locationID", required = false) Long locationID,
+                             @RequestParam(name = "date")String date,
+                             @RequestParam(name = "title")String title,
+                             @RequestParam(name = "description") String description,
+                             @RequestParam(name= "address") String address
+    ){
+
+        MeetUp meetUp = meetUpDao.getOne(id);
+
+        if (locationID != null){
+            meetUp.setLocation(locationDao.getOne(locationID));
+        }
+        meetUp.setDate(date);
+        meetUp.setTitle(title);
+        meetUp.setDescription(description);
+        meetUp.setAddress(address);
+
+        meetUpDao.save(meetUp);
+        return "redirect:/meetups/";
     }
 
 }
