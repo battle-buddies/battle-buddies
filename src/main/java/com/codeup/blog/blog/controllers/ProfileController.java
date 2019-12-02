@@ -155,7 +155,7 @@ public class ProfileController {
        profile.setUser(user);
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
-        locationDao.save(locationToBeCreated);
+//        locationDao.save(locationToBeCreated);
 
 
 
@@ -405,6 +405,14 @@ public class ProfileController {
 
         return "users/profile-design";
     }
+
+    @GetMapping("/users/chat")
+
+    public @ResponseBody User getUser(Model model) {
+
+        return userDao.findById(1L).orElse(null);
+    }
+
 
 
 
