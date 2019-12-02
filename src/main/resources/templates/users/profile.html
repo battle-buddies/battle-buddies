@@ -1,667 +1,300 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>BattleBuddies</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en"
-              rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"/>
-        <link href="https://ajax.googleapis.com" rel="preconnect"/>
-        <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<!--        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-indigo.min.css"/>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-        <th:block th:replace="fragments/header :: main-header"/>
-
-
-<!--        <style>-->
-<!--            .about-header {-->
-
-<!--                display: flex;-->
-<!--                margin-left:1em;-->
-<!--            }-->
-
-<!--            .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {-->
-<!--                -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0) !important;-->
-<!--                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0, 0, 0, 0) !important;-->
-<!--            }-->
-
-<!--            nav {-->
-<!--                background-color: rgba(0, 0, 0, 0);-->
-<!--            }-->
-
-<!--            .site-navigation-row {-->
-<!--                background-color: rgba(0, 0, 0, 0);-->
-<!--            }-->
-
-<!--            img {-->
-<!--                max-width: 100%;-->
-<!--            }-->
-
-<!--            .current-city {-->
-<!--                margin-left:auto;-->
-<!--            }-->
-
-<!--            .site-header {-->
-<!--                position: relative;-->
-<!--            }-->
-
-<!--            .site-header .mdl-layout__header-row {-->
-<!--                padding: 0;-->
-<!--                -ms-flex-pack: center;-->
-<!--                justify-content: center;-->
-<!--            }-->
-
-<!--            .site-description {-->
-<!--                display: block;-->
-<!--                font-size: 14px;-->
-<!--                text-align: center;-->
-<!--                font-weight: 400;-->
-<!--                margin-bottom: 10px;-->
-<!--            }-->
-
-<!--            .is-compact .mdl-layout__title span {-->
-<!--                display: none;-->
-<!--            }-->
-
-<!--            .site-logo-row {-->
-<!--                min-height: 200px;-->
-<!--            }-->
-
-<!--            .is-compact .site-logo-row {-->
-<!--                min-height: auto;-->
-<!--            }-->
-
-<!--            .site-logo {-->
-<!--                background: url("https://www.fillmurray.com/640/360") 50% no-repeat;-->
-<!--                background-size: cover;-->
-<!--                height: 120px;-->
-<!--                width: 120px;-->
-<!--                margin: 15px auto;-->
-<!--                border-radius: 50%;-->
-<!--            }-->
-
-
-<!--            .is-compact .site-logo {-->
-<!--                height: 50px;-->
-<!--                width: 50px;-->
-<!--                margin: 7px auto;-->
-
-<!--            }-->
-
-<!--            .side-pic {-->
-<!--                background: url(https://www.fillmurray.com/640/360) 50% no-repeat;-->
-<!--                background-size: cover;-->
-<!--                height: 100%;-->
-<!--                width: 100%;-->
-<!--                margin: 15px auto;-->
-
-<!--            }-->
-
-<!--            .site-navigation-row {-->
-<!--                background-color: rgba(0, 0, 0, 0);-->
-<!--                text-transform: uppercase;-->
-<!--                height: 45px;-->
-<!--            }-->
-
-<!--            .site-navigation-row .mdl-navigation {-->
-<!--                text-align: center;-->
-<!--                max-width: 900px;-->
-<!--                width: 100%;-->
-<!--            }-->
-
-<!--            .site-navigation-row .mdl-navigation__link {-->
-<!--                -ms-flex: 1;-->
-<!--                flex: 1;-->
-<!--                line-height: 42px;-->
-<!--                color: #fff;-->
-<!--            }-->
-
-<!--            .site-navigation-row .is-active {-->
-<!--                position: relative;-->
-<!--                font-weight: bold;-->
-<!--                opacity: 1;-->
-<!--            }-->
-
-<!--            .site-navigation-row .mdl-navigation__link:hover {-->
-<!--                opacity: 1;-->
-<!--            }-->
-
-<!--            .mdl-layout__header .mdl-layout__drawer-button {-->
-<!--                color: #fff;-->
-<!--            }-->
-
-<!--            .mdl-layout__content {-->
-<!--                background-color: #fefefe;-->
-<!--            }-->
-
-<!--            .site-content {-->
-<!--                margin: 1em auto;-->
-<!--                min-height: 580px;-->
-<!--            }-->
-
-<!--            .page-content {-->
-<!--                padding-bottom: 2em;-->
-<!--            }-->
-
-<!--            .site-max-width {-->
-<!--                max-width: 900px;-->
-<!--                margin: auto;-->
-<!--            }-->
-
-<!--            .site-copy {-->
-<!--                max-width: 700px;-->
-<!--            }-->
-
-<!--            .welcome-card > .mdl-card__title {-->
-<!--                color: #fff;-->
-<!--                height: 290px;-->
-<!--                background: url("/img/cover.jpg") center/cover;-->
-<!--            }-->
-
-<!--            .event-card {-->
-<!--                background: #3E4EB8;-->
-<!--            }-->
-
-<!--            .event-card .mdl-card__actions {-->
-<!--                border-color: rgba(255, 255, 255, 0.2);-->
-<!--            }-->
-
-<!--            .event-card .mdl-card__title {-->
-<!--                -ms-flex-align: start;-->
-<!--                align-items: flex-start;-->
-<!--            }-->
-
-<!--            .event-card .mdl-card__title > h4 {-->
-<!--                margin-top: 0;-->
-<!--            }-->
-
-<!--            .event-card .mdl-card__actions {-->
-<!--                display: -ms-flexbox;-->
-<!--                display: flex;-->
-<!--                box-sizing: border-box;-->
-<!--                -ms-flex-align: center;-->
-<!--                align-items: center;-->
-<!--            }-->
-
-<!--            .event-card .mdl-card__actions > .material-icons {-->
-<!--                padding-right: 10px;-->
-<!--            }-->
-
-<!--            .event-card .mdl-card__title,-->
-<!--            .event-card .mdl-card__actions,-->
-<!--            .event-card .mdl-card__actions > .mdl-button {-->
-<!--                color: #fff;-->
-<!--            }-->
-
-<!--            .section__play-btn {-->
-<!--                display: -ms-flexbox;-->
-<!--                display: flex;-->
-<!--                -ms-flex-align: center;-->
-<!--                align-items: center;-->
-<!--                -ms-flex-pack: center;-->
-<!--                justify-content: center;-->
-<!--                max-height: 12em;-->
-<!--            }-->
-
-<!--            .section__play-btn .material-icons {-->
-<!--                font-size: 3rem;-->
-<!--            }-->
-
-<!--            .section&#45;&#45;center {-->
-<!--                margin: 0 auto 2rem;-->
-<!--            }-->
-
-<!--            .homepage-portfolio .mdl-button {-->
-<!--                margin: 0 auto;-->
-<!--            }-->
-
-<!--            .homepage-footer {-->
-<!--                background: #eee;-->
-<!--                margin-bottom: -1em;-->
-<!--                padding: 2rem 0;-->
-<!--            }-->
-
-<!--            .portfolio-card .mdl-card__title {-->
-<!--                padding-bottom: 0;-->
-<!--            }-->
-
-<!--            img.article-image {-->
-<!--                width: 100%;-->
-<!--                height: auto;-->
-<!--            }-->
-
-<!--            .demo-card-image.mdl-card {-->
-<!--                width: 192px;-->
-<!--                height: 192px;-->
-<!--            }-->
-
-<!--            .person1 {-->
-<!--                background: url("/img/person1.jpg") center/cover;-->
-<!--            }-->
-
-<!--            .person2 {-->
-<!--                background: url("/img/person2.jpg") center/cover;-->
-<!--            }-->
-
-<!--            .demo-card-image > .mdl-card__actions {-->
-<!--                height: 52px;-->
-<!--                padding: 16px;-->
-<!--                background: rgba(0, 0, 0, 0.3);-->
-<!--            }-->
-
-<!--            .demo-card-image__filename {-->
-<!--                color: #fff;-->
-<!--                font-size: 14px;-->
-<!--                font-weight: 500;-->
-<!--            }-->
-
-<!--            .form-contact .mdl-textfield {-->
-<!--                width: 100%;-->
-<!--            }-->
-
-<!--            .mdl-card__title-text {-->
-<!--                margin-bottom: 0;-->
-<!--                color: #7b9566;-->
-<!--            }-->
-
-<!--            #contact-button {-->
-<!--                position: fixed;-->
-<!--                display: block;-->
-<!--                right: 0;-->
-<!--                bottom: 0;-->
-<!--                margin-right: 40px;-->
-<!--                margin-bottom: 40px;-->
-<!--                z-index: 900;-->
-<!--            }-->
-
-<!--            footer .mdl-logo a {-->
-<!--                color: #fff;-->
-<!--                text-decoration: none;-->
-<!--                border-bottom: 1px dotted #aaa;-->
-<!--            }-->
-
-<!--            .footer-container {-->
-<!--                margin: 0 auto;-->
-<!--            }-->
-<!--            .sec1{-->
-<!--                margin-bottom: 0;-->
-<!--            }-->
-<!--            .bio{-->
-<!--                padding-left: 2.5em;-->
-<!--                padding-top: 0;-->
-<!--                padding-bottom:0;-->
-<!--            }-->
-<!--            .hobbies{-->
-<!--                padding:0;-->
-<!--            }-->
-<!--            .currently{-->
-<!--                padding:0;-->
-<!--            }-->
-<!--            .traits{-->
-<!--                padding:0;-->
-<!--            }-->
-
-<!--        </style>-->
-        <!--    <script>-->
-        <!--        (function(i, s, o, g, r, a, m) {-->
-        <!--            i['GoogleAnalyticsObject'] = r;-->
-        <!--            i[r] = i[r] || function() {-->
-        <!--                (i[r].q = i[r].q || []).push(arguments)-->
-        <!--            }, i[r].l = 1 * new Date();-->
-        <!--            a = s.createElement(o),-->
-        <!--                m = s.getElementsByTagName(o)[0];-->
-        <!--            a.async = 1;-->
-        <!--            a.src = g;-->
-        <!--            m.parentNode.insertBefore(a, m)-->
-        <!--        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
-
-        <!--        ga('create', 'UA-37350394-12', 'auto');-->
-        <!--        ga('send', 'pageview');-->
-        <!--    </script>-->
-    </head>
-
-<body id="top">
-<!--<div class="mdl-layout mdl-js-layout mdl-layout&#45;&#45;fixed-header"><a href="contact.html" id="contact-button"-->
-<!--                                                                  class="mdl-button mdl-button&#45;&#45;fab mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-color&#45;&#45;accent mdl-color-text&#45;&#45;accent-contrast mdl-shadow&#45;&#45;4dp"><i-->
-<!--        class="material-icons">mail</i></a>-->
-    <header>
-<!--        <header class="mdl-layout__header mdl-layout__header&#45;&#45;waterfall site-header">-->
-<!--        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">-->
-<!--            <div class="site-logo"></div><span class="site-description"-->
-<!--                                               th:text="${user.getProfile().firstName} + '\'s Profile'">Material Design Portfolio</span></span>-->
-<!--        </div>-->
-<!--        <div class="mdl-layout__header-row site-navigation-row mdl-layout&#45;&#45;large-screen-only">-->
-<!--            <nav class="mdl-navigation mdl-typography&#45;&#45;body-1-force-preferred-font"><a class="mdl-navigation__link"-->
-<!--                                                                                       href="index.html">Home</a><a-->
-<!--                    class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link"-->
-<!--                                                                                       href="about.html">About</a><a-->
-<!--                    class="mdl-navigation__link" href="contact.html">Contact</a>-->
-<!--            </nav>-->
-            <th:block th:replace="fragments/nav-bar :: profile"/>
-
-
-<!--        </div>-->
-    </header>
-<!--    <div class="mdl-layout__drawer mdl-layout&#45;&#45;small-screen-only red">-->
-<!--        <nav class="mdl-navigation mdl-typography&#45;&#45;body-1-force-preferred-font"><a class="mdl-navigation__link"-->
-<!--                                                                                   href="index.html">Home</a><a-->
-<!--                class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link"-->
-<!--                                                                                   href="about.html">About</a><a-->
-<!--                class="mdl-navigation__link" href="contact.html">Contact</a>-->
-<!--        </nav>-->
-<!--    </div>-->
-    <main class="mdl-layout__content">
-        <div class="site-content">
-<!--                <header class="section__play-btn mdl-cell mdl-cell&#45;&#45;3-col-desktop mdl-cell&#45;&#45;2-col-tablet mdl-cell&#45;&#45;4-col-phone mdl-color&#45;&#45;teal-100 mdl-color-text&#45;&#45;white  mdl-shadow&#45;&#45;4dp">-->
-<!--                    <div class="side-pic"></div>-->
-<!--                </header>-->
-            <div class ="container">
-
-
-                <!--***********************************EDIT USER-DETAILS BUTTON *****************************-->
-
-
-
-<!--                <a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>-->
-
-                <!--*********************************** END EDIT USER-DETAILS BUTTON *****************************-->
-            <section class="section--center mdl-grid site-max-width">
-                <div>
-                    <img th:if="${user.getProfile().getPhotos() == null}" class="responsive-img" th:src="${'https://picsum.photos/300?pic=' + #strings.randomAlphanumeric(2)}" alt="placeholder" />
-                    <img class="responsive-img post-img" th:if="${user.getProfile().getPhotos() != null}" th:src="${'srv/profile_pics' + user.getProfile().getPhotos() }" />
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <h4 class="headline 700 center" th:text=" ${'About '+ user.getProfile().firstName}">
-                        About </span>
-                    </h4>
-                </div>
-
-
-                <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
-                    <div class="mdl-card__title about-header">
-                        <h2 class="mdl-card__title-text mdl-color-text--light-green-700"> Bio: </h2>
-                        <div class="mdl-card__supporting-text bio">
-                            <span th:text="${user.getProfile().getBio()}"></span><br>
-                            <span th:text="${user.getProfile().getGender()}"></span>
-                            <p>true = male or (1)</p>
-                            <span th:text="${user.getProfile().isMilSpouse()}"></span>
-                            <p>true = yes or (1)</p>
-                            <span th:text="${user.getProfile().isMarried()}"></span>
-                            <p> true = single or (1)</p>
-
-                        </div>
-<!--                        <span class="mdl-card__title-text mdl-color-text&#45;&#45;indigo-A700" th:text=" ${'&nbsp; '+ user.getProfile().firstName}"></span>-->
-                    </div>
-
-                    <div class="mdl-card__actions">
-                        <section class="section--center mdl-grid site-max-width sec1">
-                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                                <div class="mdl-card__title mdl-card--border">
-                                    <h2 class="mdl-card__title-text section--center mdl-color-text--light-green-700">
-                                        Hobbies</h2>
-                                </div>
-                                    <div class="mdl-card__supporting-text center hobbies">
-                                        <ul th:each="hobby : ${user.getProfile().getHobbies()}">
-                                            <li th:text="${hobby.hobby}"></li>
-                                        </ul>
-                                    </div>
-                            </div>
-                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                                <div class="mdl-card__title mdl-card--border">
-                                    <h2 class="mdl-card__title-text mdl-color-text--light-green-700 section--center">
-                                        Personality</h2>
-                                </div>
-                                <div class="mdl-card__supporting-text center traits">
-                                    <ul th:each="trait : ${user.getProfile().getTraits()}">
-                                        <li th:text="${trait.trait}"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                                <div class="mdl-card__title mdl-card--border">
-                                    <h2 class="mdl-card__title-text mdl-card--border mdl-color-text--light-green-700 section--center">
-                                        Current City</h2>
-                                </div>
-                                <div class="mdl-card__supporting-text center currently">
-                                    <div th:each="location : ${user.getProfile().getLocation()}">
-                                        <p th:text="${location.location}"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </section>
-        </div>
-            <div class="container">
-                <div class="mdl-grid site-max-width">
-                    <div class="mdl-card__supporting-text">
-                        <h4 class="headline 700 center">
-                            BattleBuddies</span>
-                        </h4>
-                    </div>
-                    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
-                        <div class="mdc-tab-bar" role="tablist">
-                            <div class="row">
-                                <div class="col s12">
-                                    <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
-                                    <ul class="tabs">
-                                        <li  class="tab col s3"><a class="active" href="#test1">Buddies</a></li>
-                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test2">Potential Buddies</a></li>
-                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test3">Pending Buddies</a></li>
-                                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test4">Suggested Buddies</a></li>
-
-                                    </ul>
-                                </div>
-                                <div id="test1" class="col s12">
-                                    <div id="friends" class="col s12 blue">
-                                                    <h4> Accepted Friends List</h4>
-                                                    <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
-                                                        <p  th:text="${friend.getFriend().username}"></p>
-                                                        <p th:text="${friend.getStatus()}"></p>
-
-                                                    </th:block>
-
-                                                </div>
-                                </div>
-                                <div id="test2" class="col s12"  th:if="${#authentication.principal.id == user.id}">
-
-                                    <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
-
-                                                    <div th:each="friend : ${pendingFriends}">
-
-                                                        <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
-                                                            <p th:text="${friend.username}"></p>
-                                                            <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
-                                                        </th:block>
-
-                                                    </div>
-                                </div>
-
-                                <div id="test3" class="col s12" th:if="${#authentication.principal.id == user.id}">
-
-                                    <div id="pending" class="col s12 green">
-                                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                                            <input type="hidden" th:value="${user.id}">
-                                            <h4>friends <span th:text="${user.username}"></span> has requested</h4>
-                                            <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
-                                                <p th:text="${friend.getFriend().username}"></p>
-                                                <p th:text="${friend.getStatus()}"></p>
-                                            </div>
-                                        </th:block>
-                                    </div>
-                                </div>
-
-                                <div id="test4" class="col s12" th:if="${#authentication.principal.id == user.id}">
-
-                                    <div  class="col s12 green">
-                                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                                            <input type="hidden" th:value="${user.id}">
-                                            <h4>Suggested buddies for you</h4>
-                                            <div th:each="friend : ${suggestedFriends}" >
-                                                <a th:href="@{'/users/profile/' + ${friend.id}}"><span th:text="${friend.username}"></span></a>
-                                            </div>
-                                        </th:block>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div><a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a></div>
-                <section class="section--center mdl-grid site-max-width">
-                    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                        <div class="mdl-card__media">
-                            <img class="article-image" src="https://www.fillmurray.com/640/360" border="0" alt="">
-                        </div>
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Rocky Peak</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim
-                            irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia
-                            laborum et consequat duis.
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                        <div class="mdl-card__media">
-                            <img class="article-image" src="/img/portfolio2.jpg" border="0" alt="">
-                        </div>
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Night Shadow</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim
-                            irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia
-                            laborum et consequat duis.
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                        <div class="mdl-card__media">
-                            <img class="article-image" src="/img/portfolio3.jpg" border="0" alt="">
-                        </div>
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Sky Reach</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim
-                            irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia
-                            laborum et consequat duis.
-                        </div>
-                    </div>
-                </section>
-
-                <section class="section--center mdl-grid site-max-width homepage-portfolio">
-                    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent"
-                       href="portfolio.html">View Portfolio</a>
-                </section>
-
-                <div class="homepage-footer">
-                    <section class="mdl-grid site-max-width">
-                        <div class="mdl-cell mdl-card mdl-cell--8-col mdl-cell--4-col-tablet  mdl-shadow--4dp portfolio-card">
-                            <div class="mdl-card__title">
-                                <h2 class="mdl-card__title-text">Testimonials</h2>
-                            </div>
-                            <ul class="demo-list-three mdl-list">
-                                <li class="mdl-list__item mdl-list__item--three-line">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-avatar">person</i>
-                <span>Amazing people, always ready to help!</span>
-                <span class="mdl-list__item-text-body">
-                  Bryan Cranston, CEO, Amazing.com
-                </span>
-              </span>
-                                </li>
-                                <li class="mdl-list__item mdl-list__item--three-line">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons  mdl-list__item-avatar">person</i>
-                <span>Awesome work, they can do almost anything..</span>
-                <span class="mdl-list__item-text-body">
-                Aaron Paul, Marketing Lead, Awesome.com
-                </span>
-              </span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
-                            <div class="mdl-card__title mdl-card--expand">
-                                <h4>
-                                    Featured event:<br>
-                                    Community Meetup
-                                    May 24, 2018<br>
-                                    7-11pm
-                                </h4>
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
-                                    Add to Calendar
-                                </a>
-                                <div class="mdl-layout-spacer"></div>
-                                <i class="material-icons">event</i>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-
-
-        </div>
-        <footer class="mdl-mini-footer">
-            <div class="footer-container">
-                <div class="mdl-logo">&copy; Unitiled. Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a>
-                </div>
-                <ul class="mdl-mini-footer__link-list">
-                    <li><a href="#">Privacy & Terms</a></li>
-                </ul>
-            </div>
-        </footer>
-    </main>
-
-
-    <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BattleBuddies</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"/>
+    <link href="https://ajax.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <script>
-
-        $(".button-collapse").sideNav();
-
-
-        function hideLoader() {
-            document.getElementById('loaderWrapper').style.display = "none";
+    <style>
+        nav {
+            height: 99px !important;
+            line-height: 99px !important;
         }
 
-        var instance = M.Tabs.getInstance(elem);
+        html, body {
+            height: 100%;
+            
 
-        $(document).ready(function () {
-            $('.tabs').tabs();
-        });
+            /* Image is centered vertically and horizontally at all times */
+            background-position: center center;
 
-        WebFontConfig = {
-            google: {
-                families: ['Roboto:300,400,500,700:latin']
-            },
-            classes: false,
-            events: false,
-            timeout: 1500
-        };
-        (function () {
-            var wf = document.createElement('script');
-            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.defer = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
+            /* Image doesn't repeat */
+            background-repeat: no-repeat;
+
+            /* Makes the image fixed in the viewport so that it doesn't move when
+               the content height is greater than the image height */
+            background-attachment: fixed;
+
+            /* This is what makes the background image rescale based on its container's size */
+            background-size: cover;
+
+            /* Pick a solid background color that will be displayed while the background image is loading */
+            background-color: #464646;
+
+            /* SHORTHAND CSS NOTATION
+             * background: url(background-photo.jpg) center center cover no-repeat fixed;
+             */
+        }
+
+        .hex {
+            clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%) !important;
+            background-size: cover !important;
+            margin: 10px auto !important;
+            height: 200px !important;
+            width: 200px !important;
+
+        }
+
+        .hexagon {
+            position: relative;
+            width: 500px;
+            height: 288.68px;
+            background: #CD5C5C;
+            margin: 144px auto;
+        }
+
+        .hexagon::before,
+        .hexagon::after {
+            content: "";
+            position: absolute;
+            border-left: 250px solid transparent;
+            border-right: 250px solid transparent;
+        }
+        .hexagon::before {
+            bottom: 100%;
+            border-bottom: 144.34px solid #CD5C5C;
+        }
+        .hexagon::after {
+            top: 100%;
+            border-top: 144.34px solid #CD5C5C;
+        }
+
+        main {
+            flex: 1 0 auto;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1024px;
+        }
+
+        /*.profiletop {*/
+        /*    background-color: rgba(0, 0, 0, 0) !important;*/
+        /*    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(0, 0, 0, 0.2) !important;*/
+        /*}*/
+        .post-img {
+            height: 100% !important;
+            width: 200px;
+
+        }
+
+
+        .card-1 {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+            background: #fff;
+            border-radius: 2px;
+            display: inline-block;
+            height: 200px;
+            margin: 1rem;
+            position: relative;
+            width: 600px;
+        }
+
+        .top-card {
+            width: 25em;
+            margin-top: 3em;
+        }
+
+
+        /*header {*/
+        /*    background-image: url('/img/flag_bg.jpg');*/
+        /*    background-position: center center;*/
+        /*    background-size: cover;*/
+        /*    height: 15em;*/
+        /*    !*opacity: .7; !* opacity to help smooth out jpeg artifacts *!*!*/
+        /*    padding-top: 2.5em;*/
+        /*}*/
+        /*@media (max-width: 599px) {*/
+        /*    header {*/
+        /*        background-position: bottom center;*/
+        /*    }*/
+        /*}*/
+    </style>
+</head>
+<div>
+    <th:block th:replace="fragments/nav-bar :: profile"/>
+
+    <!--                    <div class="row logo valign-wrapper">-->
+    <!--                    </div>-->
+
+
+    <div class="container grey darken-3 top-card">
+        <div class="row valign-wrapper">
+
+            <div>
+                <div class="offset-s3 m4 offset-m4 hex">
+                    <th:block th:each=" photo: ${user.getProfile().getPhotos()}">
+                        <img th:if="${photo.getUrl() == null}" class="responsive-img"
+                             th:src="${'https://picsum.photos/300?pic=' + #strings.randomAlphanumeric(2)}"
+                             alt="placeholder"/>
+                        <img class="responsive-img post-img" th:if="${photo.getUrl() != null}"
+                             th:src="@{${'/uploads/' + photo.getUrl()}}"/>
+                    </th:block>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container grey darken-3 top-card">
+        <div class="row valign-wrapper">
+            <div class="card-content center-align col s6 offset-s3">
+                    <span class="card-title"><h4 class="headline 700 center"
+                                                 th:text=" ${user.getProfile().firstName}"></h4></span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div>
+        <h2 class="blue-grey-text text-darken-3 center"> About</h2>
+        <div class="divider"></div>
+        <div class="section-lg container center z-depth-3 white" id="skills">
+            <div class="row section-lg-top">
+                <div class="center col s12 m6 l3">
+                    <i class="medium icon ion-social-html5 orange-text text-darken-3"></i>
+                    <h5>HTML</h5>
+                </div>
+                <div class="center col s12 m6 l3">
+                    <i class="medium icon ion-social-css3 light-blue-text"></i>
+                    <h5>CSS</h5>
+                </div>
+                <div class="center col s12 m6 l3">
+                    <i class="medium icon ion-social-javascript yellow-text"></i>
+                    <h5>JAVASCRIPT</h5>
+                </div>
+                <div class="center col s12 m6 l3">
+                    <i class="medium icon ion-social-nodejs light-green-text"></i>
+                    <h5>NODE JS</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h2 class="blue-grey-text text-darken-3 center">Buddies</h2>
+    <div class="container">
+        <div class="mdc-tab-bar" role="tablist">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
+                            class="tab col s3"><a class="active" href="#test1">My Buddies</a></li>
+                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
+                            class="tab col s3"><a href="#test2">Potential Buddies</a></li>
+                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
+                            class="tab col s3"><a href="#test3">Pending Buddies</a></li>
+                    </ul>
+                </div>
+                <div id="test1" class="col s12">
+                    <div id="friends" class="col s12 blue">
+                        <h4> Accepted Friends List</h4>
+                        <th:block th:each="friend : ${user.getRelationships()}"
+                                  th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+                            <p th:text="${friend.getFriend().username}"></p>
+                            <p th:text="${friend.getStatus()}"></p>
+
+                        </th:block>
+
+                    </div>
+                </div>
+                <div id="test2" class="col s12">
+
+                    <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
+
+                    <div th:each="friend : ${pendingFriends}">
+
+                        <th:block th:each="relationship: ${friend.getRelationships()}"
+                                  th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                            <p th:text="${friend.username}"></p>
+                            <a th:if="${relationship.getFriend().username == user.username}"
+                               th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
+                        </th:block>
+
+                    </div>
+                </div>
+
+                <div id="test3" class="col s12">
+                    PENDING FRIENDS
+                    <div id="pending" class="col s12 green">
+                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                            <input type="hidden" th:value="${user.id}">
+                            <h4>friends <span th:text="${user.username}"></span> has requested</h4>
+                            <div th:each="friend : ${user.getRelationships()}"
+                                 th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                                <p th:text="${friend.getFriend().username}"></p>
+                                <p th:text="${friend.getStatus()}"></p>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+                <!--                                <div id="test4" class="col s12">Test 4</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script>
+
+    $(".button-collapse").sideNav();
+
+
+    function hideLoader() {
+        document.getElementById('loaderWrapper').style.display = "none";
+    }
+
+    var instance = M.Tabs.getInstance(elem);
+
+    $(document).ready(function () {
+        $('.tabs').tabs();
+    });
+
+    WebFontConfig = {
+        google: {
+            families: ['Roboto:300,400,500,700:latin']
+        },
+        classes: false,
+        events: false,
+        timeout: 1500
+    };
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.defer = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
 </div>
 </body>
 </html>
