@@ -2,12 +2,10 @@ package com.codeup.blog.blog.controllers;
 
 
 import com.codeup.blog.blog.models.Hobby;
+import com.codeup.blog.blog.models.Location;
 import com.codeup.blog.blog.models.Profile;
 import com.codeup.blog.blog.models.Trait;
-import com.codeup.blog.blog.repositories.HobbyRepository;
-import com.codeup.blog.blog.repositories.ProfileRepository;
-import com.codeup.blog.blog.repositories.TraitRepository;
-import com.codeup.blog.blog.repositories.UserRepository;
+import com.codeup.blog.blog.repositories.*;
 import com.sun.mail.auth.MD4;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,11 +21,13 @@ public class BrowserController {
     private HobbyRepository hobbyDao;
     private TraitRepository traitDao;
     private ProfileRepository profileDao;
+    private LocationRepository locationDao;
 
-    public BrowserController(HobbyRepository hobbyDao, TraitRepository traitDao, ProfileRepository profileDao){
+    public BrowserController(HobbyRepository hobbyDao, TraitRepository traitDao, ProfileRepository profileDao, LocationRepository locationDao){
         this.hobbyDao = hobbyDao;
         this.profileDao = profileDao;
         this.traitDao = traitDao;
+        this.locationDao = locationDao;
     }
 
     @GetMapping("/browse/hobbies-index")
@@ -74,6 +74,30 @@ public class BrowserController {
         vModel.addAttribute("trait", trait);
         vModel.addAttribute("profiles", profileList);
         return "browse/trait";
+    }
+
+    @GetMapping("/browse/locations-index")
+    public String showLocationIndex(Model vModel){
+        vModel.addAttribute("locations", locationDao.findAll());
+        return "browse/locations-index";
+    }
+
+
+    @GetMapping("/browse/location/{id}")
+    public String showIndividualLocation(@PathVariable long id, Model vModel){
+        Location location = locationDao.getOne(id);
+        List<Profile> profileList = new ArrayList<>();
+
+        for (Profile profile : profileDao.findAll()) {
+            for (Location userLocation: profile.getLocation()){
+                if (userLocation == location){
+                    profileList.add(profile);
+                }
+            }
+        }
+        vModel.addAttribute("location", location);
+        vModel.addAttribute("profiles", profileList);
+        return "browse/location";
     }
 
     @GetMapping("/browse/")

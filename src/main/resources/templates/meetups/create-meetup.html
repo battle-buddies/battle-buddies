@@ -13,7 +13,7 @@
 </head>
 <th:block th:replace="fragments/nav-bar :: meetups"/>
 <body>
-    <form th:action="@{'/meetups/create'}" th:method="post" th:object="${meetup}">
+    <form id="create" th:action="@{'/meetups/create'}" th:method="post" th:object="${meetup}">
         <div class="container">
             <h1>Create New Meet Up</h1>
             <div class="form-row">
@@ -49,7 +49,7 @@
                 <input type="date" name="" id="date" th:name="date" required>
             </div>
             <div class="right-align">
-                <a class="btn col s12" href="#" onclick="document.getElementById('delete').submit();">Submit</a>
+                <a class="btn col s12" href="#" onclick="document.getElementById('create').submit();">Submit</a>
             </div>
         </div>
 

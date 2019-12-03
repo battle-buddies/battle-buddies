@@ -51,7 +51,7 @@ public class MeetUpController {
 
         List<Comment> comments = new ArrayList<>();
         for (Comment comment: commentDao.findAll()) {
-            if (comment.getMeetUp().getId() == meetUp.getId()){
+            if (comment.getMeetUp() != null && comment.getMeetUp().getId() == meetUp.getId()){
                 comments.add(comment);
             }
         }

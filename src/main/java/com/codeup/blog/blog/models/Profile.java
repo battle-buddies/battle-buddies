@@ -79,6 +79,9 @@ public class Profile {
     @JsonIgnore
     private List<Photo> photos;
 
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Comment> comments;
 
     @ManyToOne
     @JoinColumn (name = "branch_id")
@@ -95,7 +98,7 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -112,6 +115,7 @@ public class Profile {
         this.photos = photos;
         this.branch = branch;
         this.rank = rank;
+        this.comments = comments;
     }
 
     public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
@@ -233,7 +237,6 @@ public class Profile {
     }
 
 
-
     public List<Hobby> getHobbies() {
         return hobbies;
     }
@@ -265,4 +268,14 @@ public class Profile {
     public void setRank(Rank rank) {
         this.rank = rank;
     }
+
+    public int getAge() { return age; }
+
+    public void setAge(int age) { this.age = age; }
+
+    public boolean isGender() { return gender; }
+
+    public List<Comment> getComments() { return comments; }
+
+    public void setComments(List<Comment> comments) { this.comments = comments; }
 }
