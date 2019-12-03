@@ -146,8 +146,16 @@ public class ProfileController {
 
             }
         }
-        vModel.addAttribute("comments", commentDao.findAll());
         vModel.addAttribute("suggestedFriends", suggestedFriends);
+
+
+        List<Comment> comments = new ArrayList<>();
+        for (Comment comment: commentDao.findAll()) {
+            if (comment.getProfile() != null && comment.getProfile().getId() == id){
+                comments.add(comment);
+            }
+        }
+        vModel.addAttribute("comments", comments);
 
         return "users/profile";
     }
