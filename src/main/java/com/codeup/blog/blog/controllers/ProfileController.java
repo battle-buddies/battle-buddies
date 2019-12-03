@@ -11,6 +11,8 @@ import com.codeup.blog.blog.repositories.UserRepository;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -399,15 +401,16 @@ public class ProfileController {
 
 
 
-    @GetMapping("/users/chat")
+    @GetMapping("/users/chat/{id}")
+    public @ResponseBody List<User> getUser(Model model, @PathVariable long id) {
 
-    public @ResponseBody User getUser(Model model) {
-        User current = usersService.loggedInUser();
-        if (current == null) {
-            return userDao.findById(1L).orElse(null);
-        }else{
-            return current;
-        }
+
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user2 = userDao.findById(id).orElse(null);
+        List<User> list = new ArrayList<>();
+        list.add(user1);
+        list.add(user2);
+        return list;
     }
 
 
