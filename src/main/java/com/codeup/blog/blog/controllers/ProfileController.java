@@ -37,6 +37,7 @@ public class ProfileController {
     private RankRepository rankDao;
     private ChildRepository childDao;
     private PhotoRepository photoDao;
+    private CommentRepository commentDao;
 
     @Value("${file-upload-path}")
     private String uploadPath;
@@ -50,7 +51,7 @@ public class ProfileController {
     UserService usersSvc;
 
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao, ChildRepository childDao, PhotoRepository  photoDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao, ChildRepository childDao, PhotoRepository  photoDao, CommentRepository commentDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
@@ -61,6 +62,7 @@ public class ProfileController {
         this.rankDao = rankDao;
         this.childDao = childDao;
         this.photoDao  = photoDao;
+        this.commentDao = commentDao;
     }
 
     @GetMapping("/users/profile/{id}")
@@ -144,7 +146,7 @@ public class ProfileController {
 
             }
         }
-
+        vModel.addAttribute("comments", commentDao.findAll());
         vModel.addAttribute("suggestedFriends", suggestedFriends);
 
         return "users/profile";
@@ -441,6 +443,24 @@ public class ProfileController {
         return userDao.findById(1L).orElse(null);
     }
 
+
+    @PostMapping("profile/comment/{id}")
+    public String addMeetUpComment(@PathVariable long id, @RequestParam(name = "comment") String comment){
+        User loggedInUser = usersService.loggedInUser();
+        Profile profileBeingCommentedOn = profileDao.getOne(id);
+
+        Comment newComment = new Comment(comment, profileBeingCommentedOn, loggedInUser);
+        commentDao.save(newComment);
+
+        profileBeingCommentedOn.getComments().add(newComment);
+        profileDao.save(profileBeingCommentedOn);
+
+        loggedInUser.getComments().add(newComment);
+        userDao.save(loggedInUser);
+
+
+        return "redirect:/users/profile/" + profileBeingCommentedOn.getId();
+    }
 
 
 
