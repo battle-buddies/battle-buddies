@@ -31,6 +31,9 @@ public class Profile {
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean married;
 
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    private String children;
+
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean milSpouse;
 
@@ -70,10 +73,6 @@ public class Profile {
     private List<Hobby> hobbies;
 
 
-    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Child> children;
-
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -98,7 +97,7 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
+    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, String children, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -111,14 +110,14 @@ public class Profile {
         this.location = location;
         this.traits = traits;
         this.hobbies = hobbies;
-        this.children = children;
         this.photos = photos;
         this.branch = branch;
         this.rank = rank;
         this.comments = comments;
+        this.children = children;
     }
 
-    public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Hobby> hobbies, List<Child> children, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location,String children, List<Trait> traits, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -130,10 +129,10 @@ public class Profile {
         this.location = location;
         this.traits = traits;
         this.hobbies = hobbies;
-        this.children = children;
         this.photos = photos;
         this.branch = branch;
         this.rank = rank;
+        this.children = children;
     }
 
     public boolean getGender() {
@@ -208,10 +207,6 @@ public class Profile {
         this.user = user;
     }
 
-    public List<Child> getChildren (){
-        return children;
-    }
-
     public void setChildren() {
         this.children = children;
     }
@@ -232,9 +227,6 @@ public class Profile {
         this.traits = traits;
     }
 
-    public void setChildren(List<Child> children) {
-        this.children = children;
-    }
 
 
     public List<Hobby> getHobbies() {
@@ -278,4 +270,12 @@ public class Profile {
     public List<Comment> getComments() { return comments; }
 
     public void setComments(List<Comment> comments) { this.comments = comments; }
+
+    public String getChildren() {
+        return children;
+    }
+
+    public void setChildren(String children) {
+        this.children = children;
+    }
 }
