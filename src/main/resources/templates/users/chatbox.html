@@ -64,8 +64,15 @@
             var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
             conversation.setParticipant(me);
             conversation.setParticipant(other);
-            var inbox = talkSession.createInbox({selected: conversation});
-            inbox.mount(document.getElementById("talkjs-container"));
+            var popup = talkSession.createPopup(conversation, { keepOpen: false });
+            popup.mount({ show: false });
+
+            var button = document.getElementById("btn-getInTouch");
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.show();
+            });
+
         });
     }
 </script>
