@@ -21,11 +21,22 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn (name = "profile_id")
+    private Profile profile;
+
     public Comment(String comment, MeetUp meetUp, User user) {
         this.comment = comment;
         this.meetUp = meetUp;
         this.user = user;
     }
+
+    public Comment(String comment, Profile profile, User user) {
+        this.comment = comment;
+        this.profile = profile;
+        this.user = user;
+    }
+
 
     public Comment() {
     }
@@ -58,4 +69,7 @@ public class Comment {
 
     public void setUser(User user) { this.user = user; }
 
+    public Profile getProfile() { return profile; }
+
+    public void setProfile(Profile profile) { this.profile = profile; }
 }
