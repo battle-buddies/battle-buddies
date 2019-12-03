@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -22,21 +21,24 @@ public class Profile {
     @Column(nullable = false, columnDefinition = "VARCHAR(80)")
     private String lastName;
 
+    @JsonIgnore
     @Column(nullable = false)
     private int age;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean gender;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean married;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
-    private String children;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean milSpouse;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "VARCHAR(2000)")
     private String bio;
 
@@ -53,6 +55,19 @@ public class Profile {
     )
     @JsonIgnore
     private List<Location> location;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "profile_child",
+            joinColumns = {@JoinColumn(name="profile_id")},
+            inverseJoinColumns = {@JoinColumn(name="child_id")}
+    )
+    @JsonIgnore
+    private List<Child> children;
+
+
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -97,7 +112,7 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, String children, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
+    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Child> children, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -117,7 +132,7 @@ public class Profile {
         this.children = children;
     }
 
-    public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location,String children, List<Trait> traits, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Child> children, List<Trait> traits, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -207,10 +222,6 @@ public class Profile {
         this.user = user;
     }
 
-    public void setChildren() {
-        this.children = children;
-    }
-
     public List<Location> getLocation() {
         return location;
     }
@@ -271,11 +282,11 @@ public class Profile {
 
     public void setComments(List<Comment> comments) { this.comments = comments; }
 
-    public String getChildren() {
+    public List<Child> getChildren() {
         return children;
     }
 
-    public void setChildren(String children) {
+    public void setChildren(List<Child> children) {
         this.children = children;
     }
 }
