@@ -156,20 +156,29 @@
             <div class="row section-lg-top">
                 <div class="center col s12 m6 l3">
                     <i class="medium icon ion-social-html5 orange-text text-darken-3"></i>
-                    <h5>HTML</h5>
+                    <h5>Hobbies</h5>
+                    <ul th:each="hobby : ${user.getProfile().getHobbies()}">
+                        <li th:text="${hobby.hobby}"></li>
+                    </ul>
                 </div>
                 <div class="center col s12 m6 l3">
                     <i class="medium icon ion-social-css3 light-blue-text"></i>
-                    <h5>CSS</h5>
+                    <h5>Personality</h5>
+                    <ul th:each="trait : ${user.getProfile().getTraits()}">
+                        <li th:text="${trait.trait}"></li>
+                    </ul>
                 </div>
                 <div class="center col s12 m6 l3">
                     <i class="medium icon ion-social-javascript yellow-text"></i>
-                    <h5>JAVASCRIPT</h5>
+                    <h5>Current City</h5>
+                    <div th:each="location : ${user.getProfile().getLocation()}">
+                        <p th:text="${location.location}"></p>
+                    </div>
                 </div>
-                <div class="center col s12 m6 l3">
-                    <i class="medium icon ion-social-nodejs light-green-text"></i>
-                    <h5>NODE JS</h5>
-                </div>
+                <!--                <div class="center col s12 m6 l3">-->
+                <!--                    <i class="medium icon ion-social-nodejs light-green-text"></i>-->
+                <!--                    <h5>NODE JS</h5>-->
+                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -283,6 +292,7 @@
                                 </th:block>
                             </div>
                         </div>
+                        <div><a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a></div>
                     </div>
                 </div>
             </div>

@@ -11,12 +11,15 @@ import com.codeup.blog.blog.repositories.UserRepository;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -239,8 +242,7 @@ public class ProfileController {
 
             // Files handle
 
-
-            profileDao.save(profile);
+          profileDao.save(profile);
             uploadFileHandler(profile, m, uploadedFile);
             user.setProfile(profile);
             userDao.save(user);
@@ -436,12 +438,24 @@ public class ProfileController {
 
 
 
-    @GetMapping("/users/profile-design")
 
-    public String showProfile(Model model) {
+    @GetMapping("/users/chat/{id}")
+    public @ResponseBody List<User> getUser(Model model, @PathVariable long id) {
 
 
-        return "users/profile-design";
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user2 = userDao.findById(id).orElse(null);
+        List<User> list = new ArrayList<>();
+        list.add(user1);
+        list.add(user2);
+        return list;
+    }
+
+
+
+    @GetMapping("/users/chatbox/{id}")
+    public String showchat(Model model, @PathVariable long id) {
+        return "users/chatbox";
     }
 
     @GetMapping("/users/chat")
