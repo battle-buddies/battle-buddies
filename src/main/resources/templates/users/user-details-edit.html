@@ -130,17 +130,19 @@
 
             <!--            children start -->
             <p>Adding your children will help us match you with friends that have children the same age! </p>
-            <div class="input-field col s6">
-                <select th:field="*{children}" required="required">
-                    <option value="0">no children</option>
-                    <option value="1">0 - 5</option>
-                    <option value="2">5 - 10</option>
-                    <option value="3">10- 15</option>
-                    <option value="4">15- 18</option>
 
-                </select>
-                <label> Do you have Children between these ages?</label>
-            </div>
+
+                <div class="input-field col s12">
+                    <select multiple th:field="*{children}">
+                        <option value="" disabled selected>Range of your children's age.</option>
+                        <option value="1">No children</option>
+                        <option value="2">0 - 5</option>
+                        <option value="3">5 - 10</option>
+                        <option value="4">10 - 15</option>
+                        <option value="5">15 - 18</option>
+                    </select>
+                    <label>Please select the range of your children's age.</label>
+                </div>
 
 
 
