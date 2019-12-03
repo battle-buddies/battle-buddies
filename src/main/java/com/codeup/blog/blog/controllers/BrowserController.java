@@ -1,10 +1,7 @@
 package com.codeup.blog.blog.controllers;
 
 
-import com.codeup.blog.blog.models.Hobby;
-import com.codeup.blog.blog.models.Location;
-import com.codeup.blog.blog.models.Profile;
-import com.codeup.blog.blog.models.Trait;
+import com.codeup.blog.blog.models.*;
 import com.codeup.blog.blog.repositories.*;
 import com.sun.mail.auth.MD4;
 import org.springframework.stereotype.Controller;
@@ -22,12 +19,14 @@ public class BrowserController {
     private TraitRepository traitDao;
     private ProfileRepository profileDao;
     private LocationRepository locationDao;
+    private MeetUpRepository meetUpDao;
 
-    public BrowserController(HobbyRepository hobbyDao, TraitRepository traitDao, ProfileRepository profileDao, LocationRepository locationDao){
+    public BrowserController(HobbyRepository hobbyDao, TraitRepository traitDao, ProfileRepository profileDao, LocationRepository locationDao, MeetUpRepository meetUpDao){
         this.hobbyDao = hobbyDao;
         this.profileDao = profileDao;
         this.traitDao = traitDao;
         this.locationDao = locationDao;
+        this.meetUpDao = meetUpDao;
     }
 
     @GetMapping("/browse/hobbies-index")
@@ -99,6 +98,30 @@ public class BrowserController {
         vModel.addAttribute("profiles", profileList);
         return "browse/location";
     }
+
+
+    @GetMapping("/browse/meetups-locations-index/")
+    public String showMeetUpLocationsIndex(Model vModel){
+        vModel.addAttribute("locations", locationDao.findAll());
+        return "browse/meetups-locations-index";
+    }
+
+    @GetMapping("/browse/meetups-locations/{id}")
+    public String showMeetUpLocation(Model vModel, @PathVariable long id){
+        Location location = locationDao.getOne(id);
+        List<MeetUp> meetUpList = new ArrayList<>();
+
+        for (MeetUp meetUp : meetUpDao.findAll()) {
+            if (meetUp.getLocation() == location){
+                meetUpList.add(meetUp);
+            }
+        }
+        vModel.addAttribute("location", location);
+        vModel.addAttribute("meetups", meetUpList);
+
+        return "/browse/meetups-location";
+    }
+
 
     @GetMapping("/browse/")
     public String showBrowseIndex(){

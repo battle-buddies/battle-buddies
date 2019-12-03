@@ -1,53 +1,33 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meet Ups</title>
-
+    <title th:text="${location.location}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <th:block th:replace="fragments/header :: main-header"/>
-    <style>
-        .flex{
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .mt{
-            margin-top: 3.7em;
-        }
-
-
-    </style>
 </head>
-<th:block th:replace="fragments/nav-bar :: meetups"/>
 <body>
+<th:block th:replace="fragments/nav-bar :: browse"/>
 
-
-    <div class="container" >
-        <div class="flex">
-            <h1>Meet Ups</h1>
-            <a class="btn col s5 mt" href="/meetups/create"> Create New Meet Up</a>
-
-        </div>
+<div class="container" >
+    <h1 th:text="${location.location}"></h1>
+    <div class="row" >
         <div class="row" >
             <div class="col s12" th:each="meetup : ${meetups}">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-title">
-                            <div class="flex">
+                            <div>
 
                                 <a th:href="@{'/meetups/' + ${meetup.id}}">
                                     <h5  th:text="${meetup.title}"></h5>
                                 </a>
 
-                                <a th:href="@{'/browse/meetups-locations/' + ${meetup.location.id}}">
-                                    <h5 th:text="${meetup.location.location}"></h5>
-                                </a>
                             </div>
 
                         </div>
@@ -57,9 +37,11 @@
             </div>
         </div>
     </div>
+</div>
 
-</body>
+
 <script>
     $(".button-collapse").sideNav();
 </script>
+</body>
 </html>
