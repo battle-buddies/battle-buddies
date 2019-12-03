@@ -44,7 +44,7 @@
                 <input class="input_fields" id="country" type="text">
                 <label class="active" for="country">Country</label>
             </div>
-            <input type='button' value='Submit form 1' id="view" name="view"/>
+            <input type='button' value='My Location' id="view" name="view"/>
         </form>
     </div>
     <div>
@@ -55,7 +55,7 @@
 <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
     <input type="hidden" id="location" th:field="*{location}"/>
 
-    <input type='button' value='Submit form 2' id="send" name="send"/>
+    <input type='button' value='Add to Locations' id="send" name="send"/>
 </form>
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"

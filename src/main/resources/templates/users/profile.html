@@ -185,6 +185,7 @@
 
 <!--START BUDDIES CONTAINER-->
     <h2 class="blue-grey-text text-darken-3 center">Buddies</h2>
+    <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
     <div class="container">
         <div class="mdl-grid site-max-width">
             <div class="mdl-card__supporting-text">
@@ -331,6 +332,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
@@ -369,5 +371,73 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
+<script>
+    (function(t,a,l,k,j,s){
+        s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+        ;k=t.Promise;t.Talk={v:2,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+                    .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+</script>
+
+<!-- TalkJS initialization code, which we'll customize in the next steps -->
+<script>
+
+
+    var currentUser;
+    var otherUser;
+    var pathVariable =location.pathname.split("/")[3];
+
+    fetch("/users/chat/" + pathVariable)
+        .then(response => response.json())
+        .then(data => {
+            currentUser = data[0];
+            otherUser = data[1];
+            logDataset();
+        });
+
+    function logDataset () {
+        console.log(currentUser.email);
+
+        Talk.ready.then(function() {
+
+            var me = new Talk.User({
+                id: currentUser.id,
+                name: currentUser.profile.firstName,
+                email: currentUser.email,
+                photoUrl: "https://demo.talkjs.com/img/alice.jpg",
+
+            });
+            window.talkSession = new Talk.Session({
+                appId: "toAwBOgu",
+                me: me
+            });
+
+
+
+
+            var other = new Talk.User({
+                id: otherUser.id,
+                name: otherUser.profile.firstName,
+                email: otherUser.email,
+                photoUrl: "https://demo.talkjs.com/img/sebastian.jpg",
+            });
+
+
+
+            var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+            var popup = talkSession.createPopup(conversation, { keepOpen: false });
+            popup.mount({ show: false });
+
+            var button = document.getElementById("btn-getInTouch");
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.show();
+            });
+
+        });
+    }
+</script>
+
 </html>
 
