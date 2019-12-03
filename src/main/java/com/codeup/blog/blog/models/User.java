@@ -12,7 +12,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false, columnDefinition = "VARCHAR(80)", unique = true)
+    @JsonIgnore
     private String username;
     @Column(nullable = false, columnDefinition = "VARCHAR(200)", unique = true)
     private String email;
@@ -24,6 +26,7 @@ public class User {
 //    private boolean isVerified;
 
     @Column( columnDefinition = "TINYINT(1)")
+    @JsonIgnore
     private boolean isAdmin;
 
     @ManyToMany(mappedBy = "user")

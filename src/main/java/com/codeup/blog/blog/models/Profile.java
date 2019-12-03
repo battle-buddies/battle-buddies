@@ -22,21 +22,27 @@ public class Profile {
     @Column(nullable = false, columnDefinition = "VARCHAR(80)")
     private String lastName;
 
+    @JsonIgnore
     @Column(nullable = false)
     private int age;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean gender;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean married;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String children;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean milSpouse;
 
+    @JsonIgnore
     @Column(nullable = false, columnDefinition = "VARCHAR(2000)")
     private String bio;
 
