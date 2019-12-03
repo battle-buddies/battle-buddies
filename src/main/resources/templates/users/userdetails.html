@@ -132,14 +132,21 @@
 
             <!--            children start -->
             <p>Adding your children will help us match you with friends that have children the same age! </p>
-            <div id="formbody" class="input-field col s6 input_fields_wrap">
-                <button class="btn add_field_button">Add another child</button>
-                <div>
-                    <input type="text" name="childAge" placeholder="Please enter child's age as a number">
-                    <input type="text" name="childGender" placeholder="Please enter child's gender as male or female">
 
-                </div>
+
+            <div class="input-field col s6">
+                <select th:field="*{children}" required="required">
+
+                    <option value="0">no children</option>
+                    <option value="1">0 - 5</option>
+                    <option value="2">5 - 10</option>
+                    <option value="3">10- 15</option>
+                    <option value="4">15- 18</option>
+
+                </select>
+                <label> Do you have Children between these ages?</label>
             </div>
+
 
 
         </div>

@@ -38,7 +38,6 @@ public class ProfileController {
     private LocationRepository locationDao;
     private BranchRepository branchDao;
     private RankRepository rankDao;
-    private ChildRepository childDao;
     private PhotoRepository photoDao;
     private CommentRepository commentDao;
 
@@ -54,7 +53,7 @@ public class ProfileController {
     UserService usersSvc;
 
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao, ChildRepository childDao, PhotoRepository  photoDao, CommentRepository commentDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao,PhotoRepository  photoDao, CommentRepository commentDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
@@ -63,7 +62,6 @@ public class ProfileController {
         this.locationDao = locationDao;
         this.branchDao = branchDao;
         this.rankDao = rankDao;
-        this.childDao = childDao;
         this.photoDao  = photoDao;
         this.commentDao = commentDao;
     }
@@ -235,10 +233,6 @@ public class ProfileController {
                     profile.getTraits().add(trait);
                 }
             }
-//        hard coded children for now
-            List<Child> children = new ArrayList<>();
-            children.add(new Child("female", 6));
-            profile.setChildren(children);
 
             // Files handle
 
@@ -311,7 +305,8 @@ public class ProfileController {
             @RequestParam(name="married", required = false) boolean married,
             @RequestParam(name="location", required = false) List<Location> locationId,
              @RequestParam(name="gender", required = false) boolean gender,
-            @RequestParam(name = "form2", required = false) Location locationToBeCreated
+            @RequestParam(name = "form2", required = false) Location locationToBeCreated,
+            @RequestParam(name = "children", required = false) String children
 
 
     ){
@@ -332,6 +327,7 @@ public class ProfileController {
        profile.setMarried(married);
        profile.setGender(gender);
        profile.setLocation(locationId);
+       profile.setChildren(children);
 
 
 
@@ -375,10 +371,6 @@ public class ProfileController {
                 profile.getTraits().add(trait);
             }
         }
-//        hard coded children for now
-        List<Child> children = new ArrayList<>();
-        children.add(new Child("female", 6));
-        profile.setChildren(children);
 
 
         profileDao.save(profile);
