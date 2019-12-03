@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Browse Locations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <th:block th:replace="fragments/header :: main-header"/>
+</head>
+<body>
+<th:block th:replace="fragments/nav-bar :: browse"/>
+<div class="container" >
+    <h1>Locations</h1>
+    <div class="row" >
+        <div class="col s4" th:each="location: ${locations}">
+            <div class="card card-small">
+                <div class="card-content">
+                    <a th:href="@{'/browse/location/' + ${location.id}}">
+                        <span class="card-title" th:text="${location.location}"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".button-collapse").sideNav();
+</script>
+
+</body>
+</html>
