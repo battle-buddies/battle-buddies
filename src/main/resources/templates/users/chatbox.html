@@ -21,9 +21,12 @@
 
 
     var dataset;
-    fetch("/users/chat")
+
+
+    fetch("/users/chat/{id}")
         .then(response => response.json())
         .then(data => {
+
             dataset = data;
             logDataset();
         });
@@ -34,9 +37,9 @@
     Talk.ready.then(function() {
 
         var me = new Talk.User({
-            id: "123456",
-            name: "Alice",
-            email: "alice@example.com",
+            id: dataset[0],
+            name: dataset[3].firstName,
+            email: dataset[2],
             photoUrl: "https://demo.talkjs.com/img/alice.jpg",
             welcomeMessage: "Hey there! How are you? :-)"
         });
@@ -49,15 +52,15 @@
 
 
             var other = new Talk.User({
-                id: dataset.id,
-                name: dataset.profile.firstName,
-                email: dataset.email,
+                id: dataset[0],
+                name: dataset[3].firstName,
+                email: dataset[2],
                 photoUrl: "https://demo.talkjs.com/img/sebastian.jpg",
                 welcomeMessage: "Hey, how can I help?"
             });
 
 
-        var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other))
+        var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
         conversation.setParticipant(me);
         conversation.setParticipant(other);
         var inbox = talkSession.createInbox({selected: conversation});
