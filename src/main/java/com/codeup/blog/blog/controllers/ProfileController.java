@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -442,8 +443,8 @@ public class ProfileController {
 
 
 
-    @GetMapping("/users/chatbox")
-    public String showchat(Model model) {
+    @GetMapping("/users/chatbox/{id}")
+    public String showchat(Model model, @PathVariable long id) {
         return "users/chatbox";
     }
 
