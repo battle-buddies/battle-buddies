@@ -183,7 +183,13 @@
 
 <!--START BUDDIES CONTAINER-->
     <h2 class="blue-grey-text text-darken-3 center">Buddies</h2>
+
+
+<!--    MESSAGES-->
+    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
     <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+    </th:block>
+<!--    END MESSAGES-->
     <div class="container">
         <div class="mdl-grid site-max-width">
             <div class="mdl-card__supporting-text">
@@ -289,7 +295,9 @@
                                 </th:block>
                             </div>
                         </div>
+                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                         <div><a class="waves-effect waves-light btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a></div>
+                        </th:block>
                     </div>
                 </div>
             </div>

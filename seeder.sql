@@ -32,10 +32,10 @@ insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bi
 #
 
 
-
+drop table children if exits;
 insert into children  (child) values ('No Children');
 insert into children  (child) values ('0-5');
-insert into children  (child) values ('6-8');
+insert into children  (child) values ('6-9');
 insert into children  (child) values ('10-14');
 insert into children  (child) values ('15-16');
 insert into children  (child) values ('17-18');
