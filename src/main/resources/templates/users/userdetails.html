@@ -70,7 +70,6 @@
                         <option th:name="branch" th:value="${location.id}"><span
                                 th:text="${location.location}"></span>
                         </option>
-
                     </th:block>
                 </select>
                 <label>Please select your location</label>
@@ -247,7 +246,6 @@
 
             </div>
             <div class="file-field input-field col s3">
-                    <label>Upload a profile picture</label>
                 <div class="btn">
                     <span>File</span>
                     <input type="file" name="file" id="file"/>
@@ -255,6 +253,7 @@
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text"/>
                 </div>
+                    <label>Upload a profile picture</label>
             </div>
             <!--           row end-->
             <button class="waves-effect waves-light btn">Submit!</button>
