@@ -330,7 +330,6 @@ public class ProfileController {
             @RequestParam(name="married", required = false) boolean married,
             @RequestParam(name="location", required = false) List<Location> locationId,
              @RequestParam(name="gender", required = false) boolean gender,
-            @RequestParam(name = "form2", required = false) Location locationToBeCreated,
             @RequestParam(name="children", required = false)ArrayList<Long> childIds,
             Model m,
             @RequestParam(name = "file") MultipartFile uploadedFile

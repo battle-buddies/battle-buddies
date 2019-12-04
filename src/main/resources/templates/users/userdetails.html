@@ -63,7 +63,19 @@
     </ul>
     <form th:action="@{'/users/userdetails'}" th:method="post" th:object="${profile}" enctype="multipart/form-data">
         <div id="Basic-info" class="col s12">
+            <div class="input-field col s3">
+                <select th:field="*{location}" required="required">
+                    <option value="0" disabled selected>Location</option>
+                    <th:block th:each="location: ${locations}">
+                        <option th:name="branch" th:value="${location.id}"><span
+                                th:text="${location.location}"></span>
+                        </option>
 
+                    </th:block>
+                </select>
+                <label>Please select your location</label>
+                <button data-target="modal1" class="btn modal-trigger">Add New Location</button>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
                     <input id="firstName" type="text" class="validate" th:field="*{firstName}" required="required">
@@ -164,7 +176,7 @@
                             <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
                         </th:block>
                     </select>
-                    <label>Please select your rank</label>
+                    <label>Please select your or your spouse's rank</label>
                 </div>
                 <!--                rank end-->
 
@@ -179,7 +191,7 @@
 
                         </th:block>
                     </select>
-                    <label>Please select your branch</label>
+                    <label>Please select your or your spouse's branch</label>
                 </div>
                 <!--                branch end-->
 
@@ -208,19 +220,19 @@
                 </div>
                 <!--                marital status-->
                 <!--                location-->
-                <div class="input-field col s3">
-                    <select th:field="*{location}" required="required">
-                        <option value="0" disabled selected>Location</option>
-                        <th:block th:each="location: ${locations}">
-                            <option th:name="branch" th:value="${location.id}"><span
-                                    th:text="${location.location}"></span>
-                            </option>
+<!--                <div class="input-field col s3">-->
+<!--                    <select th:field="*{location}" required="required">-->
+<!--                        <option value="0" disabled selected>Location</option>-->
+<!--                        <th:block th:each="location: ${locations}">-->
+<!--                            <option th:name="branch" th:value="${location.id}"><span-->
+<!--                                    th:text="${location.location}"></span>-->
+<!--                            </option>-->
 
-                        </th:block>
-                    </select>
-                    <label>Please select your location</label>
-                    <button data-target="modal1" class="btn modal-trigger">Add Location</button>
-                </div>
+<!--                        </th:block>-->
+<!--                    </select>-->
+<!--                    <label>Please select your location</label>-->
+<!--                    <button data-target="modal1" class="btn modal-trigger">Add Location</button>-->
+<!--                </div>-->
 
                 <!--                BUTTON FOR MODAL -->
 
@@ -235,6 +247,7 @@
 
             </div>
             <div class="file-field input-field col s3">
+                    <label>Upload a profile picture</label>
                 <div class="btn">
                     <span>File</span>
                     <input type="file" name="file" id="file"/>
