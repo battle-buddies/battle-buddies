@@ -23,7 +23,9 @@ import javax.websocket.server.PathParam;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.util.ArrayList;
+
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -133,9 +135,9 @@ public class ProfileController {
                     total += 10;
                 }
 
-                if (profile.getage() >= loggedInProfile.getage() - 3 && profile.getage() <= loggedInProfile.getage() + 3){
-                    total += 20;
-                }
+//                if (profile.getage() >= loggedInProfile.getage() - 3 && profile.getage() <= loggedInProfile.getage() + 3){
+//                    total += 20;
+//                }
 
                 if(loggedInProfile.getRank().getRank().charAt(0) == profile.getRank().getRank().charAt(0) ){
                     total += 10;
@@ -323,13 +325,15 @@ public class ProfileController {
             @RequestParam(name="firstName", required = false) String firstName,
             @RequestParam(name="lastName", required = false) String lastName,
             @RequestParam(name="bio", required = false) String bio,
-            @RequestParam(name="age", required = false) int age,
+            @RequestParam(name="birthDate", required = false) Date birthDate,
             @RequestParam(name="milSpouse", required = false) boolean millSpouse,
             @RequestParam(name="married", required = false) boolean married,
             @RequestParam(name="location", required = false) List<Location> locationId,
              @RequestParam(name="gender", required = false) boolean gender,
             @RequestParam(name = "form2", required = false) Location locationToBeCreated,
-            @RequestParam(name="children", required = false)ArrayList<Long> childIds
+            @RequestParam(name="children", required = false)ArrayList<Long> childIds,
+            Model m,
+            @RequestParam(name = "file") MultipartFile uploadedFile
 
 
     ){
@@ -345,7 +349,7 @@ public class ProfileController {
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
         profile.setBio(bio);
-        profile.setage(age);
+        profile.setBirthDate(birthDate);
         profile.setMilSpouse(millSpouse);
        profile.setMarried(married);
        profile.setGender(gender);
@@ -414,8 +418,8 @@ public class ProfileController {
             }
         }
 
-
         profileDao.save(profile);
+        uploadFileHandler(profile, m, uploadedFile);
 
         return "redirect:/users/profile/" + user.getId();
     }

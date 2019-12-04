@@ -87,10 +87,10 @@
                 <!--                        DOB start-->
 
                 <div class="input-field col s6">
-                    <label for="age">Please enter your age as a number</label>
-                    <input id="age" type="text" th:field="*{age}" required="required"/>
-
+                    <input id="test" th:field="*{birthDate}" required="required" type="date" class="datepicker">
+                    <label for="test">Birthday</label>
                 </div>
+
                 <!--                        DOB end-->
 
                 <!--                        pick hobbies and traits-->
@@ -251,9 +251,17 @@
 <!--    main container end-->
 
 <script>
+
     $(document).ready(function () {
         $('select').material_select();
+        $(".datepicker").pickadate({
 
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 60,
+            min: new Date(1959,3,20),
+            max: new Date(2019,12,11), // Creates a dropdown of 15 years to control year
+            format: "yyyy-mm-dd"
+        });
     });
 
     $('.modal').modal();
