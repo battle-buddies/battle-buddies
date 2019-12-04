@@ -192,8 +192,8 @@ public class ProfileController {
              @RequestParam(name="branch", required = false)Long branchId,
              @RequestParam(name="rank", required = false) Long rankId,
              Model m,
-             @RequestParam(name = "file") MultipartFile uploadedFile,
-             @RequestParam(name = "form2", required = false) Location locationToBeCreated
+             @RequestParam(name = "file") MultipartFile uploadedFile
+
 
 
     ){

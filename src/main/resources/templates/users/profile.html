@@ -143,9 +143,9 @@
             <div>
                 <div class="offset-s3 m4 offset-m4 hex">
                     <th:block th:each=" photo: ${user.getProfile().getPhotos()}">
-                        <img th:if="${photo.getUrl() == null}" class="responsive-img"
-                             src="/img/battle_logo3.png"
-                             alt="placeholder"/>
+<!--                        <img th:if="${photo.getUrl() == null}" class="responsive-img"-->
+<!--                             src="/img/battle_logo3.png"-->
+<!--                             alt="placeholder"/>-->
 
                         <img class="responsive-img post-img" th:if="${photo.getUrl() != null}"
                              th:src="@{${'/uploads/' + photo.getUrl()}}"/>
