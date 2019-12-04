@@ -9,9 +9,11 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"/>
     <link href="https://ajax.googleapis.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <style>
         nav {
             height: 99px !important;
@@ -123,8 +125,9 @@
                 <div class="offset-s3 m4 offset-m4 hex">
                     <th:block th:each=" photo: ${user.getProfile().getPhotos()}">
                         <img th:if="${photo.getUrl() == null}" class="responsive-img"
-                             th:src="${'https://picsum.photos/300?pic=' + #strings.randomAlphanumeric(2)}"
+                             src="/img/battle_logo3.png"
                              alt="placeholder"/>
+
                         <img class="responsive-img post-img" th:if="${photo.getUrl() != null}"
                              th:src="@{${'/uploads/' + photo.getUrl()}}"/>
                     </th:block>
@@ -341,10 +344,13 @@
 
 </body>
 
-<script type="text/javascript" th:src="@{/js/scripts.js}"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+<script>
+    // Using with jQuery
+    $(document).ready(function(){
+        $('.datepicker').datepicker();
+    });
+</script>
 <script>
 
     $(".button-collapse").sideNav();
@@ -409,7 +415,6 @@
                 id: currentUser.id,
                 name: currentUser.profile.firstName,
                 email: currentUser.email,
-                photoUrl: "https://demo.talkjs.com/img/alice.jpg",
 
             });
             window.talkSession = new Talk.Session({
@@ -424,7 +429,6 @@
                 id: otherUser.id,
                 name: otherUser.profile.firstName,
                 email: otherUser.email,
-                photoUrl: "https://demo.talkjs.com/img/sebastian.jpg",
             });
 
 

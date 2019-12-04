@@ -57,16 +57,11 @@
         }
 
 
-        $("#form2").submit(function (e) {
-            e.preventDefault();
+        $("#send").click(function () {
+
             var thelocation = document.getElementById("location");
+            $('#form2').submit();
             console.log(thelocation.value);
-
-            // var thestate = document.getElementById("sqlState");
-            // var thecountry = document.getElementById("sqlCountry");
-            // console.log(thecity.value);
-            // console.log(thestate.value);
-
         });
 
 

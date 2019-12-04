@@ -12,7 +12,7 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, columnDefinition = "text")
+    @Column(nullable = false, columnDefinition = "text", unique=true)
     private String location;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -22,8 +24,8 @@ public class Profile {
     private String lastName;
 
     @JsonIgnore
-    @Column(nullable = false)
-    private int age;
+    @Column(nullable =false)
+    private Date birthDate;
 
     @JsonIgnore
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
@@ -110,11 +112,11 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Child> children, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
+    public Profile(long id,String firstName, String lastName, Date birthDate, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Child> children, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.married = married;
         this.milSpouse = milSpouse;
@@ -130,10 +132,10 @@ public class Profile {
         this.children = children;
     }
 
-    public Profile(String firstName, String lastName, int age, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Child> children, List<Trait> traits, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(String firstName, String lastName, Date birthDate, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Child> children, List<Trait> traits, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.married = married;
         this.milSpouse = milSpouse;
@@ -176,13 +178,7 @@ public class Profile {
         this.lastName = lastName;
     }
 
-    public int getage() {
-        return age;
-    }
 
-    public void setage(int age) {
-        this.age = age;
-    }
 
     public boolean isMarried() {
         return married;
@@ -236,7 +232,13 @@ public class Profile {
         this.traits = traits;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
 
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public List<Hobby> getHobbies() {
         return hobbies;
@@ -270,9 +272,7 @@ public class Profile {
         this.rank = rank;
     }
 
-    public int getAge() { return age; }
 
-    public void setAge(int age) { this.age = age; }
 
     public boolean isGender() { return gender; }
 
