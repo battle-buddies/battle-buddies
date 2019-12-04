@@ -24,7 +24,7 @@ public class Profile {
     private String lastName;
 
     @JsonIgnore
-    @Column(nullable =false)
+    @Column
     private Date birthDate;
 
     @JsonIgnore
