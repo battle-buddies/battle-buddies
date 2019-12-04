@@ -11,40 +11,41 @@
 </head>
 <body>
 
-<div id="blue" class="block">
+<!--<div id="blue" class="block">-->
+<div>
     <th:block th:replace="fragments/nav-bar :: home-blue"/>
-<!--    <div class="divider"></div>-->
-    <div class="row">
-        <div class="col l12 m12 s12">
-            <div class="background">
-                <div class="transbox">
-<!--                    <img src="/img/testhomeimg.jpg" alt="Flowers in Chania">-->
-                </div>
-            </div>
-        </div>
+</div>
+<div id="main">
+
+<div id="caro">
+    <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="/img/crew.jpg"></a>
+        <a class="carousel-item" href="#two!"><img src="/img/friends.jpg"></a>
+        <a class="carousel-item" href="#three!"><img src="/img/girls.jpg"></a>
+        <a class="carousel-item" href="#four!"><img src="/img/guys.jpg"></a>
     </div>
 </div>
-<!--</div>-->
-<!--<div id="red" class="block red lighten-1">-->
-<!--    <th:block th:replace="fragments/nav-bar :: home-red"/>-->
-<!--</div>-->
-<!--<div id="green" class="block green lighten-1">-->
-<!--    <th:block th:replace="fragments/nav-bar :: home-green"/>-->
-<!--</div>-->
+    <div class="container mainC">
+
+            <div class="col s6">
+                <div class="card grey darken-3">
+                    <div class="card-content white-text">
+                        <span class="card-title">Welcome to Battle Buddies!</span>
+                        <p>It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! </p>
+                        <p>Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
+                    </div>
+                    <div class="card-action">
+                        <a style="color:red;" class="loginlink" th:href="@{'/login'}">Login or Sign up!</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
 
 <script>
     $(".button-collapse").sideNav();
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
 
-    $(document).ready(function () {
-        $('.pushpin-demo-nav').each(function () {
-            var $this = $(this);
-            var $target = $('#' + $(this).attr('data-target'));
-            $this.pushpin({
-                top: $target.offset().top,
-                bottom: $target.offset().top + $target.outerHeight() - $this.height()
-            });
-        });
-    });
 </script>
 </body>
 </html>
