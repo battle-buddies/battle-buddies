@@ -519,6 +519,18 @@ public class ProfileController {
         return "redirect:/users/profile/" + profileBeingCommentedOn.getId();
     }
 
+    @PostMapping("profile/comment/delete/{id}")
+    public String deleteProfileComment(@PathVariable long id){
+        Comment comment = commentDao.getOne(id);
+        long profileID = comment.getProfile().getId();
+
+        comment.setUser(new User( "Delete Me"));
+
+        commentDao.deleteById(id);
+
+        return "redirect:/users/profile/" + profileID;
+    }
+
 
 
 }

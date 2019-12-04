@@ -111,6 +111,11 @@
             margin-top: 3em;
         }
 
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+
     </style>
 </head>
 <body>
@@ -330,7 +335,13 @@
                 <div class="col s12">
                     <div class="card ">
                         <div class="card-content ">
-                            <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
+                            <div class="flex">
+                                <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
+                                <form id="delete-comment" th:if="${#authentication.principal.id == comment.user.id}" th:action="@{'/profile/comment/delete/' + ${comment.id}}" method="post">
+                                    <a href="#" class="red-text" onclick="document.getElementById('delete-comment').submit();"> <i class="small material-icons">delete_forever</i></a>
+                                </form>
+                            </div>
+
                             <p class="text-spacing" th:text="${comment.comment}"></p>
                         </div>
                     </div>
