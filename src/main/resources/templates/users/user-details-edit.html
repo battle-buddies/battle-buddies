@@ -62,7 +62,19 @@
     </ul>
     <form th:action="@{'/users/user-details-edit'}" th:method="post" th:object="${profile}">
         <div id="Basic-info" class="col s12">
+            <div class="input-field col s3">
+                <select th:field="*{location}" required="required">
+                    <option value="0" disabled selected>Location</option>
+                    <th:block th:each="location: ${locations}">
+                        <option th:name="branch" th:value="${location.id}"><span
+                                th:text="${location.location}"></span>
+                        </option>
 
+                    </th:block>
+                </select>
+                <label>Please select your location</label>
+                <button data-target="modal1" class="btn modal-trigger">Add New Location</button>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
                     <input id="firstName" type="text" class="validate" th:value="${profile.firstName}"  th:field="*{firstName}">
@@ -83,14 +95,7 @@
                 </div>
                 <!--                        gender pick end-->
 
-                <!--                        DOB start-->
 
-                <div class="input-field col s6">
-                    <label for="age">Please enter your age as a number</label>
-                    <input id="age" type="text"  th:field="*{age}"/>
-
-                </div>
-                <!--                        DOB end-->
 
                 <!--                        pick hobbies and traits-->
                 <div class="input-field col s6">
@@ -204,41 +209,22 @@
                     </div>
                 </div>
                 <!--                marital status-->
-                <!--                location-->
-                <div class="input-field col s3">
-                    <select th:field="*{location}">
-                        <option value="0" disabled selected>Location</option>
-                        <th:block th:each="location: ${locations}">
-                            <option th:name="branch" th:value="${location.id}"><span th:text="${location.location}"></span>
-                            </option>
-
-                        </th:block>
-                    </select>
-                    <label>Please select your location</label>
-                </div>
-
-
-                <!--                BUTTON FOR MODAL -->
-
-                <button data-target="modal1" class="btn modal-trigger">Add Location</button>
-
-
-                <!--            BUTTON FOR MODAL END-->
 
 
 
-                <!--                location end-->
+
+
 
             </div>
-            <div class="file-field input-field col s3">
-                <div class="btn">
-                    <span>File</span>
-                    <input type="file" name="file" id="file"/>
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text"/>
-                </div>
-            </div>
+<!--            <div class="file-field input-field col s3">-->
+<!--                <div class="btn">-->
+<!--                    <span>File</span>-->
+<!--                    <input type="file" name="file" id="file"/>-->
+<!--                </div>-->
+<!--                <div class="file-path-wrapper">-->
+<!--                    <input class="file-path validate" type="text"/>-->
+<!--                </div>-->
+<!--            </div>-->
             <!--           row end-->
             <button class="waves-effect waves-light btn">Submit Changes!</button>
         </div>

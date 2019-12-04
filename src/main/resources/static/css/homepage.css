@@ -1,107 +1,129 @@
+@media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
+
+     body {
 
 
-html, body {
-    height: 100%;
-
-    /* Location of the image */
-    background-image: url("/img/flag_bg.jpg");
-
-    /* Image is centered vertically and horizontally at all times */
-    background-position: center center;
-
-    /* Image doesn't repeat */
-    background-repeat: no-repeat;
-
-    /* Makes the image fixed in the viewport so that it doesn't move when
-       the content height is greater than the image height */
-    background-attachment: fixed;
-
-    /* This is what makes the background image rescale based on its container's size */
-    background-size: cover;
-
-    /* Pick a solid background color that will be displayed while the background image is loading */
-    background-color:#464646;
-
-    /* SHORTHAND CSS NOTATION
-     * background: url(background-photo.jpg) center center cover no-repeat fixed;
-     */
-}
-
-/* For mobile devices */
-@media only screen and (max-width: 815px) {
-    body {
-        /* The file size of this background image is 93% smaller
-         * to improve page load speed on mobile internet connections */
+        /* Location of the image */
         background-image: url("/img/flag_bg.jpg");
 
+        /* Image is centered vertically and horizontally at all times */
+        background-position: center center;
+
+        /* Image doesn't repeat */
+        background-repeat: no-repeat;
+
+        /* Makes the image fixed in the viewport so that it doesn't move when
+           the content height is greater than the image height */
+        background-attachment: fixed;
+
+        /* This is what makes the background image rescale based on its container's size */
+        background-size: cover;
+
+        /* Pick a solid background color that will be displayed while the background image is loading */
+        background-color: #464646;
     }
-}
-@font-face {
-    font-family: 'Militia';
-    src: url('Militia-Regular.woff2') format('woff2'),
-    url('Militia-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-.bb{
-    font-family: 'Militia', Arial, sans-serif;
-    font-weight:normal;
-    font-style:normal;
-}
-
-.pin-top {
-    position: relative;
-}
 
 
-.pin-bottom {
-    position: relative;
-}
+    .mainC {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:red;
 
+    }
 
-.pinned {
-    position: fixed !important;
-}
+    .card-title {
+        text-align: center;
+        color:red;
+    }
 
-.block {
-    height: 100%;
-}
+    .card-action {
+        text-align: center;
+    }
 
-.divider {
-    height: 50px;
-}
-
-
-div.background {
-    background: url("/img/polo3.png") no-repeat;
-    height:60em;
-    transform: rotate(-5deg);
-    margin-left: 13em;
-    margin-top: 4em;
 
 }
+@media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
+    body {
+        max-height: 20vh;
 
-div.transbox {
-    margin: 30px;
-    opacity: 0.8;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
-}
+        /* Location of the image */
+        background-image: url("/img/flag_bg.jpg");
 
-div.transbox p {
-    margin: 5%;
-    font-weight: bold;
-    color: #000000;
-}
-.logo_txt{
-    margin-top:3.8em;
-}
-.home-container{
-    display: flex;
-    justify-content: space-between;
-    width:100%
+        /* Image is centered vertically and horizontally at all times */
+        background-position: center center;
 
-}
-.navdesign{
-height: 99px !important;
-line-height: 99px !important;
+        /* Image doesn't repeat */
+        background-repeat: no-repeat;
+
+        /* Makes the image fixed in the viewport so that it doesn't move when
+           the content height is greater than the image height */
+        background-attachment: fixed;
+
+        /* This is what makes the background image rescale based on its container's size */
+        background-size: cover;
+
+        /* Pick a solid background color that will be displayed while the background image is loading */
+        background-color: #464646;
+    }
+
+    #main{
+        margin: 20px;
+        height: 10px;
+    }
+
+
+    .mainC {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .card-title {
+        text-align: center;
+        color:red;
+    }
+
+    .card-action {
+        text-align: center;
+    }
+
+
+    .card-content{
+        height: 15em;
+    }
+
+    .carousel{
+        height:500px !important;
+        width: 1000px !important;
+    }
+    #caro{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /*div.transbox {*/
+    /*    !*margin: 30px;*!*/
+    /*    opacity: 0.8;*/
+    /*    filter: alpha(opacity=60); !* For IE8 and earlier *!*/
+    /*}*/
+
+    /*div.transbox p {*/
+    /*    margin: 5%;*/
+    /*    font-weight: bold;*/
+    /*    color: #000000;*/
+    /*}*/
+
+    /*.logo_txt {*/
+    /*    margin-top: 3.8em;*/
+    /*}*/
+
+    /*.home-container {*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*    width: 50%*/
+    /*}*/
 }

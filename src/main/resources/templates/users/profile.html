@@ -205,9 +205,18 @@
 
 
 <!--    MESSAGES-->
+<<<<<<< HEAD
     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
     <div class="horizontal" style="bottom: 45px; right: 24px;"><a id="btn-getInTouch" class="btn-large red btn-floating"><i class="large material-icons">mode_edit</i></a></div>
+=======
+    <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus()== T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED && friend.id == #authentication.principal.id}">
+
+<!--        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">-->
+        <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+<!--        </th:block>-->
+>>>>>>> 629a13df159cfe95022454bd0c314d6c8082d065
     </th:block>
+
 <!--    END MESSAGES-->
     <div class="container">
         <div class="mdl-grid site-max-width">
@@ -221,10 +230,7 @@
                         <div class="col s12">
 
 <!--                            FRIEND REQUEST BUTTON-->
-                            <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus()!= T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED && friend.id == #authentication.principal.id}">
                                 <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
-                            </th:block>
-
 
 <!--                           BUDDIES TABS -->
                             <ul class="tabs">
