@@ -40,6 +40,8 @@ public class ProfileController {
     private RankRepository rankDao;
     private PhotoRepository photoDao;
     private CommentRepository commentDao;
+    private ChildRepository childDao;
+
 
     @Value("${file-upload-path}")
     private String uploadPath;
@@ -53,7 +55,7 @@ public class ProfileController {
     UserService usersSvc;
 
 
-    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao,PhotoRepository  photoDao, CommentRepository commentDao) {
+    public ProfileController(ProfileRepository profileDao, UserRepository userDao, RelationshipRepository relationshipDao, HobbyRepository hobbyDao, TraitRepository traitDao, LocationRepository locationDao, BranchRepository branchDao, RankRepository rankDao,PhotoRepository  photoDao, CommentRepository commentDao, ChildRepository childDao) {
         this.profileDao = profileDao;
         this.userDao = userDao;
         this.relationshipDao = relationshipDao;
@@ -64,6 +66,7 @@ public class ProfileController {
         this.rankDao = rankDao;
         this.photoDao  = photoDao;
         this.commentDao = commentDao;
+        this.childDao = childDao;
     }
 
     @GetMapping("/users/profile/{id}")
@@ -173,6 +176,7 @@ public class ProfileController {
         model.addAttribute("ranks", rankDao.findAll());
         model.addAttribute("locations", locationDao.findAll());
         model.addAttribute("location", new Location());
+        model.addAttribute("children", childDao.findAll());
 
         return "users/userdetails";
     }
@@ -182,6 +186,7 @@ public class ProfileController {
              @Valid Profile profile,
              @RequestParam(name="traits", required = false)ArrayList<Long> traitIds,
              @RequestParam(name="hobbies", required = false)ArrayList<Long> hobbyIds,
+             @RequestParam(name="children", required = false)ArrayList<Long> childIds,
              @RequestParam(name="branch", required = false)Long branchId,
              @RequestParam(name="rank", required = false) Long rankId,
              Model m,
@@ -231,6 +236,24 @@ public class ProfileController {
                 profile.setTraits(new ArrayList<>());
                 for (Trait trait : traitsToAdd) {
                     profile.getTraits().add(trait);
+                }
+            }
+
+            // FINDS THE Children THAT WERE SELECTED BY USER
+            List<Child> childToAdd = new ArrayList<>();
+            for (long childId : childIds) {
+                for (Child all: childDao.findAll()){
+                    if(childId == all.getId()){
+                        childToAdd.add(childDao.getOne(childId));
+                    }
+                }
+            }
+
+            // ADDS EACH INDIVIDUAL Child TO PROFILE
+            if (childToAdd != null){
+                profile.setChildren(new ArrayList<>());
+                for (Child child: childToAdd){
+                    profile.getChildren().add(child);
                 }
             }
 
@@ -306,7 +329,7 @@ public class ProfileController {
             @RequestParam(name="location", required = false) List<Location> locationId,
              @RequestParam(name="gender", required = false) boolean gender,
             @RequestParam(name = "form2", required = false) Location locationToBeCreated,
-            @RequestParam(name = "children", required = false) String children
+            @RequestParam(name="children", required = false)ArrayList<Long> childIds
 
 
     ){
@@ -327,7 +350,7 @@ public class ProfileController {
        profile.setMarried(married);
        profile.setGender(gender);
        profile.setLocation(locationId);
-       profile.setChildren(children);
+
 
 
 
@@ -369,6 +392,25 @@ public class ProfileController {
             profile.setTraits(new ArrayList<>());
             for (Trait trait: traitsToAdd){
                 profile.getTraits().add(trait);
+            }
+        }
+
+
+        // FINDS THE Children THAT WERE SELECTED BY USER
+        List<Child> childToAdd = new ArrayList<>();
+        for (long childId : childIds) {
+            for (Child all: childDao.findAll()){
+                if(childId == all.getId()){
+                    childToAdd.add(childDao.getOne(childId));
+                }
+            }
+        }
+
+        // ADDS EACH INDIVIDUAL Child TO PROFILE
+        if (childToAdd != null){
+            profile.setChildren(new ArrayList<>());
+            for (Child child: childToAdd){
+                profile.getChildren().add(child);
             }
         }
 

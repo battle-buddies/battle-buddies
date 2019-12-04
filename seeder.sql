@@ -4,6 +4,7 @@ drop database if exists battlebuddies_db;
 use battlebuddies_db;
 
 
+
 insert into users (profile_id, password,  username, email,  is_admin) values ( 1,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'admin', 'cwhitloe0@kickstarter.com', true);
 # insert into users (profile_id, password,  username, email,  is_admin) values ( 2,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'izzy', 'veye1@printfriendly.com', true);
 # insert into users (profile_id, password,  username, email,  is_admin) values ( 3,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.', 'bridget', 'crudiger2@vk.com',  true);
@@ -32,29 +33,13 @@ insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bi
 
 
 
-insert into children  (age, gender, profile_id) values (2, 'Female', 2);
-insert into children  (age, gender, profile_id) values (6, 'Male', 2);
-insert into children  (age, gender, profile_id) values (13, 'Female', 4);
-insert into children  (age, gender, profile_id) values (9, 'Male', 10);
-insert into children  (age, gender, profile_id) values (2, 'Male', 7);
-insert into children  (age, gender, profile_id) values (4, 'Male', 6);
-insert into children  (age, gender, profile_id) values (4, 'Female', 8);
-insert into children  (age, gender, profile_id) values (6, 'Female', 4);
-insert into children  (age, gender, profile_id) values (7, 'Female', 10);
-insert into children  (age, gender, profile_id) values (10, 'Male', 3);
-insert into children  (age, gender, profile_id) values (5, 'Male', 7);
-insert into children  (age, gender, profile_id) values (5, 'Female', 5);
-insert into children  (age, gender, profile_id) values (3, 'Male', 8);
-insert into children  (age, gender, profile_id) values (1, 'Female', 4);
-insert into children  (age, gender, profile_id) values (1, 'Female', 2);
-insert into children  (age, gender, profile_id) values (16, 'Female', 1);
-insert into children  (age, gender, profile_id) values (8, 'Male', 1);
-insert into children  (age, gender, profile_id) values (8, 'Female', 7);
-insert into children  (age, gender, profile_id) values (6, 'Female', 9);
-insert into children  (age, gender, profile_id) values (10, 'Male', 3);
-insert into children  (age, gender, profile_id) values (12, 'Male', 3);
-insert into children  (age, gender, profile_id) values (3, 'Male', 8);
-insert into children  (age, gender, profile_id) values (9, 'Male', 7);
+insert into children  (child) values ('No Children');
+insert into children  (child) values ('0-5');
+insert into children  (child) values ('6-8');
+insert into children  (child) values ('10-14');
+insert into children  (child) values ('15-16');
+insert into children  (child) values ('17-18');
+
 
 
 
