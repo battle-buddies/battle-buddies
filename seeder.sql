@@ -19,26 +19,35 @@ insert into users (profile_id, password,  username, email,  is_admin) values ( 1
 
 
 
-insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,false, 'Admin', '001', 18, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus', true, true, 1);
+
+insert into profiles ( branch_id,rank_id, gender, first_name, last_name, birth_date, bio, married, mil_spouse, user_id) values ( 1,2,false, 'Admin', '001','1986-03-30', 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus', true, true, 1);
 # insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,6,true, 'Izzy', 'Brashears', 27, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',false, false, 2);
-# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,10,true, 'Obadias', 'Goby', 56, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.', false, false, 3);
-# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,4,false, 'Goldarina', 'Perrinchief', 34, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',false, false, 4);
+# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,10,true, 'Bridget', 'Goby', 56, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.', false, false, 3);
+# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,4,false, 'Danielle', 'Perrinchief', 34, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',false, false, 4);
 # insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,7,true, 'Hans', 'Clay', 43, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',false, true, 5);
-# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,true, 'Garold', 'Spark', 65, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', false, false, 6);
+# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 1,2,true, 'Ashley', 'Spark', 65, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', false, false, 6);
 # insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,10,true, 'Darb', 'Boncore', 57, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.',false, false, 7);
-# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,9,false, 'Eugen', 'Thomazet', 27, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',true, false, 8);
-# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,7,true, 'Zsazsa', 'Haslen', 39, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',true, true, 9);
-# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,1,false, 'Calvin', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
+# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,9,false, 'Brianna', 'Thomazet', 27, 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.',true, false, 8);
+# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 4,7,true, 'Richard', 'Haslen', 39, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',true, true, 9);
+# insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,1,false, 'Gale', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
 #
 
+# drop table children if exits;
 
-drop table children if exits;
 insert into children  (child) values ('No Children');
 insert into children  (child) values ('0-5');
 insert into children  (child) values ('6-9');
 insert into children  (child) values ('10-14');
 insert into children  (child) values ('15-16');
 insert into children  (child) values ('17-18');
+
+insert into profile_child(profile_id, child_id) values(5, 2);
+insert into profile_child(profile_id, child_id) values(5, 3);
+insert into profile_child(profile_id, child_id) values(6, 1);
+insert into profile_child(profile_id, child_id) values(7, 2);
+insert into profile_child(profile_id, child_id) values(8, 1);
+insert into profile_child(profile_id, child_id) values(9, 1);
+insert into profile_child(profile_id, child_id) values(10, 4);
 
 
 
@@ -92,49 +101,49 @@ insert into traits (trait) values ( 'Creative');
 #
 #
 #
-# insert into hobby_profile (hobby_id, profile_id) values ( 1, 1);
-# insert into hobby_profile (hobby_id, profile_id) values ( 2, 2);
-# insert into hobby_profile (hobby_id, profile_id) values ( 3, 3);
-# insert into hobby_profile (hobby_id, profile_id) values ( 4, 4);
-# insert into hobby_profile (hobby_id, profile_id) values ( 5,5 );
-# insert into hobby_profile (hobby_id, profile_id) values ( 6, 6);
-# insert into hobby_profile (hobby_id, profile_id) values ( 7, 7);
-# insert into hobby_profile (hobby_id, profile_id) values ( 8, 8);
-# insert into hobby_profile (hobby_id, profile_id) values ( 9, 9);
-# insert into hobby_profile (hobby_id, profile_id) values ( 10, 10);
-# insert into hobby_profile (hobby_id, profile_id) values ( 11, 1);
-# insert into hobby_profile (hobby_id, profile_id) values ( 12, 2);
-# insert into hobby_profile (hobby_id, profile_id) values ( 13, 3);
-# insert into hobby_profile (hobby_id, profile_id) values ( 14, 4);
-# insert into hobby_profile (hobby_id, profile_id) values ( 15,5 );
-# insert into hobby_profile (hobby_id, profile_id) values ( 16, 6);
-# insert into hobby_profile (hobby_id, profile_id) values ( 17, 7);
-# insert into hobby_profile (hobby_id, profile_id) values ( 18, 8);
-# insert into hobby_profile (hobby_id, profile_id) values ( 19, 9);
-# insert into hobby_profile (hobby_id, profile_id) values ( 20, 10);
+insert into hobby_profile (hobby_id, profile_id) values ( 1, 1);
+insert into hobby_profile (hobby_id, profile_id) values ( 2, 2);
+insert into hobby_profile (hobby_id, profile_id) values ( 3, 3);
+insert into hobby_profile (hobby_id, profile_id) values ( 4, 4);
+insert into hobby_profile (hobby_id, profile_id) values ( 5,5 );
+insert into hobby_profile (hobby_id, profile_id) values ( 6, 6);
+insert into hobby_profile (hobby_id, profile_id) values ( 7, 7);
+insert into hobby_profile (hobby_id, profile_id) values ( 8, 8);
+insert into hobby_profile (hobby_id, profile_id) values ( 9, 9);
+insert into hobby_profile (hobby_id, profile_id) values ( 10, 10);
+insert into hobby_profile (hobby_id, profile_id) values ( 11, 1);
+insert into hobby_profile (hobby_id, profile_id) values ( 12, 2);
+insert into hobby_profile (hobby_id, profile_id) values ( 13, 3);
+insert into hobby_profile (hobby_id, profile_id) values ( 14, 4);
+insert into hobby_profile (hobby_id, profile_id) values ( 15,5 );
+insert into hobby_profile (hobby_id, profile_id) values ( 16, 6);
+insert into hobby_profile (hobby_id, profile_id) values ( 17, 7);
+insert into hobby_profile (hobby_id, profile_id) values ( 18, 8);
+insert into hobby_profile (hobby_id, profile_id) values ( 19, 9);
+insert into hobby_profile (hobby_id, profile_id) values ( 20, 10);
 #
 #
 #
-# insert into profile_trait (trait_id, profile_id) values ( 1, 1);
-# insert into profile_trait (trait_id, profile_id) values ( 2, 2);
-# insert into profile_trait (trait_id, profile_id) values ( 3, 3);
-# insert into profile_trait (trait_id, profile_id) values ( 4, 4);
-# insert into profile_trait (trait_id, profile_id) values ( 5,5 );
-# insert into profile_trait (trait_id, profile_id) values ( 6, 6);
-# insert into profile_trait (trait_id, profile_id) values ( 7, 7);
-# insert into profile_trait (trait_id, profile_id) values ( 8, 8);
-# insert into profile_trait (trait_id, profile_id) values ( 9, 9);
-# insert into profile_trait (trait_id, profile_id) values ( 10, 10);
-# insert into profile_trait (trait_id, profile_id) values ( 11, 1);
-# insert into profile_trait (trait_id, profile_id) values ( 12, 2);
-# insert into profile_trait (trait_id, profile_id) values ( 13, 3);
-# insert into profile_trait (trait_id, profile_id) values ( 14, 4);
-# insert into profile_trait (trait_id, profile_id) values ( 15,5 );
-# insert into profile_trait (trait_id, profile_id) values ( 16, 6);
-# insert into profile_trait (trait_id, profile_id) values ( 17, 7);
-# insert into profile_trait (trait_id, profile_id) values ( 18, 8);
-# insert into profile_trait (trait_id, profile_id) values ( 19, 9);
-# insert into profile_trait (trait_id, profile_id) values ( 20, 10);
+insert into profile_trait (trait_id, profile_id) values ( 1, 1);
+insert into profile_trait (trait_id, profile_id) values ( 2, 2);
+insert into profile_trait (trait_id, profile_id) values ( 3, 3);
+insert into profile_trait (trait_id, profile_id) values ( 4, 4);
+insert into profile_trait (trait_id, profile_id) values ( 5,5 );
+insert into profile_trait (trait_id, profile_id) values ( 6, 6);
+insert into profile_trait (trait_id, profile_id) values ( 7, 7);
+insert into profile_trait (trait_id, profile_id) values ( 8, 8);
+insert into profile_trait (trait_id, profile_id) values ( 9, 9);
+insert into profile_trait (trait_id, profile_id) values ( 10, 10);
+insert into profile_trait (trait_id, profile_id) values ( 11, 1);
+insert into profile_trait (trait_id, profile_id) values ( 12, 2);
+insert into profile_trait (trait_id, profile_id) values ( 13, 3);
+insert into profile_trait (trait_id, profile_id) values ( 14, 4);
+insert into profile_trait (trait_id, profile_id) values ( 15,5 );
+insert into profile_trait (trait_id, profile_id) values ( 16, 6);
+insert into profile_trait (trait_id, profile_id) values ( 17, 7);
+insert into profile_trait (trait_id, profile_id) values ( 18, 8);
+insert into profile_trait (trait_id, profile_id) values ( 19, 9);
+insert into profile_trait (trait_id, profile_id) values ( 20, 10);
 #
 #
 
@@ -182,7 +191,6 @@ Insert into ranks (rank) values('O7');
 Insert into ranks (rank) values('O8');
 Insert into ranks (rank) values('O9');
 Insert into ranks (rank) values('O10');
-
 
 
 

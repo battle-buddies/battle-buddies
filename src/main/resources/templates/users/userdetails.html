@@ -16,7 +16,7 @@
 
 <div class="container">
 
-<!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
+    <!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class='sidebar'>
@@ -43,7 +43,7 @@
                 <h2 id=b></h2>
                 <h2 id=c></h2>
             </div>
-            <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
+            <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}">
                 <input type="hidden" id="location" th:field="*{location}"/>
 
                 <input type='button' value='Submit form 2' id="send" name="send"/>
@@ -54,7 +54,7 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat modal-close">Cancel</a>
         </div>
     </div>
-<!--        MODAL END-->
+    <!--        MODAL END-->
 
 
     <ul id="tabs-swipe-demo" class="tabs">
@@ -63,7 +63,19 @@
     </ul>
     <form th:action="@{'/users/userdetails'}" th:method="post" th:object="${profile}" enctype="multipart/form-data">
         <div id="Basic-info" class="col s12">
+            <div class="input-field col s3">
+                <select th:field="*{location}" required="required">
+                    <option value="0" disabled selected>Location</option>
+                    <th:block th:each="location: ${locations}">
+                        <option th:name="branch" th:value="${location.id}"><span
+                                th:text="${location.location}"></span>
+                        </option>
 
+                    </th:block>
+                </select>
+                <label>Please select your location</label>
+                <button data-target="modal1" class="btn modal-trigger">Add New Location</button>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
                     <input id="firstName" type="text" class="validate" th:field="*{firstName}" required="required">
@@ -87,10 +99,10 @@
                 <!--                        DOB start-->
 
                 <div class="input-field col s6">
-                    <label for="age">Please enter your age as a number</label>
-                    <input id="age" type="text" th:field="*{age}" required="required"/>
-
+                    <input id="test" th:field="*{birthDate}" required="required" type="date" class="datepicker">
+                    <label for="test">Birthday</label>
                 </div>
+
                 <!--                        DOB end-->
 
                 <!--                        pick hobbies and traits-->
@@ -164,7 +176,7 @@
                             <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
                         </th:block>
                     </select>
-                    <label>Please select your rank</label>
+                    <label>Please select your or your spouse's rank</label>
                 </div>
                 <!--                rank end-->
 
@@ -179,7 +191,7 @@
 
                         </th:block>
                     </select>
-                    <label>Please select your branch</label>
+                    <label>Please select your or your spouse's branch</label>
                 </div>
                 <!--                branch end-->
 
@@ -208,22 +220,21 @@
                 </div>
                 <!--                marital status-->
                 <!--                location-->
-                <div class="input-field col s3">
-                    <select th:field="*{location}" required="required">
-                        <option value="0" disabled selected>Location</option>
-                        <th:block th:each="location: ${locations}">
-                            <option th:name="branch" th:value="${location.id}"><span
-                                    th:text="${location.location}"></span>
-                            </option>
+<!--                <div class="input-field col s3">-->
+<!--                    <select th:field="*{location}" required="required">-->
+<!--                        <option value="0" disabled selected>Location</option>-->
+<!--                        <th:block th:each="location: ${locations}">-->
+<!--                            <option th:name="branch" th:value="${location.id}"><span-->
+<!--                                    th:text="${location.location}"></span>-->
+<!--                            </option>-->
 
-                        </th:block>
-                    </select>
-                    <label>Please select your location</label>
-                </div>
+<!--                        </th:block>-->
+<!--                    </select>-->
+<!--                    <label>Please select your location</label>-->
+<!--                    <button data-target="modal1" class="btn modal-trigger">Add Location</button>-->
+<!--                </div>-->
 
                 <!--                BUTTON FOR MODAL -->
-
-                <button data-target="modal1" class="btn modal-trigger">Add Location</button>
 
 
                 <!--            BUTTON FOR MODAL END-->
@@ -232,8 +243,11 @@
 
                 <!--                file upload-->
 
+
+
             </div>
             <div class="file-field input-field col s3">
+                    <label>Upload a profile picture</label>
                 <div class="btn">
                     <span>File</span>
                     <input type="file" name="file" id="file"/>
@@ -250,9 +264,17 @@
 <!--    main container end-->
 
 <script>
+
     $(document).ready(function () {
         $('select').material_select();
+        $(".datepicker").pickadate({
 
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 60,
+            min: new Date(1959,3,20),
+            max: new Date(2019,12,11), // Creates a dropdown of 15 years to control year
+            format: "yyyy-mm-dd"
+        });
     });
 
     $('.modal').modal();

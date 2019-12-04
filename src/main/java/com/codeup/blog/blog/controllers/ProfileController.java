@@ -23,7 +23,9 @@ import javax.websocket.server.PathParam;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.util.ArrayList;
+
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -133,9 +135,9 @@ public class ProfileController {
                     total += 10;
                 }
 
-                if (profile.getage() >= loggedInProfile.getage() - 3 && profile.getage() <= loggedInProfile.getage() + 3){
-                    total += 20;
-                }
+//                if (profile.getage() >= loggedInProfile.getage() - 3 && profile.getage() <= loggedInProfile.getage() + 3){
+//                    total += 20;
+//                }
 
                 if(loggedInProfile.getRank().getRank().charAt(0) == profile.getRank().getRank().charAt(0) ){
                     total += 10;
@@ -323,13 +325,13 @@ public class ProfileController {
             @RequestParam(name="firstName", required = false) String firstName,
             @RequestParam(name="lastName", required = false) String lastName,
             @RequestParam(name="bio", required = false) String bio,
-            @RequestParam(name="age", required = false) int age,
+            @RequestParam(name="birthDate", required = false) Date birthDate,
             @RequestParam(name="milSpouse", required = false) boolean millSpouse,
             @RequestParam(name="married", required = false) boolean married,
             @RequestParam(name="location", required = false) List<Location> locationId,
              @RequestParam(name="gender", required = false) boolean gender,
-            @RequestParam(name = "form2", required = false) Location locationToBeCreated,
             @RequestParam(name="children", required = false)ArrayList<Long> childIds
+
 
 
     ){
@@ -344,8 +346,7 @@ public class ProfileController {
 
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
-        profile.setBio(bio);
-        profile.setage(age);
+        profile.setBirthDate(birthDate);
         profile.setMilSpouse(millSpouse);
        profile.setMarried(married);
        profile.setGender(gender);
@@ -415,8 +416,8 @@ public class ProfileController {
             }
         }
 
-
         profileDao.save(profile);
+
 
         return "redirect:/users/profile/" + user.getId();
     }
@@ -448,7 +449,21 @@ public class ProfileController {
         relationshipDao.save(relationshipOne);
         relationshipDao.save(acceptFriend);
 
+        return "redirect:/users/profile/"+ userOne.getId();
+    }
 
+    @GetMapping("/users/{id}/decline-request")
+    public String declineFriendRequest(@PathVariable long id ) {
+        User userOne = usersService.loggedInUser();
+        Relationship declineFriend = relationshipDao.getOne(id);
+        FriendStatus status = FriendStatus.REJECTED;
+        User requestedFriend = declineFriend.getUser();
+        declineFriend.setStatus(status);
+
+
+        Relationship relationshipOne = new Relationship(userOne, requestedFriend, status);
+        relationshipDao.save(relationshipOne);
+        relationshipDao.save(declineFriend);
 
         return "redirect:/users/profile/"+ userOne.getId();
     }
@@ -509,6 +524,10 @@ public class ProfileController {
         Comment newComment = new Comment(comment, profileBeingCommentedOn, loggedInUser);
         commentDao.save(newComment);
 
+        System.out.println(newComment.getId());
+        System.out.println(newComment.getComment());
+        System.out.println(newComment);
+
         profileBeingCommentedOn.getComments().add(newComment);
         profileDao.save(profileBeingCommentedOn);
 
@@ -517,6 +536,21 @@ public class ProfileController {
 
 
         return "redirect:/users/profile/" + profileBeingCommentedOn.getId();
+    }
+
+    @PostMapping("profile/comment/delete/")
+    public String deleteProfileComment(@RequestParam(name = "deleteComment", required = false) Long commentID){
+        System.out.println(commentID);
+        Comment comment = commentDao.getOne(commentID);
+        Profile profile = profileDao.getOne(comment.getProfile().getId());
+        comment.setUser(new User("delete me"));
+        System.out.println(comment);
+        System.out.println(comment.getComment());
+        System.out.println(comment.getId());
+
+        commentDao.delete(comment);
+        return "redirect:/users/profile/" + profile.getId();
+
     }
 
 
