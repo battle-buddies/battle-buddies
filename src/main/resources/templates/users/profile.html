@@ -23,7 +23,7 @@
         html, body {
             height: 100%;
 
-
+            background-image: url("/img/flag_bg.jpg");
             /* Image is centered vertically and horizontally at all times */
             background-position: center center;
 
@@ -111,6 +111,7 @@
         .top-card {
             width: 25em;
             margin-top: 3em;
+            background-color: rgba(0,0,0,0) !important;
         }
 
         .flex{
@@ -136,8 +137,8 @@
 <body>
     <th:block th:replace="fragments/nav-bar :: profile"/>
 
-    <div class="container grey darken-3 top-card">
-        <div class="row valign-wrapper">
+    <div class="container top-card">
+        <div>
 
             <div>
                 <div class="offset-s3 m4 offset-m4 hex">
@@ -154,22 +155,20 @@
 
         </div>
     </div>
-    <div class="container grey darken-3 top-card">
+    <div class="container brown lighten-5 top-card">
         <div class="row valign-wrapper">
             <div class="card-content center-align col s6 offset-s3">
-                    <span class="card-title"><h4 class="headline 700 center"
-                                                 th:text=" ${user.getProfile().firstName}"></h4></span>
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                    <span class="card-title">
+                        <h4 class="headline 700 center" th:text=" ${user.getProfile().firstName}"></h4>
+                    </span>
+                <p th:text=" ${user.getProfile().getBio()}"></p>
             </div>
-
-
         </div>
     </div>
 
 
     <div>
-        <h2 class="blue-grey-text text-darken-3 center"> About</h2>
+        <h2 class="blue-brown-text text-lighten-5 center"> About</h2>
         <div class="divider"></div>
         <div class="section-lg container center z-depth-3 white" id="skills">
             <div class="row section-lg-top">
@@ -203,25 +202,26 @@
     </div>
 
 <!--START BUDDIES CONTAINER-->
-    <h2 class="blue-grey-text text-darken-3 center">Buddies</h2>
 
 
 <!--    MESSAGES-->
+<<<<<<< HEAD
+    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
+    <div class="horizontal" style="bottom: 45px; right: 24px;"><a id="btn-getInTouch" class="btn-large red btn-floating"><i class="large material-icons">mode_edit</i></a></div>
+=======
     <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus()== T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED && friend.id == #authentication.principal.id}">
 
 <!--        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">-->
         <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
 <!--        </th:block>-->
+>>>>>>> 629a13df159cfe95022454bd0c314d6c8082d065
     </th:block>
 
 <!--    END MESSAGES-->
     <div class="container">
         <div class="mdl-grid site-max-width">
-            <div class="mdl-card__supporting-text">
-                <h4 class="headline 700 center">
-                    <span> BattleBuddies</span>
-                </h4>
-            </div>
+
+    <h2 class="blue-brown-text text-lighten-5 center">Buddies</h2>
 
 <!--            BUDDIES -->
             <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
