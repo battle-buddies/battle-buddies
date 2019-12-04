@@ -330,9 +330,8 @@ public class ProfileController {
             @RequestParam(name="married", required = false) boolean married,
             @RequestParam(name="location", required = false) List<Location> locationId,
              @RequestParam(name="gender", required = false) boolean gender,
-            @RequestParam(name="children", required = false)ArrayList<Long> childIds,
-            Model m,
-            @RequestParam(name = "file") MultipartFile uploadedFile
+            @RequestParam(name="children", required = false)ArrayList<Long> childIds
+
 
 
     ){
@@ -347,7 +346,6 @@ public class ProfileController {
 
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
-        profile.setBio(bio);
         profile.setBirthDate(birthDate);
         profile.setMilSpouse(millSpouse);
        profile.setMarried(married);
@@ -419,7 +417,7 @@ public class ProfileController {
         }
 
         profileDao.save(profile);
-        uploadFileHandler(profile, m, uploadedFile);
+
 
         return "redirect:/users/profile/" + user.getId();
     }
@@ -551,7 +549,7 @@ public class ProfileController {
         System.out.println(comment.getId());
 
         commentDao.delete(comment);
-        return "redirect:/users/profile/" + 2;
+        return "redirect:/users/profile/" + profile.getId();
 
     }
 
