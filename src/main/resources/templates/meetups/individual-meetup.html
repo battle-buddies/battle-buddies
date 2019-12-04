@@ -50,6 +50,23 @@
             justify-content: space-between;
         }
 
+        .btn-clear{
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+        }
+
+        .btn-clear:active{
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+        }
+
+
     </style>
 
 </head>
@@ -92,7 +109,7 @@
                         <label ><span th:text="${meetup.count}"></span> people interested in attending so far</label>
 
                         <form id="like" th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
-                            <a  href="#" onclick="document.getElementById('like').submit();" ><i class="small material-icons">favorite_border</i></a>
+                            <button class="btn-clear waves-effect waves-light" ><i class=" small material-icons">favorite_border</i></button>
                         </form>
 
                         <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
@@ -130,8 +147,8 @@
 
                         <div class="flex">
                             <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
-                            <form id="delete-comment" th:if="${#authentication.principal.id == comment.user.id}" th:action="@{'/meetups/comment/delete/' + ${comment.id}}" method="post">
-                                <a href="#" class="red-text" onclick="document.getElementById('delete-comment').submit();"> <i class="small material-icons">delete_forever</i></a>
+                            <form id="delete-comment" th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == meetup.user.id}" th:action="@{'/meetups/comment/delete/' + ${comment.id}}" method="post">
+                                <button  class=" btn-clear waves-effect waves-light red-text"> <i class="small material-icons">delete_forever</i></button>
                             </form>
                         </div>
 

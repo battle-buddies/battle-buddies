@@ -116,6 +116,16 @@
             justify-content: space-between;
         }
 
+        .btn-clear{
+             background-color: Transparent;
+             background-repeat:no-repeat;
+             border: none;
+             cursor:pointer;
+             overflow: hidden;
+         }
+
+
+
     </style>
 </head>
 <body>
@@ -337,8 +347,9 @@
                         <div class="card-content ">
                             <div class="flex">
                                 <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
-                                <form id="delete-comment" th:if="${#authentication.principal.id == comment.user.id}" th:action="@{'/profile/comment/delete/' + ${comment.id}}" method="post">
-                                    <a href="#" class="red-text" onclick="document.getElementById('delete-comment').submit();"> <i class="small material-icons">delete_forever</i></a>
+                                <form  th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}" th:action="@{'/profile/comment/delete/'}" method="post">
+                                    <input type="hidden" th:name="deleteComment" th:value="${comment.id}">
+                                    <button  class=" btn-clear waves-effect waves-light red-text"> <i class="small material-icons">delete_forever</i></button>
                                 </form>
                             </div>
 
