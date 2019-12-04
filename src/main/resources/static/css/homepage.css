@@ -1,7 +1,7 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
 
-    html, body {
-        height: 100%;
+     body {
+
 
         /* Location of the image */
         background-image: url("/img/flag_bg.jpg");
@@ -25,31 +25,27 @@
 
 
     .mainC {
-        margin-top: 130px;
         display: flex;
         justify-content: center;
         align-items: center;
+        color:red;
 
     }
 
     .card-title {
         text-align: center;
+        color:red;
     }
 
     .card-action {
         text-align: center;
     }
 
-    .loginlink {
-        color: red;
-    !important;
-    }
-
 
 }
 @media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
-    html, body {
-        height: 100%;
+    body {
+        max-height: 20vh;
 
         /* Location of the image */
         background-image: url("/img/flag_bg.jpg");
@@ -72,121 +68,41 @@
     }
 
     #main{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr  1fr;
+        margin: 20px;
+        height: 10px;
     }
 
 
     .mainC {
-        grid-area: 1 / 2 / 1 / 2;
-        margin-top: 50px;
-        width: 40em;
-        height:40em;
-        display: grid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
     }
 
     .card-title {
         text-align: center;
+        color:red;
     }
 
     .card-action {
         text-align: center;
     }
 
-    .loginlink {
-        color: red;
-    !important;
+
+    .card-content{
+        height: 15em;
     }
 
-
-    /*@font-face {*/
-    /*    font-family: 'Militia';*/
-    /*    src: url('Militia-Regular.woff2') format('woff2'),*/
-    /*    url('Militia-Regular.woff') format('woff');*/
-    /*    font-weight: normal;*/
-    /*    font-style: normal;*/
-    /*}*/
-    /*.bb {*/
-    /*    font-family: 'Militia', Arial, sans-serif;*/
-    /*    font-weight: normal;*/
-    /*    font-style: normal;*/
-    /*}*/
-
-    /*.pin-top {*/
-    /*    position: relative;*/
-    /*}*/
-
-    /*.pin-bottom {*/
-    /*    position: relative;*/
-    /*}*/
-
-    /*.pinned {*/
-    /*    position: fixed !important;*/
-    /*}*/
-
-    /*.block {*/
-    /*    height: 100%;*/
-    /*}*/
-
-    /*.divider {*/
-    /*    height: 50px;*/
-    /*}*/
-
-    div.background {
-        background: url("/img/rsz_polo3.png") no-repeat;
-        position:absolute;
-        z-index: 100;
-        height: 22em;
-        width: 20em;
-        transform: rotate(-15deg);
-        margin-left: 9em;
-        margin-right:0;
-        margin-top: 3em;
+    .carousel{
+        height:500px !important;
+        width: 1000px !important;
     }
-
-    div#pic2 {
-        background: url("/img/rsz_polo3.png") no-repeat;
-        z-index: 90;
-        height: 22em;
-        width: 20em;
-        transform: rotate(15deg);
-        margin-left: 20em;
-       padding-bottom: 5em;
-
-
+    #caro{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
-    #picgroup1{
-        grid-area: 1 / 1 / 1 / 1;
-    }
-
-
-    /*div#pic4-right {*/
-    /*    background: url("/img/rsz_polo3.png") no-repeat;*/
-    /*    position:absolute;*/
-    /*    z-index: 100;*/
-    /*    height: 22em;*/
-    /*    width: 20em;*/
-    /*    transform: rotate(-15deg);*/
-    /*    margin-right: 9em;*/
-    /*    margin-left:0;*/
-    /*    margin-top: 3em;*/
-    /*}*/
-
-    /*div#pic3-right {*/
-    /*    background: url("/img/rsz_polo3.png") no-repeat;*/
-    /*    z-index: 90;*/
-    /*    height: 22em;*/
-    /*    width: 20em;*/
-    /*    transform: rotate(15deg);*/
-    /*    margin-right: 20em;*/
-    /*    padding-bottom: 5em;*/
-
-
-    /*}*/
-
 
 
     /*div.transbox {*/
@@ -205,9 +121,9 @@
     /*    margin-top: 3.8em;*/
     /*}*/
 
-    .home-container {
-        display: flex;
-        justify-content: space-between;
-        width: 50%
-    }
+    /*.home-container {*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*    width: 50%*/
+    /*}*/
 }

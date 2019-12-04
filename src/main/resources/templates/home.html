@@ -16,34 +16,15 @@
     <th:block th:replace="fragments/nav-bar :: home-blue"/>
 </div>
 <div id="main">
-<div id="picgroup1">
-<div class="col s6">
-    <div class="background">
 
+<div id="caro">
+    <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="/img/crew.jpg"></a>
+        <a class="carousel-item" href="#two!"><img src="/img/friends.jpg"></a>
+        <a class="carousel-item" href="#three!"><img src="/img/girls.jpg"></a>
+        <a class="carousel-item" href="#four!"><img src="/img/guys.jpg"></a>
     </div>
 </div>
-
-<div class="col s6">
-    <div id="pic2">
-
-    </div>
-</div>
-</div>
-
-<div class="col s6">
-    <div id="pic3-right">
-
-    </div>
-</div>
-
-<div class="col s6">
-    <div id="pic4-right">
-
-    </div>
-</div>
-
-
-
     <div class="container mainC">
 
             <div class="col s6">
@@ -54,7 +35,7 @@
                         <p>Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
                     </div>
                     <div class="card-action">
-                        <a class="loginlink" th:href="@{'/login'}">Login or Sign up!</a>
+                        <a style="color:red;" class="loginlink" th:href="@{'/login'}">Login or Sign up!</a>
                     </div>
                 </div>
             </div>
@@ -63,17 +44,8 @@
 
 <script>
     $(".button-collapse").sideNav();
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
 
-    $(document).ready(function () {
-        $('.pushpin-demo-nav').each(function () {
-            var $this = $(this);
-            var $target = $('#' + $(this).attr('data-target'));
-            $this.pushpin({
-                top: $target.offset().top,
-                bottom: $target.offset().top + $target.outerHeight() - $this.height()
-            });
-        });
-    });
 </script>
 </body>
 </html>
