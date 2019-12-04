@@ -143,6 +143,19 @@ public class MeetUpController {
         return "redirect:/meetups/" + meetUpBeingCommentedOn.getId();
     }
 
+    @PostMapping("meetups/comment/delete/{id}")
+    public String deleteMeetUpComment(@PathVariable long id){
+       Comment comment = commentDao.getOne(id);
+       long meetupID = comment.getMeetUp().getId();
+
+        comment.setUser(new User( "Delete Me"));
+
+        commentDao.deleteById(id);
+
+        return "redirect:/meetups/" + meetupID;
+    }
+
+
     @GetMapping("meetups/edit/{id}")
     public String viewEditMeetUp(@PathVariable long id, Model vModel){
         MeetUp meetUp = meetUpDao.getOne(id);

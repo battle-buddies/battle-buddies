@@ -451,7 +451,21 @@ public class ProfileController {
         relationshipDao.save(relationshipOne);
         relationshipDao.save(acceptFriend);
 
+        return "redirect:/users/profile/"+ userOne.getId();
+    }
 
+    @GetMapping("/users/{id}/decline-request")
+    public String declineFriendRequest(@PathVariable long id ) {
+        User userOne = usersService.loggedInUser();
+        Relationship declineFriend = relationshipDao.getOne(id);
+        FriendStatus status = FriendStatus.REJECTED;
+        User requestedFriend = declineFriend.getUser();
+        declineFriend.setStatus(status);
+
+
+        Relationship relationshipOne = new Relationship(userOne, requestedFriend, status);
+        relationshipDao.save(relationshipOne);
+        relationshipDao.save(declineFriend);
 
         return "redirect:/users/profile/"+ userOne.getId();
     }
@@ -512,6 +526,10 @@ public class ProfileController {
         Comment newComment = new Comment(comment, profileBeingCommentedOn, loggedInUser);
         commentDao.save(newComment);
 
+        System.out.println(newComment.getId());
+        System.out.println(newComment.getComment());
+        System.out.println(newComment);
+
         profileBeingCommentedOn.getComments().add(newComment);
         profileDao.save(profileBeingCommentedOn);
 
@@ -520,6 +538,21 @@ public class ProfileController {
 
 
         return "redirect:/users/profile/" + profileBeingCommentedOn.getId();
+    }
+
+    @PostMapping("profile/comment/delete/")
+    public String deleteProfileComment(@RequestParam(name = "deleteComment", required = false) Long commentID){
+        System.out.println(commentID);
+        Comment comment = commentDao.getOne(commentID);
+        Profile profile = profileDao.getOne(comment.getProfile().getId());
+        comment.setUser(new User("delete me"));
+        System.out.println(comment);
+        System.out.println(comment.getComment());
+        System.out.println(comment.getId());
+
+        commentDao.delete(comment);
+        return "redirect:/users/profile/" + 2;
+
     }
 
 
