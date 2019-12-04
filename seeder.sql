@@ -145,16 +145,16 @@ insert into locations (location) values ('Miami, Florida, United States');
 insert into locations (location) values ('Honolulu, Hawaii, United States');
 
 
-insert into location_profile (profile_id, location_id) values (1, 2);
-insert into location_profile (profile_id, location_id) values (2, 1);
-insert into location_profile (profile_id, location_id) values (3, 4);
-insert into location_profile (profile_id, location_id) values (4, 3);
-insert into location_profile (profile_id, location_id) values (5, 5);
-insert into location_profile (profile_id, location_id) values (6, 1);
-insert into location_profile (profile_id, location_id) values (7, 5);
-insert into location_profile (profile_id, location_id) values (8, 4);
-insert into location_profile (profile_id, location_id) values (9, 3);
-insert into location_profile (profile_id, location_id) values (10, 4);
+# insert into location_profile (profile_id, location_id) values (1, 2);
+# insert into location_profile (profile_id, location_id) values (2, 1);
+# insert into location_profile (profile_id, location_id) values (3, 4);
+# insert into location_profile (profile_id, location_id) values (4, 3);
+# insert into location_profile (profile_id, location_id) values (5, 5);
+# insert into location_profile (profile_id, location_id) values (6, 1);
+# insert into location_profile (profile_id, location_id) values (7, 5);
+# insert into location_profile (profile_id, location_id) values (8, 4);
+# insert into location_profile (profile_id, location_id) values (9, 3);
+# insert into location_profile (profile_id, location_id) values (10, 4);
 
 Insert into branches (branch) values('Army');
 Insert into branches (branch) values('Navy');

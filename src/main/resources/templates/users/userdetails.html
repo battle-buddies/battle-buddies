@@ -16,7 +16,7 @@
 
 <div class="container">
 
-<!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
+    <!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class='sidebar'>
@@ -43,7 +43,7 @@
                 <h2 id=b></h2>
                 <h2 id=c></h2>
             </div>
-            <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}" >
+            <form id="form2" th:name="form2" th:action="@{'/users/location'}" th:method="post" th:object="${location}">
                 <input type="hidden" id="location" th:field="*{location}"/>
 
                 <input type='button' value='Submit form 2' id="send" name="send"/>
@@ -54,7 +54,7 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat modal-close">Cancel</a>
         </div>
     </div>
-<!--        MODAL END-->
+    <!--        MODAL END-->
 
 
     <ul id="tabs-swipe-demo" class="tabs">
@@ -219,11 +219,10 @@
                         </th:block>
                     </select>
                     <label>Please select your location</label>
+                    <button data-target="modal1" class="btn modal-trigger">Add Location</button>
                 </div>
 
                 <!--                BUTTON FOR MODAL -->
-
-                <button data-target="modal1" class="btn modal-trigger">Add Location</button>
 
 
                 <!--            BUTTON FOR MODAL END-->
@@ -231,6 +230,8 @@
                 <!--                location end-->
 
                 <!--                file upload-->
+
+
 
             </div>
             <div class="file-field input-field col s3">
