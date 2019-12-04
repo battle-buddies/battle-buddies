@@ -360,6 +360,7 @@ public class ProfileController {
 
 
 
+
         // FINDS THE Hobbies THAT WERE SELECTED BY USER
         List<Hobby> hobbiesToAdd = new ArrayList<>();
         for (long hobbyId : hobbyIds) {
