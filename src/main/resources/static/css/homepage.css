@@ -1,107 +1,213 @@
+@media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
 
+    html, body {
+        height: 100%;
 
-html, body {
-    height: 100%;
-
-    /* Location of the image */
-    background-image: url("/img/flag_bg.jpg");
-
-    /* Image is centered vertically and horizontally at all times */
-    background-position: center center;
-
-    /* Image doesn't repeat */
-    background-repeat: no-repeat;
-
-    /* Makes the image fixed in the viewport so that it doesn't move when
-       the content height is greater than the image height */
-    background-attachment: fixed;
-
-    /* This is what makes the background image rescale based on its container's size */
-    background-size: cover;
-
-    /* Pick a solid background color that will be displayed while the background image is loading */
-    background-color:#464646;
-
-    /* SHORTHAND CSS NOTATION
-     * background: url(background-photo.jpg) center center cover no-repeat fixed;
-     */
-}
-
-/* For mobile devices */
-@media only screen and (max-width: 815px) {
-    body {
-        /* The file size of this background image is 93% smaller
-         * to improve page load speed on mobile internet connections */
+        /* Location of the image */
         background-image: url("/img/flag_bg.jpg");
 
+        /* Image is centered vertically and horizontally at all times */
+        background-position: center center;
+
+        /* Image doesn't repeat */
+        background-repeat: no-repeat;
+
+        /* Makes the image fixed in the viewport so that it doesn't move when
+           the content height is greater than the image height */
+        background-attachment: fixed;
+
+        /* This is what makes the background image rescale based on its container's size */
+        background-size: cover;
+
+        /* Pick a solid background color that will be displayed while the background image is loading */
+        background-color: #464646;
     }
-}
-@font-face {
-    font-family: 'Militia';
-    src: url('Militia-Regular.woff2') format('woff2'),
-    url('Militia-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-.bb{
-    font-family: 'Militia', Arial, sans-serif;
-    font-weight:normal;
-    font-style:normal;
-}
-
-.pin-top {
-    position: relative;
-}
 
 
-.pin-bottom {
-    position: relative;
-}
+    .mainC {
+        margin-top: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+    }
 
-.pinned {
-    position: fixed !important;
-}
+    .card-title {
+        text-align: center;
+    }
 
-.block {
-    height: 100%;
-}
+    .card-action {
+        text-align: center;
+    }
 
-.divider {
-    height: 50px;
-}
+    .loginlink {
+        color: red;
+    !important;
+    }
 
-
-div.background {
-    background: url("/img/polo3.png") no-repeat;
-    height:60em;
-    transform: rotate(-5deg);
-    margin-left: 13em;
-    margin-top: 4em;
 
 }
+@media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
+    html, body {
+        height: 100%;
 
-div.transbox {
-    margin: 30px;
-    opacity: 0.8;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
-}
+        /* Location of the image */
+        background-image: url("/img/flag_bg.jpg");
 
-div.transbox p {
-    margin: 5%;
-    font-weight: bold;
-    color: #000000;
-}
-.logo_txt{
-    margin-top:3.8em;
-}
-.home-container{
-    display: flex;
-    justify-content: space-between;
-    width:100%
+        /* Image is centered vertically and horizontally at all times */
+        background-position: center center;
 
-}
-.navdesign{
-height: 99px !important;
-line-height: 99px !important;
+        /* Image doesn't repeat */
+        background-repeat: no-repeat;
+
+        /* Makes the image fixed in the viewport so that it doesn't move when
+           the content height is greater than the image height */
+        background-attachment: fixed;
+
+        /* This is what makes the background image rescale based on its container's size */
+        background-size: cover;
+
+        /* Pick a solid background color that will be displayed while the background image is loading */
+        background-color: #464646;
+    }
+
+    #main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr  1fr;
+    }
+
+
+    .mainC {
+        grid-area: 1 / 2 / 1 / 2;
+        margin-top: 50px;
+        width: 40em;
+        height:40em;
+        display: grid;
+
+    }
+
+    .card-title {
+        text-align: center;
+    }
+
+    .card-action {
+        text-align: center;
+    }
+
+    .loginlink {
+        color: red;
+    !important;
+    }
+
+
+    /*@font-face {*/
+    /*    font-family: 'Militia';*/
+    /*    src: url('Militia-Regular.woff2') format('woff2'),*/
+    /*    url('Militia-Regular.woff') format('woff');*/
+    /*    font-weight: normal;*/
+    /*    font-style: normal;*/
+    /*}*/
+    /*.bb {*/
+    /*    font-family: 'Militia', Arial, sans-serif;*/
+    /*    font-weight: normal;*/
+    /*    font-style: normal;*/
+    /*}*/
+
+    /*.pin-top {*/
+    /*    position: relative;*/
+    /*}*/
+
+    /*.pin-bottom {*/
+    /*    position: relative;*/
+    /*}*/
+
+    /*.pinned {*/
+    /*    position: fixed !important;*/
+    /*}*/
+
+    /*.block {*/
+    /*    height: 100%;*/
+    /*}*/
+
+    /*.divider {*/
+    /*    height: 50px;*/
+    /*}*/
+
+    div.background {
+        background: url("/img/rsz_polo3.png") no-repeat;
+        position:absolute;
+        z-index: 100;
+        height: 22em;
+        width: 20em;
+        transform: rotate(-15deg);
+        margin-left: 9em;
+        margin-right:0;
+        margin-top: 3em;
+    }
+
+    div#pic2 {
+        background: url("/img/rsz_polo3.png") no-repeat;
+        z-index: 90;
+        height: 22em;
+        width: 20em;
+        transform: rotate(15deg);
+        margin-left: 20em;
+       padding-bottom: 5em;
+
+
+    }
+
+    #picgroup1{
+        grid-area: 1 / 1 / 1 / 1;
+    }
+
+
+    /*div#pic4-right {*/
+    /*    background: url("/img/rsz_polo3.png") no-repeat;*/
+    /*    position:absolute;*/
+    /*    z-index: 100;*/
+    /*    height: 22em;*/
+    /*    width: 20em;*/
+    /*    transform: rotate(-15deg);*/
+    /*    margin-right: 9em;*/
+    /*    margin-left:0;*/
+    /*    margin-top: 3em;*/
+    /*}*/
+
+    /*div#pic3-right {*/
+    /*    background: url("/img/rsz_polo3.png") no-repeat;*/
+    /*    z-index: 90;*/
+    /*    height: 22em;*/
+    /*    width: 20em;*/
+    /*    transform: rotate(15deg);*/
+    /*    margin-right: 20em;*/
+    /*    padding-bottom: 5em;*/
+
+
+    /*}*/
+
+
+
+    /*div.transbox {*/
+    /*    !*margin: 30px;*!*/
+    /*    opacity: 0.8;*/
+    /*    filter: alpha(opacity=60); !* For IE8 and earlier *!*/
+    /*}*/
+
+    /*div.transbox p {*/
+    /*    margin: 5%;*/
+    /*    font-weight: bold;*/
+    /*    color: #000000;*/
+    /*}*/
+
+    /*.logo_txt {*/
+    /*    margin-top: 3.8em;*/
+    /*}*/
+
+    .home-container {
+        display: flex;
+        justify-content: space-between;
+        width: 50%
+    }
 }
