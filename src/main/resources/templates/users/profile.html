@@ -207,9 +207,13 @@
 
 
 <!--    MESSAGES-->
-    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-    <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+    <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus()== T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED && friend.id == #authentication.principal.id}">
+
+        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
+        <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+        </th:block>
     </th:block>
+
 <!--    END MESSAGES-->
     <div class="container">
         <div class="mdl-grid site-max-width">
