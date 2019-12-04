@@ -19,6 +19,7 @@ insert into users (profile_id, password,  username, email,  is_admin) values ( 1
 
 
 
+<<<<<<< HEAD
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, birth_date, bio, married, mil_spouse, user_id) values ( 1,2,false, 'Admin', '001','1986-03-30', 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus', true, true, 1);
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 2,6,true, 'Izzy', 'Brashears', 27, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',false, false, 2);
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 3,10,true, 'Bridget', 'Goby', 56, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.', false, false, 3);
@@ -31,9 +32,12 @@ insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bi
 insert into profiles ( branch_id,rank_id, gender, first_name, last_name, age, bio, married, mil_spouse, user_id) values ( 5,1,false, 'Gale', 'Muggach', 40, 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', false, true, 10);
 
 
+=======
+drop table children if exits;
+>>>>>>> 4bd04ad8e0971ccfe65552cabacc294a3e067112
 insert into children  (child) values ('No Children');
 insert into children  (child) values ('0-5');
-insert into children  (child) values ('6-8');
+insert into children  (child) values ('6-9');
 insert into children  (child) values ('10-14');
 insert into children  (child) values ('15-16');
 insert into children  (child) values ('17-18');
