@@ -448,7 +448,21 @@ public class ProfileController {
         relationshipDao.save(relationshipOne);
         relationshipDao.save(acceptFriend);
 
+        return "redirect:/users/profile/"+ userOne.getId();
+    }
 
+    @GetMapping("/users/{id}/decline-request")
+    public String declineFriendRequest(@PathVariable long id ) {
+        User userOne = usersService.loggedInUser();
+        Relationship declineFriend = relationshipDao.getOne(id);
+        FriendStatus status = FriendStatus.REJECTED;
+        User requestedFriend = declineFriend.getUser();
+        declineFriend.setStatus(status);
+
+
+        Relationship relationshipOne = new Relationship(userOne, requestedFriend, status);
+        relationshipDao.save(relationshipOne);
+        relationshipDao.save(declineFriend);
 
         return "redirect:/users/profile/"+ userOne.getId();
     }
