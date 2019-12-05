@@ -8,14 +8,20 @@
 
     <title>Log In</title>
     <th:block th:replace="fragments/header :: login-header"/>
+    <style>
+        .red-text{
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
-<div class="alert alert-danger" role="alert" th:if="${param.error}">
-    Invalid Username and Password.
-</div>
+
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
+
+<!--    <p th:if="${!missing.isEmpty()}" class="alert alert-danger" role="alert" th:text="${missing}" ></p>-->
+
 <div class="login-reg-panel">
     <div class="login-info-box">
         <h2>Have an account?</h2>
@@ -34,7 +40,12 @@
     <div class="white-panel">
         <div class="login-show">
             <form th:action="@{/login}" method="post">
+                <div class="alert alert-danger" role="alert" th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
                 <h2>LOGIN</h2>
+                <p class="red-text" th:text="${takenUsername}"></p>
+                <p class="red-text"  th:text="${takenEmail}"></p>
                 <input id="username" name="username" type="text" placeholder="Username" required="required"/>
                 <input id="password" name="password" type="password" placeholder="Password" required="required"/>
                 <input type="submit" value="Log In"/>
@@ -115,6 +126,9 @@
                                     <span class="messageM"></span><br>
                                 </div>
                                 <div class="form-group">
+
+
+
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
