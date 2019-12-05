@@ -10,9 +10,7 @@
     <th:block th:replace="fragments/header :: login-header"/>
 </head>
 <body>
-<div class="alert alert-danger" role="alert" th:if="${param.error}">
-    Invalid Username and Password.
-</div>
+
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
@@ -34,6 +32,9 @@
     <div class="white-panel">
         <div class="login-show">
             <form th:action="@{/login}" method="post">
+                <div class="alert alert-danger" role="alert" th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
                 <h2>LOGIN</h2>
                 <input id="username" name="username" type="text" placeholder="Username" required="required"/>
                 <input id="password" name="password" type="password" placeholder="Password" required="required"/>
