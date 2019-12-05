@@ -9,22 +9,19 @@
         text-align: center;
     }
 
-    #info{
+    #infomobile{
         font-size: 22px;
         text-align: center;
     }
 
-    #cal,#fri,#heart {
-        font-size: 40px;
-        padding: 5px;
+    /*#cal,#fri,#heart {*/
+    /*    font-size: 40px;*/
+    /*    padding: 5px;*/
 
-    }
+    /*}*/
 
-    #icons{
-       display: none;
-    }
 
-    .picons{
+    #desktop{
         display: none;
     }
 
@@ -33,6 +30,11 @@
         justify-content: center;
         align-items: center;
         font-size: 18px;
+    }
+
+
+    .parallax-container {
+        height: 200px;
     }
 
     #cal2,#fri2,#heart2 {
@@ -83,9 +85,13 @@
         font-size: 18px;
     }
 
-    .picons2{
+    #mobilepara{
         display: none;
     }
+
+    /*.parallax-container {*/
+    /*    height: 370px;*/
+    /*}*/
 
 
 body {
