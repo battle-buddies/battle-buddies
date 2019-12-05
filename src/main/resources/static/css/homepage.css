@@ -1,4 +1,4 @@
-@media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
+/*@media only screen and (min-device-width : 320px) and (max-device-width : 849px) {*/
 
     /* body {*/
 
@@ -46,8 +46,8 @@
     /*}*/
 
 
-}
-@media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
+/*}*/
+/*@media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {*/
     /*body {*/
     /*    max-height: 20vh;*/
 
@@ -138,4 +138,20 @@
     h2{
         text-align: center;
     }
+
+    #info{
+        font-size: 22px;
+        text-align: center;
+    }
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+    flex: 1 0 auto;
+}
+/*}*/

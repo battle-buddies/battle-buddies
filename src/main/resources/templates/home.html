@@ -24,7 +24,7 @@
 <div class="section white">
     <div class="row container">
         <h2 class="header">Welcome to Battle Buddies!</h2>
-        <p class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
+        <p id="info" class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
     </div>
     <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 </div>
@@ -35,7 +35,17 @@
 
 
 
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Battle Buddies</h5>
+                <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>
+            </div>
+        </div>
+    </div>
 
+</footer>
 
 
 
