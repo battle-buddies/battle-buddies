@@ -89,9 +89,8 @@ public class Profile {
 
 
 
-    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Photo> photos;
+    @OneToOne
+    private Photo photo;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -112,7 +111,7 @@ public class Profile {
 
     public Profile (){}
 
-    public Profile(long id,String firstName, String lastName, Date birthDate, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Child> children, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank, List<Comment> comments) {
+    public Profile(long id,String firstName, String lastName, Date birthDate, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Trait> traits, List<Child> children, List<Hobby> hobbies, Photo photo, Branch branch, Rank rank, List<Comment> comments) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -125,14 +124,14 @@ public class Profile {
         this.location = location;
         this.traits = traits;
         this.hobbies = hobbies;
-        this.photos = photos;
+        this.photo = photo;
         this.branch = branch;
         this.rank = rank;
         this.comments = comments;
         this.children = children;
     }
 
-    public Profile(String firstName, String lastName, Date birthDate, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Child> children, List<Trait> traits, List<Hobby> hobbies, List<Photo> photos, Branch branch, Rank rank) {
+    public Profile(String firstName, String lastName, Date birthDate, boolean gender, boolean married, boolean milSpouse, String bio, User user, List<Location> location, List<Child> children, List<Trait> traits, List<Hobby> hobbies, Photo photo, Branch branch, Rank rank) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -144,7 +143,7 @@ public class Profile {
         this.location = location;
         this.traits = traits;
         this.hobbies = hobbies;
-        this.photos = photos;
+        this.photo = photo;
         this.branch = branch;
         this.rank = rank;
         this.children = children;
@@ -248,12 +247,12 @@ public class Profile {
         this.hobbies = hobbies;
     }
 
-    public List<Photo> getPhotos() {
-        return photos;
+    public Photo getPhoto() {
+        return photo;
     }
 
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
     }
 
     public Branch getBranch() {
@@ -271,7 +270,6 @@ public class Profile {
     public void setRank(Rank rank) {
         this.rank = rank;
     }
-
 
 
     public boolean isGender() { return gender; }

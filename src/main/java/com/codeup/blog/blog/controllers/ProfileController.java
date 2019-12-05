@@ -190,8 +190,8 @@ public class ProfileController {
              @RequestParam(name="hobbies", required = false)ArrayList<Long> hobbyIds,
              @RequestParam(name="children", required = false)ArrayList<Long> childIds,
              @RequestParam(name="branch", required = false)Long branchId,
-             @RequestParam(name="rank", required = false) Long rankId,
-             @RequestParam(name="photoUrls", required = false) ArrayList<Long> photoIds
+             @RequestParam(name="rank", required = false) Long rankId
+
 
 
 
@@ -259,22 +259,6 @@ public class ProfileController {
                 }
             }
 
-            List<Photo> photoToAdd = new ArrayList<>();
-            for (long photoId : photoIds) {
-                for (Photo all: photoDao.findAll()){
-                    if(photoId == all.getId()){
-                        photoToAdd.add(photoDao.getOne(photoId));
-                    }
-                }
-            }
-
-            // ADDS EACH INDIVIDUAL Child TO PROFILE
-            if (photoToAdd != null){
-                profile.setPhotos(new ArrayList<>());
-                for (Photo photo: photoToAdd){
-                    profile.getPhotos().add(photo);
-                }
-            }
 
 
             // Files handle
@@ -552,5 +536,18 @@ public class ProfileController {
     }
 
 
+    @PostMapping("add-photo/{id}")
+    public String addPhoto(@PathVariable long id, @RequestParam(name = "picURL", required = false) String picURL){
+        Profile profile = profileDao.getOne(id);
+        Photo newPic = new Photo(picURL);
+        photoDao.save(newPic);
+
+        profile.setPhoto(newPic);
+
+        profileDao.save(profile);
+
+        return "redirect:/users/profile/"+ profile.getId();
+
+    }
 
 }
