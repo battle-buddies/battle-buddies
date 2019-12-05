@@ -603,10 +603,9 @@
 </head>
 
 <body>
-<!--    MESSAGES-->
 
-<th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-</th:block>
+
+
 
 <div class="container profile-top">
     <div class="col s12">
@@ -628,9 +627,11 @@
                     </th:block>
                 </div>
                 <div class="card-action">
-                    <a href="#" type="button" class="waves-effect waves-light btn msg-btn"><i
-                            class="material-icons left">message</i>
-                        Message Me</a>
+                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
+                    <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+                    </th:block>
+
+
                     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                         <a class="waves-effect waves-light btn edit-btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
                     </th:block>
@@ -876,61 +877,42 @@
     var currentUser;
     var otherUser;
     var pathVariable =location.pathname.split("/")[3];
-
-
-    $('.message').click(function () {
-        otherID = parseInt($(this).val()) + pathVariable;
-
-        fetch("/users/chat/" + otherID)
-            .then(response => response.json())
-            .then(data => {
-                currentUser = data[0];
-                otherUser = data[1];
-                logDataset();
+    fetch("/users/chat/" + pathVariable)
+        .then(response => response.json())
+        .then(data => {
+            currentUser = data[0];
+            otherUser = data[1];
+            logDataset();
+        });
+    function logDataset () {
+        console.log(currentUser.email);
+        Talk.ready.then(function() {
+            var me = new Talk.User({
+                id: currentUser.id,
+                name: currentUser.profile.firstName,
+                email: currentUser.email,
             });
-
-        function logDataset () {
-            console.log(currentUser.email);
-
-            Talk.ready.then(function() {
-
-                var me = new Talk.User({
-                    id: currentUser.id,
-                    name: currentUser.profile.firstName,
-                    email: currentUser.email,
-
-                });
-                window.talkSession = new Talk.Session({
-                    appId: "toAwBOgu",
-                    me: me
-                });
-
-
-
-
-                var other = new Talk.User({
-                    id: otherUser.id,
-                    name: otherUser.profile.firstName,
-                    email: otherUser.email,
-                });
-
-
-
-                var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
-                conversation.setParticipant(me);
-                conversation.setParticipant(other);
-                var popup = talkSession.createPopup(conversation, { keepOpen: false });
-                popup.mount({ show: false });
-
-                var button = document.getElementById("btn-getInTouch");
-                button.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    popup.show();
-                });
-
+            window.talkSession = new Talk.Session({
+                appId: "toAwBOgu",
+                me: me
             });
-        }
-    });
+            var other = new Talk.User({
+                id: otherUser.id,
+                name: otherUser.profile.firstName,
+                email: otherUser.email,
+            });
+            var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+            var popup = talkSession.createPopup(conversation, { keepOpen: false });
+            popup.mount({ show: false });
+            var button = document.getElementById("btn-getInTouch");
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.show();
+            });
+        });
+    }
 
 
 
