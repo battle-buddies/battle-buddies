@@ -21,6 +21,12 @@
             <div class="card card-small">
                 <div class="card-content">
                     <a th:href="@{'/users/profile/' + ${profile.getUser().id}}">
+                        <div class="card-image">
+                            <th:block th:each=" photo: ${profile.getPhotos()}">
+                            <img th:src="@{${'/uploads/' + photo.getUrl() }}">
+                            </th:block>
+                        </div>
+
                         <span class="card-title" th:text="${profile.firstName + ' '+ profile.lastName}"></span>
                     </a>
                 </div>

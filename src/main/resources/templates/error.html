@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Home</title>
+
+    <th:block th:replace="fragments/header :: home-header"/>
+    <style>
+        .mt{
+            margin-top: 3em;
+            height: 10em;
+            text-align: center;
+        }
+
+        .mt h1{
+            height: 5em;
+            line-height: 5em;
+        }
+
+        .mt h3{
+            height: 5em;
+            line-height: 5em;
+        }
+    </style>
+</head>
+<body>
+
+<!--<div id="blue" class="block">-->
+<div>
+    <th:block th:replace="fragments/nav-bar :: home-blue"/>
+</div>
+<div id="main">
+
+    <div class="container mt">
+        <div class="card w-100 mt-2 mb-4">
+            <div class="card-body">
+                <th:block th:switch="${error}">
+                    <div th:case="'Not Found'">
+                        <h1 class="dark-font text-center">404: Page not found!</h1>
+                    </div>
+                    <div th:case="'Forbidden'">
+                        <h3 class="dark-font text-center">500: You don't have permission to view this page.</h3>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(".button-collapse").sideNav();
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+</script>
+</body>
+</html>
