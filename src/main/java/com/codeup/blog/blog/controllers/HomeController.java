@@ -25,11 +25,11 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/error")
-    public String error(Exception exception, Model vModel){
-        vModel.addAttribute("error", exception);
-        return "error";
-
-    }
+//    @GetMapping("/error")
+//    public String error(Exception exception, Model vModel){
+//        vModel.addAttribute("error", exception);
+//        return "error";
+//
+//    }
 
 }
