@@ -165,11 +165,11 @@ insert into location_profile (profile_id, location_id) values (8, 4);
 insert into location_profile (profile_id, location_id) values (9, 3);
 insert into location_profile (profile_id, location_id) values (10, 4);
 
-Insert into branches (branch) values('Army');
-Insert into branches (branch) values('Navy');
-Insert into branches (branch) values('Marine Corps');
-Insert into branches (branch) values('Air Force');
-Insert into branches (branch) values('Coast Guard');
+insert into branches (branch) values('Army');
+insert into branches (branch) values('Navy');
+insert into branches (branch) values('Marine Corps');
+insert into branches (branch) values('Air Force');
+insert into branches (branch) values('Coast Guard');
 
 
 Insert into ranks (rank) values('E1');
