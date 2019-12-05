@@ -21,7 +21,7 @@
         }
 
         html, body {
-            height: 100%;
+
 
             background-image: url("/img/flag_bg.jpg");
             /* Image is centered vertically and horizontally at all times */
@@ -45,14 +45,14 @@
              */
         }
 
-        .hex {
-            clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%) !important;
-            background-size: cover !important;
-            margin: 10px auto !important;
-            height: 200px !important;
-            width: 200px !important;
+        /*.hex {*/
+        /*    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%) !important;*/
+        /*    background-size: cover !important;*/
+        /*    margin: 10px auto !important;*/
+        /*    height: 200px !important;*/
+        /*    width: 200px !important;*/
 
-        }
+        /*}*/
 
         .hexagon {
             position: relative;
@@ -147,8 +147,7 @@
 <!--                             src="/img/battle_logo3.png"-->
 <!--                             alt="placeholder"/>-->
 
-                        <img class="responsive-img post-img" th:if="${photo.getUrl() != null}"
-                             th:src="@{${'/uploads/' + photo.getUrl()}}"/>
+                        <img class="responsive-img post-img" th:if="${photo.getUrl() != null}" th:src="@{${'/uploads/' + photo.getUrl()}}"/>
                     </th:block>
                 </div>
             </div>
@@ -162,6 +161,8 @@
                         <h4 class="headline 700 center" th:text=" ${user.getProfile().firstName}"></h4>
                     </span>
                 <p th:text=" ${user.getProfile().getBio()}"></p>
+                <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">
+                <p id="age"></p>
             </div>
         </div>
     </div>
@@ -207,7 +208,7 @@
 <!--    MESSAGES-->
 
     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-    <div class="horizontal" style="bottom: 45px; right: 24px;"><a id="btn-getInTouch" class="btn-large red btn-floating"><i class="large material-icons">mode_edit</i></a></div>
+
 
     </th:block>
 
@@ -384,6 +385,22 @@
     });
 </script>
 <script>
+
+    function getAge(DOB) {
+        var today = new Date();
+        var birthDate = new Date(DOB);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age = age - 1;
+        }
+        console.log(age);
+
+        return age;
+    }
+
+    document.getElementById('age').innerHTML = getAge($('#birthday').val());
+
 
     $(".button-collapse").sideNav();
 
