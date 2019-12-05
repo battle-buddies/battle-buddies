@@ -206,10 +206,12 @@
 
 <!--    MESSAGES-->
 
+
     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
     <div class="horizontal" style="bottom: 45px; right: 24px;"><a id="btn-getInTouch" class="btn-large red btn-floating"><i class="large material-icons">mode_edit</i></a></div>
 
     </th:block>
+
 
 <!--    END MESSAGES-->
     <div class="container">
@@ -226,6 +228,7 @@
 <!--                            FRIEND REQUEST BUTTON-->
                                 <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
 
+
 <!--                           BUDDIES TABS -->
                             <ul class="tabs">
                                 <li  class="tab col s3"><a class="active" href="#test1">Buddies<span id="buddies-badge" class="badge "></span></a></li>
@@ -241,12 +244,14 @@
                             <div id="friends" class="col s12  container">
                                 <h4> Accepted Buddies List</h4>
                                 <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+
                                     <div class="row">
                                         <div class="col s3 ">
                                             <div class="card blue-grey darken-1">
                                                 <div class="card-content white-text buddies">
                                                     <a   th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span class="card-title" th:text="${friend.getFriend().profile.firstName }"></span></a>
                                                 </div>
+<!--                                                <div><a id="btn-getInTouch" class="waves-effect waves-light btn message"  th:value="${friend.id}"><i class="material-icons left">account_box</i>Message Me</a></div>-->
 
                                             </div>
                                         </div>
@@ -261,9 +266,7 @@
                         <div id="test2" class="col s12"  th:if="${#authentication.principal.id == user.id}">
 
                             <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
-
                             <div th:each="friend : ${pendingFriends}">
-
                                 <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
                                     <div class="row">
                                         <div class="col s3 ">
@@ -430,55 +433,63 @@
     var otherUser;
     var pathVariable =location.pathname.split("/")[3];
 
-    fetch("/users/chat/" + pathVariable)
-        .then(response => response.json())
-        .then(data => {
-            currentUser = data[0];
-            otherUser = data[1];
-            logDataset();
-        });
 
-    function logDataset () {
-        console.log(currentUser.email);
+    $('.message').click(function () {
+        otherID = parseInt($(this).val()) + pathVariable;
 
-        Talk.ready.then(function() {
-
-            var me = new Talk.User({
-                id: currentUser.id,
-                name: currentUser.profile.firstName,
-                email: currentUser.email,
-
-            });
-            window.talkSession = new Talk.Session({
-                appId: "toAwBOgu",
-                me: me
+        fetch("/users/chat/" + otherID)
+            .then(response => response.json())
+            .then(data => {
+                currentUser = data[0];
+                otherUser = data[1];
+                logDataset();
             });
 
+        function logDataset () {
+            console.log(currentUser.email);
+
+            Talk.ready.then(function() {
+
+                var me = new Talk.User({
+                    id: currentUser.id,
+                    name: currentUser.profile.firstName,
+                    email: currentUser.email,
+
+                });
+                window.talkSession = new Talk.Session({
+                    appId: "toAwBOgu",
+                    me: me
+                });
 
 
 
-            var other = new Talk.User({
-                id: otherUser.id,
-                name: otherUser.profile.firstName,
-                email: otherUser.email,
+
+                var other = new Talk.User({
+                    id: otherUser.id,
+                    name: otherUser.profile.firstName,
+                    email: otherUser.email,
+                });
+
+
+
+                var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
+                conversation.setParticipant(me);
+                conversation.setParticipant(other);
+                var popup = talkSession.createPopup(conversation, { keepOpen: false });
+                popup.mount({ show: false });
+
+                var button = document.getElementById("btn-getInTouch");
+                button.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    popup.show();
+                });
+
             });
+        }
+    });
 
 
 
-            var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
-            conversation.setParticipant(me);
-            conversation.setParticipant(other);
-            var popup = talkSession.createPopup(conversation, { keepOpen: false });
-            popup.mount({ show: false });
-
-            var button = document.getElementById("btn-getInTouch");
-            button.addEventListener("click", function(event) {
-                event.preventDefault();
-                popup.show();
-            });
-
-        });
-    }
 
 
     let buddiesCount = $('.buddies').length;

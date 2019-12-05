@@ -345,9 +345,7 @@ public class ProfileController {
 
 
         profile.setFirstName(firstName);
-        profile.setLastName(lastName);
-        profile.setBirthDate(birthDate);
-        profile.setMilSpouse(millSpouse);
+        profile.setLastName(lastName);profile.setMilSpouse(millSpouse);
        profile.setMarried(married);
        profile.setGender(gender);
        profile.setLocation(locationId);
