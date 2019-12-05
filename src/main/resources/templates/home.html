@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,36 +15,72 @@
 <div>
     <th:block th:replace="fragments/nav-bar :: home-blue"/>
 </div>
-<div id="main">
 
-<div id="caro">
-    <div class="carousel carousel-slider">
-        <a class="carousel-item" href="#one!"><img src="/img/crew.jpg"></a>
-        <a class="carousel-item" href="#two!"><img src="/img/friends.jpg"></a>
-        <a class="carousel-item" href="#three!"><img src="/img/girls.jpg"></a>
-        <a class="carousel-item" href="#four!"><img src="/img/guys.jpg"></a>
-    </div>
-</div>
-    <div class="container mainC">
 
-            <div class="col s6">
-                <div class="card grey darken-3">
-                    <div class="card-content white-text">
-                        <span class="card-title">Welcome to Battle Buddies!</span>
-                        <p>It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! </p>
-                        <p>Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
-                    </div>
-                    <div class="card-action">
-                        <a style="color:red;" class="loginlink" th:href="@{'/login'}">Login or Sign up!</a>
-                    </div>
-                </div>
-            </div>
-    </div>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="/img/help.jpg"></div>
 </div>
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">Welcome to Battle Buddies!</h2>
+        <p class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
+    </div>
+    <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
+</div>
+<div class="parallax-container">
+    <div class="parallax"><img src="/img/summer-fun2.jpg"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div id="main">-->
+
+<!--<div id="caro">-->
+<!--    <div class="carousel carousel-slider">-->
+<!--        <a class="carousel-item" href="#one!"><img src="/img/crew.jpg"></a>-->
+<!--        <a class="carousel-item" href="#two!"><img src="/img/friends.jpg"></a>-->
+<!--        <a class="carousel-item" href="#three!"><img src="/img/girls.jpg"></a>-->
+<!--        <a class="carousel-item" href="#four!"><img src="/img/guys.jpg"></a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--    <div class="container mainC">-->
+
+<!--            <div class="col s6">-->
+<!--                <div class="card grey darken-3">-->
+<!--                    <div class="card-content white-text">-->
+<!--                        <h1 style="color:white; font-size: 40px;" class="card-title">Welcome to Battle Buddies!</h1>-->
+<!--                        <p style="font-size:20px; text-align: center" class="cardbody">It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! </p>-->
+<!--                        <p style="font-size: 20px; text-align: center" class="cardbody">Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>-->
+<!--                    </div>-->
+<!--                    <div class="card-action">-->
+<!--                        <h5><a style="color:white;" class="loginlink" th:href="@{'/login'}">Login or Sign up!</a></h5>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--    </div>-->
+
+
+
+
+
+<!--</div>-->
 
 <script>
     $(".button-collapse").sideNav();
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
+    // $('.carousel.carousel-slider').carousel({fullWidth: true});
+    $('.parallax').parallax();
+
 
 </script>
 </body>

@@ -1,108 +1,113 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
 
-     body {
+    /* body {*/
 
 
-        /* Location of the image */
-        background-image: url("/img/flag_bg.jpg");
+    /*    !* Location of the image *!*/
+    /*    background-image: url("/img/flag_bg.jpg");*/
 
-        /* Image is centered vertically and horizontally at all times */
-        background-position: center center;
+    /*    !* Image is centered vertically and horizontally at all times *!*/
+    /*    background-position: center center;*/
 
-        /* Image doesn't repeat */
-        background-repeat: no-repeat;
+    /*    !* Image doesn't repeat *!*/
+    /*    background-repeat: no-repeat;*/
 
-        /* Makes the image fixed in the viewport so that it doesn't move when
-           the content height is greater than the image height */
-        background-attachment: fixed;
+    /*    !* Makes the image fixed in the viewport so that it doesn't move when*/
+    /*       the content height is greater than the image height *!*/
+    /*    background-attachment: fixed;*/
 
-        /* This is what makes the background image rescale based on its container's size */
-        background-size: cover;
+    /*    !* This is what makes the background image rescale based on its container's size *!*/
+    /*    background-size: cover;*/
 
-        /* Pick a solid background color that will be displayed while the background image is loading */
-        background-color: #464646;
-    }
+    /*    !* Pick a solid background color that will be displayed while the background image is loading *!*/
+    /*    background-color: #464646;*/
+    /*}*/
 
 
-    .mainC {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color:red;
+    /*.mainC {*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*    color:red;*/
 
-    }
+    /*}*/
 
-    .card-title {
-        text-align: center;
-        color:red;
-    }
+    /*.card-title {*/
+    /*    text-align: center;*/
+    /*}*/
 
-    .card-action {
-        text-align: center;
-    }
+
+    /*.card-action {*/
+    /*    text-align: center;*/
+    /*}*/
+
+    /*.cardbody{*/
+    /*    font-size: 25px;*/
+    /*}*/
 
 
 }
 @media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
-    body {
-        max-height: 20vh;
+    /*body {*/
+    /*    max-height: 20vh;*/
 
-        /* Location of the image */
-        background-image: url("/img/flag_bg.jpg");
+    /*    !* Location of the image *!*/
+    /*    background-image: url("/img/flag_bg.jpg");*/
 
-        /* Image is centered vertically and horizontally at all times */
-        background-position: center center;
+    /*    !* Image is centered vertically and horizontally at all times *!*/
+    /*    background-position: center center;*/
 
-        /* Image doesn't repeat */
-        background-repeat: no-repeat;
+    /*    !* Image doesn't repeat *!*/
+    /*    background-repeat: no-repeat;*/
 
-        /* Makes the image fixed in the viewport so that it doesn't move when
-           the content height is greater than the image height */
-        background-attachment: fixed;
+    /*    !* Makes the image fixed in the viewport so that it doesn't move when*/
+    /*       the content height is greater than the image height *!*/
+    /*    background-attachment: fixed;*/
 
-        /* This is what makes the background image rescale based on its container's size */
-        background-size: cover;
+    /*    !* This is what makes the background image rescale based on its container's size *!*/
+    /*    background-size: cover;*/
 
-        /* Pick a solid background color that will be displayed while the background image is loading */
-        background-color: #464646;
-    }
+    /*    !* Pick a solid background color that will be displayed while the background image is loading *!*/
+    /*    background-color: #464646;*/
+    /*}*/
 
-    #main{
-        margin: 20px;
-        height: 10px;
-    }
-
-
-    .mainC {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    .card-title {
-        text-align: center;
-        color:red;
-    }
-
-    .card-action {
-        text-align: center;
-    }
+    /*#main{*/
+    /*    margin: 20px;*/
+    /*    height: 10px;*/
+    /*    padding-top: 30px;*/
+    /*}*/
 
 
-    .card-content{
-        height: 15em;
-    }
+    /*.mainC {*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
 
-    .carousel{
-        height:500px !important;
-        width: 1000px !important;
-    }
-    #caro{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    /*}*/
+
+    /*.card-title {*/
+    /*    text-align: center;*/
+    /*    color:red;*/
+    /*}*/
+
+    /*.card-action {*/
+    /*    text-align: center;*/
+    /*}*/
+
+
+    /*.card-content{*/
+    /*    height: 15em;*/
+    /*}*/
+
+    /*.carousel{*/
+    /*    height:500px !important;*/
+    /*    width: 1000px !important;*/
+    /*}*/
+    /*#caro{*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*}*/
 
 
     /*div.transbox {*/
@@ -126,4 +131,11 @@
     /*    justify-content: space-between;*/
     /*    width: 50%*/
     /*}*/
+    .loginlink{
+        text-align: center;
+    }
+
+    h2{
+        text-align: center;
+    }
 }
