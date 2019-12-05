@@ -191,9 +191,8 @@ public class ProfileController {
              @RequestParam(name="children", required = false)ArrayList<Long> childIds,
              @RequestParam(name="branch", required = false)Long branchId,
              @RequestParam(name="rank", required = false) Long rankId,
-             Model m,
-             @RequestParam(name = "file") MultipartFile uploadedFile,
-             @RequestParam(name = "form2", required = false) Location locationToBeCreated
+             @RequestParam(name="photoUrls", required = false) ArrayList<Long> photoIds
+
 
 
     ){
@@ -201,6 +200,7 @@ public class ProfileController {
        profile.setUser(user);
         profile.setBranch(branchDao.getOne(branchId));
         profile.setRank(rankDao.getOne(rankId));
+
 //        locationDao.save(locationToBeCreated);
 
 
@@ -259,10 +259,28 @@ public class ProfileController {
                 }
             }
 
+            List<Photo> photoToAdd = new ArrayList<>();
+            for (long photoId : photoIds) {
+                for (Photo all: photoDao.findAll()){
+                    if(photoId == all.getId()){
+                        photoToAdd.add(photoDao.getOne(photoId));
+                    }
+                }
+            }
+
+            // ADDS EACH INDIVIDUAL Child TO PROFILE
+            if (photoToAdd != null){
+                profile.setPhotos(new ArrayList<>());
+                for (Photo photo: photoToAdd){
+                    profile.getPhotos().add(photo);
+                }
+            }
+
+
             // Files handle
 
           profileDao.save(profile);
-            uploadFileHandler(profile, m, uploadedFile);
+
             user.setProfile(profile);
             userDao.save(user);
 
@@ -271,31 +289,8 @@ public class ProfileController {
 
         return "redirect:/users/profile/" + user.getId();
     }
-    private void uploadFileHandler(@Valid Profile profile, Model m, @RequestParam(name = "file") MultipartFile uploadedFile) {
-        if(!uploadedFile.getOriginalFilename().isEmpty()){
-
-            String filename = uploadedFile.getOriginalFilename().replace(" ", "_").toLowerCase();
-            String filepath = Paths.get(uploadPath, filename).toString();
-            File destinationFile = new File(filepath);
-
-            // Try to save it in the server
-            try {
-                uploadedFile.transferTo(destinationFile);
-                m.addAttribute("message", "File successfully uploaded!");
-            } catch (IOException e) {
-                e.printStackTrace();
-                m.addAttribute("message", "Oops! Something went wrong! " + e);
-            }
-
-            Photo photo = new Photo(filename);
-            photo.setProfile(profile);
-            photoDao.save(photo);
 
 
-
-
-        }
-    }
 
 
 
@@ -549,6 +544,11 @@ public class ProfileController {
         commentDao.delete(comment);
         return "redirect:/users/profile/" + profile.getId();
 
+    }
+
+    @GetMapping("users/testprofile")
+    public String testP(){
+        return "/users/testprofile";
     }
 
 
