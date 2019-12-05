@@ -1,136 +1,59 @@
-/*@media only screen and (min-device-width : 320px) and (max-device-width : 849px) {*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 849px) {
 
-    /* body {*/
+    .loginlink{
+        text-align: center;
+        font-size: 20px;
+    }
 
+    h2{
+        text-align: center;
+    }
 
-    /*    !* Location of the image *!*/
-    /*    background-image: url("/img/flag_bg.jpg");*/
+    #info{
+        font-size: 22px;
+        text-align: center;
+    }
 
-    /*    !* Image is centered vertically and horizontally at all times *!*/
-    /*    background-position: center center;*/
+    #cal,#fri,#heart {
+        font-size: 40px;
+        padding: 5px;
 
-    /*    !* Image doesn't repeat *!*/
-    /*    background-repeat: no-repeat;*/
+    }
 
-    /*    !* Makes the image fixed in the viewport so that it doesn't move when*/
-    /*       the content height is greater than the image height *!*/
-    /*    background-attachment: fixed;*/
+    #icons{
+       display: none;
+    }
 
-    /*    !* This is what makes the background image rescale based on its container's size *!*/
-    /*    background-size: cover;*/
+    .picons{
+        display: none;
+    }
 
-    /*    !* Pick a solid background color that will be displayed while the background image is loading *!*/
-    /*    background-color: #464646;*/
-    /*}*/
+    .picons2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+    }
 
+    #cal2,#fri2,#heart2 {
+        font-size: 20px;
+        padding: 5px;
 
-    /*.mainC {*/
-    /*    display: flex;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-    /*    color:red;*/
+    }
 
-    /*}*/
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 
-    /*.card-title {*/
-    /*    text-align: center;*/
-    /*}*/
+    main {
+        flex: 1 0 auto;
+    }
 
+}
+@media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
 
-    /*.card-action {*/
-    /*    text-align: center;*/
-    /*}*/
-
-    /*.cardbody{*/
-    /*    font-size: 25px;*/
-    /*}*/
-
-
-/*}*/
-/*@media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {*/
-    /*body {*/
-    /*    max-height: 20vh;*/
-
-    /*    !* Location of the image *!*/
-    /*    background-image: url("/img/flag_bg.jpg");*/
-
-    /*    !* Image is centered vertically and horizontally at all times *!*/
-    /*    background-position: center center;*/
-
-    /*    !* Image doesn't repeat *!*/
-    /*    background-repeat: no-repeat;*/
-
-    /*    !* Makes the image fixed in the viewport so that it doesn't move when*/
-    /*       the content height is greater than the image height *!*/
-    /*    background-attachment: fixed;*/
-
-    /*    !* This is what makes the background image rescale based on its container's size *!*/
-    /*    background-size: cover;*/
-
-    /*    !* Pick a solid background color that will be displayed while the background image is loading *!*/
-    /*    background-color: #464646;*/
-    /*}*/
-
-    /*#main{*/
-    /*    margin: 20px;*/
-    /*    height: 10px;*/
-    /*    padding-top: 30px;*/
-    /*}*/
-
-
-    /*.mainC {*/
-    /*    display: flex;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-
-    /*}*/
-
-    /*.card-title {*/
-    /*    text-align: center;*/
-    /*    color:red;*/
-    /*}*/
-
-    /*.card-action {*/
-    /*    text-align: center;*/
-    /*}*/
-
-
-    /*.card-content{*/
-    /*    height: 15em;*/
-    /*}*/
-
-    /*.carousel{*/
-    /*    height:500px !important;*/
-    /*    width: 1000px !important;*/
-    /*}*/
-    /*#caro{*/
-    /*    display: flex;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-    /*}*/
-
-
-    /*div.transbox {*/
-    /*    !*margin: 30px;*!*/
-    /*    opacity: 0.8;*/
-    /*    filter: alpha(opacity=60); !* For IE8 and earlier *!*/
-    /*}*/
-
-    /*div.transbox p {*/
-    /*    margin: 5%;*/
-    /*    font-weight: bold;*/
-    /*    color: #000000;*/
-    /*}*/
-
-    /*.logo_txt {*/
-    /*    margin-top: 3.8em;*/
-    /*}*/
-
-    /*.home-container {*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
-    /*    width: 50%*/
-    /*}*/
     .loginlink{
         text-align: center;
     }
@@ -144,6 +67,26 @@
         text-align: center;
     }
 
+    #cal,#fri,#heart {
+        font-size: 80px;
+        padding: 15px;
+
+    }
+
+    #icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .picons{
+        font-size: 18px;
+    }
+
+    .picons2{
+        display: none;
+    }
+
 
 body {
     display: flex;
@@ -154,4 +97,4 @@ body {
 main {
     flex: 1 0 auto;
 }
-/*}*/
+}
