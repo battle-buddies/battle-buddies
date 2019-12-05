@@ -20,6 +20,8 @@ src/main/resources/application.properties
 *.iml
 *.ipr
 
+.DS_STORE
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
