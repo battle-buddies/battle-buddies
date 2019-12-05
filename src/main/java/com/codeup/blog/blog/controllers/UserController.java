@@ -26,11 +26,30 @@ public class UserController {
 //    }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        userDao.save(user);
-        return "redirect:/login";
+    public String saveUser(@ModelAttribute User user, Model vModel){
+        if (userDao.findByUsername(user.getUsername()) != null){
+
+            vModel.addAttribute("takenUsername", "That Username is already taken. ");
+            return "/users/login";
+
+        }else if(userDao.findByEmail(user.getEmail()) != null){
+
+            vModel.addAttribute("takenEmail", "That Email is already in use. ");
+            return "/users/login";
+
+        }else if (user.getEmail().isEmpty() || user.getPassword().isEmpty() || user.getUsername().isEmpty()){
+
+            vModel.addAttribute("missing", "Fill out all the forms" );
+            return "/users/login";
+
+        }else {
+
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            userDao.save(user);
+            return "redirect:/login";
+
+        }
     }
 
 }
