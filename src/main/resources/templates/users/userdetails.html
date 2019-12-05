@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <title>Tell us about yourself!</title>
 
 </head>
@@ -245,15 +247,12 @@
 
 
             </div>
-            <div class="file-field input-field col s3">
-                <div class="btn">
-                    <span>File</span>
-                    <input type="file" name="file" id="file"/>
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text"/>
-                </div>
-                    <label>Upload a profile picture</label>
+            <div class="input-field col s6">
+                    <input class="waves-effect waves-light btn" type="BUTTON" value="Pick Watermark" id="pickWatermark" onclick="pickMark()">
+                <th:block th:each="photoUrl: ${photoUrls}">
+                    <input id = "photUrl" type="hidden" th:name="photoUrl" th:field="*{url}"></span></input>
+                </th:block>
+                <label>Photo Upload</label>
             </div>
             <!--           row end-->
             <button class="waves-effect waves-light btn">Submit!</button>
@@ -263,6 +262,39 @@
 <!--    main container end-->
 
 <script>
+    // $.ajax({
+    //     url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + longStr + '.json?access_token=pk.eyJ1IjoiYnJpZGdldG1pbGxzIiwiYSI6ImNqemloYXVlazEzZGQzY3BoeTJ5N2xicmEifQ.c8m3gGOrooUHDV7g_frHMA',
+    //     type: 'GET',
+    //     success: function(){
+    //     }
+    // });
+    const client = filestack.init('A4exL4KURhqMMOSKMOzKwz');
+    var options = {
+        maxSize: 10 * 1024 * 1024,
+        accept: 'image/*',
+        uploadInBackground: false
+    };
+    var photo = "";
+    function pickMark() {
+        client.picker().open();
+        client.pick({//Only accepting files with a mimetype 'image/*'
+            accept: 'image/*',
+            //Only accepting at most 1 file
+            maxFiles: 1,
+
+        }).then(function (result) {
+
+            console.log(photo);
+            photo = result.filesUploaded[0].url;
+            $("#photoUrl").val(photo);
+            // addToForm();
+
+        });
+    }
+</script>
+
+
+    <script>
 
     $(document).ready(function () {
         $('select').material_select();
