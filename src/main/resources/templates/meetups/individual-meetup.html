@@ -90,7 +90,7 @@
     <div class="row" >
         <br>
         <div class="right-align">
-            <a th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
+            <a class="dark-link" th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
                 <i class="small material-icons">edit</i>
             </a>
         </div>
@@ -123,7 +123,7 @@
                             <button class="btn-clear waves-effect waves-light" ><i class=" small material-icons">favorite_border</i></button>
                         </form>
 
-                        <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
+                        <label>Meet Up Creator: <a class="dark-link" th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
                     </div>
                 </div>
             </div>
@@ -139,7 +139,7 @@
             <div class="input-field col s12">
                 <label >Add Comment</label>
                 <div class="right-align">
-                    <a href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text" type="submit">Send</a>
+                    <a  href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text dark-link" type="submit">Send</a>
                 </div>
                 <textarea id="comment" th:name="comment" class="materialize-textarea" data-length="2000"></textarea>
             </div>

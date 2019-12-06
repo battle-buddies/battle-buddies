@@ -22,7 +22,7 @@
         <div class="col s4" th:each="location: ${locations}">
             <div class="card card-small">
                 <div class="card-content">
-                    <a th:href="@{'/browse/meetups-locations/' + ${location.id}}">
+                    <a class="dark-link" th:href="@{'/browse/meetups-locations/' + ${location.id}}">
                         <span class="card-title" th:text="${location.location}"></span>
                     </a>
                 </div>
