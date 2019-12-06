@@ -19,8 +19,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String landing(Model Model) {
-        User loggedInUser = usersService.loggedInUser();
-        Model.addAttribute( "user",loggedInUser);
+        boolean isloggedInUser = usersService.isLoggedIn();
+        User loggedIn = usersService.loggedInUser();
+        Model.addAttribute( "user",isloggedInUser);
+        Model.addAttribute("loggedUser",loggedIn);
 
         return "home";
     }

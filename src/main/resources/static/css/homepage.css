@@ -14,6 +14,14 @@
         text-align: center;
     }
 
+    #otherdesktop {
+        display: none;
+
+    }
+
+    #deskfooter{
+        display: none;
+    }
 
     #desktop{
         display: none;
@@ -80,6 +88,13 @@
     }
 
     #mobilepara{
+        display: none;
+    }
+    #othermobile{
+        display: none;
+    }
+
+    #mobilefooter{
         display: none;
     }
 
