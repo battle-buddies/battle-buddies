@@ -40,6 +40,7 @@
         .fab {
             padding: 5px;
         }
+
     </style>
 
 </head>
@@ -66,7 +67,7 @@
 </div>
 
 
-    <div id="otherdesktop" class="section white">
+<!--    <div id="otherdesktop" class="section white">-->
 
         <div class="row container">
             <h2 class="header">ABOUT US</h2>
@@ -140,17 +141,7 @@
 
     <!--footer-->
 
-    <footer id="mobilefooter" class="page-footer grey darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s6 s12">
-                    <h5 class="white-text">Battle Buddies</h5>
-                    <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>
-                </div>
-            </div>
-        </div>
-
-    </footer>
+<th:block th:replace="fragments/footer :: footer"/>
 
 
 <!--JQUERY-->
