@@ -219,7 +219,7 @@
         width: 30%;
         padding: 0 50px;
         top: 20%;
-        right: 15%;
+        right: 12%;
         position: absolute;
         text-align: left;
 
@@ -327,6 +327,16 @@
     a {
         text-decoration: none;
         color: #2c7715;
+    }
+
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        color: #455a64;
+        opacity: 1 !important;
+    }
+
+    .logout-txt{
+        margin-top:.6em;
+        color:red;
     }
 
 }
