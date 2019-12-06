@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
     <th:block th:replace="fragments/header :: profile-main"/>
 
 
 </head>
 <style>
     body {
-        font-family: calibri;
+        font-family: 'Montserrat', sans-serif;
 
 
         /* Location of the image */
@@ -30,12 +31,9 @@
         background-color: #464646;
     }
 
-div.card-content{
-    padding-bottom: .5em !important
-}
-
-
-
+    div.card-content {
+        padding-bottom: .5em !important
+    }
 
 
     .container {
@@ -570,7 +568,7 @@ div.card-content{
     }
 
     .edit-btn {
-margin-left:1em !important;
+        margin-left: 1em !important;
         background-color: #ffff00 !important;
         color: black !important;
     }
@@ -594,115 +592,133 @@ margin-left:1em !important;
 
     .bio-txt {
         font-size: 20px;
+        margin-top: 0;
+        text-shadow: 1px 1px 2px black;
+        color: whitesmoke;
+
     }
-.pic-div{
-    display:flex;
-}
-    .pic-btn{
-        margin-left:1em;
+
+    .pic-div {
+        display: flex;
     }
-    .name-div{
-        display:flex;
+
+    .pic-btn {
+        margin-left: 1em;
     }
-    .f-name{
-        margin-bottom:0;
+
+    .name-div {
+        display: flex;
+        justify-content: center;
     }
-    .l-name{
+
+    .f-name {
+        text-shadow: 1px 1px 2px black;
+        margin-bottom: 0;
+        color: whitesmoke;
+        margin-left: .2em;
+    }
+
+    .l-name {
+        color: whitesmoke;
+        text-shadow: 1px 1px 2px black;
         margin-bottom: 0;
         margin-left: .2em;
     }
 
-    .btn-color{
+    .btn-color {
         background-color: #121e3e !important;
     }
 
 
-
-
-
-
-    #hexGrid {
+    .hexGrid {
         display: grid;
-        grid-gap:10px;
-        grid-template-columns: repeat(10,1fr);
+        grid-gap: 10px;
+        grid-template-columns: repeat(10, 1fr);
         width: 90%;
         margin: 0 auto;
         font-family: 'Raleway', sans-serif;
         font-size: 15px;
         list-style-type: none;
-        overflow:hidden;
+        overflow: hidden;
+        max-height: 18em;
     }
 
     .hex {
         grid-column-end: span 2;
         position: relative;
-        visibility:hidden;
-        outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+        visibility: hidden;
+        outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
     }
-    .hex::after{
-        content:'';
-        display:block;
-        padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+
+    .hex::after {
+        content: '';
+        display: block;
+        padding-bottom: 86.602%; /* =  100 / tan(60) * 1.5 */
     }
-    .hexIn{
-        margin-left:31em;
+
+    .hexIn {
+        margin-left: 31em;
         position: relative;
-        width:100%;
+        width: 100%;
         padding-bottom: 115.470%; /* =  width / sin(60) */
         overflow: hidden;
         visibility: hidden;
-        outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
-        -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
-        -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
-        transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+        outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+        -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+        -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+        transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
     }
+
     .hexIn * {
         position: absolute;
         visibility: visible;
-        outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+        outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
     }
+
     .hexLink {
-        display:block;
+        display: block;
         width: 100%;
         height: 100%;
         text-align: center;
         color: #fff;
         overflow: hidden;
-        -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
-        -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
-        transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+        -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+        -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+        transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
     }
 
     /*** HEX CONTENT **********************************************************************/
     .hex img {
         left: -100%;
         right: -100%;
-        width: auto;
+        width: 220px;
         height: 100%;
         margin: 0 auto;
-        -webkit-transform: rotate3d(0,0,0,0deg);
-        -ms-transform: rotate3d(0,0,0,0deg);
-        transform: rotate3d(0,0,0,0deg);
+        -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -ms-transform: rotate3d(0, 0, 0, 0deg);
+        transform: rotate3d(0, 0, 0, 0deg);
     }
 
     .hex h1, .hex p {
         width: 100%;
         padding: 5%;
-        box-sizing:border-box;
+        box-sizing: border-box;
         background-color: rgba(0, 128, 128, 0.8);
         font-weight: 300;
-        -webkit-transition:  -webkit-transform .2s ease-out, opacity .3s ease-out;
-        transition:          transform .2s ease-out, opacity .3s ease-out;
+        -webkit-transition: -webkit-transform .2s ease-out, opacity .3s ease-out;
+        transition: transform .2s ease-out, opacity .3s ease-out;
     }
+
     .hex h1 {
-        bottom: 50%;
-        padding-top:50%;
+        bottom: 38.5%;
+        padding-top: 50%;
         font-size: 1.5em;
         z-index: 1;
-        -webkit-transform:translate3d(0,-100%,0);
-        -ms-transform:translate3d(0,-100%,0);
-        transform:translate3d(0,-100%,0);
+        -webkit-transform: translate3d(0, -100%, 0);
+        -ms-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
     }
+
     .hex h1::after {
         content: '';
         position: absolute;
@@ -712,62 +728,75 @@ margin-left:1em !important;
         text-align: center;
         border-bottom: 1px solid #fff;
     }
+
     .hex p {
-        top: 50%;
-        padding-bottom:50%;
-        -webkit-transform:translate3d(0,100%,0);
-        -ms-transform:translate3d(0,100%,0);
-        transform:translate3d(0,100%,0);
+        top: 38.5%;
+        padding-bottom: 50%;
+        -webkit-transform: translate3d(0, 100%, 0);
+        -ms-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
     }
 
 
     /*** HOVER EFFECT  **********************************************************************/
     .hexLink:hover h1, .hexLink:focus h1,
-    .hexLink:hover p, .hexLink:focus p{
-        -webkit-transform:translate3d(0,0,0);
-        -ms-transform:translate3d(0,0,0);
-        transform:translate3d(0,0,0);
+    .hexLink:hover p, .hexLink:focus p {
+        -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 
     /*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
 
-    @media (min-width:1201px) { /* <- 5-4  hexagons per row */
-        #hexGrid{
+    @media (min-width: 1201px) {
+        /* <- 5-4  hexagons per row */
+        #hexGrid {
             padding-bottom: 4.4%;
         }
-        .hex:nth-child(9n+6){ /* first hexagon of even rows */
+
+        .hex:nth-child(9n+6) { /* first hexagon of even rows */
             grid-column-start: 2;
         }
     }
 
-    @media (max-width: 1200px) and (min-width:901px) { /* <- 4-3  hexagons per row */
-        #hexGrid{
-            grid-template-columns: repeat(8,1fr);
+    @media (max-width: 1200px) and (min-width: 901px) {
+        /* <- 4-3  hexagons per row */
+        #hexGrid {
+            grid-template-columns: repeat(8, 1fr);
             padding-bottom: 5.5%;
         }
-        .hex:nth-child(7n+5){ /* first hexagon of even rows */
+
+        .hex:nth-child(7n+5) { /* first hexagon of even rows */
             grid-column-start: 2;
         }
     }
 
-    @media (max-width: 900px) and (min-width:601px) { /* <- 3-2  hexagons per row */
-        #hexGrid{
-            grid-template-columns: repeat(6,1fr);
+    @media (max-width: 900px) and (min-width: 601px) {
+        /* <- 3-2  hexagons per row */
+        #hexGrid {
+            grid-template-columns: repeat(6, 1fr);
             padding-bottom: 7.4%;
         }
-        .hex:nth-child(5n+4){ /* first hexagon of even rows */
+
+        .hex:nth-child(5n+4) { /* first hexagon of even rows */
             grid-column-start: 2;
         }
     }
 
-    @media (max-width: 600px) { /* <- 2-1  hexagons per row */
-        #hexGrid{
-            grid-template-columns: repeat(4,1fr);
+    @media (max-width: 600px) {
+        /* <- 2-1  hexagons per row */
+        #hexGrid {
+            grid-template-columns: repeat(4, 1fr);
             padding-bottom: 11.2%;
-            grid-gap:5px;
+            grid-gap: 5px;
         }
-        .hex:nth-child(3n+3){ /* first hexagon of even rows */
+
+        .hex:nth-child(3n+3) { /* first hexagon of even rows */
             grid-column-start: 2;
+        }
+
+        .hexIn {
+            margin-left: 7em;
         }
     }
 
@@ -775,6 +804,17 @@ margin-left:1em !important;
         #hexGrid {
             font-size: 13px;
         }
+
+        .hexIn {
+            margin-left: 7em;
+        }
+    }
+
+    .info-box {
+        width: 25em;
+    }
+    .hex-right{
+        margin-left:0;
     }
 
 
@@ -797,73 +837,101 @@ margin-left:1em !important;
 </div>
 
 <div class="row">
+    <div class="name-div">
+        <h2 class="f-name" th:text=" ${user.getProfile().firstName}"></h2>
+        <h2 class="l-name" th:text="${user.getProfile().getLastName()}"></h2>
+        <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">
+        <span id="age" class="post-label"></span>
+    </div>
 
-    <div id="hexGrid">
+</div>
+
+
+<div class="row">
+    <div class="hexGrid">
         <div class="hex">
             <div class="hexIn">
                 <div class="hexLink" href="#">
                     <img height="250" th:width="250" th:if="${user.profile.photo != null}"
                          th:src="${user.profile.photo.url}" alt="">
-
-                </div>
-            </div>
-        </div></div>
-
-
-
-</div>
-
-
-<div class="container profile-top">
-    <div class="col s12">
-        <div class="user-detail card horizontal">
-            <div class="card-stacked">
-                <div class="card-content">
-                    <div class="name-div">
-                    <h2 class="f-name" th:text=" ${user.getProfile().firstName}"></h2>
-                    <h2 class="l-name" th:text="${user.getProfile().getLastName()}"></h2>
-                    </div>
-
-                    <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">
-                    <span id="age" class="post-label"></span>
-                    <p class="bio-txt" th:text=" ${user.getProfile().getBio()}"></p>
-                    <th:block th:each="location : ${user.getProfile().getLocation()}">
-                        <p th:text="${location.location}"></p>
-                    </th:block>
-                    <!--                    PHOTO FORMS-->
-                    <div class="pic-div">
-                        <div><input class="waves-effect  btn-color btn" type="BUTTON" value="Upload Picture"
-                                    id="pickWatermark" onclick="pickMark()"></div>
-                        <div>
-                            <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
-                                <input hidden th:name="picURL" id="photoURL">
-                                <button class="waves-effect btn-color btn pic-btn" id="confirm-picture">Save Picture</button>
-                            </form>
-                        </div>
-                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                       <div><a class="waves-effect  btn edit-btn" th:href="@{'/users/user-details-edit'}"><i
-                               class="material-icons left">account_box</i>Edit Profile</a>
-                       </div>
-                    </th:block>
-
-                    </div>
-                </div>
-                <div class="card-action">
-                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-                        <a id="btn-getInTouch" class="waves-effect  btn-color btn"><i class="material-icons left">account_box</i>Message
-                            Me</a>
-                    </th:block>
-
-
-                    <a class="waves-effect waves-light btn-color btn" th:if="${#authentication.principal.id != user.id}"
-                       th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="row info-box">
+    <div class="card-content center-align">
+<!--        <div class="name-div">-->
+<!--            <h2 class="f-name" th:text=" ${user.getProfile().firstName}"></h2>-->
+<!--            <h2 class="l-name" th:text="${user.getProfile().getLastName()}"></h2>-->
+<!--            <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">-->
+<!--            <span id="age" class="post-label"></span>-->
+<!--        </div>-->
+
+        <p class="bio-txt" th:text=" ${user.getProfile().getBio()}"></p>
+        <th:block th:each="location : ${user.getProfile().getLocation()}">
+            <p th:text="${location.location}"></p>
+        </th:block>
+        <!--                    PHOTO FORMS-->
+        <div class="pic-div">
+            <div><input class="waves-effect  btn-color btn" type="BUTTON" value="Upload Picture"
+                        id="pickWatermark" onclick="pickMark()"></div>
+            <div>
+                <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
+                    <input hidden th:name="picURL" id="photoURL">
+                    <button class="waves-effect btn-color btn pic-btn" id="confirm-picture">Save Picture</button>
+                </form>
+            </div>
+            <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                <div><a class="waves-effect  btn edit-btn" th:href="@{'/users/user-details-edit'}"><i
+                        class="material-icons left">account_box</i>Edit Profile</a>
+                </div>
+            </th:block>
+        </div>
+    </div>
+    <div class="card-stacked">
+        <div class="card-action">
+            <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
+                <a id="btn-getInTouch" class="waves-effect  btn-color btn"><i
+                        class="material-icons left">account_box</i>Message
+                    Me</a>
+            </th:block>
+
+
+            <a class="waves-effect waves-light btn-color btn" th:if="${#authentication.principal.id != user.id}"
+               th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--<div class="container profile-top">-->
+<!--    <div class="col s12">-->
+<!--        <div class="user-detail card horizontal">-->
+<!--            <div class="card-stacked">-->
+<!--                -->
+<!--                <div class="card-action">-->
+<!--                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">-->
+<!--                        <a id="btn-getInTouch" class="waves-effect  btn-color btn"><i class="material-icons left">account_box</i>Message-->
+<!--                            Me</a>-->
+<!--                    </th:block>-->
+
+
+<!--                    <a class="waves-effect waves-light btn-color btn" th:if="${#authentication.principal.id != user.id}"-->
+<!--                       th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>-->
+
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <div class="container">
@@ -909,39 +977,41 @@ margin-left:1em !important;
                         </li>
                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
                             class="tab col s3"><a href="#test2">Pending<span id="requested-badge"
-                                                                                        class="new badge"></span></a>
+                                                                             class="new badge"></span></a>
                         </li>
                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
                             class="tab col s3"><a href="#test3">Sent<span id="pending-badge"
-                                                                                      class="new badge"></span> </a>
+                                                                          class="new badge"></span> </a>
                         </li>
                         <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
                             class="tab col s3"><a href="#test4">Suggested<span id="suggested-badge"
-                                                                                        class="new badge"></span></a>
+                                                                               class="new badge"></span></a>
                         </li>
                     </ul>
                 </div>
+
 
                 <!--                        ACCEPTED BUDDIES-->
                 <div id="test1" class="col s12">
                     <div id="friends" class="col s12  container">
                         <h4> Accepted Buddies List</h4>
-                        <th:block th:each="friend : ${user.getRelationships()}"
-                                  th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
-                            <div class="row">
-                                <div class="col s3 ">
-                                    <div class="card blue-grey darken-1">
-                                        <div class="card-content white-text buds">
-                                            <a th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span
-                                                    class="card-title"
-                                                    th:text="${friend.getFriend().profile.firstName }"></span></a>
-                                        </div>
+                        <ul class="hexGrid">
+                            <th:block th:each="friend : ${user.getRelationships()}"
+                                      th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+                                <li class="hex">
+                                    <div class="hexIn hex-right">
+                                        <a class="hexLink" th:href="@{'/users/profile/' + ${friend.getFriend().id}}">
+                                            <img th:src="${friend.getFriend().profile.getPhoto().getUrl()}" alt=""/>
+                                            <h1 th:text="${friend.getFriend().profile.firstName }">This is a title</h1>
+                                            <th:block th:each="branch : ${friend.getFriend().profile.getBranch()}">
+                                            <p th:text="${branch.branch}"></p>
+                                            </th:block>
 
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                        </th:block>
-
+                                </li>
+                            </th:block>
+                        </ul>
                     </div>
                 </div>
 
@@ -1246,6 +1316,17 @@ margin-left:1em !important;
 </script>
 
 </body>
+<footer id="deskfooter" class="page-footer grey darken-3">
+    <div>
+        <div class="row">
+            <div class="col s6 s12">
+                <h5 class="white-text">Battle Buddies</h5>
+                <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>
+            </div>
+        </div>
+    </div>
+
+</footer>
 </html>
 
 
