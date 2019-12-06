@@ -1,8 +1,27 @@
-.navdesign{
-    height:99px !important;
-    line-height: 99px !important;
-}
+
 
 .brand-logo{
+    margin-top: .4em !important;
     height: 100px;
+}
+
+.right{
+    margin-top: .3em !important;
+
+
+}
+a.nav-link{
+    font-size:1.3em !important;
+
+}
+.left{
+    margin-top: .3em !important;
+}
+
+.nav-wrapper{
+    background-color: #01153a !important;
+}
+
+.nav-color{
+    background-color: #121e3e !important;
 }

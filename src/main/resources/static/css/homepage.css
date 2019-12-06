@@ -110,8 +110,18 @@
         width: 520px;
 
     }
+    .home-icons{
+        margin-left:1em;
+    }
 
+.nav-color{
+    background-color: #121e3e !important;
+}
 
+    a.nav-link{
+        font-size:1.3em !important;
+
+    }
 body {
     display: flex;
     max-height: 100vh;

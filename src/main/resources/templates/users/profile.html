@@ -1,20 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BattleBuddies</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"/>
-    <link href="https://ajax.googleapis.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+    <th:block th:replace="fragments/header :: profile-main"/>
+
 
 </head>
 <style>
@@ -603,7 +591,19 @@
 </head>
 
 <body>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <h4>Delete Row</h4>
+        <p>Are you sure to delete this row?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Yes</a>
+    </div>
+</div>
 
 
 
@@ -636,13 +636,13 @@
                     <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
 
 <!--                    PHOTO FORMS-->
-                    <div>
-                        <input type="BUTTON" value="Pick Watermark" id="pickWatermark" onclick="pickMark()">
+
+                       <input class="waves-effect waves-light btn" type="BUTTON" value="Upload Picture" id="pickWatermark" onclick="pickMark()">
                         <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
                             <input hidden th:name="picURL" id="photoURL">
-                            <button id="confirm-picture">Submit Picture</button>
+                            <a class="waves-effect waves-light btn" id="confirm-picture">Save Picture</a>
                         </form>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -800,6 +800,7 @@
     </form>
 </div>
 
+
 <div class="container">
     <div th:each="comment : ${comments}">
         <div class="row">
@@ -809,8 +810,8 @@
                         <div class="flex">
                             <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
                             <form  th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}" th:action="@{'/profile/comment/delete/'}" method="post">
-                                <input type="hidden" th:name="deleteComment" th:value="${comment.id}">
-                                <button  class=" btn-clear waves-effect waves-light red-text"> <i class="small material-icons">delete_forever</i></button>
+                                <input id="confirm_delete" type="hidden" th:name="deleteComment" th:value="${comment.id}">
+                                <button href="#modal3"  class=" btn-clear waves-effect waves-light red-text modal-trigger"> <i class="small material-icons">delete_forever</i></button>
                             </form>
                         </div>
 
@@ -823,6 +824,7 @@
 </div>
 
 <script>
+
 
     function getAge(DOB) {
         var today = new Date();
@@ -851,6 +853,7 @@
 
     $(document).ready(function () {
         $('.tabs').tabs();
+        $('.modal').modal();
     });
 
     WebFontConfig = {

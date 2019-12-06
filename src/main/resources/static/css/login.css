@@ -165,7 +165,7 @@
         top: 50%;
         transform: translateY(-50%);
         text-align: center;
-        width: 70%;
+        width: 50%;
         right: 0;
         left: 0;
         margin: auto;
@@ -208,9 +208,9 @@
 
     .login-info-box {
         width: 30%;
-        padding: 0 50px;
+        padding: 0;
         top: 20%;
-        left: 18%;
+        left: 10%;
         position: absolute;
         text-align: left;
     }
@@ -219,7 +219,7 @@
         width: 30%;
         padding: 0 50px;
         top: 20%;
-        right: 15%;
+        right: 12%;
         position: absolute;
         text-align: left;
 
@@ -243,6 +243,21 @@
     .show-log-panel {
         display: block;
         opacity: 0.9;
+    }
+    .confirm_password{
+        margin-bottom: 0 !important;
+    }
+
+    .login-btns{
+        border: 1px solid #9E9E9E;
+        padding: 5px 5px;
+        width: 150px;
+        display: block;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 18px;
     }
 
     .login-show input[type="text"], .login-show input[type="password"] {
@@ -312,6 +327,16 @@
     a {
         text-decoration: none;
         color: #2c7715;
+    }
+
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        color: #455a64;
+        opacity: 1 !important;
+    }
+
+    .logout-txt{
+        margin-top:.6em;
+        color:red;
     }
 
 }

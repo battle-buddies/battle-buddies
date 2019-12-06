@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div th:if="${param.logout}">
+<div class="logout-txt" th:if="${param.logout}">
     You have been logged out.
 </div>
 
@@ -48,7 +48,7 @@
                 <p class="red-text"  th:text="${takenEmail}"></p>
                 <input id="username" name="username" type="text" placeholder="Username" required="required"/>
                 <input id="password" name="password" type="password" placeholder="Password" required="required"/>
-                <input type="submit" value="Log In"/>
+                <input class="login-btns" type="submit" value="Log In"/>
             </form>
         </div>
         <div class="register-show">
@@ -58,7 +58,7 @@
                 <input type="email" th:field="*{email}" placeholder="Email" required="required">
                 <input class="regpass" type="password" th:field="*{password}" placeholder="Password" required="required">
                 <input class="confirm_password" type="password" placeholder=" Confirm Password" required="required"><span class="message"></span><br>
-                <input type="submit" value="Register">
+                <input class="login-btns" type="submit" value="Register">
             </form>
         </div>
     </div>
