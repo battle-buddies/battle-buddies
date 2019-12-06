@@ -77,6 +77,13 @@
             display: none;
         }
 
+        .flex h1{
+            color: #424242;
+        }
+
+        .lh{
+            line-height: 8em;
+        }
 
     </style>
 
@@ -86,14 +93,15 @@
 
 
 <div class="container" >
-    <h1 th:text="${meetup.title}"/>
+    <div class="flex">
+        <h1 th:text="${meetup.title}"/>
+        <a class="dark-link lh" th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
+            <i class="small material-icons">edit</i>
+        </a>
+    </div>
     <div class="row" >
-        <br>
-        <div class="right-align">
-            <a class="dark-link" th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
-                <i class="small material-icons">edit</i>
-            </a>
-        </div>
+
+
 
         <input type="hidden" id="address" th:value="${meetup.address}">
         <div class="col s12" >
