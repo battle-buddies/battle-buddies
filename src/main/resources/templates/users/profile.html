@@ -30,7 +30,10 @@
         background-color: #464646;
     }
 
-
+    .flex{
+        display: flex;
+        justify-content: space-between;
+    }
 
     .container {
         background-color: white !important;
@@ -556,6 +559,7 @@
         #Portfolio, #Edu-detail, #Basic-detail {
             height: auto;
         }
+
     }
 
     .profile-top {
@@ -632,18 +636,20 @@
                     </th:block>
 
 
-                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                        <a class="waves-effect waves-light btn edit-btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
-                    </th:block>
-                    <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
 
-<!--                    PHOTO FORMS-->
+                        <div class="flex">
+                            <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                                <a class="waves-effect waves-light btn edit-btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
+                            </th:block>
+                            <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+                            <!--                    PHOTO FORMS-->
+                            <input class="waves-effect waves-light btn" type="BUTTON" value="Upload Picture" id="pickWatermark" onclick="pickMark()">
+                            <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
+                                <input hidden th:name="picURL" id="photoURL">
+                                <a class="waves-effect waves-light btn" id="confirm-picture">Save Picture</a>
+                            </form>
+                        </div>
 
-                       <input class="waves-effect waves-light btn" type="BUTTON" value="Upload Picture" id="pickWatermark" onclick="pickMark()">
-                        <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
-                            <input hidden th:name="picURL" id="photoURL">
-                            <a class="waves-effect waves-light btn" id="confirm-picture">Save Picture</a>
-                        </form>
 
                 </div>
             </div>
