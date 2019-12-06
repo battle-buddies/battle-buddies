@@ -13,10 +13,12 @@
 </head>
 <body>
 
-<!--<div id="blue" class="block">-->
+
 <div>
     <th:block th:replace="fragments/nav-bar :: home-blue"/>
 </div>
+
+<!--DESKTOP VIEW-->
 
 <div id="desktop">
 
@@ -26,7 +28,7 @@
 <div class="section white">
     <div class="row container">
         <h2 class="header">Welcome to Battle Buddies!</h2>
-        <p id="info" class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
+        <p id="info" class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, hobbies, and local meetups all in one place just for you!</p>
         <div id="icons">
         <i id="cal" class="fas fa-calendar-alt"></i>
             <p class="picons">Create and attend meetups!</p>
@@ -38,20 +40,19 @@
     </div>
     <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 </div>
-<div class="parallax-container">
-    <div class="parallax"><img src="/img/summer-fun2.jpg"></div>
-</div>
 </div>
 
+
+<!--MOBILE VIEW-->
 
 <div id="mobilepara">
-<div class="parallax-container">
-    <div class="parallax"><img src="/img/flag_bgmobile.jpg"></div>
+<div class="parallax-container mobilep">
+    <div class="parallax"><img src="/img/flag_bgmobile copy.jpg"></div>
 </div>
 <div class="section white">
     <div class="row container">
         <h2 class="header">Welcome to Battle Buddies!</h2>
-        <p id="infomobile" class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>
+        <p id="infomobile" class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, hobbies, and local meetups all in one place just for you!</p>
         <div id="picons2">
             <p class="picons2"><i id="cal2" class="fas fa-calendar-alt"></i>Create and attend meetups!</p>
             <p class="picons2"><i id="fri2" class="fas fa-user-friends"></i>Chat and connect with new friends!</p>
@@ -60,22 +61,18 @@
     </div>
     <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 </div>
-<div class="parallax-container">
-    <div class="parallax"><img src="/img/summer-funmobile.jpg"></div>
-</div>
-
 </div>
 
 
 
 
-
+<!--FOOTER-->
 
 
 <footer class="page-footer grey darken-3">
     <div class="container">
         <div class="row">
-            <div class="col l6 s12">
+            <div class="col s6 s12">
                 <h5 class="white-text">Battle Buddies</h5>
                 <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>
             </div>
@@ -84,44 +81,7 @@
 
 </footer>
 
-
-
-
-
-
-
-
-<!--<div id="main">-->
-
-<!--<div id="caro">-->
-<!--    <div class="carousel carousel-slider">-->
-<!--        <a class="carousel-item" href="#one!"><img src="/img/crew.jpg"></a>-->
-<!--        <a class="carousel-item" href="#two!"><img src="/img/friends.jpg"></a>-->
-<!--        <a class="carousel-item" href="#three!"><img src="/img/girls.jpg"></a>-->
-<!--        <a class="carousel-item" href="#four!"><img src="/img/guys.jpg"></a>-->
-<!--    </div>-->
-<!--</div>-->
-<!--    <div class="container mainC">-->
-
-<!--            <div class="col s6">-->
-<!--                <div class="card grey darken-3">-->
-<!--                    <div class="card-content white-text">-->
-<!--                        <h1 style="color:white; font-size: 40px;" class="card-title">Welcome to Battle Buddies!</h1>-->
-<!--                        <p style="font-size:20px; text-align: center" class="cardbody">It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! </p>-->
-<!--                        <p style="font-size: 20px; text-align: center" class="cardbody">Battle Buddies provides a way to make new military friends in the area based off of common traits, goals, and local meetups all in one place just for you!</p>-->
-<!--                    </div>-->
-<!--                    <div class="card-action">-->
-<!--                        <h5><a style="color:white;" class="loginlink" th:href="@{'/login'}">Login or Sign up!</a></h5>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--    </div>-->
-
-
-
-
-
-<!--</div>-->
+<!--JQUERY-->
 
 <script>
     $(".button-collapse").sideNav();
