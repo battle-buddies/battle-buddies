@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/browse-style.css">
 
     <th:block th:replace="fragments/header :: main-header"/>
     <title th:value="${meetup.title}"></title>
@@ -68,11 +69,19 @@
             overflow: hidden;
         }
 
+        .mapboxgl-ctrl-geocoder--input{
+            display: none;
+        }
+
+        .mapboxgl-ctrl-geocoder--icon {
+            display: none;
+        }
+
 
     </style>
 
 </head>
-<th:block th:replace="fragments/nav-bar :: browse"/>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <body>
 
 

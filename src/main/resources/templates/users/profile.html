@@ -30,6 +30,12 @@
         background-color: #464646;
     }
 
+
+    /*.flex{*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*}*/
+
 div.card-content{
     padding-bottom: .5em !important
 }
@@ -562,6 +568,7 @@ div.card-content{
         #Portfolio, #Edu-detail, #Basic-detail {
             height: auto;
         }
+
     }
 
     .profile-top {
@@ -615,9 +622,6 @@ margin-left:1em !important;
     .btn-color{
         background-color: #121e3e !important;
     }
-
-
-
 
 
 
@@ -778,6 +782,7 @@ margin-left:1em !important;
     }
 
 
+>>>>>>> master
 </style>
 </head>
 
@@ -857,6 +862,7 @@ margin-left:1em !important;
 
                     <a class="waves-effect waves-light btn-color btn" th:if="${#authentication.principal.id != user.id}"
                        th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+
 
 
                 </div>

@@ -3,6 +3,7 @@
 <th:block th:fragment="main-nav">
     <nav>
 
+
         <div class="nav-wrapper nav-color navdesign">
             <a href="/" class="brand-logo center"><img class="responsive-img" src="/img/battlelogo_4.png" alt="Battle Buddies Logo"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -19,7 +20,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
             <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
+                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meet Ups</a></li>
             </ul>
                 </th:block>
 
@@ -49,7 +50,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
-                        <li><a th:href="@{'/meetups/'}">Meetups</a></li>
+                        <li><a th:href="@{'/meetups/'}">Meet Ups</a></li>
                     </ul>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
@@ -69,214 +70,11 @@
     </nav>
 </th:block>
 
-<!--BROWSE NAV-->
-
-<th:block th:fragment="browse">
-    <nav>
-        <div class="nav-wrapper nav-color navdesign">
-            <a href="/" class="brand-logo center"><img class="responsive-img" src="/img/battlelogo_4.png" alt="Battle Buddies Logo"></a>
-            <a href="#" data-activates="mobile-demo2" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down">
-                <li><a class="nav-link" href="/">Home</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()">
-                <li class="active"><a class="nav-link" href="/login">Login</a></li>
-            </ul>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
-                </ul>
-            </th:block>
-
-                <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
-                    <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                        <a class="nav-link" href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
-
-                    </form></li>
-                </ul>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="right hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
-                </ul>
-            </th:block>
 
 
-            <!--           MOBILE VIEW FOR BROWSE-->
-            <ul class="side-nav" id="mobile-demo2">
-                <li><a href="/">Home</a></li>
-                <ul sec:authorize="!isAuthenticated()">
-                    <li class="active"><a class="nav-link" href="/login">Login</a></li>
-                </ul>
-                <th:block sec:authorize="isAuthenticated()">
-                    <ul>
-                        <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
-                    </ul>
-                </th:block>
-
-
-                <th:block sec:authorize="isAuthenticated()">
-                    <ul>
-                        <li><a class="nav-link" th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
-                    </ul>
-                </th:block>
-
-                <ul sec:authorize="isAuthenticated()">
-                    <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                        <a class="nav-link" href="#" onclick="document.getElementById('logout').submit();">Logout</a>
-
-                    </form></li>
-                </ul>
-
-            </ul>
-        </div>
-    </nav>
-</th:block>
-
-
-<!--PROFILE NAV-->
-
-<th:block th:fragment="profile">
-    <nav>
-        <div class="nav-wrapper nav-color navdesign">
-            <a href="/" class="brand-logo center"><img class="responsive-img" src="/img/battlelogo_4.png" alt="Battle Buddies Logo"></a>
-            <a href="#" data-activates="mobile-demo3" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down">
-                <li><a class="nav-link" href="/">Home</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()"><li class="active"><a class="nav-link" href="/login">Login</a></li></ul>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
-                </ul>
-            </th:block>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
-                </ul>
-            </th:block>
-                <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
-                    <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                        <a href="#" class="nav-link"  onclick="document.getElementById('logout').submit();">Logout</a>
-
-                    </form></li>
-                </ul>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="right hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
-                </ul>
-            </th:block>
-
-
-
-            <!--           MOBILE VIEW FOR PROFILE-->
-            <ul class="side-nav" id="mobile-demo3">
-                <li><a href="/">Home</a></li>
-                <ul sec:authorize="!isAuthenticated()">
-                    <li class="active"><a class="nav-link" href="/login">Login</a></li>
-                </ul>
-
-                <th:block sec:authorize="isAuthenticated()">
-                    <ul>
-                        <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
-                    </ul>
-                </th:block>
-
-                <th:block sec:authorize="isAuthenticated()">
-                    <ul>
-                        <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
-                    </ul>
-                </th:block>
-                    <ul sec:authorize="isAuthenticated()">
-                        <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                            <a href="#" class="nav-link"  onclick="document.getElementById('logout').submit();">Logout</a>
-
-                        </form></li>
-                    </ul>
-            </ul>
-        </div>
-    </nav>
-</th:block>
-
-
-<!--MEETUPS NAV-->
-
-<th:block th:fragment="meetups">
-    <nav>
-        <div class="nav-wrapper nav-color navdesign">
-            <a href="/" class="brand-logo center"><img class="responsive-img" src="/img/battlelogo_4.png" alt="Battle Buddies Logo"></a>
-            <a href="#" data-activates="mobile-demo4" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down">
-                <li><a class="nav-link" href="/">Home</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()">
-                <li class="active"><a class="nav-link" href="/login">Login</a></li>
-            </ul>
-
-                <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
-                    <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                        <a href="#" class="nav-link"  onclick="document.getElementById('logout').submit();">Logout</a>
-
-                    </form></li>
-                </ul>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
-                </ul>
-            </th:block>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
-                </ul>
-            </th:block>
-
-            <th:block sec:authorize="isAuthenticated()">
-                <ul class="right hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
-                </ul>
-            </th:block>
-
-
-
-            <!--           MOBILE VIEW FOR MEETUPS-->
-            <ul class="side-nav" id="mobile-demo4">
-                <li><a href="/">Home</a></li>
-                <ul sec:authorize="!isAuthenticated()">
-                    <li class="active"><a class="nav-link" href="/login">Login</a></li>
-                </ul>
-
-                <th:block sec:authorize="isAuthenticated()">
-                    <ul>
-                        <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
-                    </ul>
-                </th:block>
-
-                <th:block sec:authorize="isAuthenticated()">
-                    <ul>
-                        <li><a class="nav-link" th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
-                    </ul>
-                </th:block>
-
-                    <ul sec:authorize="isAuthenticated()">
-                        <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                            <a href="#" class="nav-link"  onclick="document.getElementById('logout').submit();">Logout</a>
-
-                        </form></li>
-                    </ul>
-
-            </ul>
-        </div>
-    </nav>
-</th:block>
 
 <th:block th:fragment="home-blue">
-    <nav>
+    <nav class="navbar-fixed">
 <!--        navdesign-->
         <div class="nav-wrapper nav-color">
             <a href="#" data-activates="mobile-demo5" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -294,7 +92,7 @@
             </th:block>
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
+                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meet Ups</a></li>
                 </ul>
             </th:block>
 
@@ -325,7 +123,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
-                        <li><a th:href="@{'/meetups/'}">Meetups</a></li>
+                        <li><a th:href="@{'/meetups/'}">Meet Ups</a></li>
                     </ul>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
