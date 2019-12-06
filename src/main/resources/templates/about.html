@@ -36,6 +36,10 @@
             font-family: 'Raleway';
             font-size: 18px;
         }
+
+        .fab {
+            padding: 5px;
+        }
     </style>
 
 </head>
@@ -60,7 +64,7 @@
         </div>
     </div>
 </div>
-<!--DESKTOP VIEW-->
+
 
     <div id="otherdesktop" class="section white">
 
@@ -133,36 +137,6 @@
         </div>
     </div>
     <!--</div>-->
-    <!--footer-->
-
-    <footer id="deskfooter" class="page-footer grey darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s6 s12">
-                    <h5 class="white-text">Battle Buddies</h5>
-                    <p class="grey-text text-lighten-4"><a th:href="@{'/'}">Home</a></p>
-                </div>
-            </div>
-        </div>
-
-    </footer>
-
-
-<!--MOBILE VIEW-->
-
-<div id="mobilepara">
-    <div class="parallax-container mobilep">
-        <div class="parallax"><img src="/img/flag_bgmobile copy.jpg"></div>
-    </div>
-</div>
-<th:block th:if="${user == false}">
-    <div id="othermobile" class="section white">
-        <div class="row container">
-
-
-        </div>
-        ]
-    </div>
 
     <!--footer-->
 
@@ -177,10 +151,6 @@
         </div>
 
     </footer>
-
-</th:block>
-
-
 
 
 <!--JQUERY-->
