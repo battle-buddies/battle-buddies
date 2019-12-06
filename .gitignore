@@ -21,6 +21,8 @@ src/main/resources/application.properties
 *.ipr
 *.DS_store
 
+.DS_STORE
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
