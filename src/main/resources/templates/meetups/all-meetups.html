@@ -44,11 +44,11 @@
                         <div class="card-title">
                             <div class="flex">
 
-                                <a th:href="@{'/meetups/' + ${meetup.id}}">
+                                <a class="dark-link" th:href="@{'/meetups/' + ${meetup.id}}">
                                     <h5  th:text="${meetup.title}"></h5>
                                 </a>
 
-                                <a th:href="@{'/browse/meetups-locations/' + ${meetup.location.id}}">
+                                <a class="dark-link" th:href="@{'/browse/meetups-locations/' + ${meetup.location.id}}">
                                     <h5 th:text="${meetup.location.location}"></h5>
                                 </a>
                             </div>

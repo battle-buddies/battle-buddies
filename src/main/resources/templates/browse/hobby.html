@@ -23,7 +23,7 @@
         <div class="col s4" th:each="profile: ${profiles}">
             <div class="card card-small">
                 <div class="card-content">
-                    <a th:href="@{'/users/profile/' + ${profile.getUser().id}}">
+                    <a class="dark-link" th:href="@{'/users/profile/' + ${profile.getUser().id}}">
                         <span class="card-title" th:text="${profile.firstName + ' '+ profile.lastName}"></span>
                     </a>
                 </div>
