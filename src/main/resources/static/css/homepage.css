@@ -114,6 +114,10 @@
         margin-left:1em;
     }
 
+    .hiUser{
+        color:#121e3e;
+    }
+
 .nav-color{
     background-color: #121e3e !important;
 }
@@ -126,6 +130,23 @@ body {
     display: flex;
     max-height: 100vh;
     flex-direction: column;
+}
+
+#hi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #hi2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.link{
+    text-align: center;
+
 }
 
 /*main {*/

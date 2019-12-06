@@ -16,9 +16,7 @@
 </head>
 <body>
 
-<div class="logout-txt" th:if="${param.logout}">
-    You have been logged out.
-</div>
+
 
 <!--    <p th:if="${!missing.isEmpty()}" class="alert alert-danger" role="alert" th:text="${missing}" ></p>-->
 
@@ -42,6 +40,9 @@
             <form th:action="@{/login}" method="post">
                 <div class="alert alert-danger" role="alert" th:if="${param.error}">
                     Invalid Username and Password.
+                </div>
+                <div class="logout-txt alert alert-info" th:if="${param.logout}">
+                    You have been logged out.
                 </div>
                 <h2>LOGIN</h2>
                 <p class="red-text" th:text="${takenUsername}"></p>
