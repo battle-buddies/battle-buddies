@@ -14,12 +14,6 @@
         text-align: center;
     }
 
-    /*#cal,#fri,#heart {*/
-    /*    font-size: 40px;*/
-    /*    padding: 5px;*/
-
-    /*}*/
-
 
     #desktop{
         display: none;
@@ -32,10 +26,6 @@
         font-size: 18px;
     }
 
-
-    .parallax-container {
-        height: 200px;
-    }
 
     #cal2,#fri2,#heart2 {
         font-size: 20px;
@@ -51,6 +41,10 @@
 
     main {
         flex: 1 0 auto;
+    }
+
+    .mobilep {
+        height: 200px;
     }
 
 }
@@ -89,18 +83,32 @@
         display: none;
     }
 
-    /*.parallax-container {*/
-    /*    height: 370px;*/
-    /*}*/
+    .parallax-container {
+        height: 370px;
+    }
+    .transbox {
+        margin-top: 11em !important;
+    }
+
+    .battlelogo{
+        height:80px;
+        width: 520px;
+
+    }
 
 
 body {
     display: flex;
-    min-height: 100vh;
+    max-height: 100vh;
     flex-direction: column;
 }
 
-main {
-    flex: 1 0 auto;
-}
+/*main {*/
+/*    flex: 1 0 auto;*/
+/*}*/
+
+    .page-footer{
+        height: 200px;
+        width: auto;
+    }
 }

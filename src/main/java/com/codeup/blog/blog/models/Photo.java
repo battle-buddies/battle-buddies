@@ -14,8 +14,7 @@ public class Photo {
     private String url;
 
 
-    @ManyToOne
-    @JoinColumn (name = "profile_id")
+    @OneToOne
     private Profile profile;
 
     public Photo(String url) {

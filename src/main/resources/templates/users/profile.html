@@ -14,8 +14,8 @@
     <link href="https://ajax.googleapis.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js">
-    </script>
+    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+
 </head>
 <style>
     body {
@@ -603,18 +603,15 @@
 </head>
 
 <body>
-<!--    MESSAGES-->
 
-<th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-</th:block>
+
+
 
 <div class="container profile-top">
     <div class="col s12">
         <div class="user-detail card horizontal">
             <div class="hex">
-                <th:block th:each=" photo: ${user.getProfile().getPhotos()}">
-                    <img class="responsive-img post-img" th:if="${photo.getUrl() != null}" th:src="@{${'/uploads/' + photo.getUrl()}}"/>
-                </th:block>
+                <img height="250" th:width="250" th:if="${user.profile.photo != null}" th:src="${user.profile.photo.url}" alt="">
             </div>
             <div class="card-stacked">
                 <div class="card-content">
@@ -628,13 +625,24 @@
                     </th:block>
                 </div>
                 <div class="card-action">
-                    <a href="#" type="button" class="waves-effect waves-light btn msg-btn"><i
-                            class="material-icons left">message</i>
-                        Message Me</a>
+                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
+                    <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+                    </th:block>
+
+
                     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                         <a class="waves-effect waves-light btn edit-btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
                     </th:block>
                     <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+
+<!--                    PHOTO FORMS-->
+                    <div>
+                        <input type="BUTTON" value="Pick Watermark" id="pickWatermark" onclick="pickMark()">
+                        <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
+                            <input hidden th:name="picURL" id="photoURL">
+                            <button id="confirm-picture">Submit Picture</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -693,7 +701,7 @@
                             <div class="row">
                                 <div class="col s3 ">
                                     <div class="card blue-grey darken-1">
-                                        <div class="card-content white-text buddies">
+                                        <div class="card-content white-text buds">
                                             <a   th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span class="card-title" th:text="${friend.getFriend().profile.firstName }"></span></a>
                                         </div>
 
@@ -872,71 +880,51 @@
 <!-- TalkJS initialization code, which we'll customize in the next steps -->
 <script>
 
-
     var currentUser;
     var otherUser;
     var pathVariable =location.pathname.split("/")[3];
-
-
-    $('.message').click(function () {
-        otherID = parseInt($(this).val()) + pathVariable;
-
-        fetch("/users/chat/" + otherID)
-            .then(response => response.json())
-            .then(data => {
-                currentUser = data[0];
-                otherUser = data[1];
-                logDataset();
+    fetch("/users/chat/" + pathVariable)
+        .then(response => response.json())
+        .then(data => {
+            currentUser = data[0];
+            otherUser = data[1];
+            logDataset();
+        });
+    function logDataset () {
+        console.log(currentUser.email);
+        Talk.ready.then(function() {
+            var me = new Talk.User({
+                id: currentUser.id,
+                name: currentUser.profile.firstName,
+                email: currentUser.email,
             });
-
-        function logDataset () {
-            console.log(currentUser.email);
-
-            Talk.ready.then(function() {
-
-                var me = new Talk.User({
-                    id: currentUser.id,
-                    name: currentUser.profile.firstName,
-                    email: currentUser.email,
-
-                });
-                window.talkSession = new Talk.Session({
-                    appId: "toAwBOgu",
-                    me: me
-                });
-
-
-
-
-                var other = new Talk.User({
-                    id: otherUser.id,
-                    name: otherUser.profile.firstName,
-                    email: otherUser.email,
-                });
-
-
-
-                var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
-                conversation.setParticipant(me);
-                conversation.setParticipant(other);
-                var popup = talkSession.createPopup(conversation, { keepOpen: false });
-                popup.mount({ show: false });
-
-                var button = document.getElementById("btn-getInTouch");
-                button.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    popup.show();
-                });
-
+            window.talkSession = new Talk.Session({
+                appId: "toAwBOgu",
+                me: me
             });
-        }
-    });
+            var other = new Talk.User({
+                id: otherUser.id,
+                name: otherUser.profile.firstName,
+                email: otherUser.email,
+            });
+            var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+            var popup = talkSession.createPopup(conversation, { keepOpen: false });
+            popup.mount({ show: false });
+            var button = document.getElementById("btn-getInTouch");
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.show();
+            });
+        });
+    }
 
 
 
 
 
-    let buddiesCount = $('.buddies').length;
+    let buddiesCount = $('.buds').length;
     $('#buddies-badge').text(buddiesCount);
 
     let requestedCount = $('.requested').length;
@@ -947,6 +935,48 @@
 
     let suggestedCount = $('.suggested').length;
     $('#suggested-badge').text(suggestedCount);
+
+</script>
+
+<!--FileStack Photo Stuff-->
+<script>
+
+
+    const client = filestack.init('A4exL4KURhqMMOSKMOzKwz');
+
+    var watermarkHandle = '';
+
+    //Function pickMark() will not receive the result object back
+    function pickMark() {
+        console.log("Picking Watermark");
+        client.pick({
+            accept:'image/*',
+            maxFiles: 1,
+        }).then(function(result) {//Taking the results object in as 'result'
+            //Putting the result in a string, and printing it to the console
+            console.log('result should exist by now');
+            console.log('result is ' + result);
+            console.log(JSON.stringify(result));
+            //Sets the watermark handle to the handle of the first file in the result
+            watermarkHandle = result.filesUploaded[0].url;
+            //Logs the new watermark handle in the console
+            console.log(watermarkHandle);
+            return watermarkHandle;
+        }).then(function (result) {
+            addURL(result);
+        });
+    }
+
+    function addURL(str){
+        $('#photoURL').val(str);
+    }
+
+    $('#confirm-picture').on('click', function () {
+        // $('#photoURL').val(watermarkHandle);
+        console.log($('#photoURL').val());
+        console.log(watermarkHandle);
+
+    });
 
 </script>
 
