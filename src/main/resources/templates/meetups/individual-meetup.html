@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/browse-style.css">
 
     <th:block th:replace="fragments/header :: main-header"/>
     <title th:value="${meetup.title}"></title>
@@ -68,23 +69,42 @@
             overflow: hidden;
         }
 
+        .mapboxgl-ctrl-geocoder--input{
+            display: none;
+        }
 
+        .mapboxgl-ctrl-geocoder--icon {
+            display: none;
+        }
+
+        .flex h1{
+            color: #424242;
+        }
+
+        .lh{
+            line-height: 8em;
+        }
+
+        .container{
+            margin-top: 2em;
+        }
     </style>
 
 </head>
-<th:block th:replace="fragments/nav-bar :: browse"/>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <body>
 
 
 <div class="container" >
-    <h1 th:text="${meetup.title}"/>
+    <div class="flex">
+        <h1 th:text="${meetup.title}"/>
+        <a class="dark-link lh" th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
+            <i class="small material-icons">edit</i>
+        </a>
+    </div>
     <div class="row" >
-        <br>
-        <div class="right-align">
-            <a th:if="${#authentication.principal.id == meetup.user.id}" th:href="@{'/meetups/edit/' + ${meetup.id}}">
-                <i class="small material-icons">edit</i>
-            </a>
-        </div>
+
+
 
         <input type="hidden" id="address" th:value="${meetup.address}">
         <div class="col s12" >
@@ -114,33 +134,26 @@
                             <button class="btn-clear waves-effect waves-light" ><i class=" small material-icons">favorite_border</i></button>
                         </form>
 
-                        <label>Meet Up Creator: <a th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
+                        <label>Meet Up Creator: <a class="dark-link" th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-
-<!--ADD COMMENT-->
-<div class="container">
     <form id="add-comment" th:action="@{'/meetups/comment/' + ${meetup.id}}" th:method="post">
         <div class="row">
             <div class="input-field col s12">
                 <label >Add Comment</label>
                 <div class="right-align">
-                    <a href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text" type="submit">Send</a>
+                    <a  href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text dark-link" type="submit">Send</a>
                 </div>
                 <textarea id="comment" th:name="comment" class="materialize-textarea" data-length="2000"></textarea>
             </div>
 
         </div>
     </form>
-</div>
 
-<!--COMMENTS CONTAINER-->
-<div class="container">
     <div th:each="comment : ${comments}">
         <div class="row">
             <div class="col s12">
@@ -160,7 +173,20 @@
             </div>
         </div>
     </div>
+
+
 </div>
+
+
+<!--&lt;!&ndash;ADD COMMENT&ndash;&gt;-->
+<!--<div class="container">-->
+<!--   -->
+<!--</div>-->
+
+<!--&lt;!&ndash;COMMENTS CONTAINER&ndash;&gt;-->
+<!--<div class="container">-->
+<!--    -->
+<!--</div>-->
 
 
 </body>

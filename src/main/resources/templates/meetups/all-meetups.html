@@ -11,6 +11,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/browse-style.css">
 
     <th:block th:replace="fragments/header :: main-header"/>
     <style>
@@ -23,10 +24,16 @@
             margin-top: 3.7em;
         }
 
+        .container{
+            margin-top: 2em;
+        }
+        .flex h1{
+            color: #424242;
+        }
 
     </style>
 </head>
-<th:block th:replace="fragments/nav-bar :: meetups"/>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <body>
 
 
@@ -43,11 +50,11 @@
                         <div class="card-title">
                             <div class="flex">
 
-                                <a th:href="@{'/meetups/' + ${meetup.id}}">
+                                <a class="dark-link" th:href="@{'/meetups/' + ${meetup.id}}">
                                     <h5  th:text="${meetup.title}"></h5>
                                 </a>
 
-                                <a th:href="@{'/browse/meetups-locations/' + ${meetup.location.id}}">
+                                <a class="dark-link" th:href="@{'/browse/meetups-locations/' + ${meetup.location.id}}">
                                     <h5 th:text="${meetup.location.location}"></h5>
                                 </a>
                             </div>

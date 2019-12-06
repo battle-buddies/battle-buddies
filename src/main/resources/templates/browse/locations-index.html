@@ -10,18 +10,19 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/browse-style.css">
 
     <th:block th:replace="fragments/header :: main-header"/>
 </head>
 <body>
-<th:block th:replace="fragments/nav-bar :: browse"/>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <div class="container" >
     <h1>Locations</h1>
     <div class="row" >
         <div class="col s4" th:each="location: ${locations}">
             <div class="card card-small">
                 <div class="card-content">
-                    <a th:href="@{'/browse/location/' + ${location.id}}">
+                    <a class="dark-link" th:href="@{'/browse/location/' + ${location.id}}">
                         <span class="card-title" th:text="${location.location}"></span>
                     </a>
                 </div>

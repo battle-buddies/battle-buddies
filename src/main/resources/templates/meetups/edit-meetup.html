@@ -12,6 +12,7 @@
     <title>Edit Meet Up</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/browse-style.css">
 
 
 
@@ -21,9 +22,13 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        .flex h1{
+            color: #424242;
+        }
     </style>
 </head>
-<th:block th:replace="fragments/nav-bar :: meetups"/>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <body>
 
     <div class="container">
@@ -83,7 +88,7 @@
 
 
             <div class="right-align">
-                <a class="btn col s12" href="#" onclick="document.getElementById('edit').submit();">Submit</a>
+                <a class="btn col s12 nav-color" href="#" onclick="document.getElementById('edit').submit();">Submit</a>
             </div>
         </form>
     </div>

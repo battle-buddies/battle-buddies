@@ -31,11 +31,18 @@
         background-color: #464646;
     }
 
+
+    /*.flex{*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*}*/
+
     div.card-content {
         padding-bottom: .5em !important
     }
 
 
+    >>> >>> > master
     .container {
         background-color: white !important;
         overflow-y: scroll;
@@ -560,6 +567,7 @@
         #Portfolio, #Edu-detail, #Basic-detail {
             height: auto;
         }
+
     }
 
     .profile-top {
@@ -630,8 +638,25 @@
     }
 
 
+    <
+    <
+    <
+    <
+    <
+    <
+    <
+    HEAD
     .hexGrid {
-        display: grid;
+
+    =
+    =
+    =
+    =
+    =
+    =
+    =
+    #hexGrid {
+    >>> >>> > master display: grid;
         grid-gap: 10px;
         grid-template-columns: repeat(10, 1fr);
         width: 90%;
@@ -813,8 +838,9 @@
     .info-box {
         width: 25em;
     }
-    .hex-right{
-        margin-left:0;
+
+    .hex-right {
+        margin-left: 0;
     }
 
 
@@ -863,12 +889,12 @@
 
 <div class="row info-box">
     <div class="card-content center-align">
-<!--        <div class="name-div">-->
-<!--            <h2 class="f-name" th:text=" ${user.getProfile().firstName}"></h2>-->
-<!--            <h2 class="l-name" th:text="${user.getProfile().getLastName()}"></h2>-->
-<!--            <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">-->
-<!--            <span id="age" class="post-label"></span>-->
-<!--        </div>-->
+        <!--        <div class="name-div">-->
+        <!--            <h2 class="f-name" th:text=" ${user.getProfile().firstName}"></h2>-->
+        <!--            <h2 class="l-name" th:text="${user.getProfile().getLastName()}"></h2>-->
+        <!--            <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">-->
+        <!--            <span id="age" class="post-label"></span>-->
+        <!--        </div>-->
 
         <p class="bio-txt" th:text=" ${user.getProfile().getBio()}"></p>
         <th:block th:each="location : ${user.getProfile().getLocation()}">
@@ -905,9 +931,8 @@
 
 
         </div>
+
     </div>
-
-
 </div>
 
 
@@ -1004,7 +1029,7 @@
                                             <img th:src="${friend.getFriend().profile.getPhoto().getUrl()}" alt=""/>
                                             <h1 th:text="${friend.getFriend().profile.firstName }">This is a title</h1>
                                             <th:block th:each="branch : ${friend.getFriend().profile.getBranch()}">
-                                            <p th:text="${branch.branch}"></p>
+                                                <p th:text="${branch.branch}"></p>
                                             </th:block>
 
                                         </a>

@@ -63,7 +63,8 @@ insert into hobbies (hobby) values ( 'Hiking');
 insert into hobbies (hobby) values ( 'Drawing/Painting');
 insert into hobbies (hobby) values ( 'Hunting');
 insert into hobbies (hobby) values ( 'Sewing');
-insert into hobbies (hobby) values ( 'Sports/Extreme Sports');
+insert into hobbies (hobby) values ( 'Sports');
+insert into hobbies (hobby) values ( 'Extreme Sports');
 insert into hobbies (hobby) values ( 'Programming');
 insert into hobbies (hobby) values ( 'Biking');
 insert into hobbies (hobby) values ( 'Camping');
@@ -147,11 +148,11 @@ insert into profile_trait (trait_id, profile_id) values ( 20, 10);
 #
 #
 
-insert into locations (location) values ('Salt Lake City, Utah, United States');
-insert into locations (location) values ('San Antonio, Texas, United States');
-insert into locations (location) values ('Charlotte, North Carolina, United States');
-insert into locations (location) values ('Miami, Florida, United States');
-insert into locations (location) values ('Honolulu, Hawaii, United States');
+insert into locations (location) values ('Salt Lake City, Utah United States');
+insert into locations (location) values ('San Antonio, Texas United States');
+insert into locations (location) values ('Charlotte, North Carolina United States');
+insert into locations (location) values ('Miami, Florida United States');
+insert into locations (location) values ('Honolulu, Hawaii United States');
 
 
 insert into location_profile (profile_id, location_id) values (1, 2);
