@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class HomeController {
@@ -25,11 +27,11 @@ public class HomeController {
         return "home";
     }
 
-//    @GetMapping("/error")
-//    public String error(Exception exception, Model vModel){
-//        vModel.addAttribute("error", exception);
-//        return "error";
-//
-//    }
+    @GetMapping("/error")
+    public String error(Exception exception, Model vModel, HttpServletRequest request){
+        vModel.addAttribute("error", exception);
+        return "error";
+
+    }
 
 }

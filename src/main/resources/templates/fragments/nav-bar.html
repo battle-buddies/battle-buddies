@@ -24,7 +24,7 @@
 
             <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
                 <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                    <a href="#" class="red-text" onclick="document.getElementById('logout').submit();">Logout</a>
+                    <a href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
 
                 </form></li>
             </ul>
@@ -58,7 +58,7 @@
                 </th:block>
                     <ul sec:authorize="isAuthenticated()">
                         <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                            <a href="#" class="red-text" onclick="document.getElementById('logout').submit();">Logout</a>
+                            <a href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
 
                         </form></li>
                     </ul>
@@ -90,7 +90,7 @@
 
                 <ul class="right hide-on-med-and-down" sec:authorize="isAuthenticated()">
                     <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                        <a href="#" class="red-text" onclick="document.getElementById('logout').submit();">Logout</a>
+                        <a href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
 
                     </form></li>
                 </ul>
@@ -123,7 +123,7 @@
 
                 <ul sec:authorize="isAuthenticated()">
                     <li> <form id="logout" th:action="@{/logout}" th:method="post">
-                        <a href="#" class="red-text" onclick="document.getElementById('logout').submit();">Logout</a>
+                        <a href="#" onclick="document.getElementById('logout').submit();">Logout</a>
 
                     </form></li>
                 </ul>
