@@ -662,7 +662,7 @@ margin-left:1em !important;
                         <div>
                             <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
                                 <input hidden th:name="picURL" id="photoURL">
-                                <a class="waves-effect btn-color btn pic-btn" id="confirm-picture">Save Picture</a>
+                                <button class="waves-effect btn-color btn pic-btn" id="confirm-picture">Save Picture</button>
                             </form>
                         </div>
                     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
