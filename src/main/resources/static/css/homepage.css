@@ -110,12 +110,43 @@
         width: 520px;
 
     }
+    .home-icons{
+        margin-left:1em;
+    }
 
+    .hiUser{
+        color:#121e3e;
+    }
 
+.nav-color{
+    background-color: #121e3e !important;
+}
+
+    a.nav-link{
+        font-size:1.3em !important;
+
+    }
 body {
     display: flex;
     max-height: 100vh;
     flex-direction: column;
+}
+
+#hi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #hi2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.link{
+    text-align: center;
+
 }
 
 /*main {*/

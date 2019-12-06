@@ -42,7 +42,7 @@
     <div class="row container">
         <h2 class="header">Welcome to Battle Buddies!</h2>
         <p id="info" class="grey-text text-darken-3 lighten-3"> It can be hard moving every few years, and Battle Buddies wants to make it easy for you to make new connections and friends along the way! Battle Buddies provides a way to make new military friends in the area based off of common traits, hobbies, and local meetups all in one place just for you!</p>
-        <div id="icons">
+        <div class="home-icons" id="icons">
         <i id="cal" class="fas fa-calendar-alt"></i>
             <p class="picons">Create and attend meetups!</p>
         <i id="fri" class="fas fa-user-friends"></i>
@@ -112,13 +112,31 @@
 <div style=".section{padding-bottom: 0;}" class="section white" sec:authorize="isAuthenticated()">
     <div class="row container">
         <th:block th:if="${loggedUser.profile == null}">
-            <h2>Hi <span th:text="${loggedUser.username}"></span>!</h2>
-            <a href="/users/userdetails">Let's build your profile!</a>
+
+            <div id="hi" class="row">
+                <div class="col s12 s12">
+                    <div class="card-panel">
+          <span class="white-text">
+              <h2 class="hiUser">Hi <span th:text="${loggedUser.username}"></span>!</h2>
+              <p class="link"><a href="/users/userdetails">Let's build your profile so you can start making friends!</a></p>
+          </span>
+                    </div>
+                </div>
+            </div>
 
         </th:block>
         <th:block th:if="${loggedUser.profile != null}">
-            <h2>Welcome back <span th:text="${loggedUser.profile.firstName}"></span>! </h2>
-            <a th:href="@{'/users/profile/' + ${loggedUser.id}} "> Go to your profile</a>
+
+            <div id="hi2" class="row">
+                <div class="col s12 s12">
+                    <div class="card-panel">
+          <span class="white-text">
+               <h2 class="hiUser">Welcome back <span th:text="${loggedUser.profile.firstName}"></span>! </h2>
+              <p class="link"><a th:href="@{'/users/profile/' + ${loggedUser.id}} "> Go to your profile and start making friends!</a></p>
+          </span>
+                    </div>
+                </div>
+            </div>
         </th:block>
     </div>
 </div>
