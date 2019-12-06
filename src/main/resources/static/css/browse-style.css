@@ -1,0 +1,34 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+h1{
+    font-family: 'Montserrat', sans-serif;
+    color: #616161;
+    padding-top: 16px;
+}
+
+html, body{
+    height: 100%;
+    background-image: url("/img/flag_bg.jpg");
+    background-position: center center;
+
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+
+    /* Makes the image fixed in the viewport so that it doesn't move when
+       the content height is greater than the image height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color: #464646;
+}
+
+.container{
+    min-height: 100vh;
+    background: whitesmoke;
+    padding: 0 2em 2em 2em;
+}
