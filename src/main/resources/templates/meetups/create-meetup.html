@@ -48,7 +48,7 @@
             </div>
 
             <div class="input-field">
-                <input type="date" name="" id="date" th:name="date" required>
+                <input type="date" class="datepicker" name="" id="date" th:name="date" required>
             </div>
             <div class="right-align">
                 <a class="btn col s12" href="#" onclick="document.getElementById('create').submit();">Submit</a>
@@ -59,8 +59,16 @@
 
 </body>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('select').material_select();
+        $(".datepicker").pickadate({
+
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 60,
+            min: new Date(1959,3,20),
+            max: new Date(2019,12,11), // Creates a dropdown of 15 years to control year
+            format: "yyyy-mm-dd"
+        });
     });
 </script>
 </html>
