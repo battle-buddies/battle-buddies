@@ -11,7 +11,7 @@
 
 
         /* Location of the image */
-        background-image: url("/img/bgsanflag.jpg");
+        background-image: url("/img/flag_bg.jpg");
 
         /* Image is centered vertically and horizontally at all times */
         background-position: center center;
@@ -29,7 +29,9 @@
         /* Pick a solid background color that will be displayed while the background image is loading */
         background-color: #464646;
     }
-
+div.card-content{
+    padding-bottom: .5em !important
+}
     .container {
         background-color: white !important;
         overflow-y: scroll;
@@ -562,7 +564,7 @@
     }
 
     .edit-btn {
-        margin-left: 2em !important;
+margin-left:1em !important;
         background-color: #ffff00 !important;
         color: black !important;
     }
@@ -587,6 +589,27 @@
     .bio-txt {
         font-size: 20px;
     }
+.pic-div{
+    display:flex;
+}
+    .pic-btn{
+        margin-left:1em;
+    }
+    .name-div{
+        display:flex;
+    }
+    .f-name{
+        margin-bottom:0;
+    }
+    .l-name{
+        margin-bottom: 0;
+        margin-left: .2em;
+    }
+
+    .btn-color{
+        background-color: #121e3e !important;
+    }
+
 </style>
 </head>
 
@@ -606,48 +629,62 @@
 </div>
 
 
-
 <div class="container profile-top">
     <div class="col s12">
         <div class="user-detail card horizontal">
             <div class="hex">
-                <img height="250" th:width="250" th:if="${user.profile.photo != null}" th:src="${user.profile.photo.url}" alt="">
+                <img height="250" th:width="250" th:if="${user.profile.photo != null}"
+                     th:src="${user.profile.photo.url}" alt="">
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                    <h2 th:text=" ${user.getProfile().firstName}"></h2> <h2 th:text="${user.getProfile().getLastName()}"></h2>
+                    <div class="name-div">
+                    <h2 class="f-name" th:text=" ${user.getProfile().firstName}"></h2>
+                    <h2 class="l-name" th:text="${user.getProfile().getLastName()}"></h2>
+                    </div>
 
                     <input type hidden id="birthday" th:value="${user.getProfile().getBirthDate()}">
                     <span id="age" class="post-label"></span>
-                    <p class="bio-txt" th:text=" ${user.getProfile().getBio()}"></p><br>
+                    <p class="bio-txt" th:text=" ${user.getProfile().getBio()}"></p>
                     <th:block th:each="location : ${user.getProfile().getLocation()}">
                         <p th:text="${location.location}"></p>
                     </th:block>
+                    <!--                    PHOTO FORMS-->
+                    <div class="pic-div">
+                        <div><input class="waves-effect  btn-color btn" type="BUTTON" value="Upload Picture"
+                                    id="pickWatermark" onclick="pickMark()"></div>
+                        <div>
+                            <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
+                                <input hidden th:name="picURL" id="photoURL">
+                                <a class="waves-effect btn-color btn pic-btn" id="confirm-picture">Save Picture</a>
+                            </form>
+                        </div>
+                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
+                       <div><a class="waves-effect  btn edit-btn" th:href="@{'/users/user-details-edit'}"><i
+                               class="material-icons left">account_box</i>Edit Profile</a>
+                       </div>
+                    </th:block>
+
+                    </div>
                 </div>
                 <div class="card-action">
                     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-                    <div><a id="btn-getInTouch" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Message Me</a></div>
+                        <a id="btn-getInTouch" class="waves-effect  btn-color btn"><i class="material-icons left">account_box</i>Message
+                            Me</a>
                     </th:block>
 
 
-                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                        <a class="waves-effect waves-light btn edit-btn" th:href="@{'/users/user-details-edit'}"><i class="material-icons left">account_box</i>Edit Profile</a>
-                    </th:block>
-                    <a th:if="${#authentication.principal.id != user.id}" th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+                    <a class="waves-effect waves-light btn-color btn" th:if="${#authentication.principal.id != user.id}"
+                       th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
 
-<!--                    PHOTO FORMS-->
-
-                       <input class="waves-effect waves-light btn" type="BUTTON" value="Upload Picture" id="pickWatermark" onclick="pickMark()">
-                        <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
-                            <input hidden th:name="picURL" id="photoURL">
-                            <a class="waves-effect waves-light btn" id="confirm-picture">Save Picture</a>
-                        </form>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <div class="container">
     <h2 class="blue-brown-text text-lighten-5 center">About</h2>
     <div class="row">
@@ -665,7 +702,7 @@
             </ul>
         </div>
         <div class="col s4">
-            <h4 class="center-align">Children</h4>
+            <h4 class="center-align">Children Ages</h4>
             <ul class="center-align" th:each="child : ${user.getProfile().getChildren()}">
                 <li th:text="${child.child}"></li>
             </ul>
@@ -686,10 +723,21 @@
 
                     <!--                           BUDDIES TABS -->
                     <ul class="tabs">
-                        <li  class="tab col s3"><a class="active" href="#test1">Buddies<span id="buddies-badge" class="new badge"></span></a></li>
-                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test2">Potential Buddies <span id="requested-badge" class="new badge"></span></a></li>
-                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test3">Pending Buddies <span id="pending-badge" class="new badge"></span> </a></li>
-                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}" class="tab col s3"><a href="#test4">Suggested Buddies <span id="suggested-badge" class="new badge"></span></a></li>
+                        <li class="tab col s3"><a class="active" href="#test1">Buddies<span id="buddies-badge"
+                                                                                            class="new badge"></span></a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
+                            class="tab col s3"><a href="#test2">Pending<span id="requested-badge"
+                                                                                        class="new badge"></span></a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
+                            class="tab col s3"><a href="#test3">Sent<span id="pending-badge"
+                                                                                      class="new badge"></span> </a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}"
+                            class="tab col s3"><a href="#test4">Suggested<span id="suggested-badge"
+                                                                                        class="new badge"></span></a>
+                        </li>
                     </ul>
                 </div>
 
@@ -697,12 +745,15 @@
                 <div id="test1" class="col s12">
                     <div id="friends" class="col s12  container">
                         <h4> Accepted Buddies List</h4>
-                        <th:block th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
+                        <th:block th:each="friend : ${user.getRelationships()}"
+                                  th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).ACCEPTED}">
                             <div class="row">
                                 <div class="col s3 ">
                                     <div class="card blue-grey darken-1">
                                         <div class="card-content white-text buds">
-                                            <a   th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span class="card-title" th:text="${friend.getFriend().profile.firstName }"></span></a>
+                                            <a th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span
+                                                    class="card-title"
+                                                    th:text="${friend.getFriend().profile.firstName }"></span></a>
                                         </div>
 
                                     </div>
@@ -717,20 +768,24 @@
                 <!--                        REQUESTED BUDDIES-->
 
 
-                <div id="test2" class="col s12"  th:if="${#authentication.principal.id == user.id}">
+                <div id="test2" class="col s12" th:if="${#authentication.principal.id == user.id}">
                     <h4>people who want to be <span th:text="${user.username}"></span>'s friend</h4>
 
                     <div th:each="friend : ${pendingFriends}">
 
-                        <th:block th:each="relationship: ${friend.getRelationships()}" th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}" >
+                        <th:block th:each="relationship: ${friend.getRelationships()}"
+                                  th:if="${relationship.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
                             <div class="row">
                                 <div class="col s3 ">
                                     <div class="card blue-grey darken-1">
                                         <div class="card-content white-text requested">
-                                            <a   th:href="@{'/users/profile/' + ${friend.id}}"><span class="card-title" th:text="${friend.profile.firstName }"></span></a>
+                                            <a th:href="@{'/users/profile/' + ${friend.id}}"><span class="card-title"
+                                                                                                   th:text="${friend.profile.firstName }"></span></a>
                                         </div>
-                                        <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
-                                        <a th:if="${relationship.getFriend().username == user.username}" th:href="@{/users/{id}/decline-request(id=${relationship.id}) }">decline</a>
+                                        <a th:if="${relationship.getFriend().username == user.username}"
+                                           th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
+                                        <a th:if="${relationship.getFriend().username == user.username}"
+                                           th:href="@{/users/{id}/decline-request(id=${relationship.id}) }">decline</a>
                                     </div>
                                 </div>
                             </div>
@@ -744,12 +799,15 @@
                         <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                             <input type="hidden" th:value="${user.id}">
                             <h4>friends <span th:text="${user.username}"></span> has requested</h4>
-                            <div th:each="friend : ${user.getRelationships()}" th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                            <div th:each="friend : ${user.getRelationships()}"
+                                 th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
                                 <div class="row">
                                     <div class="col s3 ">
                                         <div class="card blue-grey darken-1">
                                             <div class="card-content white-text pending">
-                                                <a   th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span class="card-title" th:text="${friend.getFriend().profile.firstName }"></span></a>
+                                                <a th:href="@{'/users/profile/' + ${friend.getFriend().id}}"><span
+                                                        class="card-title"
+                                                        th:text="${friend.getFriend().profile.firstName }"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -761,16 +819,18 @@
 
 
                 <div id="test4" class="col s12" th:if="${#authentication.principal.id == user.id}">
-                    <div  class="col s12">
+                    <div class="col s12">
                         <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                             <input type="hidden" th:value="${user.id}">
                             <h4>Suggested buddies for you</h4>
-                            <div th:each="friend : ${suggestedFriends}"  >
+                            <div th:each="friend : ${suggestedFriends}">
                                 <div class="row">
                                     <div class="col s3 ">
                                         <div class="card blue-grey darken-1">
                                             <div class="card-content white-text suggested">
-                                                <a   th:href="@{'/users/profile/' + ${friend.id}}"><span class="card-title" th:text="${friend.profile.firstName }"></span></a>
+                                                <a th:href="@{'/users/profile/' + ${friend.id}}"><span
+                                                        class="card-title"
+                                                        th:text="${friend.profile.firstName }"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -789,9 +849,10 @@
     <form id="add-comment" th:action="@{'/profile/comment/' + ${user.id}}" th:method="post">
         <div class="row">
             <div class="input-field col s12">
-                <label >Add Comment</label>
+                <label>Add Comment</label>
                 <div class="right-align">
-                    <a href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text" type="submit">Send</a>
+                    <a href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text"
+                       type="submit">Send</a>
                 </div>
                 <textarea id="comment" th:name="comment" class="materialize-textarea" data-length="2000"></textarea>
             </div>
@@ -808,10 +869,15 @@
                 <div class="card ">
                     <div class="card-content ">
                         <div class="flex">
-                            <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
-                            <form  th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}" th:action="@{'/profile/comment/delete/'}" method="post">
-                                <input id="confirm_delete" type="hidden" th:name="deleteComment" th:value="${comment.id}">
-                                <button href="#modal3"  class=" btn-clear waves-effect waves-light red-text modal-trigger"> <i class="small material-icons">delete_forever</i></button>
+                            <a th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title"
+                                                                                         th:text="${comment.user.profile.firstName}"></span></a>
+                            <form th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}"
+                                  th:action="@{'/profile/comment/delete/'}" method="post">
+                                <input id="confirm_delete" type="hidden" th:name="deleteComment"
+                                       th:value="${comment.id}">
+                                <button href="#modal3"
+                                        class=" btn-clear waves-effect waves-light red-text modal-trigger"><i
+                                        class="small material-icons">delete_forever</i></button>
                             </form>
                         </div>
 
@@ -874,10 +940,26 @@
     })();
 </script>
 <script>
-    (function(t,a,l,k,j,s){
-        s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
-        ;k=t.Promise;t.Talk={v:2,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
-                    .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+    (function (t, a, l, k, j, s) {
+        s = a.createElement('script');
+        s.async = 1;
+        s.src = "https://cdn.talkjs.com/talk.js";
+        a.head.appendChild(s)
+        ;k = t.Promise;
+        t.Talk = {
+            v: 2, ready: {
+                then: function (f) {
+                    if (k) return new k(function (r, e) {
+                        l.push([f, r, e])
+                    });
+                    l
+                        .push([f])
+                }, catch: function () {
+                    return k && new k()
+                }, c: l
+            }
+        };
+    })(window, document, []);
 </script>
 
 <!-- TalkJS initialization code, which we'll customize in the next steps -->
@@ -885,7 +967,7 @@
 
     var currentUser;
     var otherUser;
-    var pathVariable =location.pathname.split("/")[3];
+    var pathVariable = location.pathname.split("/")[3];
     fetch("/users/chat/" + pathVariable)
         .then(response => response.json())
         .then(data => {
@@ -893,9 +975,10 @@
             otherUser = data[1];
             logDataset();
         });
-    function logDataset () {
+
+    function logDataset() {
         console.log(currentUser.email);
-        Talk.ready.then(function() {
+        Talk.ready.then(function () {
             var me = new Talk.User({
                 id: currentUser.id,
                 name: currentUser.profile.firstName,
@@ -913,18 +996,15 @@
             var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
             conversation.setParticipant(me);
             conversation.setParticipant(other);
-            var popup = talkSession.createPopup(conversation, { keepOpen: false });
-            popup.mount({ show: false });
+            var popup = talkSession.createPopup(conversation, {keepOpen: false});
+            popup.mount({show: false});
             var button = document.getElementById("btn-getInTouch");
-            button.addEventListener("click", function(event) {
+            button.addEventListener("click", function (event) {
                 event.preventDefault();
                 popup.show();
             });
         });
     }
-
-
-
 
 
     let buddiesCount = $('.buds').length;
@@ -953,9 +1033,9 @@
     function pickMark() {
         console.log("Picking Watermark");
         client.pick({
-            accept:'image/*',
+            accept: 'image/*',
             maxFiles: 1,
-        }).then(function(result) {//Taking the results object in as 'result'
+        }).then(function (result) {//Taking the results object in as 'result'
             //Putting the result in a string, and printing it to the console
             console.log('result should exist by now');
             console.log('result is ' + result);
@@ -970,7 +1050,7 @@
         });
     }
 
-    function addURL(str){
+    function addURL(str) {
         $('#photoURL').val(str);
     }
 
