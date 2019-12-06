@@ -20,15 +20,27 @@
 <div class="container" >
     <h1 th:text="${trait.trait}"></h1>
     <div class="row" >
-        <div class="col s4" th:each="profile: ${profiles}">
-            <div class="card card-small">
-                <div class="card-content">
-                    <a th:href="@{'/users/profile/' + ${profile.getUser().id}}">
-                        <span class="card-title" th:text="${profile.firstName + ' '+ profile.lastName}"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <ul id="hexGrid">
+
+            <th:block class="col s4" th:each="profile: ${profiles}">
+                <li class="hex">
+                    <div class="hexIn">
+                        <a class="hexLink" th:href="@{'/users/profile/' + ${profile.getUser().id}}">
+                            <th:block th:if="${profile.photo != null}">
+                                <img th:src="${profile.photo.url}" alt="" />
+                            </th:block>
+                            <th:block th:if="${profile.photo == null}">
+                                <img src="/img/profile-avatar.png" alt="" />
+                            </th:block>
+                            <h1 th:text="${profile.firstName + ' '+ profile.lastName}"></h1>
+                            <p th:text="${profile.branch.branch}"></p>
+
+                        </a>
+                    </div>
+                </li>
+            </th:block>
+
+        </ul>
     </div>
 </div>
 

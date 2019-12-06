@@ -22,7 +22,7 @@
         <div class="col s4" th:each="hobby: ${hobbies}">
             <div class="card card-small">
                 <div class="card-content">
-                    <a th:href="@{'/browse/hobbies/' + ${hobby.id}}">
+                    <a class="dark-link" th:href="@{'/browse/hobbies/' + ${hobby.id}}">
                         <span class="card-title" th:text="${hobby.hobby}"></span>
                     </a>
                 </div>
