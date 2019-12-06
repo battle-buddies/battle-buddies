@@ -3,12 +3,37 @@
 <head>
     <th:block th:replace="fragments/header :: user-detail-header"/>
     <title>Tell us about yourself!</title>
+<style>
 
+    body{
+        background-image: url("/img/flag_bg.jpg");
+        background-position: center center;
+
+        /* Image doesn't repeat */
+        background-repeat: no-repeat;
+
+        /* Makes the image fixed in the viewport so that it doesn't move when
+        the content height is greater than the image height */
+        background-attachment: fixed;
+
+        /* This is what makes the background image rescale based on its container's size */
+        background-size: cover;
+    }
+    #everything{
+        background-color: white;
+        height: 830px;
+    }
+
+    .form1{
+        padding-top: 20px;
+    }
+
+</style>
 </head>
 <body>
 <th:block th:replace="fragments/nav-bar :: main-nav"/>
 
-<div class="container">
+<div id="everything" class="container">
 
     <!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
     <div id="modal1" class="modal">
@@ -50,7 +75,7 @@
     </div>
     <!--        MODAL END-->
 
-
+<div class="container form1">
     <ul id="tabs-swipe-demo" class="tabs">
         <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
         <li class="tab col s3"><a href="#Service-details">Service Detail</a></li>
@@ -250,8 +275,8 @@
         </div>
     </form>
 </div>
+</div>
 <!--    main container end-->
-
 <script>
     // $.ajax({
     //     url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + longStr + '.json?access_token=pk.eyJ1IjoiYnJpZGdldG1pbGxzIiwiYSI6ImNqemloYXVlazEzZGQzY3BoeTJ5N2xicmEifQ.c8m3gGOrooUHDV7g_frHMA',
@@ -329,7 +354,7 @@
 
 
 </script>
+<th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/locations :: locationsjs"/>
-
 </body>
 </html>
