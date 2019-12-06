@@ -140,11 +140,7 @@
             </div>
         </div>
     </div>
-</div>
 
-
-<!--ADD COMMENT-->
-<div class="container">
     <form id="add-comment" th:action="@{'/meetups/comment/' + ${meetup.id}}" th:method="post">
         <div class="row">
             <div class="input-field col s12">
@@ -157,10 +153,7 @@
 
         </div>
     </form>
-</div>
 
-<!--COMMENTS CONTAINER-->
-<div class="container">
     <div th:each="comment : ${comments}">
         <div class="row">
             <div class="col s12">
@@ -180,7 +173,20 @@
             </div>
         </div>
     </div>
+
+
 </div>
+
+
+<!--&lt;!&ndash;ADD COMMENT&ndash;&gt;-->
+<!--<div class="container">-->
+<!--   -->
+<!--</div>-->
+
+<!--&lt;!&ndash;COMMENTS CONTAINER&ndash;&gt;-->
+<!--<div class="container">-->
+<!--    -->
+<!--</div>-->
 
 
 </body>
