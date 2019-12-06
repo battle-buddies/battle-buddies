@@ -13,7 +13,7 @@
     <th:block th:replace="fragments/header :: main-header"/>
     <title>Create Meet Up</title>
 </head>
-<th:block th:replace="fragments/nav-bar :: meetups"/>
+<th:block th:replace="fragments/nav-bar :: main-nav"/>
 <body>
     <form id="create" th:action="@{'/meetups/create'}" th:method="post" th:object="${meetup}">
         <div class="container">
