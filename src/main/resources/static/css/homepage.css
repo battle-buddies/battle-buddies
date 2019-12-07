@@ -7,11 +7,13 @@
 
     h2{
         text-align: center;
+        font-family: 'monsterrat';
     }
 
     #infomobile{
         font-size: 22px;
         text-align: center;
+        font-family: 'Raleway';
     }
 
     #otherdesktop {
@@ -31,7 +33,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 18px;
+        font-size: 22px;
+        font-family: 'Raleway';
     }
 
 
@@ -72,15 +75,18 @@
 
     .loginlink{
         text-align: center;
+        font-family: 'Raleway';
     }
 
     h2{
         text-align: center;
+        font-family: 'monsterrat';
     }
 
     #info{
         font-size: 22px;
         text-align: center;
+        font-family: 'Raleway';
     }
 
     #cal,#fri,#heart {
@@ -96,7 +102,8 @@
     }
 
     .picons{
-        font-size: 18px;
+        font-size: 22px;
+        font-family: 'Raleway';
     }
 
     #mobilepara{
@@ -158,6 +165,7 @@ body {
 
 .link{
     text-align: center;
+    font-family: 'Raleway';
 
 }
 

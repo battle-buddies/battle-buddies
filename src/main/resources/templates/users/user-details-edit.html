@@ -20,11 +20,13 @@
     }
        #everything{
            background-color: white;
-           height: 830px;
+           height: 980px;
        }
 
-        .form1{
-            padding-top: 20px;
+
+        .heading{
+            text-align: center;
+            font-family: 'monsterrat';
         }
     </style>
 </head>
@@ -34,6 +36,7 @@
 
 <!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
 <div id="everything" class="container">
+    <h1 class="heading">Profile Details</h1>
 <div id="modal1" class="modal">
     <div class="modal-content">
         <div class='sidebar'>
@@ -74,10 +77,7 @@
 
 
 <div class="container form1">
-    <ul id="tabs-swipe-demo" class="tabs">
-        <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
-        <li class="tab col s3"><a href="#Service-details">Service Detail</a></li>
-    </ul>
+<!--LOCATION START-->
     <form th:action="@{'/users/user-details-edit'}" th:method="post" th:object="${profile}">
         <div id="Basic-info" class="col s12">
             <div class="input-field col s3">
@@ -93,6 +93,8 @@
                 <label>Please select your location</label>
                 <button data-target="modal1" class="btn modal-trigger">Add New Location</button>
             </div>
+
+<!--            FIRST AND LAST NAME-->
             <div class="row">
                 <div class="input-field col s6">
                     <input id="firstName" type="text" class="validate" th:value="${profile.firstName}"  th:field="*{firstName}">
@@ -102,7 +104,9 @@
                     <input id="lastName" type="text" class="validate" th:value="${profile.lastName}" th:field="*{lastName}">
 
                 </div>
-                <!--                        gender pick start-->
+            </div>
+            <div class="row">
+<!--                        gender pick start-->
                 <div class="input-field col s6">
                     <select th:field="*{gender}">
                         <option value="0" disabled selected>gender</option>
@@ -111,22 +115,24 @@
                     </select>
                     <label>Select gender</label>
                 </div>
-                <!--                        gender pick end-->
+<!--CHILDREN START-->
 
 
-
-                <!--                        pick hobbies and traits-->
                 <div class="input-field col s6">
-                    <select multiple th:field="*{traits}">
-                        <option value="0" disabled selected>Choose your traits</option>
-                        <th:block th:each="trait: ${traits}">
-                            <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span>
-                            </option>
-                        </th:block>
-
+                    <select multiple th:field="*{children}">
+                        <option value="" disabled selected>Range of your children's age.</option>
+                        <option value="1">No children</option>
+                        <option value="2">0 - 5</option>
+                        <option value="3">5 - 10</option>
+                        <option value="4">10 - 15</option>
+                        <option value="5">15 - 18</option>
                     </select>
-                    <label>Pick 5 traits that best describe you</label>
+                    <label>Please select the range of your children's age.</label>
                 </div>
+            </div>
+
+<!--HOBBIES START            -->
+            <div class="row">
                 <div class="input-field col s6">
                     <select multiple th:field="*{hobbies}">
                         <option value="0" disabled selected>Choose your hobbies</option>
@@ -138,44 +144,42 @@
                     </select>
                     <label>Pick 5 hobbies that interest you</label>
                 </div>
+<!--TRAITS START                -->
+                <div class="input-field col s6">
+                    <select multiple th:field="*{traits}">
+                        <option value="0" disabled selected>Choose your traits</option>
+                        <th:block th:each="trait: ${traits}">
+                            <option th:name="traits" th:value="${trait.id}"><span th:text="${trait.trait}"></span>
+                            </option>
+                        </th:block>
 
-                <!--                bio start-->
-                <div class="input-field col s12">
-                    <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"></textarea>
-                    <label for="bio">Tell us more about yourself! Write a bio or share some interesting
-                        facts!</label>
-                </div>
-
-                <!--                bio end-->
-
-                <!--                        end hobbies and traits-->
-            </div>
-
-            <!--            children start -->
-            <p>Adding your children will help us match you with friends that have children the same age! </p>
-
-
-                <div class="input-field col s12">
-                    <select multiple th:field="*{children}">
-                        <option value="" disabled selected>Range of your children's age.</option>
-                        <option value="1">No children</option>
-                        <option value="2">0 - 5</option>
-                        <option value="3">5 - 10</option>
-                        <option value="4">10 - 15</option>
-                        <option value="5">15 - 18</option>
                     </select>
-                    <label>Please select the range of your children's age.</label>
+                    <label>Pick 5 traits that best describe you</label>
                 </div>
-
-
+            </div>
+<!--BIO START-->
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"></textarea>
+                <label for="bio">Tell us more about yourself!</label>
+            </div>
 
         </div>
 
-        <!--        end children-->
+<!--MARRIED START-->
+            <div class="input-field col s6">
+                <select th:field="*{married}">
+                    <option value="0" disabled selected>Marital Status</option>
+                    <option value="1" name="single">Single</option>
+                    <option value="0" name="married">Married</option>
+                </select>
+                <label>Marital Status</label>
+            </div>
+        </div>
 
-        <!--        start of second tab-->
-        <div id="Service-details" class="col s12">
+<!--SERVICE DETAILS START-->
             <div class="row">
+                <h3 class="heading">Service Details</h3>
 
                 <!--                rank start-->
 
@@ -215,37 +219,11 @@
                 </div>
                 <!--                mill spouse end-->
 
-                <!--                marital status-->
-                <div class="row">
-                    <div class="input-field col s6">
-                        <select th:field="*{married}">
-                            <option value="0" disabled selected>Marital Status</option>
-                            <option value="1" name="single">Single</option>
-                            <option value="0" name="married">Married</option>
-                        </select>
-                        <label>Marital Status</label>
-                    </div>
-                </div>
-                <!--                marital status-->
-
-
-
-
-
-
             </div>
-<!--            <div class="file-field input-field col s3">-->
-<!--                <div class="btn">-->
-<!--                    <span>File</span>-->
-<!--                    <input type="file" name="file" id="file"/>-->
-<!--                </div>-->
-<!--                <div class="file-path-wrapper">-->
-<!--                    <input class="file-path validate" type="text"/>-->
-<!--                </div>-->
-<!--            </div>-->
+
             <!--           row end-->
             <button class="waves-effect waves-light btn">Submit Changes!</button>
-        </div>
+<!--        </div>-->
     </form>
 </div>
 </div>
@@ -256,6 +234,8 @@
         $('select').material_select();
 
     });
+
+    $(".button-collapse").sideNav();
 
     $('.modal').modal();
 
@@ -285,7 +265,6 @@
 
 
 </script>
-<th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/locations :: locationsjs"/>
 </body>
 </html>
