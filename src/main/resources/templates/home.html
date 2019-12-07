@@ -32,11 +32,7 @@
 </div>
 <!--DESKTOP VIEW-->
 <th:block th:if="${user == false}">
-<!--<div id="desktop">-->
 
-<!--<div class="parallax-container">-->
-<!--    <div class="parallax"><img src="/img/flag_bg.jpg"></div>-->
-<!--</div>-->
 <div id="otherdesktop" class="section white">
 
     <div class="row container">
@@ -60,7 +56,9 @@
         <div class="container">
             <div class="row">
                 <div class="col s6 s12">
-                    <h5 class="white-text">Battle Buddies</h5>
+                    <h5 style="font-family: 'Raleway';" class="white-text">Battle Buddies</h5>
+                    <p class="grey-text text-lighten-4"><a th:href="@{'/'}">Home</a></p>
+                    <p class="grey-text text-lighten-4"><a th:href="@{'/about'}">About us</a></p>
                     <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>
                 </div>
             </div>
@@ -96,7 +94,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col s6 s12">
-                        <h5 class="white-text">Battle Buddies</h5>
+                        <h5 style="font-family: 'Raleway';" class="white-text">Battle Buddies</h5>
+                        <p class="grey-text text-lighten-4"><a th:href="@{'/'}">Home</a></p>
+                        <p class="grey-text text-lighten-4"><a th:href="@{'/about'}">About us</a></p>
                         <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>
                     </div>
                 </div>
