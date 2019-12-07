@@ -21,12 +21,15 @@
     }
     #everything{
         background-color: white;
-        height: 830px;
+        height: 980px;
     }
 
-    .form1{
-        padding-top: 20px;
+    .heading{
+        text-align: center;
+        font-family: 'monsterrat';
     }
+
+
 
 </style>
 </head>
@@ -34,7 +37,7 @@
 <th:block th:replace="fragments/nav-bar :: main-nav"/>
 
 <div id="everything" class="container">
-
+    <h1 class="heading">Profile Details</h1>
     <!--    MODAL FOR LOCATIONS * HAS TO GO ABOVE EVERYTHING ELSE OR IT WILL MESS UP* -->
     <div id="modal1" class="modal">
         <div class="modal-content">
@@ -76,10 +79,7 @@
     <!--        MODAL END-->
 
 <div class="container form1">
-    <ul id="tabs-swipe-demo" class="tabs">
-        <li class="tab col s3"><a href="#Basic-info">Basic Info</a></li>
-        <li class="tab col s3"><a href="#Service-details">Service Detail</a></li>
-    </ul>
+    <!--LOCATION START-->
     <form th:action="@{'/users/userdetails'}" th:method="post" th:object="${profile}" enctype="multipart/form-data">
         <div id="Basic-info" class="col s12">
             <div class="input-field col s3">
@@ -94,6 +94,7 @@
                 <label>Please select your location</label>
                 <button data-target="modal1" class="btn modal-trigger">Add New Location</button>
             </div>
+<!--            FIRST AND LAST NAME-->
             <div class="row">
                 <div class="input-field col s6">
                     <input id="firstName" type="text" class="validate" th:field="*{firstName}" required="required">
@@ -103,7 +104,7 @@
                     <input id="lastName" type="text" class="validate" th:field="*{lastName}" required="required">
                     <label for="lastName">Last Name</label>
                 </div>
-                <!--                        gender pick start-->
+<!--                        gender pick start-->
                 <div class="input-field col s6">
                     <select required="required">
                         <option value="0" disabled selected>gender</option>
@@ -112,7 +113,6 @@
                     </select>
                     <label>Select gender</label>
                 </div>
-                <!--                        gender pick end-->
 
                 <!--                        DOB start-->
 
@@ -120,8 +120,6 @@
                     <input id="test" th:field="*{birthDate}" required="required" type="date" class="datepicker">
                     <label for="test">Birthday</label>
                 </div>
-
-                <!--                        DOB end-->
 
                 <!--                        pick hobbies and traits-->
                 <div class="input-field col s6">
@@ -146,45 +144,49 @@
                     </select>
                     <label>Pick 5 hobbies that interest you</label>
                 </div>
+<!--Marital status start-->
 
-                <!--                bio start-->
+            <div class="row">
+
+
+                <div class="input-field col s6">
+                    <select th:field="*{married}" required="required">
+                        <option value="0" disabled selected>Marital Status</option>
+                        <option value="1" name="single">Single</option>
+                        <option value="0" name="married">Married</option>
+                    </select>
+                    <label>Marital Status</label>
+                </div>
+
+
+<!--children start-->
+
+                <div class="input-field col s6">
+                    <select multiple th:field="*{children}" required="required">
+                        <option value="0" disabled selected>Child Ages</option>
+                        <th:block th:each="child : ${children}">
+                            <option th:name="children" th:value="${child.id}"><span th:text="${child.child}"></span>
+                            </option>
+                        </th:block>
+
+                    </select>
+                    <label>Child Ages</label>
+                </div>
+
+            </div>
+
+<!--                bio start-->
                 <div class="input-field col s12">
                     <textarea id="bio" class="materialize-textarea" data-length="2000" th:field="*{bio}"
                               required="required"></textarea>
-                    <label for="bio">Tell us more about yourself! Write a bio or share some interesting
-                        facts!</label>
+                    <label for="bio">Tell us more about yourself!</label>
                 </div>
-
-                <!--                bio end-->
-
-                <!--                        end hobbies and traits-->
             </div>
-
-            <!--            children start -->
-            <p>Adding your children will help us match you with friends that have children the same age! </p>
-
-
-            <div class="input-field col s6">
-                <select multiple th:field="*{children}" required="required">
-                    <option value="0" disabled selected>Child Ages</option>
-                    <th:block th:each="child : ${children}">
-                        <option th:name="children" th:value="${child.id}"><span th:text="${child.child}"></span>
-                        </option>
-                    </th:block>
-
-                </select>
-                <label>Child Ages</label>
-            </div>
-
-
         </div>
 
-        <!--        end children-->
-
-        <!--        start of second tab-->
-        <div id="Service-details" class="col s12">
+<!--service details start-->
             <div class="row">
-
+                <h3 class="heading">Service Details</h3>
                 <!--                rank start-->
 
                 <div class="input-field col s3">
@@ -194,7 +196,7 @@
                             <option th:name="rank" th:value="${rank.id}"><span th:text="${rank.rank}"></span></option>
                         </th:block>
                     </select>
-                    <label>Please select your or your spouse's rank</label>
+                    <label>Select your or your spouse's rank</label>
                 </div>
                 <!--                rank end-->
 
@@ -209,7 +211,7 @@
 
                         </th:block>
                     </select>
-                    <label>Please select your or your spouse's branch</label>
+                    <label>Select your or your spouse's branch</label>
                 </div>
                 <!--                branch end-->
 
@@ -223,67 +225,24 @@
                     </select>
                     <label>Are you signing up as a military spouse?</label>
                 </div>
-                <!--                mill spouse end-->
-
-                <!--                marital status-->
-                <div class="row">
-                    <div class="input-field col s6">
-                        <select th:field="*{married}" required="required">
-                            <option value="0" disabled selected>Marital Status</option>
-                            <option value="1" name="single">Single</option>
-                            <option value="0" name="married">Married</option>
-                        </select>
-                        <label>Marital Status</label>
-                    </div>
-                </div>
-                <!--                marital status-->
-                <!--                location-->
-<!--                <div class="input-field col s3">-->
-<!--                    <select th:field="*{location}" required="required">-->
-<!--                        <option value="0" disabled selected>Location</option>-->
-<!--                        <th:block th:each="location: ${locations}">-->
-<!--                            <option th:name="branch" th:value="${location.id}"><span-->
-<!--                                    th:text="${location.location}"></span>-->
-<!--                            </option>-->
-
-<!--                        </th:block>-->
-<!--                    </select>-->
-<!--                    <label>Please select your location</label>-->
-<!--                    <button data-target="modal1" class="btn modal-trigger">Add Location</button>-->
-<!--                </div>-->
-
-                <!--                BUTTON FOR MODAL -->
-
-
-                <!--            BUTTON FOR MODAL END-->
-
-                <!--                location end-->
-
-                <!--                file upload-->
-
 
 
             </div>
-            <div class="input-field col s6">
-                <th:block th:each="photoUrl: ${photoUrls}">
-                    <input id = "photUrl" type="hidden" th:name="photoUrl" th:field="*{url}"></span></input>
-                </th:block>
-                <label>Photo Upload</label>
-            </div>
-            <!--           row end-->
-            <button class="waves-effect waves-light btn">Submit!</button>
-        </div>
+<!--            <div class="input-field col s6">-->
+<!--                <th:block th:each="photoUrl: ${photoUrls}">-->
+<!--                    <input id = "photUrl" type="hidden" th:name="photoUrl" th:field="*{url}"></span></input>-->
+<!--                </th:block>-->
+<!--                <label>Photo Upload</label>-->
+<!--            </div>-->
+
+            <button type="submit" class="waves-effect waves-light btn">Submit!</button>
     </form>
 </div>
 </div>
+
 <!--    main container end-->
 <script>
-    // $.ajax({
-    //     url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + longStr + '.json?access_token=pk.eyJ1IjoiYnJpZGdldG1pbGxzIiwiYSI6ImNqemloYXVlazEzZGQzY3BoeTJ5N2xicmEifQ.c8m3gGOrooUHDV7g_frHMA',
-    //     type: 'GET',
-    //     success: function(){
-    //     }
-    // });
+
     const client = filestack.init('A4exL4KURhqMMOSKMOzKwz');
     var options = {
         maxSize: 10 * 1024 * 1024,
