@@ -620,8 +620,8 @@
     }
 
     .edit-btn {
-        background-color: #ffff00 !important;
-        color: black !important;
+        background-color: darkred !important;
+        color: white !important;
         margin-left: 1em;
     }
 
@@ -809,7 +809,7 @@
 
     @media (min-width: 1201px) {
         /* <- 5-4  hexagons per row */
-        #hexGrid {
+        .hexGrid {
             padding-bottom: 4.4%;
         }
 
@@ -820,7 +820,7 @@
 
     @media (max-width: 1200px) and (min-width: 901px) {
         /* <- 4-3  hexagons per row */
-        #hexGrid {
+        .hexGrid {
             grid-template-columns: repeat(8, 1fr);
             padding-bottom: 5.5%;
         }
@@ -832,7 +832,7 @@
 
     @media (max-width: 900px) and (min-width: 601px) {
         /* <- 3-2  hexagons per row */
-        #hexGrid {
+        .hexGrid {
             grid-template-columns: repeat(6, 1fr);
             padding-bottom: 7.4%;
         }
@@ -844,7 +844,7 @@
 
     @media (max-width: 600px) {
         /* <- 2-1  hexagons per row */
-        #hexGrid {
+        .hexGrid {
             grid-template-columns: repeat(4, 1fr);
             padding-bottom: 11.2%;
             grid-gap: 5px;
@@ -860,7 +860,7 @@
     }
 
     @media (max-width: 400px) {
-        #hexGrid {
+        .hexGrid {
             font-size: 13px;
         }
 
@@ -962,7 +962,7 @@
 
 
         <div class="row">
-                <h1 class="blue-brown-text text-lighten-5 center-align">ABOUT</h1>
+                <h1 class="blue-brown-text text-lighten-5 center-align">About</h1>
 
                 <p class="bio-txt col s12 m6 l6 offset-l3 center-align" th:text=" ${user.getProfile().getBio()}"></p>
 
