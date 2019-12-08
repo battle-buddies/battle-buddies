@@ -27,14 +27,18 @@
         align-items: center;
     }
 
+    #hi{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     nav{
         position: fixed;
         z-index: 1000;
     }
 
-    #deskfooter{
-        display: none;
-    }
+
 
     #desktop{
         display: none;
@@ -133,10 +137,6 @@
         display: none;
     }
 
-    #mobilefooter{
-        display: none;
-    }
-
     .parallax-container {
         height: 370px;
     }
@@ -172,10 +172,10 @@ body {
 }
 
 #hi{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
 
     #hi2{
         display: flex;
@@ -190,9 +190,9 @@ body {
 
 }
 
-/*main {*/
-/*    flex: 1 0 auto;*/
-/*}*/
+main {
+    flex: 1 0 auto;
+}
 
     .page-footer{
         height: 200px;
@@ -209,4 +209,6 @@ body {
     .btn-color{
         background-color: #424242 !important;
     }
+
+
 }

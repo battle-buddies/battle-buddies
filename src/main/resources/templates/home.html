@@ -49,31 +49,6 @@
     </div>
     <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 </div>
-<!--</div>-->
-    <!--footer-->
-
-<!--    <footer id="deskfooter" class="page-footer grey darken-3">-->
-<!--        <div class="container">-->
-<!--            <div class="row">-->
-<!--                <div class="col s6 s12">-->
-<!--                    <h5 style="font-family: 'Raleway';" class="white-text">Battle Buddies</h5>-->
-<!--                    <p class="grey-text text-lighten-4"><a th:href="@{'/'}">Home</a></p>-->
-<!--                    <p class="grey-text text-lighten-4"><a th:href="@{'/about'}">About us</a></p>-->
-<!--                    <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </footer>-->
-
-
-    <footer id="deskfooter" class="page-footer grey darken-3">
-        <div class="row">
-            <div class="col s6 s12">
-                <h5 class="white-text">Battle Buddies</h5>
-            </div>
-        </div>
-    </footer>
 </th:block>
 
 <!--MOBILE VIEW-->
@@ -95,36 +70,15 @@
         </div>
     </div>
     <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
+
 </div>
 
-        <!--footer-->
-
-<!--        <footer id="mobilefooter" class="page-footer grey darken-3">-->
-<!--            <div class="container">-->
-<!--                <div class="row">-->
-<!--                    <div class="col s6 s12">-->
-<!--                        <h5 style="font-family: 'Raleway';" class="white-text">Battle Buddies</h5>-->
-<!--                        <p class="grey-text text-lighten-4"><a th:href="@{'/'}">Home</a></p>-->
-<!--                        <p class="grey-text text-lighten-4"><a th:href="@{'/about'}">About us</a></p>-->
-<!--                        <p class="grey-text text-lighten-4"><a th:href="@{'/login'}">Login or Sign up!</a></p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </footer>-->
-        <footer id="mobilefooter" class="page-footer grey darken-3">
-            <div class="row">
-                <div class="col s6 s12">
-                    <h5 class="white-text">Battle Buddies</h5>
-                </div>
-            </div>
-        </footer>
 </th:block>
 
 
 <!--logic for different homepage for logged in user-->
 
-<div style=".section{padding-bottom: 0;}" class="section white" sec:authorize="isAuthenticated()">
+<div class="section white" sec:authorize="isAuthenticated()">
     <div class="row container">
         <th:block th:if="${loggedUser.profile == null}">
 
@@ -152,11 +106,24 @@
                     </div>
                 </div>
             </div>
+
         </th:block>
-    </div>
+
+</div>
 </div>
 
-<!--JQUERY-->
+
+
+<footer class="page-footer grey darken-3">
+    <div class="row">
+        <div style="height:50px;" class="col s6 s12">
+            <h5 class="white-text">Battle Buddies</h5>
+        </div>
+    </div>
+</footer>
+
+
+<!--    JQUERY-->
 
 <script>
     $(".button-collapse").sideNav();
