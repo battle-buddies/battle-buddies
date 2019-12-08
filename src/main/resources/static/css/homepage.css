@@ -87,6 +87,17 @@
     .hiUser{
         color:#121e3e;
     }
+    .linked{
+        font-family: 'Raleway';
+        font-size: 20px;
+        text-align: center;
+        color: black;
+    }
+    .link{
+        text-align: center;
+        font-family: 'Raleway';
+        font-size: 20px;
+    }
 
 
 
@@ -175,19 +186,32 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+    margin-top: 20px;
   }
 
     #hi2{
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
+    }
+    .linked{
+        font-family: 'Raleway';
+        font-size: 20px;
+        text-align: center;
+        color: black;
     }
 
 
 .link{
     text-align: center;
     font-family: 'Raleway';
-
+    font-size: 20px;
+}
+.links{
+    font-family: 'Raleway';
+    font-size: 20px;
+    text-align: center;
 }
 
 main {
