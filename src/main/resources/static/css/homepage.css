@@ -21,6 +21,12 @@
 
     }
 
+    #hi2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     nav{
         position: fixed;
         z-index: 1000;
@@ -38,7 +44,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 22px;
+        font-size: 18px;
         font-family: 'Raleway';
     }
 
@@ -72,6 +78,10 @@
     }
     .btn-color{
         background-color: #616161 !important;
+    }
+
+    .hiUser{
+        color:#121e3e;
     }
 
 

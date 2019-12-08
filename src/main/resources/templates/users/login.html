@@ -12,6 +12,8 @@
         .red-text{
             color: darkred;
         }
+
+
     </style>
 </head>
 <body>
@@ -69,7 +71,7 @@
 <!--MOBILE VIEW-->
 <div id="jc" class="container">
     <div class="jumbotron jumbotron-fluid">
-        <p id="jumbo"><img alt="logo" src="/img/battle_logo.png"  width="330" height="100"></p>
+        <p id="jumbo"><img alt="logo" src="/img/battlelogo_4.png"  width="160" height="50"></p>
 
     </div>
 </div>
@@ -80,6 +82,12 @@
             <div class="panel panel-login">
                 <div class="panel-heading">
                     <div class="row">
+                        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+                            Invalid Username and Password.
+                        </div>
+                        <div class="logout-txt alert alert-info" th:if="${param.logout}">
+                            You have been logged out.
+                        </div>
                         <div class="col-6">
                             <a href="#" class="active" id="login-form-link">Login</a>
                         </div>
