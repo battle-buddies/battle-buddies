@@ -6,6 +6,10 @@
     line-height: 99px !important;
 }
 
+nav{
+    position: fixed;
+    z-index: 1000;
+}
 
 
 /*card {*/

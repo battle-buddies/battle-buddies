@@ -98,6 +98,11 @@ html, body{
     transform: skewY(-30deg) rotate3d(0,0,1,60deg);
 }
 
+nav{
+    position: fixed;
+    z-index: 1000;
+}
+
 /*** HEX CONTENT **********************************************************************/
 .hex img {
     left: -100%;

@@ -1,12 +1,4 @@
-/*.carousel .carousel-item{*/
-/*    width:100%;*/
-/*}*/
-/*.navdesign{*/
-/*    height:99px !important;*/
-/*    line-height: 99px !important;*/
-/*}*/
-
-/*.brand-logo{*/
-/*    margin-top: .3em !important;*/
-/*    height: 100px;*/
-/*}*/
+nav{
+    position: fixed;
+    z-index: 1000;
+}

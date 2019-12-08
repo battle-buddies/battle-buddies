@@ -11,7 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/browse-style.css">
-
+    <style>
+        .container{
+            padding-top: 40px;
+        }
+    </style>
     <th:block th:replace="fragments/header :: main-header"/>
 </head>
 <body>
@@ -31,7 +35,9 @@
     </div>
 </div>
 
-
+<script>
+    $(".button-collapse").sideNav();
+</script>
 
 </body>
 </html>

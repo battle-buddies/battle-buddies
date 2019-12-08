@@ -86,7 +86,8 @@
         }
 
         .container{
-            margin-top: 2em;
+            padding-top: 40px;
+            height: 1000px;
         }
     </style>
 
@@ -174,7 +175,6 @@
         </div>
     </div>
 
-
 </div>
 
 
@@ -195,7 +195,7 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
 
 <script>
-
+    $(".button-collapse").sideNav();
 
     function geocode(search, token) {
         var baseUrl = 'https://api.mapbox.com';

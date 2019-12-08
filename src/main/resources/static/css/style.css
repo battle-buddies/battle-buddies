@@ -14,6 +14,7 @@ a.nav-link{
     font-size:1.3em !important;
 
 }
+
 .left{
     margin-top: .3em !important;
 }
@@ -28,3 +29,14 @@ a.nav-link{
 .btn-color{
     background-color: #424242 !important;
 }
+
+/*body {*/
+/*    display: flex;*/
+/*    min-height: 100vh;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*main {*/
+/*    flex: 1 0 auto;*/
+/*}*/
+
