@@ -21,6 +21,11 @@
 
     }
 
+    nav{
+        position: fixed;
+        z-index: 1000;
+    }
+
     #deskfooter{
         display: none;
     }
@@ -70,6 +75,7 @@
     }
 
 
+
 }
 @media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
 
@@ -93,6 +99,10 @@
         font-size: 80px;
         padding: 15px;
 
+    }
+    nav{
+        position: fixed;
+        z-index: 1000;
     }
 
     #icons{
@@ -162,6 +172,7 @@ body {
         justify-content: center;
         align-items: center;
     }
+
 
 .link{
     text-align: center;
