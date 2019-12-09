@@ -8,15 +8,15 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/browse-style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <th:block th:replace="fragments/header :: main-header"/>
-    <title th:value="${meetup.title}"></title>
+    <title >Meet Ups</title>
     <style>
         .mapboxgl-canvas-container {
 
@@ -38,7 +38,7 @@
         .space{
             margin-top: 24em;
             margin-left: 1em;
-            color:darkred;
+            color: darkred;
         }
 
         .ml{
@@ -84,7 +84,9 @@
         }
 
         .lh{
-            line-height: 8em;
+            position: absolute;
+            right: 17em;
+            top: 10em;
         }
 
 
@@ -96,7 +98,6 @@
             margin-right:auto;
         }
         #interested{
-            margin-left:1.3em;
             color:darkred;
         }
         #date{
@@ -108,6 +109,12 @@
         .creator{
             color:darkred;
         }
+
+        p{
+            font-size: 1.5em;
+        }
+
+
 
     </style>
 
@@ -144,18 +151,18 @@
                     </div>
                     <br>
                     <br>
-                    <label class="space">Meet Up Description: </label>
+                    <label class="space ">Meet Up Description: </label>
                     <div class="ml">
-                        <p class="text-spacing" th:text="${meetup.description}"></p>
+                        <p class="text-spacing " th:text="${meetup.description}"></p>
                     </div>
                     <div class="flex mt">
-                        <label id="interested" ><span th:text="${meetup.count}"></span> interested in attending so far</label>
+                        <p id="interested" ><span th:text="${meetup.count}"></span> interested in attending so far</p>
 
                         <form id="like" th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
                             <button class="btn-clear waves-effect waves-light" ><i class=" small material-icons">favorite_border</i></button>
                         </form>
 
-                        <label class="creator">Meet Up Creator: <a class="dark-link" th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
+                        <p style="color:darkred;" class="creator">Meet Up Creator: <a class="dark-link" th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></p>
                     </div>
                 </div>
             </div>
