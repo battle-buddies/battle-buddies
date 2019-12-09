@@ -150,14 +150,17 @@
 
     .parallax-container {
         height: 370px;
+        border-bottom: 5px solid black;
     }
     .transbox {
         margin-top: 11em !important;
+    background-color: rgba(38, 166, 154,0.7);
     }
 
     .battlelogo{
         height:80px;
-        width: 520px;
+        width: 600px;
+        margin-top:.5em;
 
     }
     .home-icons{
