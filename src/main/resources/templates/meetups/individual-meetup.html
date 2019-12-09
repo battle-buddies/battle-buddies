@@ -38,6 +38,7 @@
         .space{
             margin-top: 24em;
             margin-left: 1em;
+            color:darkred;
         }
 
         .ml{
@@ -50,7 +51,7 @@
 
         .flex{
             display: flex;
-            justify-content: space-between;
+
         }
 
         .btn-clear{
@@ -79,19 +80,35 @@
 
         .flex h1{
             color: #424242;
+            margin-top:2em;
         }
 
         .lh{
             line-height: 8em;
         }
 
-        .container{
-            margin-top: 2em;
-        }
 
         nav{
             top: 0em;
         }
+
+        #like{
+            margin-right:auto;
+        }
+        #interested{
+            margin-left:1.3em;
+            color:darkred;
+        }
+        #date{
+            margin-left:auto;
+        }
+        #address-txt{
+            color:#4db6ac;
+        }
+        .creator{
+            color:darkred;
+        }
+
     </style>
 
 </head>
@@ -115,8 +132,8 @@
             <div class="card">
                 <div class="card-content">
                     <div class="flex">
-                        <h5  th:text="${meetup.address}"></h5>
-                        <h5 th:text="${meetup.date}"></h5>
+                        <h5 id="address-txt"  th:text="${meetup.address}"></h5>
+                        <h5 id="date" th:text="${meetup.date}"></h5>
                     </div>
                     <div class="card-image">
                         <div>
@@ -132,13 +149,13 @@
                         <p class="text-spacing" th:text="${meetup.description}"></p>
                     </div>
                     <div class="flex mt">
-                        <label ><span th:text="${meetup.count}"></span> people interested in attending so far</label>
+                        <label id="interested" ><span th:text="${meetup.count}"></span> interested in attending so far</label>
 
                         <form id="like" th:action="@{'/meetups/interest/' + ${meetup.id}} " method="post">
                             <button class="btn-clear waves-effect waves-light" ><i class=" small material-icons">favorite_border</i></button>
                         </form>
 
-                        <label>Meet Up Creator: <a class="dark-link" th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
+                        <label class="creator">Meet Up Creator: <a class="dark-link" th:href="@{'/users/profile/' + ${meetup.user.id}}"><span th:text="${meetup.user.profile.firstName}"></span></a></label>
                     </div>
                 </div>
             </div>
