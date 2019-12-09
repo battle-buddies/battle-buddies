@@ -119,7 +119,7 @@ nav{
     width: 100%;
     padding: 5%;
     box-sizing:border-box;
-    background-color: #0D47A1;
+    background-color: #4db6ac;
     font-weight: 300;
     -webkit-transition:  -webkit-transform .2s ease-out, opacity .3s ease-out;
     transition:          transform .2s ease-out, opacity .3s ease-out;

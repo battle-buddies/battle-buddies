@@ -5,22 +5,18 @@
     height: 100px;
 }
 
-.right{
-    margin-top: .3em !important;
 
-
-}
 a.nav-link{
     font-size:1.3em !important;
 
 }
 
-.left{
-    margin-top: .3em !important;
-}
+
 
 .nav-wrapper{
     background-color: #424242 !important;
+    height:66px !important;
+    line-height: 66px !important;
 }
 
 .nav-color{

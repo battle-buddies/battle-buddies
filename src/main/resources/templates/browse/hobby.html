@@ -12,9 +12,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/browse-style.css">
     <style>
-        .container{
-            margin-top: 40px;
-        }
+
+       .header{
+           margin-top: 0;
+           padding-top: 2em;
+       }
     </style>
     <th:block th:replace="fragments/header :: main-header"/>
 </head>
@@ -22,7 +24,9 @@
 <th:block th:replace="fragments/nav-bar :: main-nav"/>
 
 <div class="container" >
-    <h1 th:text="${hobby.hobby}"></h1>
+    <div class="header">
+    <h1 class="header" th:text="${hobby.hobby}"></h1>
+    </div>
     <div class="row" >
         <ul id="hexGrid">
 
