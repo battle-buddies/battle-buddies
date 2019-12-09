@@ -1,7 +1,8 @@
 
 drop database if exists battlebuddies_db;
 
-use battlebuddies_db;
+
+ use battlebuddies_db;
 
 
 
@@ -114,7 +115,7 @@ insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, 
 insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, first_name, last_name, birth_date, bio) values (49,0,0,5,7,0,'Julia','Gaspar','1997-02-15','Communicator. Pop culture trailblazer. Freelance entrepreneur. Internetaholic. Unapologetic explorer. Alcohol buff.');
 insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, first_name, last_name, birth_date, bio) values (50,1,1,5,7,1,'Stev','Creyke','1987-12-1','Coffee maven. Friendly travel scholar. Friend of animals everywhere. Zombie enthusiast');
 # drop table children if exits;
-
+use battlebuddies_db;
 insert into children  (child) values ('No Children');
 insert into children  (child) values ('0-5');
 insert into children  (child) values ('6-9');
@@ -403,7 +404,9 @@ insert into location_profile (profile_id, location_id) values (50, 5);
 
 
 
-
+                   drop table if exists branches;
+cre
+use battlebuddies_db;
 insert into branches (branch) values('Army');
 insert into branches (branch) values('Navy');
 insert into branches (branch) values('Marine Corps');
