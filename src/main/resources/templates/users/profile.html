@@ -936,8 +936,13 @@
                 <div class="hex">
                     <div class="hexIn">
                         <div class="hexLink" href="#">
-                            <img height="250" th:width="250" th:if="${user.profile.photo != null}"
-                                 th:src="${user.profile.photo.url}" alt="">
+                            <th:block th:if="${user.profile.photo != null}">
+                                <img th:src="${user.profile.photo.url}" alt="">
+                            </th:block>
+                            <th:block th:if="${user.profile.photo == null}">
+                                <img src="/img/profile-avatar.png" alt="">
+                            </th:block>
+
                         </div>
                     </div>
                 </div>
