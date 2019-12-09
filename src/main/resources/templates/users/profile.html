@@ -901,6 +901,19 @@
         right: -19em;
     }
 
+    #buddies-badge{
+        margin-top:1em;
+    }
+    #requested-badge{
+        margin-top:1em;
+    }
+    #pending-badge{
+        margin-top:1em;
+    }
+    #suggested-badge{
+        margin-top:1em;
+    }
+
 
 </style>
 </head>
@@ -1116,7 +1129,7 @@
                                             </li>
                                             <a class="pos-left" th:if="${relationship.getFriend().username == user.username}"
                                                th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
-                                            <a class="pos-right" th:if="${relationship.getFriend().username == user.username}"
+                                            <a class="pos-right red-text" th:if="${relationship.getFriend().username == user.username}"
                                                th:href="@{/users/{id}/decline-request(id=${relationship.id}) }">decline</a>
 
                                         </ul>
