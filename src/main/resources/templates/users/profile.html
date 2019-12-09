@@ -60,10 +60,10 @@
 
     /*}*/
 
-    /*.flex{*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
-    /*}*/
+    .flex{
+        display: flex;
+
+    }
 
     div.card-content {
         padding-bottom: .5em !important
@@ -636,6 +636,7 @@
 
     .comments {
         margin-top: 2em;
+        display:flex;
     }
 
     .buddies {
@@ -794,6 +795,9 @@
         -webkit-transform: translate3d(0, 100%, 0);
         -ms-transform: translate3d(0, 100%, 0);
         transform: translate3d(0, 100%, 0);
+    }
+    .delete-comment{
+        margin-left:auto;
     }
 
 
@@ -1215,7 +1219,7 @@
                                     <a th:href="@{'/users/profile/' + ${comment.user.id}}"><span
                                             class="card-title"
                                             th:text="${comment.user.profile.firstName}"></span></a>
-                                    <form th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}"
+                                    <form class="delete-comment" th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}"
                                           th:action="@{'/profile/comment/delete/'}" method="post">
                                         <input id="confirm_delete" type="hidden" th:name="deleteComment"
                                                th:value="${comment.id}">
