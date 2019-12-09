@@ -2,7 +2,7 @@
 www.battlebuddies.life
 
 
-A Codeup Capstone project created using Java, Springboot, Hibernate, JPA, Thymleaf, Jquery, Mapbox API, and TalkJS API.
+A Codeup Capstone project created using Java, Springboot, Hibernate, JPA, Thymleaf, Jquery, Mapbox API, FileStack API, and TalkJS API.
 
 Battle Buddies was made to help ease the transition of military families to new duty stations. 
 Many military members are living in places they have never been to before and they may not have biological relatives or friends 
@@ -27,6 +27,8 @@ Sources for API's:
 https://talkjs.com/
 
 https://docs.mapbox.com/
+
+https://filestack.com
 
 
 Contributors:
