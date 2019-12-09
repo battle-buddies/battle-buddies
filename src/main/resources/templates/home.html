@@ -54,11 +54,13 @@
 <!--MOBILE VIEW-->
 
 <div id="mobilepara">
-<div class="parallax-container mobilep">
+    <div style="height: 200px; margin-top: 15px;" class="parallax-container">
+    <div class="parallax"><img src="/img/flag_bgmobilecopy.jpg">
+    </div>
+    </div>
+</div>
 
-    <div class="parallax"><img src="/img/logo_bg5.png"></div>
-</div>
-</div>
+
     <th:block th:if="${user == false}">
 <div id="othermobile" class="section white">
     <div class="row container">
@@ -124,8 +126,9 @@
 
 <footer class="page-footer grey darken-3">
     <div class="row">
-        <div style="height:50px;" class="col s6 s12">
+        <div class="col s6 s12">
             <h5 class="white-text">Battle Buddies</h5>
+            <h6 style="text-align: left"><a th:href="@{'/about'}">About Us</a></h6>
         </div>
     </div>
 </footer>
