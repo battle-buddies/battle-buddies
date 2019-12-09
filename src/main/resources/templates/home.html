@@ -15,7 +15,7 @@
 
 
 <div>
-    <th:block th:replace="fragments/nav-bar :: main-nav"/>
+    <th:block th:replace="fragments/nav-bar :: home-nav"/>
 </div>
 
 
@@ -24,7 +24,7 @@
 
     <div class="parallax-container">
               <div class="transbox center">
-            <img class="battlelogo"src="/img/battlelogo_4.png">
+            <img class="battlelogo"src="/img/logo_bg5.png">
         </div>
     <div class="parallax"><img src="/img/flag_bg.jpg">
     </div>
@@ -47,7 +47,7 @@
             <p class="picons">Browse friends based on common hobbies or traits!</p>
         </div>
     </div>
-    <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
+    <h5 class="loginlink  waves-light"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 </div>
 </th:block>
 
@@ -56,7 +56,7 @@
 <div id="mobilepara">
 <div class="parallax-container mobilep">
 
-    <div class="parallax"><img src="/img/flag_bgmobile copy.jpg"></div>
+    <div class="parallax"><img src="/img/logo_bg5.png"></div>
 </div>
 </div>
     <th:block th:if="${user == false}">
