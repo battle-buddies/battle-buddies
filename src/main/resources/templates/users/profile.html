@@ -914,6 +914,10 @@
         margin-top:1em;
     }
 
+    .lp{
+        top: 2em !important;
+        position: relative !important;
+    }
 
 </style>
 </head>
@@ -1113,7 +1117,7 @@
 
                                         <ul class="hexGrid">
                                             <li class="hex">
-                                                <div class="hexIn requested">
+                                                <div class="hexIn requested ">
                                                     <a class="hexLink"
                                                        th:href="@{'/users/profile/' + ${friend.id}}">
                                                         <th:block th:if="${friend.profile.photo != null}">
@@ -1211,7 +1215,7 @@
             <form id="add-comment" th:action="@{'/profile/comment/' + ${user.id}}" th:method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <label>Add Comment</label>
+                        <label class="lp">Add Comment</label>
                         <div class="right-align">
                             <a href="#" onclick="document.getElementById('add-comment').submit();"
                                class="btn-flat ra teal-text"
