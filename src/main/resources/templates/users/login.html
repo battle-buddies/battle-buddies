@@ -13,9 +13,15 @@
             color: darkred;
         }
 
+        .white-text{
+            color: white !important;
+        }
 
     </style>
+
 </head>
+
+
 <body>
 
 
@@ -27,7 +33,9 @@
         <h2>Have an account?</h2>
         <p>Welcome back!</p>
         <label id="label-register" for="log-reg-show">Login</label>
+        <a href="/" class="btn btn-login white-text">Return to Home</a>
         <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+
     </div>
 
     <div class="register-info-box">
@@ -35,6 +43,8 @@
         <p>Join us!</p>
         <label id="label-login" for="log-login-show">Register</label>
         <input type="radio" name="active-log-panel" id="log-login-show">
+        <a href="/" class="btn btn-login white-text">Return to Home</a>
+
     </div>
 
     <div class="white-panel">
@@ -118,6 +128,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                             </form>
                             <form id="register-form" th:action="@{/sign-up}"  th:object="${user}" method="post" role="form" style="display: none;">
