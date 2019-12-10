@@ -13,6 +13,9 @@
             <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()">
                 <li><a class="nav-link" href="/login">Login</a></li>
             </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="nav-link" href="/about">About</a></li>
+            </ul>
                 <th:block sec:authorize="isAuthenticated()">
             <ul class="left hide-on-med-and-down" >
                     <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
@@ -20,7 +23,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
             <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meet Ups</a></li>
+                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
             </ul>
                 </th:block>
 
@@ -50,7 +53,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
-                        <li><a th:href="@{'/meetups/'}">Meet Ups</a></li>
+                        <li><a th:href="@{'/meetups/'}">Meetups</a></li>
                     </ul>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
@@ -58,6 +61,9 @@
                         <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
                     </ul>
                 </th:block>
+                <ul>
+                    <li><a class="nav-link" href="/about">About</a></li>
+                </ul>
                     <ul sec:authorize="isAuthenticated()">
                         <li> <form id="logout" th:action="@{/logout}" th:method="post">
                             <a href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
@@ -85,6 +91,9 @@
             <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()">
                 <li class="active"><a class="nav-link" href="/login">Login</a></li>
             </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="nav-link" href="/about">About</a></li>
+            </ul>
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down" >
                     <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
@@ -93,7 +102,7 @@
             </th:block>
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meet Ups</a></li>
+                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
                 </ul>
             </th:block>
 
@@ -124,7 +133,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
-                        <li><a th:href="@{'/meetups/'}">Meet Ups</a></li>
+                        <li><a th:href="@{'/meetups/'}">Meetups</a></li>
                     </ul>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
@@ -132,6 +141,9 @@
                         <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
                     </ul>
                 </th:block>
+                <ul>
+                    <li><a class="nav-link" href="/about">About</a></li>
+                </ul>
                 <ul sec:authorize="isAuthenticated()">
                     <li> <form id="logout" th:action="@{/logout}" th:method="post">
                         <a href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
@@ -156,6 +168,9 @@
             <ul class="right hide-on-med-and-down" sec:authorize="!isAuthenticated()">
                 <li><a class="nav-link" href="/login">Login</a></li>
             </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="nav-link" href="/about">About</a></li>
+            </ul>
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down" >
                     <li><a class="nav-link" th:href="@{'/browse/'}">Browse</a></li>
@@ -163,7 +178,7 @@
             </th:block>
             <th:block sec:authorize="isAuthenticated()">
                 <ul class="left hide-on-med-and-down">
-                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meet Ups</a></li>
+                    <li><a class="nav-link" th:href="@{'/meetups/'}">Meetups</a></li>
                 </ul>
             </th:block>
 
@@ -193,7 +208,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <ul>
-                        <li><a th:href="@{'/meetups/'}">Meet Ups</a></li>
+                        <li><a th:href="@{'/meetups/'}">Meetups</a></li>
                     </ul>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
@@ -201,6 +216,9 @@
                         <li><a th:href="@{'/users/profile/'  + ${#authentication.principal.id}}">Profile</a></li>
                     </ul>
                 </th:block>
+                <ul>
+                    <li><a class="nav-link" href="/about">About</a></li>
+                </ul>
                 <ul sec:authorize="isAuthenticated()">
                     <li> <form id="logout" th:action="@{/logout}" th:method="post">
                         <a href="#"  onclick="document.getElementById('logout').submit();">Logout</a>
