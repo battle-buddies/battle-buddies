@@ -145,7 +145,7 @@ public class ProfileController {
                     total -=200;
                 }
 
-                if (total >= 85){
+                if (total >= 90){
                     suggestedFriends.add(profile.getUser());
                 }
 
