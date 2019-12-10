@@ -109,13 +109,13 @@ public class ProfileController {
 
                 for (Trait trait : profile.getTraits()) {
                     if (loggedInProfile.getTraits().contains(trait)){
-                        total += 5;
+                        total += 6;
                     }
                 }
 
                 for (Hobby hobby : profile.getHobbies()) {
                     if (loggedInProfile.getHobbies().contains(hobby)){
-                        total += 5;
+                        total += 7;
                     }
                 }
 
@@ -124,7 +124,7 @@ public class ProfileController {
                 }
 
                 if(loggedInProfile.getGender() == profile.getGender()){
-                    total += 10;
+                    total += 15;
                 }
 
                 if(loggedInProfile.getBranch().getBranch() == profile.getBranch().getBranch()){
@@ -140,11 +140,11 @@ public class ProfileController {
 //                }
 
                 if(loggedInProfile.getRank().getRank().charAt(0) == profile.getRank().getRank().charAt(0) ){
-                    total += 10;
+                    total += 12;
                 }else {
                     total -=200;
                 }
-
+t
                 if (total >= 100){
                     suggestedFriends.add(profile.getUser());
                 }
