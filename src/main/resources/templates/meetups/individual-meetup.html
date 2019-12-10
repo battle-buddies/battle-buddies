@@ -114,7 +114,10 @@
             font-size: 1.5em;
         }
 
-
+.flex2{
+    display:flex;
+    justify-content: space-between;
+}
 
     </style>
 
@@ -188,7 +191,7 @@
                 <div class="card ">
                     <div class="card-content ">
 
-                        <div class="flex">
+                        <div class="flex2">
                             <a   th:href="@{'/users/profile/' + ${comment.user.id}}"><span class="card-title" th:text="${comment.user.profile.firstName}"></span></a>
                             <form id="delete-comment" th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == meetup.user.id}" th:action="@{'/meetups/comment/delete/' + ${comment.id}}" method="post">
                                 <button  class=" btn-clear waves-effect waves-light red-text"> <i class="small material-icons">delete_forever</i></button>
