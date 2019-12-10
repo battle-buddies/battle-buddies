@@ -74,7 +74,7 @@ insert into branches (branch) values('Marine Corps');
 insert into branches (branch) values('Air Force');
 insert into branches (branch) values('Coast Guard');
 
-
+  use battlebuddies_db;
 insert into ranks (rank) values('E1');
 insert into ranks (rank) values('E2');
 insert into ranks (rank) values('E3');

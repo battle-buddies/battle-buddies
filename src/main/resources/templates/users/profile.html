@@ -36,6 +36,7 @@
 
         /* Pick a solid background color that will be displayed while the background image is loading */
         background-color: #464646;
+        overflow:hidden;
     }
 
     /*.top-box{*/
@@ -664,8 +665,13 @@
     }
 
     .indicator {
-        background-color: darkred;
+        background-color: darkred !important;
     }
+    .send-btn{
+        color: darkred !important;
+        font-size: 1.2em;
+    }
+
 
     .pic-btn {
         margin-left: 1em;
@@ -690,11 +696,10 @@
         margin-top: 1em;
     }
 
-
-    /*.btn-color {*/
-    /*    background-color: white !important;*/
-    /*    color: black !important;*/
-    /*}*/
+    .comment-title{
+        font-size: 1.5em;
+        color: #022451;
+    }
 
     .hexGrid {
         display: grid;
@@ -806,6 +811,11 @@
 
     .delete-comment {
         margin-left: auto;
+    }
+
+    .delete-btn{
+        border: 1px solid red;
+        background-color: white;
     }
 
 
@@ -936,6 +946,8 @@
     .lp {
         top: 2em !important;
         position: relative !important;
+        font-size: 1.5em !important;
+        color: #022451 !important;
     }
 
 </style>
@@ -1239,7 +1251,7 @@
                         <label class="lp">Add Comment</label>
                         <div class="right-align">
                             <a href="#" onclick="document.getElementById('add-comment').submit();"
-                               class="btn-flat btn-color ra teal-text"
+                               class="btn-flat send-btn ra "
                                type="submit">Send</a>
                         </div>
                         <textarea id="comment" th:name="comment" class="materialize-textarea"
@@ -1259,7 +1271,7 @@
                             <div class="card-content ">
                                 <div class="flex">
                                     <a th:href="@{'/users/profile/' + ${comment.user.id}}"><span
-                                            class="card-title"
+                                            class="card-title comment-title"
                                             th:text="${comment.user.profile.firstName}"></span></a>
                                     <form class="delete-comment"
                                           th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}"
@@ -1267,7 +1279,7 @@
                                         <input id="confirm_delete" type="hidden" th:name="deleteComment"
                                                th:value="${comment.id}">
                                         <button href="#modal3"
-                                                class=" btn-clear waves-effect btn-color red-text modal-trigger">
+                                                class=" btn-clear waves-effect delete-btn red-text modal-trigger">
                                             <i
                                                     class="small material-icons">delete_forever</i></button>
                                     </form>

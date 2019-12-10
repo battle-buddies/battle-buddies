@@ -37,8 +37,9 @@
 
         .space{
             margin-top: 24em;
-            margin-left: 1em;
+            margin-left: .6em;
             color: darkred;
+            font-size:1.5rem !important;
         }
 
         .ml{
@@ -99,20 +100,37 @@
         }
         #interested{
             color:darkred;
+            padding-left: .7em;
         }
         #date{
             margin-left:auto;
+            color:#022451 !important;
+            padding-right: .5em;
+
         }
         #address-txt{
-            color:#4db6ac;
+            color: #022451 !important;
+            padding-left: .6em;
         }
+
         .creator{
             color:darkred;
+            padding-right: .7em;
         }
+
+        .send-comment{
+            padding-left: 1.5em;
+            padding-right: .5em;
+        }
+
 
         p{
             font-size: 1.5em;
         }
+
+        #comment-add{
+            padding-left: 1em;
+         }
 
 .flex2{
     display:flex;
@@ -175,9 +193,9 @@
     <form id="add-comment" th:action="@{'/meetups/comment/' + ${meetup.id}}" th:method="post">
         <div class="row">
             <div class="input-field col s12">
-                <label >Add Comment</label>
+                <label id="#comment-add" >Add Comment</label>
                 <div class="right-align">
-                    <a  href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra teal-text dark-link" type="submit">Send</a>
+                    <a  href="#" onclick="document.getElementById('add-comment').submit();" class="btn-flat ra dark-link send-comment" type="submit">Send</a>
                 </div>
                 <textarea id="comment" th:name="comment" class="materialize-textarea" data-length="2000"></textarea>
             </div>
