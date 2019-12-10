@@ -6,9 +6,105 @@ drop database if exists battlebuddies_db;
 
 
 
+insert into children  (child) values ('No Children');
+insert into children  (child) values ('0-5');
+insert into children  (child) values ('6-9');
+insert into children  (child) values ('10-14');
+insert into children  (child) values ('15-16');
+insert into children  (child) values ('17-18');
+
+
+insert into hobbies (hobby) values ( 'Gardening');
+insert into hobbies (hobby) values ( 'Cooking');
+insert into hobbies (hobby) values ( 'Learning');
+insert into hobbies (hobby) values ( 'Exercising');
+insert into hobbies (hobby) values ( 'Writing');
+insert into hobbies (hobby) values ( 'Dance');
+insert into hobbies (hobby) values ( 'Photography');
+insert into hobbies (hobby) values ( 'Hiking');
+insert into hobbies (hobby) values ( 'Drawing/Painting');
+insert into hobbies (hobby) values ( 'Hunting');
+insert into hobbies (hobby) values ( 'Sewing');
+insert into hobbies (hobby) values ( 'Sports');
+insert into hobbies (hobby) values ( 'Extreme Sports');
+insert into hobbies (hobby) values ( 'Programming');
+insert into hobbies (hobby) values ( 'Biking');
+insert into hobbies (hobby) values ( 'Camping');
+insert into hobbies (hobby) values ( 'Crafting');
+insert into hobbies (hobby) values ( 'Pottery');
+insert into hobbies (hobby) values ( 'Exercise');
+insert into hobbies (hobby) values ( 'Traveling');
+insert into hobbies (hobby) values ( 'Video Games');
+insert into hobbies (hobby) values ( 'Volunteer Work');
+
+insert into traits (trait) values ( 'Giving');
+insert into traits (trait) values ( 'Clever');
+insert into traits (trait) values ( 'Ambitious');
+insert into traits (trait) values ( 'Honest');
+insert into traits (trait) values ( 'Easygoing');
+insert into traits (trait) values ( 'Quiet');
+insert into traits (trait) values ( 'Insightful');
+insert into traits (trait) values ( 'Devoted');
+insert into traits (trait) values ( 'Confident');
+insert into traits (trait) values ( 'Adventurous');
+insert into traits (trait) values ( 'Focused');
+insert into traits (trait) values ( 'Friendly');
+insert into traits (trait) values ( 'Open minded');
+insert into traits (trait) values ( 'Dependable');
+insert into traits (trait) values ( 'Generous');
+insert into traits (trait) values ( 'Wise');
+insert into traits (trait) values ( 'Strong');
+insert into traits (trait) values ( 'Loyal');
+insert into traits (trait) values ( 'Hard Working');
+insert into traits (trait) values ( 'Creative');
+
+
+insert into locations (location) values ('Salt Lake City, Utah United States');
+insert into locations (location) values ('Fayetteville, North Carolina');
+insert into locations (location) values ('San Antonio, Texas United States');
+insert into locations (location) values ('Belgium, Germany');
+insert into locations (location) values ('Miami, Florida United States');
+insert into locations (location) values ('Honolulu, Hawaii United States');
+insert into locations (location) values ('Miswa, Japan');
+
+
+insert into branches (branch) values('Army');
+insert into branches (branch) values('Navy');
+insert into branches (branch) values('Marine Corps');
+insert into branches (branch) values('Air Force');
+insert into branches (branch) values('Coast Guard');
+
+
+Insert into ranks (rank) values('E1');
+Insert into ranks (rank) values('E2');
+Insert into ranks (rank) values('E3');
+Insert into ranks (rank) values('E4');
+Insert into ranks (rank) values('E5');
+Insert into ranks (rank) values('E6');
+Insert into ranks (rank) values('E7');
+Insert into ranks (rank) values('E8');
+Insert into ranks (rank) values('E9');
+Insert into ranks (rank) values('O1');
+Insert into ranks (rank) values('O2');
+Insert into ranks (rank) values('O3');
+Insert into ranks (rank) values('O4');
+Insert into ranks (rank) values('O5');
+Insert into ranks (rank) values('O6');
+Insert into ranks (rank) values('O7');
+Insert into ranks (rank) values('O8');
+Insert into ranks (rank) values('O9');
+Insert into ranks (rank) values('O10');
+
+
+
+
+
+
+
+
 insert into users (is_admin, profile_id, password,  username, email) values (false ,1,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.','test','lhaughton0@sphinn.com');
-insert into users (is_admin, profile_id, password,  username, email) values (false ,2,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','b','jcorthes1@blogspot.com');
-insert into users (is_admin, profile_id, password,  username, email) values (false ,3,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','c','amacgarvey2@vkontakte.ru');
+insert into users (is_admin, profile_id, password,  username, email) values (false ,2,'$2a$10$TMncjC0Tk5nPdbEsGNMeAeMEnRTdIeLDVNUdPQIBC6SgM4xvbiRSK','b','jcorthes1@blogspot.com');
+insert into users (is_admin, profile_id, password,  username, email) values (false ,3,'$2a$10$TMncjC0Tk5nPdbEsGNMeAeMEnRTdIeLDVNUdPQIBC6SgM4xvbiRSK','c','amacgarvey2@vkontakte.ru');
 insert into users (is_admin, profile_id, password,  username, email) values (false ,4,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','d','whullyer3@wp.com');
 insert into users (is_admin, profile_id, password,  username, email) values (false ,5,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','e','kmaclucais4@cornell.edu');
 insert into users (is_admin, profile_id, password,  username, email) values (true ,6,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','f','gbyway5@blogtalkradio.com');
@@ -114,14 +210,15 @@ insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, 
 insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, first_name, last_name, birth_date, bio) values (48,0,0,5,3,0,'Amber','Espley','1990-09-25','Extreme entrepreneur. Beeraholic. Food guru. Social media enthusiast. Award-winning alcohol fan.');
 insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, first_name, last_name, birth_date, bio) values (49,0,0,5,7,0,'Julia','Gaspar','1997-02-15','Communicator. Pop culture trailblazer. Freelance entrepreneur. Internetaholic. Unapologetic explorer. Alcohol buff.');
 insert into profiles ( user_id, married, mil_spouse, branch_id,rank_id, gender, first_name, last_name, birth_date, bio) values (50,1,1,5,7,1,'Stev','Creyke','1987-12-1','Coffee maven. Friendly travel scholar. Friend of animals everywhere. Zombie enthusiast');
-# drop table children if exits;
-use battlebuddies_db;
-insert into children  (child) values ('No Children');
-insert into children  (child) values ('0-5');
-insert into children  (child) values ('6-9');
-insert into children  (child) values ('10-14');
-insert into children  (child) values ('15-16');
-insert into children  (child) values ('17-18');
+
+
+
+
+
+
+
+
+
 
 insert into profile_child(profile_id, child_id) values(1,2);
 insert into profile_child(profile_id, child_id) values(2,2);
@@ -175,50 +272,6 @@ insert into profile_child(profile_id, child_id) values(49,2);
 insert into profile_child(profile_id, child_id) values(50,2);
 
 
-
-insert into hobbies (hobby) values ( 'Gardening');
-insert into hobbies (hobby) values ( 'Cooking');
-insert into hobbies (hobby) values ( 'Learning');
-insert into hobbies (hobby) values ( 'Exercising');
-insert into hobbies (hobby) values ( 'Writing');
-insert into hobbies (hobby) values ( 'Dance');
-insert into hobbies (hobby) values ( 'Photography');
-insert into hobbies (hobby) values ( 'Hiking');
-insert into hobbies (hobby) values ( 'Drawing/Painting');
-insert into hobbies (hobby) values ( 'Hunting');
-insert into hobbies (hobby) values ( 'Sewing');
-insert into hobbies (hobby) values ( 'Sports');
-insert into hobbies (hobby) values ( 'Extreme Sports');
-insert into hobbies (hobby) values ( 'Programming');
-insert into hobbies (hobby) values ( 'Biking');
-insert into hobbies (hobby) values ( 'Camping');
-insert into hobbies (hobby) values ( 'Crafting');
-insert into hobbies (hobby) values ( 'Pottery');
-insert into hobbies (hobby) values ( 'Exercise');
-insert into hobbies (hobby) values ( 'Traveling');
-insert into hobbies (hobby) values ( 'Video Games');
-insert into hobbies (hobby) values ( 'Volunteer Work');
-
-insert into traits (trait) values ( 'Giving');
-insert into traits (trait) values ( 'Clever');
-insert into traits (trait) values ( 'Ambitious');
-insert into traits (trait) values ( 'Honest');
-insert into traits (trait) values ( 'Easygoing');
-insert into traits (trait) values ( 'Quiet');
-insert into traits (trait) values ( 'Insightful');
-insert into traits (trait) values ( 'Devoted');
-insert into traits (trait) values ( 'Confident');
-insert into traits (trait) values ( 'Adventurous');
-insert into traits (trait) values ( 'Focused');
-insert into traits (trait) values ( 'Friendly');
-insert into traits (trait) values ( 'Open minded');
-insert into traits (trait) values ( 'Dependable');
-insert into traits (trait) values ( 'Generous');
-insert into traits (trait) values ( 'Wise');
-insert into traits (trait) values ( 'Strong');
-insert into traits (trait) values ( 'Loyal');
-insert into traits (trait) values ( 'Hard Working');
-insert into traits (trait) values ( 'Creative');
 
 
 
@@ -340,15 +393,6 @@ insert into profile_trait (profile_id, trait_id) values (50, 10);
 
 
 
-
-
-insert into locations (location) values ('Salt Lake City, Utah United States');
-insert into locations (location) values ('Fayetteville, North Carolina');
-insert into locations (location) values ('San Antonio, Texas United States');
-insert into locations (location) values ('Belgium, Germany');
-insert into locations (location) values ('Miami, Florida United States');
-insert into locations (location) values ('Honolulu, Hawaii United States');
-insert into locations (location) values ('Miswa, Japan');
 
 
 insert into location_profile (profile_id, location_id) values (1, 2);

@@ -109,6 +109,7 @@
     .loginlink{
         text-align: center;
         font-family: 'Raleway';
+        color:red !important;
     }
 
     h2{
