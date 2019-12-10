@@ -1061,9 +1061,9 @@
                     </ul>
                 </div>
                 <div class="col s4">
-                    <h4 class="center-align">Children Ages</h4>
+                    <h4 class="center-align">Children</h4>
                     <ul class="center-align" th:each="child : ${user.getProfile().getChildren()}">
-                        <li th:text="${child.child}"></li>
+                        <span>Ages</span><li th:text="${child.child}"></li>
                     </ul>
                 </div>
             </div>
