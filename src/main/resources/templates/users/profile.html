@@ -36,6 +36,7 @@
 
         /* Pick a solid background color that will be displayed while the background image is loading */
         background-color: #464646;
+        overflow:hidden;
     }
 
     /*.top-box{*/
@@ -60,7 +61,7 @@
 
     /*}*/
 
-    .flex{
+    .flex {
         display: flex;
 
     }
@@ -540,9 +541,11 @@
         .social-icons i {
             margin-top: 0px;
         }
-    .btn-color{
-        background-color: #022451 !important;
-    }
+
+        .btn-color {
+            background-color: #022451 !important;
+        }
+
         .msg-btn {
             float: left;
             height: 18px;
@@ -660,9 +663,16 @@
         display: flex;
         justify-content: center;
     }
-.indicator{
-    background-color: darkred;
-}
+
+    .indicator {
+        background-color: darkred !important;
+    }
+    .send-btn{
+        color: darkred !important;
+        font-size: 1.2em;
+    }
+
+
     .pic-btn {
         margin-left: 1em;
     }
@@ -686,11 +696,10 @@
         margin-top: 1em;
     }
 
-
-    /*.btn-color {*/
-    /*    background-color: white !important;*/
-    /*    color: black !important;*/
-    /*}*/
+    .comment-title{
+        font-size: 1.5em;
+        color: #022451;
+    }
 
     .hexGrid {
         display: grid;
@@ -799,8 +808,14 @@
         -ms-transform: translate3d(0, 100%, 0);
         transform: translate3d(0, 100%, 0);
     }
-    .delete-comment{
-        margin-left:auto;
+
+    .delete-comment {
+        margin-left: auto;
+    }
+
+    .delete-btn{
+        border: 1px solid red;
+        background-color: white;
     }
 
 
@@ -888,46 +903,51 @@
 
     #my-profile {
         /*color: #4db6ac;*/
-        color:darkred;
+        color: darkred;
         margin-bottom: 0;
         margin-top: 0;
     }
 
-    .pos-left{
+    .pos-left {
         position: relative;
-        top: 7.5em;
+        top: 7.7em;
         right: -7.4em;
-        font-size:1.5em;
+        font-size: 1.5em;
     }
 
-    .pos-right{
+    .pos-right {
         position: relative;
-        top: 7.5em;
+        top: 7.7em;
         right: -10em;
-        font-size:1.5em;
+        font-size: 1.5em;
     }
 
-    #buddies-badge{
-        margin-top:1em;
+    #buddies-badge {
+        margin-top: 1em;
         background-color: #022451;
     }
-    #requested-badge{
-        margin-top:1em;
+
+    #requested-badge {
+        margin-top: 1em;
         background-color: #022451;
     }
-    #pending-badge{
-        margin-top:1em;
+
+    #pending-badge {
+        margin-top: 1em;
         background-color: #022451;
     }
-    #suggested-badge{
-        margin-top:1em;
+
+    #suggested-badge {
+        margin-top: 1em;
         background-color: #022451;
 
     }
 
-    .lp{
+    .lp {
         top: 2em !important;
         position: relative !important;
+        font-size: 1.5em !important;
+        color: #022451 !important;
     }
 
 </style>
@@ -1009,8 +1029,8 @@
 
 
                 <a class="waves-effect btn-color btn-color btn"
-                        th:if="${#authentication.principal.id != user.id}"
-                        th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
+                   th:if="${#authentication.principal.id != user.id}"
+                   th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
 
             </div>
         </div>
@@ -1095,11 +1115,12 @@
                                             <div class="hexIn hex-right buds">
                                                 <a class="hexLink"
                                                    th:href="@{'/users/profile/' + ${friend.getFriend().id}}">
-                                                   <th:block th:if="${friend.getFriend().profile.getPhoto() != null}">
-                                                        <img th:src="${friend.getFriend().profile.getPhoto().getUrl()}" alt=""/>
-                                                   </th:block>
+                                                    <th:block th:if="${friend.getFriend().profile.getPhoto() != null}">
+                                                        <img th:src="${friend.getFriend().profile.getPhoto().getUrl()}"
+                                                             alt=""/>
+                                                    </th:block>
                                                     <th:block th:if="${friend.getFriend().profile.getPhoto() == null}">
-                                                        <img src="/img/profile-avatar.png" />
+                                                        <img src="/img/profile-avatar.png"/>
                                                     </th:block>
                                                     <h1 th:text="${friend.getFriend().profile.firstName }"></h1>
                                                     <th:block
@@ -1135,16 +1156,18 @@
                                                             <img th:src="${friend.profile.photo.url}" alt=""/>
                                                         </th:block>
                                                         <th:block th:if="${friend.profile.photo == null}">
-                                                            <img src="/img/profile-avatar.png" />
+                                                            <img src="/img/profile-avatar.png"/>
                                                         </th:block>
                                                         <h1 th:text="${friend.profile.firstName}"></h1>
                                                         <p th:text="${friend.profile.branch.branch}"></p>
                                                     </a>
                                                 </div>
                                             </li>
-                                            <a class="pos-left" th:if="${relationship.getFriend().username == user.username}"
+                                            <a class="pos-left"
+                                               th:if="${relationship.getFriend().username == user.username}"
                                                th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
-                                            <a class="pos-right red-text" th:if="${relationship.getFriend().username == user.username}"
+                                            <a class="pos-right red-text"
+                                               th:if="${relationship.getFriend().username == user.username}"
                                                th:href="@{/users/{id}/decline-request(id=${relationship.id}) }">decline</a>
                                         </ul>
                                     </th:block>
@@ -1154,7 +1177,6 @@
                         </div>
 
 
-
                         <div id="test3" class="col s12" th:if="${#authentication.principal.id == user.id}">
                             <div id="pending" class="col s12 ">
                                 <th:block sec:authorize="isAuthenticated()"
@@ -1162,19 +1184,20 @@
                                     <input type="hidden" th:value="${user.id}">
                                     <ul class="hexGrid">
                                         <th:block th:each="friend : ${user.getRelationships()}"
-                                             th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
+                                                  th:if="${friend.getStatus() == T(com.codeup.blog.blog.models.FriendStatus).PENDING}">
                                             <li class="hex">
                                                 <div class="hexIn hex-right pending">
                                                     <a class="hexLink"
                                                        th:href="@{'/users/profile/' + ${friend.getFriend().id}}">
-                                                            <th:block th:if="${friend.getFriend().profile.photo != null}">
-                                                                <img th:src="${friend.getFriend().profile.photo.url}" alt=""/>
-                                                            </th:block>
-                                                            <th:block th:if="${friend.getFriend().profile.photo == null}">
-                                                                <img src="/img/profile-avatar.png" />
-                                                            </th:block>
-                                                            <h1 th:text="${friend.getFriend().profile.firstName}"></h1>
-                                                            <p th:text="${friend.getFriend().profile.branch.branch}"></p>
+                                                        <th:block th:if="${friend.getFriend().profile.photo != null}">
+                                                            <img th:src="${friend.getFriend().profile.photo.url}"
+                                                                 alt=""/>
+                                                        </th:block>
+                                                        <th:block th:if="${friend.getFriend().profile.photo == null}">
+                                                            <img src="/img/profile-avatar.png"/>
+                                                        </th:block>
+                                                        <h1 th:text="${friend.getFriend().profile.firstName}"></h1>
+                                                        <p th:text="${friend.getFriend().profile.branch.branch}"></p>
 
 
                                                     </a>
@@ -1203,7 +1226,7 @@
                                                             <img th:src="${friend.profile.photo.url}" alt=""/>
                                                         </th:block>
                                                         <th:block th:if="${friend.profile.photo == null}">
-                                                            <img src="/img/profile-avatar.png" />
+                                                            <img src="/img/profile-avatar.png"/>
                                                         </th:block>
                                                         <h1 th:text="${friend.profile.firstName}"></h1>
                                                         <p th:text="${friend.profile.branch.branch}"></p>
@@ -1228,7 +1251,7 @@
                         <label class="lp">Add Comment</label>
                         <div class="right-align">
                             <a href="#" onclick="document.getElementById('add-comment').submit();"
-                               class="btn-flat btn-color ra teal-text"
+                               class="btn-flat send-btn ra "
                                type="submit">Send</a>
                         </div>
                         <textarea id="comment" th:name="comment" class="materialize-textarea"
@@ -1248,14 +1271,15 @@
                             <div class="card-content ">
                                 <div class="flex">
                                     <a th:href="@{'/users/profile/' + ${comment.user.id}}"><span
-                                            class="card-title"
+                                            class="card-title comment-title"
                                             th:text="${comment.user.profile.firstName}"></span></a>
-                                    <form class="delete-comment" th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}"
+                                    <form class="delete-comment"
+                                          th:if="${#authentication.principal.id == comment.user.id || #authentication.principal.id == user.id}"
                                           th:action="@{'/profile/comment/delete/'}" method="post">
                                         <input id="confirm_delete" type="hidden" th:name="deleteComment"
                                                th:value="${comment.id}">
                                         <button href="#modal3"
-                                                class=" btn-clear waves-effect btn-color red-text modal-trigger">
+                                                class=" btn-clear waves-effect delete-btn red-text modal-trigger">
                                             <i
                                                     class="small material-icons">delete_forever</i></button>
                                     </form>
@@ -1270,9 +1294,13 @@
         </div>
     </div>
 </div>
-</div>
-
-
+<footer class="page-footer grey darken-3">
+    <div class="row">
+        <div class="col s6 s12">
+            <h5 class="white-text">Battle Buddies</h5>
+        </div>
+    </div>
+</footer>
 <script>
 
 
@@ -1447,16 +1475,6 @@
     });
 
 </script>
-
-
-<footer class="page-footer grey darken-3">
-    <div class="row">
-        <div class="col s6 s12">
-            <h5 class="white-text">Battle Buddies</h5>
-        </div>
-    </div>
-</footer>
-
 </body>
 </html>
 
