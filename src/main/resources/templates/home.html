@@ -47,7 +47,7 @@
             <p class="picons">Browse friends based on common hobbies or traits!</p>
         </div>
     </div>
-    <h5 class="loginlink  waves-light"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
+    <h5 class="loginlink"><a style="color: #022451;" th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 </div>
 </th:block>
 
@@ -72,7 +72,7 @@
             <p class="picons2"><i id="heart2" class="fas fa-heart"></i>Browse friends by common interests!</p>
         </div>
     </div>
-    <h5 class="loginlink"><a th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
+    <h5 class="loginlink"><a style="color: #022451;" th:href="@{'/login'}">Start making friends! Login or Sign up!</a></h5>
 
 </div>
 
@@ -109,9 +109,9 @@
                     <div class="card-panel">
           <span class="white-text">
                <h2 class="hiUser">Welcome back <span th:text="${loggedUser.profile.firstName}"></span>! </h2>
-              <p class="links"><a th:href="@{'/users/profile/' + ${loggedUser.id}} "><i class="fas fa-user-friends"></i> Go to your profile and start making friends!</a></p>
-               <p class="links"><a th:href="@{'/meetups/'}"><i class="fas fa-calendar-alt"></i> Create or find meetups in your area!</a></p>
-              <p class="links"><a th:href="@{'/browse/'}"><i class="fas fa-heart"></i> Explore our browse section for new friends with common traits or hobbies!</a></p>
+              <p class="links"><a class="lin" th:href="@{'/users/profile/' + ${loggedUser.id}} "><i class="fas fa-user-friends"></i> Go to your profile and start making friends!</a></p>
+               <p class="links"><a class="lin" th:href="@{'/meetups/'}"><i class="fas fa-calendar-alt"></i> Create or find meetups in your area!</a></p>
+              <p class="links"><a class="lin" th:href="@{'/browse/'}"><i class="fas fa-heart"></i> Explore our browse section for new friends with common traits or hobbies!</a></p>
           </span>
                     </div>
                 </div>
@@ -128,7 +128,6 @@
     <div class="row">
         <div class="col s6 s12">
             <h5 class="white-text">Battle Buddies</h5>
-            <h6 style="text-align: left"><a th:href="@{'/about'}">About Us</a></h6>
         </div>
     </div>
 </footer>
