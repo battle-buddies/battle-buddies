@@ -405,7 +405,7 @@ insert into location_profile (profile_id, location_id) values (50, 5);
 
 
                    drop table if exists branches;
-cre
+
 use battlebuddies_db;
 insert into branches (branch) values('Army');
 insert into branches (branch) values('Navy');

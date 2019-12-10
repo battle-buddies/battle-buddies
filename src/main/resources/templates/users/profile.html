@@ -540,7 +540,9 @@
         .social-icons i {
             margin-top: 0px;
         }
-
+    .btn-color{
+        background-color: #022451 !important;
+    }
         .msg-btn {
             float: left;
             height: 18px;
@@ -658,7 +660,9 @@
         display: flex;
         justify-content: center;
     }
-
+.indicator{
+    background-color: darkred;
+}
     .pic-btn {
         margin-left: 1em;
     }
@@ -683,7 +687,7 @@
     }
 
 
-    /*.waves-light {*/
+    /*.btn-color {*/
     /*    background-color: white !important;*/
     /*    color: black !important;*/
     /*}*/
@@ -891,27 +895,34 @@
 
     .pos-left{
         position: relative;
-        top: 6em;
-        right: -8.5em;
+        top: 7.5em;
+        right: -7.4em;
+        font-size:1.5em;
     }
 
     .pos-right{
         position: relative;
-        top: 6em;
-        right: -19em;
+        top: 7.5em;
+        right: -10em;
+        font-size:1.5em;
     }
 
     #buddies-badge{
         margin-top:1em;
+        background-color: #022451;
     }
     #requested-badge{
         margin-top:1em;
+        background-color: #022451;
     }
     #pending-badge{
         margin-top:1em;
+        background-color: #022451;
     }
     #suggested-badge{
         margin-top:1em;
+        background-color: #022451;
+
     }
 
 
@@ -970,14 +981,14 @@
 
         <div class="pic-div">
             <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
-                <div><input class="waves-effect  waves-light btn" type="BUTTON" value="Upload Picture"
+                <div><input class="waves-effect  btn-color btn" type="BUTTON" value="Upload Picture"
                             id="pickWatermark" onclick="pickMark()"></div>
             </th:block>
             <div class="center-align">
                 <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == user.id}">
                     <form th:action="@{'/add-photo/' + ${user.profile.id}}" th:method="post">
                         <input hidden th:name="picURL" id="photoURL">
-                        <button class="waves-effect waves-light btn pic-btn" id="confirm-picture">Save Picture</button>
+                        <button class="waves-effect btn-color btn pic-btn" id="confirm-picture">Save Picture</button>
                     </form>
                 </th:block>
             </div>
@@ -988,12 +999,12 @@
             </th:block>
             <div>
                 <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id != user.id}">
-                    <a id="btn-getInTouch" class="waves-effect  waves-light btn"><i class="material-icons left">account_box</i>Message
+                    <a id="btn-getInTouch" class="waves-effect  btn-color btn"><i class="material-icons left">account_box</i>Message
                         Me</a>
                 </th:block>
 
 
-                <a class="waves-effect waves-light waves-light btn"
+                <a class="waves-effect btn-color btn-color btn"
                         th:if="${#authentication.principal.id != user.id}"
                         th:href="@{/users/{id}/friend-request(id=${user.id}) }">Send Buddy Request</a>
 
@@ -1131,7 +1142,6 @@
                                                th:href="@{/users/{id}/accept-request(id=${relationship.id}) }">accept</a>
                                             <a class="pos-right red-text" th:if="${relationship.getFriend().username == user.username}"
                                                th:href="@{/users/{id}/decline-request(id=${relationship.id}) }">decline</a>
-
                                         </ul>
                                     </th:block>
                                 </div>
@@ -1214,7 +1224,7 @@
                         <label>Add Comment</label>
                         <div class="right-align">
                             <a href="#" onclick="document.getElementById('add-comment').submit();"
-                               class="btn-flat ra teal-text"
+                               class="btn-flat btn-color ra teal-text"
                                type="submit">Send</a>
                         </div>
                         <textarea id="comment" th:name="comment" class="materialize-textarea"
@@ -1241,7 +1251,7 @@
                                         <input id="confirm_delete" type="hidden" th:name="deleteComment"
                                                th:value="${comment.id}">
                                         <button href="#modal3"
-                                                class=" btn-clear waves-effect waves-light red-text modal-trigger">
+                                                class=" btn-clear waves-effect btn-color red-text modal-trigger">
                                             <i
                                                     class="small material-icons">delete_forever</i></button>
                                     </form>
