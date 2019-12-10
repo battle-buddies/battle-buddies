@@ -2,7 +2,7 @@
 drop database if exists battlebuddies_db;
 
 
- use battlebuddies_db;
+use battlebuddies_db;
 
 
 
@@ -75,25 +75,25 @@ insert into branches (branch) values('Air Force');
 insert into branches (branch) values('Coast Guard');
 
 
-Insert into ranks (rank) values('E1');
-Insert into ranks (rank) values('E2');
-Insert into ranks (rank) values('E3');
-Insert into ranks (rank) values('E4');
-Insert into ranks (rank) values('E5');
-Insert into ranks (rank) values('E6');
-Insert into ranks (rank) values('E7');
-Insert into ranks (rank) values('E8');
-Insert into ranks (rank) values('E9');
-Insert into ranks (rank) values('O1');
-Insert into ranks (rank) values('O2');
-Insert into ranks (rank) values('O3');
-Insert into ranks (rank) values('O4');
-Insert into ranks (rank) values('O5');
-Insert into ranks (rank) values('O6');
-Insert into ranks (rank) values('O7');
-Insert into ranks (rank) values('O8');
-Insert into ranks (rank) values('O9');
-Insert into ranks (rank) values('O10');
+insert into ranks (rank) values('E1');
+insert into ranks (rank) values('E2');
+insert into ranks (rank) values('E3');
+insert into ranks (rank) values('E4');
+insert into ranks (rank) values('E5');
+insert into ranks (rank) values('E6');
+insert into ranks (rank) values('E7');
+insert into ranks (rank) values('E8');
+insert into ranks (rank) values('E9');
+insert into ranks (rank) values('O1');
+insert into ranks (rank) values('O2');
+insert into ranks (rank) values('O3');
+insert into ranks (rank) values('O4');
+insert into ranks (rank) values('O5');
+insert into ranks (rank) values('O6');
+insert into ranks (rank) values('O7');
+insert into ranks (rank) values('O8');
+insert into ranks (rank) values('O9');
+insert into ranks (rank) values('O10');
 
 
 
@@ -102,9 +102,9 @@ Insert into ranks (rank) values('O10');
 
 
 
-insert into users (is_admin, profile_id, password,  username, email) values (false ,1,'$2a$10$DRibzeKQLUtnTOF5nCnnMegxRg0Tu4hLrVLX0u1L9QCbFZkiGtSS.','test','lhaughton0@sphinn.com');
-insert into users (is_admin, profile_id, password,  username, email) values (false ,2,'$2a$10$TMncjC0Tk5nPdbEsGNMeAeMEnRTdIeLDVNUdPQIBC6SgM4xvbiRSK','b','jcorthes1@blogspot.com');
-insert into users (is_admin, profile_id, password,  username, email) values (false ,3,'$2a$10$TMncjC0Tk5nPdbEsGNMeAeMEnRTdIeLDVNUdPQIBC6SgM4xvbiRSK','c','amacgarvey2@vkontakte.ru');
+insert into users (is_admin, profile_id, password,  username, email) values (false ,1,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','test','lhaughton0@sphinn.com');
+insert into users (is_admin, profile_id, password,  username, email) values (false ,2,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','b','jcorthes1@blogspot.com');
+insert into users (is_admin, profile_id, password,  username, email) values (false ,3,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','c','amacgarvey2@vkontakte.ru');
 insert into users (is_admin, profile_id, password,  username, email) values (false ,4,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','d','whullyer3@wp.com');
 insert into users (is_admin, profile_id, password,  username, email) values (false ,5,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','e','kmaclucais4@cornell.edu');
 insert into users (is_admin, profile_id, password,  username, email) values (true ,6,'$2a$10$rTBhTpPpSy5Il7mQc4ev5OsOY0ZzrWAhyqkhQUP3rrM5Vrbc88JrK','f','gbyway5@blogtalkradio.com');
@@ -448,35 +448,29 @@ insert into location_profile (profile_id, location_id) values (50, 5);
 
 
 
-                   drop table if exists branches;
-
-use battlebuddies_db;
-insert into branches (branch) values('Army');
-insert into branches (branch) values('Navy');
-insert into branches (branch) values('Marine Corps');
-insert into branches (branch) values('Air Force');
-insert into branches (branch) values('Coast Guard');
 
 
-Insert into ranks (rank) values('E1');
-Insert into ranks (rank) values('E2');
-Insert into ranks (rank) values('E3');
-Insert into ranks (rank) values('E4');
-Insert into ranks (rank) values('E5');
-Insert into ranks (rank) values('E6');
-Insert into ranks (rank) values('E7');
-Insert into ranks (rank) values('E8');
-Insert into ranks (rank) values('E9');
-Insert into ranks (rank) values('O1');
-Insert into ranks (rank) values('O2');
-Insert into ranks (rank) values('O3');
-Insert into ranks (rank) values('O4');
-Insert into ranks (rank) values('O5');
-Insert into ranks (rank) values('O6');
-Insert into ranks (rank) values('O7');
-Insert into ranks (rank) values('O8');
-Insert into ranks (rank) values('O9');
-Insert into ranks (rank) values('O10');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
