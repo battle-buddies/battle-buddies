@@ -5,6 +5,11 @@
         font-size: 20px;
     }
 
+    .page-footer{
+        height: 100px;
+        width: auto;
+    }
+
     h2{
         text-align: center;
         font-family: 'monsterrat';
@@ -93,15 +98,18 @@
         font-family: 'Raleway';
         font-size: 20px;
         text-align: center;
-        color: black;
+        color: #022451;
     }
     .link{
         text-align: center;
         font-family: 'Raleway';
         font-size: 20px;
+        color: #022451;
     }
 
-
+    .lin{
+        color: #022451;
+    }
 
 }
 @media only screen and (min-device-width : 850px) and (max-device-width : 3000px) {
@@ -109,7 +117,11 @@
     .loginlink{
         text-align: center;
         font-family: 'Raleway';
+<<<<<<< HEAD
         color:red !important;
+=======
+        color: #022451 !important;
+>>>>>>> 70df53a1e9a00bb0cca47cf672e7473e06952a17
     }
 
     h2{
@@ -208,7 +220,10 @@ body {
         font-family: 'Raleway';
         font-size: 20px;
         text-align: center;
-        color: black;
+        color: #022451;
+    }
+    .lin{
+        color: #022451;
     }
 
 
@@ -216,6 +231,7 @@ body {
     text-align: center;
     font-family: 'Raleway';
     font-size: 20px;
+    color: #022451;
 }
 .links{
     font-family: 'Raleway';
@@ -228,7 +244,7 @@ main {
 }
 
     .page-footer{
-        height: 200px;
+        height: 100px;
         width: auto;
     }
 
