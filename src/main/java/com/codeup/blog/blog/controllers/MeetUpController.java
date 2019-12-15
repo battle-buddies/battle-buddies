@@ -1,22 +1,13 @@
 package com.codeup.blog.blog.controllers;
 
-import com.codeup.blog.blog.models.Comment;
-import com.codeup.blog.blog.models.MeetUp;
-import com.codeup.blog.blog.models.User;
-import com.codeup.blog.blog.repositories.CommentRepository;
-import com.codeup.blog.blog.repositories.LocationRepository;
-import com.codeup.blog.blog.repositories.MeetUpRepository;
 import com.codeup.blog.blog.repositories.UserRepository;
-import com.codeup.blog.blog.security.UserWithRoles;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller

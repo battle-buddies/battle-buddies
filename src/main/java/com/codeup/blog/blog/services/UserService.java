@@ -1,6 +1,5 @@
 package com.codeup.blog.blog.services;
 
-import com.codeup.blog.blog.models.User;
 import com.codeup.blog.blog.repositories.UserRepository;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

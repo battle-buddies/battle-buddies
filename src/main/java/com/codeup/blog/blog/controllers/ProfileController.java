@@ -1,28 +1,14 @@
 package com.codeup.blog.blog.controllers;
-import com.codeup.blog.blog.models.*;
-import com.codeup.blog.blog.repositories.*;
-import com.codeup.blog.blog.models.Relationship;
-import com.codeup.blog.blog.models.User;
-import com.codeup.blog.blog.models.Location;
-import com.codeup.blog.blog.repositories.LocationRepository;
-import com.codeup.blog.blog.repositories.ProfileRepository;
-import com.codeup.blog.blog.repositories.RelationshipRepository;
 import com.codeup.blog.blog.repositories.UserRepository;
 import com.codeup.blog.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.ArrayList;
 

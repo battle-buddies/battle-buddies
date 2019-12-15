@@ -1,6 +1,5 @@
 package com.codeup.blog.blog.services;
 
-import com.codeup.blog.blog.models.User;
 import com.codeup.blog.blog.repositories.UserRepository;
 import com.codeup.blog.blog.security.UserWithRoles;
 
