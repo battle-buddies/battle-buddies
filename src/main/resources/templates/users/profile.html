@@ -1218,6 +1218,7 @@
                                     <input type="hidden" th:value="${user.id}">
                                     <ul class="hexGrid">
                                         <th:block th:each="friend : ${suggestedFriends}">
+
                                             <li class="hex">
                                                 <div class="hexIn hex-right suggested">
                                                     <a class="hexLink"
@@ -1233,7 +1234,6 @@
                                                     </a>
                                                 </div>
                                             </li>
-
                                         </th:block>
                                     </ul>
                                 </th:block>
